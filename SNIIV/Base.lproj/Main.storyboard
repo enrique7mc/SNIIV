@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Menú-->
         <scene sceneID="oJC-hD-m9G">
             <objects>
-                <tableViewController id="vB4-9n-1Fb" sceneMemberID="viewController">
+                <tableViewController title="Menú" id="vB4-9n-1Fb" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Rf2-1h-EG1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,7 +68,7 @@
                             <outlet property="delegate" destination="vB4-9n-1Fb" id="sJy-QR-P8v"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="bej-vl-mfx"/>
+                    <navigationItem key="navigationItem" title="Menú" id="bej-vl-mfx"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ovw-fC-LaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
