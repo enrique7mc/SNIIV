@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D5E2F250DCC758C330F7472 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E20A6D76BD5BDE88E515E57 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		843FD49F1B4DDAF100930AEB /* ParseSoap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD49E1B4DDAF000930AEB /* ParseSoap.swift */; };
 		84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA162F1B4C657400ECC81A /* AppDelegate.swift */; };
 		84BA16351B4C657400ECC81A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16331B4C657400ECC81A /* Main.storyboard */; };
 		84BA16371B4C657400ECC81A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16361B4C657400ECC81A /* Images.xcassets */; };
@@ -32,6 +33,7 @@
 		2E20A6D76BD5BDE88E515E57 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1A4F2FCD79641EB9AFCAB9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		62385B87DA1F4CCED8B80DDB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		843FD49E1B4DDAF000930AEB /* ParseSoap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseSoap.swift; sourceTree = "<group>"; };
 		84BA162A1B4C657400ECC81A /* SNIIV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNIIV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA162E1B4C657400ECC81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84BA162F1B4C657400ECC81A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		843FD49D1B4DDACB00930AEB /* Parsing */ = {
+			isa = PBXGroup;
+			children = (
+				843FD49E1B4DDAF000930AEB /* ParseSoap.swift */,
+			);
+			name = Parsing;
+			sourceTree = "<group>";
+		};
 		84BA16211B4C657400ECC81A = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +120,7 @@
 		84BA162C1B4C657400ECC81A /* SNIIV */ = {
 			isa = PBXGroup;
 			children = (
+				843FD49D1B4DDACB00930AEB /* Parsing */,
 				84BA162F1B4C657400ECC81A /* AppDelegate.swift */,
 				84BA16331B4C657400ECC81A /* Main.storyboard */,
 				84BA16361B4C657400ECC81A /* Images.xcassets */,
@@ -297,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843FD49F1B4DDAF100930AEB /* ParseSoap.swift in Sources */,
 				84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */,
 				A35B0EF21B4D7FD900CD25D9 /* ReportePrincipal.m in Sources */,
 				A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */,
