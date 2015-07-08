@@ -74,10 +74,10 @@
             </objects>
             <point key="canvasLocation" x="214" y="618"/>
         </scene>
-        <!--View Controller-->
+        <!--Reporte General Controller View Controller-->
         <scene sceneID="8RF-Qm-xiF">
             <objects>
-                <viewController id="1ZM-55-Yb1" sceneMemberID="viewController">
+                <viewController id="1ZM-55-Yb1" customClass="ReporteGeneralControllerViewController" customModule="SNIIV" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="khH-0e-8IK"/>
                         <viewControllerLayoutGuide type="bottom" id="p7X-qq-KLr"/>

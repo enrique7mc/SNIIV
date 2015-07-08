@@ -12,6 +12,8 @@
 		84BA16371B4C657400ECC81A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16361B4C657400ECC81A /* Images.xcassets */; };
 		84BA163A1B4C657400ECC81A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16381B4C657400ECC81A /* LaunchScreen.xib */; };
 		84BA16461B4C657400ECC81A /* SNIIVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA16451B4C657400ECC81A /* SNIIVTests.swift */; };
+		A35B0EF21B4D7FD900CD25D9 /* ReportePrincipal.m in Sources */ = {isa = PBXBuildFile; fileRef = A35B0EF11B4D7FD900CD25D9 /* ReportePrincipal.m */; };
+		A35B0EF41B4D8C8100CD25D9 /* ReporteGeneralControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35B0EF31B4D8C8100CD25D9 /* ReporteGeneralControllerViewController.swift */; };
 		A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,10 @@
 		84BA163F1B4C657400ECC81A /* SNIIVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SNIIVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA16441B4C657400ECC81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84BA16451B4C657400ECC81A /* SNIIVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNIIVTests.swift; sourceTree = "<group>"; };
+		A35B0EEF1B4D7FD900CD25D9 /* SNIIV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SNIIV-Bridging-Header.h"; sourceTree = "<group>"; };
+		A35B0EF01B4D7FD900CD25D9 /* ReportePrincipal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportePrincipal.h; sourceTree = "<group>"; };
+		A35B0EF11B4D7FD900CD25D9 /* ReportePrincipal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportePrincipal.m; sourceTree = "<group>"; };
+		A35B0EF31B4D8C8100CD25D9 /* ReporteGeneralControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneralControllerViewController.swift; sourceTree = "<group>"; };
 		A38B36B41B4CA0D700606D3A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,9 +65,12 @@
 		84BA16211B4C657400ECC81A = {
 			isa = PBXGroup;
 			children = (
+				A35B0EF01B4D7FD900CD25D9 /* ReportePrincipal.h */,
+				A35B0EF11B4D7FD900CD25D9 /* ReportePrincipal.m */,
 				84BA162C1B4C657400ECC81A /* SNIIV */,
 				84BA16421B4C657400ECC81A /* SNIIVTests */,
 				84BA162B1B4C657400ECC81A /* Products */,
+				A35B0EEF1B4D7FD900CD25D9 /* SNIIV-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +92,7 @@
 				84BA16381B4C657400ECC81A /* LaunchScreen.xib */,
 				84BA162D1B4C657400ECC81A /* Supporting Files */,
 				A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */,
+				A35B0EF31B4D8C8100CD25D9 /* ReporteGeneralControllerViewController.swift */,
 			);
 			path = SNIIV;
 			sourceTree = "<group>";
@@ -213,6 +223,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */,
+				A35B0EF41B4D8C8100CD25D9 /* ReporteGeneralControllerViewController.swift in Sources */,
+				A35B0EF21B4D7FD900CD25D9 /* ReportePrincipal.m in Sources */,
 				A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,10 +352,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SNIIV/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SNIIV-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -351,10 +366,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SNIIV/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SNIIV-Bridging-Header.h";
 			};
 			name = Release;
 		};
