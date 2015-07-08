@@ -12,6 +12,7 @@
 		84BA16371B4C657400ECC81A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16361B4C657400ECC81A /* Images.xcassets */; };
 		84BA163A1B4C657400ECC81A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16381B4C657400ECC81A /* LaunchScreen.xib */; };
 		84BA16461B4C657400ECC81A /* SNIIVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA16451B4C657400ECC81A /* SNIIVTests.swift */; };
+		A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		84BA163F1B4C657400ECC81A /* SNIIVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SNIIVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA16441B4C657400ECC81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84BA16451B4C657400ECC81A /* SNIIVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNIIVTests.swift; sourceTree = "<group>"; };
+		A38B36B41B4CA0D700606D3A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				84BA16361B4C657400ECC81A /* Images.xcassets */,
 				84BA16381B4C657400ECC81A /* LaunchScreen.xib */,
 				84BA162D1B4C657400ECC81A /* Supporting Files */,
+				A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */,
 			);
 			path = SNIIV;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */,
+				A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +291,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -325,7 +329,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -337,6 +341,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SNIIV/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -347,6 +352,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SNIIV/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -417,6 +423,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A38B36B41B4CA0D700606D3A /* Model.xcdatamodel */,
+			);
+			currentVersion = A38B36B41B4CA0D700606D3A /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 84BA16221B4C657400ECC81A /* Project object */;
 }
