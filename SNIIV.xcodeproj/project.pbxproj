@@ -14,7 +14,7 @@
 		84BA163A1B4C657400ECC81A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16381B4C657400ECC81A /* LaunchScreen.xib */; };
 		84BA16461B4C657400ECC81A /* SNIIVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA16451B4C657400ECC81A /* SNIIVTests.swift */; };
 		A35B0EF21B4D7FD900CD25D9 /* ReportePrincipal.m in Sources */ = {isa = PBXBuildFile; fileRef = A35B0EF11B4D7FD900CD25D9 /* ReportePrincipal.m */; };
-		A35B0EF41B4D8C8100CD25D9 /* ReporteGeneralControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35B0EF31B4D8C8100CD25D9 /* ReporteGeneralControllerViewController.swift */; };
+		A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38708041B4DB868009EAC52 /* ReporteGeneralViewController.swift */; };
 		A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +44,7 @@
 		A35B0EEF1B4D7FD900CD25D9 /* SNIIV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SNIIV-Bridging-Header.h"; sourceTree = "<group>"; };
 		A35B0EF01B4D7FD900CD25D9 /* ReportePrincipal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportePrincipal.h; sourceTree = "<group>"; };
 		A35B0EF11B4D7FD900CD25D9 /* ReportePrincipal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportePrincipal.m; sourceTree = "<group>"; };
-		A35B0EF31B4D8C8100CD25D9 /* ReporteGeneralControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneralControllerViewController.swift; sourceTree = "<group>"; };
+		A38708041B4DB868009EAC52 /* ReporteGeneralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneralViewController.swift; sourceTree = "<group>"; };
 		A38B36B41B4CA0D700606D3A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,7 +116,7 @@
 				84BA16381B4C657400ECC81A /* LaunchScreen.xib */,
 				84BA162D1B4C657400ECC81A /* Supporting Files */,
 				A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */,
-				A35B0EF31B4D8C8100CD25D9 /* ReporteGeneralControllerViewController.swift */,
+				A38708041B4DB868009EAC52 /* ReporteGeneralViewController.swift */,
 			);
 			path = SNIIV;
 			sourceTree = "<group>";
@@ -298,9 +298,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */,
-				A35B0EF41B4D8C8100CD25D9 /* ReporteGeneralControllerViewController.swift in Sources */,
 				A35B0EF21B4D7FD900CD25D9 /* ReportePrincipal.m in Sources */,
 				A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */,
+				A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
