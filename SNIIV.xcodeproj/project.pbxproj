@@ -15,6 +15,8 @@
 		84BA163A1B4C657400ECC81A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16381B4C657400ECC81A /* LaunchScreen.xib */; };
 		84BA16461B4C657400ECC81A /* SNIIVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA16451B4C657400ECC81A /* SNIIVTests.swift */; };
 		84E16C1A1B4EC72C00C56F08 /* ReporteGeneralPrueba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16C191B4EC72C00C56F08 /* ReporteGeneralPrueba.swift */; };
+		A33B8C261B4EE0AC00B200E5 /* ReporteGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B8C251B4EE0AC00B200E5 /* ReporteGeneral.swift */; };
+		A33B8C291B4EE1B400B200E5 /* CRUDReporteGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B8C281B4EE1B400B200E5 /* CRUDReporteGeneral.swift */; };
 		84E16C1C1B4EE03A00C56F08 /* SoapToXml.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16C1B1B4EE03A00C56F08 /* SoapToXml.swift */; };
 		84E16C1E1B4EFC6100C56F08 /* Entidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16C1D1B4EFC6100C56F08 /* Entidad.swift */; };
 		A35B0EF21B4D7FD900CD25D9 /* ReportePrincipal.m in Sources */ = {isa = PBXBuildFile; fileRef = A35B0EF11B4D7FD900CD25D9 /* ReportePrincipal.m */; };
@@ -47,6 +49,8 @@
 		84BA16441B4C657400ECC81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84BA16451B4C657400ECC81A /* SNIIVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNIIVTests.swift; sourceTree = "<group>"; };
 		84E16C191B4EC72C00C56F08 /* ReporteGeneralPrueba.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneralPrueba.swift; sourceTree = "<group>"; };
+		A33B8C251B4EE0AC00B200E5 /* ReporteGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneral.swift; sourceTree = "<group>"; };
+		A33B8C281B4EE1B400B200E5 /* CRUDReporteGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDReporteGeneral.swift; sourceTree = "<group>"; };
 		84E16C1B1B4EE03A00C56F08 /* SoapToXml.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapToXml.swift; sourceTree = "<group>"; };
 		84E16C1D1B4EFC6100C56F08 /* Entidad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entidad.swift; sourceTree = "<group>"; };
 		A35B0EEF1B4D7FD900CD25D9 /* SNIIV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SNIIV-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -106,8 +110,6 @@
 		84BA16211B4C657400ECC81A = {
 			isa = PBXGroup;
 			children = (
-				A35B0EF01B4D7FD900CD25D9 /* ReportePrincipal.h */,
-				A35B0EF11B4D7FD900CD25D9 /* ReportePrincipal.m */,
 				84BA162C1B4C657400ECC81A /* SNIIV */,
 				84BA16421B4C657400ECC81A /* SNIIVTests */,
 				84BA162B1B4C657400ECC81A /* Products */,
@@ -129,6 +131,7 @@
 		84BA162C1B4C657400ECC81A /* SNIIV */ = {
 			isa = PBXGroup;
 			children = (
+				A33B8C271B4EE17B00B200E5 /* CoreData */,
 				843FD49D1B4DDACB00930AEB /* Parsing */,
 				84BA162F1B4C657400ECC81A /* AppDelegate.swift */,
 				84BA16331B4C657400ECC81A /* Main.storyboard */,
@@ -137,6 +140,7 @@
 				84BA162D1B4C657400ECC81A /* Supporting Files */,
 				A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */,
 				A38708041B4DB868009EAC52 /* ReporteGeneralViewController.swift */,
+				A33B8C251B4EE0AC00B200E5 /* ReporteGeneral.swift */,
 			);
 			path = SNIIV;
 			sourceTree = "<group>";
@@ -164,6 +168,14 @@
 				84BA16441B4C657400ECC81A /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A33B8C271B4EE17B00B200E5 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A33B8C281B4EE1B400B200E5 /* CRUDReporteGeneral.swift */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,8 +334,9 @@
 				84E16C1A1B4EC72C00C56F08 /* ReporteGeneralPrueba.swift in Sources */,
 				84E16C1E1B4EFC6100C56F08 /* Entidad.swift in Sources */,
 				84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */,
-				A35B0EF21B4D7FD900CD25D9 /* ReportePrincipal.m in Sources */,
+				A33B8C291B4EE1B400B200E5 /* CRUDReporteGeneral.swift in Sources */,
 				A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */,
+				A33B8C261B4EE0AC00B200E5 /* ReporteGeneral.swift in Sources */,
 				A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
