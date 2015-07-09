@@ -7,7 +7,7 @@ class ReporteGeneralViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         var parseSoap = ParseSoap()
-        parseSoap.getDatosReporte() { (responseObject:[ReporteGeneral]?, error:NSError?) in
+        parseSoap.getDatosReporte() { (responseObject:[ReporteGeneralPrueba]?, error:NSError?) in
             
             if ((error) != nil) {
                 println("Error logging you in!")

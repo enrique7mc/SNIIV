@@ -14,7 +14,7 @@
 		84BA16371B4C657400ECC81A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16361B4C657400ECC81A /* Images.xcassets */; };
 		84BA163A1B4C657400ECC81A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16381B4C657400ECC81A /* LaunchScreen.xib */; };
 		84BA16461B4C657400ECC81A /* SNIIVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA16451B4C657400ECC81A /* SNIIVTests.swift */; };
-		84E16C1A1B4EC72C00C56F08 /* ReporteGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16C191B4EC72C00C56F08 /* ReporteGeneral.swift */; };
+		84E16C1A1B4EC72C00C56F08 /* ReporteGeneralPrueba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16C191B4EC72C00C56F08 /* ReporteGeneralPrueba.swift */; };
 		A35B0EF21B4D7FD900CD25D9 /* ReportePrincipal.m in Sources */ = {isa = PBXBuildFile; fileRef = A35B0EF11B4D7FD900CD25D9 /* ReportePrincipal.m */; };
 		A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38708041B4DB868009EAC52 /* ReporteGeneralViewController.swift */; };
 		A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */; };
@@ -44,7 +44,7 @@
 		84BA163F1B4C657400ECC81A /* SNIIVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SNIIVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA16441B4C657400ECC81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84BA16451B4C657400ECC81A /* SNIIVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNIIVTests.swift; sourceTree = "<group>"; };
-		84E16C191B4EC72C00C56F08 /* ReporteGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneral.swift; sourceTree = "<group>"; };
+		84E16C191B4EC72C00C56F08 /* ReporteGeneralPrueba.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneralPrueba.swift; sourceTree = "<group>"; };
 		A35B0EEF1B4D7FD900CD25D9 /* SNIIV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SNIIV-Bridging-Header.h"; sourceTree = "<group>"; };
 		A35B0EF01B4D7FD900CD25D9 /* ReportePrincipal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportePrincipal.h; sourceTree = "<group>"; };
 		A35B0EF11B4D7FD900CD25D9 /* ReportePrincipal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportePrincipal.m; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				843FD49E1B4DDAF000930AEB /* ParseSoap.swift */,
-				84E16C191B4EC72C00C56F08 /* ReporteGeneral.swift */,
+				84E16C191B4EC72C00C56F08 /* ReporteGeneralPrueba.swift */,
 			);
 			name = Parsing;
 			sourceTree = "<group>";
@@ -312,7 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				843FD49F1B4DDAF100930AEB /* ParseSoap.swift in Sources */,
-				84E16C1A1B4EC72C00C56F08 /* ReporteGeneral.swift in Sources */,
+				84E16C1A1B4EC72C00C56F08 /* ReporteGeneralPrueba.swift in Sources */,
 				84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */,
 				A35B0EF21B4D7FD900CD25D9 /* ReportePrincipal.m in Sources */,
 				A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */,

@@ -9,13 +9,13 @@
 import Foundation
 import SWXMLHash
 
-typealias ServiceResponse = ([ReporteGeneral]?, NSError?) -> Void
+typealias ServiceResponse = ([ReporteGeneralPrueba]?, NSError?) -> Void
 
 class ParseSoap : NSObject, NSURLConnectionDelegate {
     var xmlResponse: String?
     var serviceResponse: ServiceResponse?
     
-    func getXml(){
+    func getXml() {
         var soapMessage = "<?xml version='1.0' encoding='utf-8'?><soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'> <soap:Body> <get_tot_ini xmlns='http://www.conavi.gob.mx:8080/WS_App_SNIIV' /></soap:Body></soap:Envelope>"
     
         var urlString = "http://192.168.10.166:8005/WS_App_SNIIV.asmx"
@@ -41,7 +41,7 @@ class ParseSoap : NSObject, NSURLConnectionDelegate {
                     var xml = SWXMLHash.parse(self.xmlResponse!)
                     var sniiv = xml["soap:Envelope"]["soap:Body"]["get_tot_iniResponse"]["get_tot_iniResult"]["app_sniiv_tot"]
                     var datos = sniiv.all.map{ elem in
-                        ReporteGeneral(cveeNT: self.getText(elem["cve_ent"]),
+                        ReporteGeneralPrueba(cveeNT: self.getText(elem["cve_ent"]),
                             accFinan: self.getText(elem["acc_finan"]),
                             mtoFinan: self.getText(elem["mto_finan"]),
                             accSubs: self.getText(elem["acc_subs"]),

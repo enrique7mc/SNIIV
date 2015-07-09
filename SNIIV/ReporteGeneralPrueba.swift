@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ReporteGeneral {
+struct ReporteGeneralPrueba {
     let cveeNT: String
     let accFinan: String
     let mtoFinan: String
