@@ -7,8 +7,14 @@ class ReporteGeneralViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         var parseSoap = ParseSoap()
-        var result = parseSoap.getDatosReporte()
-        println(result?.count)
+        parseSoap.getDatosReporte() { (responseObject:[ReporteGeneral]?, error:NSError?) in
+            
+            if ((error) != nil) {
+                println("Error logging you in!")
+            } else {
+                println(responseObject!.count)
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

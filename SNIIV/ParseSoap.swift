@@ -9,8 +9,11 @@
 import Foundation
 import SWXMLHash
 
+typealias ServiceResponse = ([ReporteGeneral]?, NSError?) -> Void
+
 class ParseSoap : NSObject, NSURLConnectionDelegate {
     var xmlResponse: String?
+    var serviceResponse: ServiceResponse?
     
     func getXml(){
         var soapMessage = "<?xml version='1.0' encoding='utf-8'?><soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'> <soap:Body> <get_tot_ini xmlns='http://www.conavi.gob.mx:8080/WS_App_SNIIV' /></soap:Body></soap:Envelope>"
@@ -26,32 +29,34 @@ class ParseSoap : NSObject, NSURLConnectionDelegate {
         theRequest.HTTPMethod = "POST"
         theRequest.HTTPBody = soapMessage.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
     
-        var connection = NSURLConnection(request: theRequest, delegate: self, startImmediately: true)
-            connection?.start()
-    }
-    
-    
-    func connection(connect: NSURLConnection!, didReceiveData data: NSData!) {
-        if let dataString = NSString(data: data, encoding:NSUTF8StringEncoding) {
-            println(dataString)
-            xmlResponse = dataString as String
-        } else {
-            xmlResponse = nil
-        }
-    }
-    
-    struct ReporteGeneral {
-        let cveeNT: String
-        let accFinan: String
-        let mtoFinan: String
-        let accSubs: String
-        let mtoSubs: String
-        let vv: String
-        let vr: String
+        let queue:NSOperationQueue = NSOperationQueue()
+        NSURLConnection.sendAsynchronousRequest(theRequest, queue: queue, completionHandler:{ (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            
+            if let err = error {
+                println("async error: " + err.description)
+                self.serviceResponse!(nil, NSError())
+            } else {
+                if let dataString = NSString(data: data, encoding:NSUTF8StringEncoding) {
+                    self.xmlResponse = dataString as String
+                    var xml = SWXMLHash.parse(self.xmlResponse!)
+                    var sniiv = xml["soap:Envelope"]["soap:Body"]["get_tot_iniResponse"]["get_tot_iniResult"]["app_sniiv_tot"]
+                    var datos = sniiv.all.map{ elem in
+                        ReporteGeneral(cveeNT: self.getText(elem["cve_ent"]),
+                            accFinan: self.getText(elem["acc_finan"]),
+                            mtoFinan: self.getText(elem["mto_finan"]),
+                            accSubs: self.getText(elem["acc_subs"]),
+                            mtoSubs: self.getText(elem["mto_subs"]),
+                            vv: self.getText(elem["vv"]),
+                            vr: self.getText(elem["vr"]))
+                    }
+                    println(datos.count)
+                    self.serviceResponse!(datos, nil)
+                }
+            }
+        })
     }
     
     func getText(indexer: XMLIndexer) -> String {
-        
         if let element = indexer.element, text = element.text {
             return text;
         } else {
@@ -59,26 +64,8 @@ class ParseSoap : NSObject, NSURLConnectionDelegate {
         }
     }
     
-    func getDatosReporte() -> [ReporteGeneral]? {
+    func getDatosReporte(onCompletion: ServiceResponse) {
         getXml()
-        if let result = xmlResponse {
-            print("--->")
-            println(result)
-            var xml = SWXMLHash.parse(result)
-            var sniiv = xml["soap:Envelope"]["soap:Body"]["get_tot_iniResponse"]["get_tot_iniResult"]["app_sniiv_tot"]
-            var datos = sniiv.all.map{ elem in
-                ReporteGeneral(cveeNT: self.getText(elem["cve_ent"]),
-                    accFinan: self.getText(elem["acc_finan"]),
-                    mtoFinan: self.getText(elem["mto_finan"]),
-                    accSubs: self.getText(elem["acc_subs"]),
-                    mtoSubs: self.getText(elem["mto_subs"]),
-                    vv: self.getText(elem["vv"]),
-                    vr: self.getText(elem["vr"]))
-            }
-            return datos
-        } else {
-            println("error")
-            return nil
-        }
+        serviceResponse = onCompletion
     }
 }
