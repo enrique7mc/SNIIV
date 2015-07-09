@@ -17,3 +17,69 @@ struct ReporteGeneralPrueba {
     let vv: String
     let vr: String
 }
+
+struct DatoEntidad {
+    var cveeNT: Int = 0
+    var accFinan: Int = 0
+    var mtoFinan: Int = 0
+    var accSubs: Int = 0
+    var mtoSubs: Int = 0
+    var vv: Int = 0
+    var vr: Int = 0
+}
+
+class DatosReporteGeneral {
+    var datos: [ReporteGeneralPrueba]
+    
+    init (datos: [ReporteGeneralPrueba]) {
+        self.datos = datos
+    }
+    
+    func consultaNacional() -> DatoEntidad {
+        var datoEntidad = DatoEntidad()
+        
+        var accFinanTotal = datos.map{return self.parseInt($0.accFinan)}.reduce(0) {$0 + $1}
+        datoEntidad.accFinan = accFinanTotal
+        
+        var mtoFinanTotal = datos.map{return self.parseInt($0.mtoFinan)}.reduce(0) {$0 + $1}
+        datoEntidad.mtoFinan = mtoFinanTotal
+        
+        var accSubsTotal = datos.map{return self.parseInt($0.accSubs)}.reduce(0) {$0 + $1}
+        datoEntidad.accSubs = accSubsTotal
+        
+        var mtoSubsTotal = datos.map{return self.parseInt($0.mtoSubs)}.reduce(0) {$0 + $1}
+        datoEntidad.mtoSubs = mtoSubsTotal
+        
+        var vvTotal = datos.map{return self.parseInt($0.vv)}.reduce(0) {$0 + $1}
+        datoEntidad.vv = vvTotal
+        
+        var vrTotal = datos.map{return self.parseInt($0.vr)}.reduce(0) {$0 + $1}
+        datoEntidad.vr = vrTotal
+        
+        return datoEntidad
+    }
+    
+    func consultaEntidad(entidad: Entidad) -> DatoEntidad {
+        var datosEntidad = datos.filter() {
+                return $0.cveeNT.toInt()! == entidad.rawValue
+            }.map { DatoEntidad(cveeNT: self.parseInt($0.cveeNT),
+                                accFinan: self.parseInt($0.accFinan),
+                                mtoFinan: self.parseInt($0.mtoFinan),
+                                accSubs: self.parseInt($0.accSubs),
+                                mtoSubs: self.parseInt($0.mtoSubs),
+                                vv: self.parseInt($0.vv),
+                                vr: self.parseInt($0.vr))}
+        
+        
+        return datosEntidad.first!
+    }
+    
+    func parseInt(string: String) -> Int{
+        var number = string.toInt()
+        if let n = number {
+            return n
+        } else {
+            return 0
+        }
+    }
+}
