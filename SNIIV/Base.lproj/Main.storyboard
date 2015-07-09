@@ -74,7 +74,7 @@
             </objects>
             <point key="canvasLocation" x="214" y="618"/>
         </scene>
-        <!--Reporte General View Controller-->
+        <!--Reporte General-->
         <scene sceneID="8RF-Qm-xiF">
             <objects>
                 <viewController id="1ZM-55-Yb1" customClass="ReporteGeneralViewController" customModule="SNIIV" customModuleProvider="target" sceneMemberID="viewController">
@@ -85,21 +85,9 @@
                     <view key="view" contentMode="scaleToFill" id="IKp-2z-sxL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reporte General" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ao-Rh-YWI">
-                                <rect key="frame" x="97" y="77" width="126" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="2Ao-Rh-YWI" secondAttribute="centerX" id="Iwb-cY-BhS"/>
-                            <constraint firstItem="2Ao-Rh-YWI" firstAttribute="top" secondItem="khH-0e-8IK" secondAttribute="bottom" constant="13" id="ZtR-1B-ocj"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="N37-a4-qho"/>
+                    <navigationItem key="navigationItem" title="Reporte General" id="N37-a4-qho"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVL-xq-SjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
