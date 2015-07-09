@@ -20,12 +20,12 @@ struct ReporteGeneralPrueba {
 
 struct DatoEntidad {
     var cveeNT: Int = 0
-    var accFinan: Int = 0
+    var accFinan: Int64 = 0
     var mtoFinan: Int64 = 0
-    var accSubs: Int = 0
+    var accSubs: Int64 = 0
     var mtoSubs: Int64 = 0
-    var vv: Int = 0
-    var vr: Int = 0
+    var vv: Int64 = 0
+    var vr: Int64 = 0
 }
 
 class DatosReporteGeneral {
@@ -38,22 +38,22 @@ class DatosReporteGeneral {
     func consultaNacional() -> DatoEntidad {
         var datoEntidad = DatoEntidad()
         
-        var accFinanTotal = datos.map{return self.parseInt($0.accFinan)}.reduce(0) {$0 + $1}
+        var accFinanTotal: Int64 = datos.map{return self.parseInt64($0.accFinan)}.reduce(0) {$0 + $1}
         datoEntidad.accFinan = accFinanTotal
         
-        var mtoFinanTotal: Int64 = datos.map{return self.parseLong($0.mtoFinan)}.reduce(0) {$0 + $1}
+        var mtoFinanTotal: Int64 = datos.map{return self.parseInt64($0.mtoFinan)}.reduce(0) {$0 + $1}
         datoEntidad.mtoFinan = mtoFinanTotal
         
-        var accSubsTotal = datos.map{return self.parseInt($0.accSubs)}.reduce(0) {$0 + $1}
+        var accSubsTotal: Int64 = datos.map{return self.parseInt64($0.accSubs)}.reduce(0) {$0 + $1}
         datoEntidad.accSubs = accSubsTotal
         
-        var mtoSubsTotal: Int64 = datos.map{return self.parseLong($0.mtoSubs)}.reduce(0) {$0 + $1}
+        var mtoSubsTotal: Int64 = datos.map{return self.parseInt64($0.mtoSubs)}.reduce(0) {$0 + $1}
         datoEntidad.mtoSubs = mtoSubsTotal
         
-        var vvTotal = datos.map{return self.parseInt($0.vv)}.reduce(0) {$0 + $1}
+        var vvTotal: Int64 = datos.map{return self.parseInt64($0.vv)}.reduce(0) {$0 + $1}
         datoEntidad.vv = vvTotal
         
-        var vrTotal = datos.map{return self.parseInt($0.vr)}.reduce(0) {$0 + $1}
+        var vrTotal: Int64 = datos.map{return self.parseInt64($0.vr)}.reduce(0) {$0 + $1}
         datoEntidad.vr = vrTotal
         
         return datoEntidad
@@ -61,14 +61,14 @@ class DatosReporteGeneral {
     
     func consultaEntidad(entidad: Entidad) -> DatoEntidad {
         var datosEntidad = datos.filter() {
-                return $0.cveeNT.toInt()! == entidad.rawValue
+            return $0.cveeNT.toInt()! == entidad.rawValue
             }.map { DatoEntidad(cveeNT: self.parseInt($0.cveeNT),
-                                accFinan: self.parseInt($0.accFinan),
-                                mtoFinan: self.parseLong($0.mtoFinan),
-                                accSubs: self.parseInt($0.accSubs),
-                                mtoSubs: self.parseLong($0.mtoSubs),
-                                vv: self.parseInt($0.vv),
-                                vr: self.parseInt($0.vr))}
+                accFinan: self.parseInt64($0.accFinan),
+                mtoFinan: self.parseInt64($0.mtoFinan),
+                accSubs: self.parseInt64($0.accSubs),
+                mtoSubs: self.parseInt64($0.mtoSubs),
+                vv: self.parseInt64($0.vv),
+                vr: self.parseInt64($0.vr))}
         
         
         return datosEntidad.first!
@@ -83,7 +83,7 @@ class DatosReporteGeneral {
         }
     }
     
-    func parseLong(string: String) -> Int64{
+    func parseInt64(string: String) -> Int64{
         let strAsNSString = string as NSString
         return strAsNSString.longLongValue
     }
