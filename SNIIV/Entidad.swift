@@ -9,7 +9,8 @@
 import Foundation
 
 enum Entidad: Int {
-    case AGS = 1
+    case NAC = 0
+    ,AGS
     ,BC
     ,BCS
     ,CAMP

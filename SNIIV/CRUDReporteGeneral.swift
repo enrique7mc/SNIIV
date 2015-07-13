@@ -11,58 +11,66 @@ import CoreData
 
 class CRUDReporteGeneral: NSObject {
     
-    var entities: Array<AnyObject>=[]
+    static let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    static let ctx: NSManagedObjectContext = CRUDReporteGeneral.appDel.managedObjectContext!
     
-    func saveReporteGeneral(reporteGeneral: ReporteGeneral)
-    {
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    static func saveReporteGeneral(reporteGeneral: ReporteGeneralPrueba) {
+        let en = NSEntityDescription.entityForName("ReporteGeneral", inManagedObjectContext: CRUDReporteGeneral.ctx)
         
-        let ctx:NSManagedObjectContext = appDel.managedObjectContext!
+        var newItem = ReporteGeneral(entity: en!, insertIntoManagedObjectContext: CRUDReporteGeneral.ctx)
+    
+        newItem.cve_ent = reporteGeneral.cveeNT
+        newItem.acc_finan = reporteGeneral.accFinan
+        newItem.mto_finan = reporteGeneral.mtoFinan
+        newItem.acc_subs = reporteGeneral.accSubs
+        newItem.acc_finan = reporteGeneral.accFinan
+        newItem.vv = reporteGeneral.vv
+        newItem.vr = reporteGeneral.vr
         
-        let en=NSEntityDescription.entityForName("ReporteGeneral", inManagedObjectContext: ctx)
-        
-        var newItem=ReporteGeneral(entity: en!, insertIntoManagedObjectContext: ctx)
-        
-        newItem.cve_ent=reporteGeneral.cve_ent
-        newItem.acc_finan=reporteGeneral.acc_finan
-        newItem.mto_finan=reporteGeneral.mto_finan
-        newItem.acc_subs=reporteGeneral.acc_subs
-        newItem.acc_finan=reporteGeneral.acc_finan
-        newItem.vv=reporteGeneral.vv
-        newItem.vr=reporteGeneral.vr
-        
-        ctx.save(nil)
-        
+        CRUDReporteGeneral.ctx.save(nil)
     }
     
-    func deleteReporteGeneral(){
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let ctx:NSManagedObjectContext = appDel.managedObjectContext!
-
+    static func deleteReporteGeneral(){
         let request=NSFetchRequest(entityName: "ReporteGeneral")
+        var entities: Array<AnyObject> = CRUDReporteGeneral.ctx.executeFetchRequest(request, error:nil)!
         
-        entities=ctx.executeFetchRequest(request, error:nil)!
-        
-        var aux:NSManagedObject
-        
-        for bas:AnyObject in entities
-        {
-            ctx.deleteObject(bas as! NSManagedObject)
+        for bas: AnyObject in entities {
+            CRUDReporteGeneral.ctx.deleteObject(bas as! NSManagedObject)
         }
         
+        CRUDReporteGeneral.ctx.save(nil)
     }
     
-    func selectAllReporteGeneral()->Array<AnyObject>{
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let ctx:NSManagedObjectContext = appDel.managedObjectContext!
-        
+    static func selectAllReporteGeneral()->Array<AnyObject>{
         let request=NSFetchRequest(entityName: "ReporteGeneral")
-        
-        entities=ctx.executeFetchRequest(request, error:nil)!
+        var entities: Array<AnyObject> = CRUDReporteGeneral.ctx.executeFetchRequest(request, error:nil)!
         
         return entities
+    }
+    
+    static func loadFromStorage() -> [ReporteGeneralPrueba] {
+        var all = CRUDReporteGeneral.selectAllReporteGeneral()
+        println(all.count)
+        var result = all.map() { r in
+            ReporteGeneralPrueba(cveeNT: self.getText(r.valueForKey("cve_ent")),
+                accFinan: self.getText(r.valueForKey("acc_finan")),
+                mtoFinan: self.getText(r.valueForKey("mto_finan")),
+                accSubs: self.getText(r.valueForKey("acc_subs")),
+                mtoSubs: self.getText(r.valueForKey("mto_subs")),
+                vv: self.getText(r.valueForKey("vv")),
+                vr: self.getText(r.valueForKey("vr")))
+        }
+
+        return result
+        
+    }
+    
+    static func getText(value: AnyObject!) -> String {
+        if let object: AnyObject = value {
+            return object as! String
+        } else {
+            return ""
+        }
     }
     
    

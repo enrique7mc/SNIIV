@@ -60,9 +60,11 @@ class DatosReporteGeneral {
     }
     
     func consultaEntidad(entidad: Entidad) -> DatoEntidad {
-        var datosEntidad = datos.filter() {
+        var datoEntidad = datos.filter() {
             return $0.cveeNT.toInt()! == entidad.rawValue
-            }.map { DatoEntidad(cveeNT: self.parseInt($0.cveeNT),
+        }
+        
+        var dato = datoEntidad.map { DatoEntidad(cveeNT: self.parseInt($0.cveeNT),
                 accFinan: self.parseInt64($0.accFinan),
                 mtoFinan: self.parseInt64($0.mtoFinan),
                 accSubs: self.parseInt64($0.accSubs),
@@ -71,7 +73,7 @@ class DatosReporteGeneral {
                 vr: self.parseInt64($0.vr))}
         
         
-        return datosEntidad.first!
+        return dato.first!
     }
     
     func parseInt(string: String) -> Int{
