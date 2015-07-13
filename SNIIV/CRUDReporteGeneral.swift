@@ -22,8 +22,8 @@ class CRUDReporteGeneral: NSObject {
         newItem.cve_ent = reporteGeneral.cveeNT
         newItem.acc_finan = reporteGeneral.accFinan
         newItem.mto_finan = reporteGeneral.mtoFinan
+        newItem.mto_subs = reporteGeneral.mtoSubs
         newItem.acc_subs = reporteGeneral.accSubs
-        newItem.acc_finan = reporteGeneral.accFinan
         newItem.vv = reporteGeneral.vv
         newItem.vr = reporteGeneral.vr
         

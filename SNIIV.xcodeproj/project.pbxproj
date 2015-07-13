@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3D5E2F250DCC758C330F7472 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E20A6D76BD5BDE88E515E57 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F82A61B54375E00A3B9E7 /* Reachability.swift */; };
+		840F82AA1B54630900A3B9E7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F82A91B54630900A3B9E7 /* Utils.swift */; };
 		843FD49F1B4DDAF100930AEB /* ParseSoap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD49E1B4DDAF000930AEB /* ParseSoap.swift */; };
 		84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA162F1B4C657400ECC81A /* AppDelegate.swift */; };
 		84BA16351B4C657400ECC81A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16331B4C657400ECC81A /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 		5E1A4F2FCD79641EB9AFCAB9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		62385B87DA1F4CCED8B80DDB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		840F82A61B54375E00A3B9E7 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		840F82A91B54630900A3B9E7 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		843FD49E1B4DDAF000930AEB /* ParseSoap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseSoap.swift; sourceTree = "<group>"; };
 		84BA162A1B4C657400ECC81A /* SNIIV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNIIV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA162E1B4C657400ECC81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				84E16C1B1B4EE03A00C56F08 /* SoapToXml.swift */,
 				84E16C1D1B4EFC6100C56F08 /* Entidad.swift */,
 				840F82A61B54375E00A3B9E7 /* Reachability.swift */,
+				840F82A91B54630900A3B9E7 /* Utils.swift */,
 			);
 			name = Parsing;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */,
 				A33B8C291B4EE1B400B200E5 /* CRUDReporteGeneral.swift in Sources */,
 				A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */,
+				840F82AA1B54630900A3B9E7 /* Utils.swift in Sources */,
 				A33B8C261B4EE0AC00B200E5 /* ReporteGeneral.swift in Sources */,
 				840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */,
 				A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */,
