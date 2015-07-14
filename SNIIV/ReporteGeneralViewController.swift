@@ -18,14 +18,24 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     var rowSelected = 0;
     var entidad: DatoEntidad?
     var datos: DatosReporteGeneral?
+    
+    var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
   
     override func viewDidLoad() {
         super.viewDidLoad()
         
-             
+        indicator.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
+        indicator.center = view.center
+        view.addSubview(indicator)
+        indicator.bringSubviewToFront(view)
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        picker.userInteractionEnabled = false
+        
+        indicator.startAnimating()
         if Reachability.isConnectedToNetwork() {
             var parseSoap = ParseSoap()
             parseSoap.getDatosReporte(handler)
+            picker.userInteractionEnabled = true
             return
         }
         
@@ -52,14 +62,16 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
         if datosStorage.count > 0 {
             datos = DatosReporteGeneral(datos: datosStorage)
             entidad = datos!.consultaNacional()
+            picker.userInteractionEnabled = true
         } else {
             println("no hay datos en local storage")
-            picker.userInteractionEnabled = false
         }
     }
 
     override func viewDidAppear(animated: Bool) {
         showData()
+        indicator.stopAnimating()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
     
     override func didReceiveMemoryWarning() {
