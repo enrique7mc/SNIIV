@@ -19,10 +19,6 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     var entidad: DatoEntidad?
     var datos: DatosReporteGeneral?
   
-  
-
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,28 +90,11 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     }
     
     func showData() {
-        txtFinanAcc.text = toString(entidad?.accFinan)
-        txtFinanMto.text = toString(entidad?.mtoFinan)
-        txtSubAcc.text = toString(entidad?.accSubs)
-        txtSubMto.text = toString(entidad?.mtoSubs)
-        txtViviendasVigentes.text = toString(entidad?.vv)
-        txtViviendasRegistradas.text = toString(entidad?.vr)
+        txtFinanAcc.text = Utils.toString(entidad?.accFinan)
+        txtFinanMto.text = Utils.toString(entidad?.mtoFinan, divide: 1000000)
+        txtSubAcc.text = Utils.toString(entidad?.accSubs)
+        txtSubMto.text = Utils.toString(entidad?.mtoSubs, divide: 1000000)
+        txtViviendasVigentes.text = Utils.toString(entidad?.vv)
+        txtViviendasRegistradas.text = Utils.toString(entidad?.vr)
     }
-    
-    func toString(numero: Int64?) -> String {
-        if let num = numero {
-            return Utils().decimalFormat(num)
-        }
-        
-        return "-"
-    }
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView
-    {
-        var pickerLabel = UILabel()
-        pickerLabel.font = UIFont(name: "Arial-BoldMT", size: 12) // In this use your custom font
-        pickerLabel.textAlignment = NSTextAlignment.Center
-        pickerLabel.text=opt[row]
-        return pickerLabel
-    }
-    
 }
