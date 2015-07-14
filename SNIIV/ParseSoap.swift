@@ -18,7 +18,7 @@ class ParseSoap {
     func getXml() {
         var soapMessage = "<?xml version='1.0' encoding='utf-8'?><soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'> <soap:Body> <get_tot_ini xmlns='http://www.conavi.gob.mx:8080/WS_App_SNIIV' /></soap:Body></soap:Envelope>"
     
-        var urlString = "http://192.168.10.166:8005/WS_App_SNIIV.asmx"
+        var urlString = "http://www.conavi.gob.mx:8080/WS_App_SNIIV.asmx"
         var soapAction = "http://www.conavi.gob.mx:8080/WS_App_SNIIV/get_tot_ini"
         
         var soapToXml = SoapToXml(message: soapMessage, url: urlString, soapAction: soapAction, method: "POST", completionHandler: handler)

@@ -15,7 +15,7 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     @IBOutlet weak var txtSubMto: UILabel!
     @IBOutlet weak var txtViviendasVigentes: UILabel!
     @IBOutlet weak var txtViviendasRegistradas: UILabel!
-    var rowSelected = 0;
+    var rowSelected = 0
     var entidad: DatoEntidad?
     var datos: DatosReporteGeneral?
     
@@ -69,7 +69,7 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     }
 
     override func viewDidAppear(animated: Bool) {
-        showData()
+        mostrarDatos()
         indicator.stopAnimating()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
@@ -98,15 +98,17 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
             entidad = datos!.consultaEntidad(Entidad(rawValue: row)!)
         }
     
-        showData()
+        mostrarDatos()
     }
     
-    func showData() {
-        txtFinanAcc.text = Utils.toString(entidad?.accFinan)
-        txtFinanMto.text = Utils.toString(entidad?.mtoFinan, divide: 1000000)
-        txtSubAcc.text = Utils.toString(entidad?.accSubs)
-        txtSubMto.text = Utils.toString(entidad?.mtoSubs, divide: 1000000)
-        txtViviendasVigentes.text = Utils.toString(entidad?.vv)
-        txtViviendasRegistradas.text = Utils.toString(entidad?.vr)
+    func mostrarDatos() {
+        if entidad != nil {
+            txtFinanAcc.text = Utils.toString(entidad!.accFinan)
+            txtFinanMto.text = Utils.toString(entidad!.mtoFinan, divide: 1000000)
+            txtSubAcc.text = Utils.toString(entidad!.accSubs)
+            txtSubMto.text = Utils.toString(entidad!.mtoSubs, divide: 1000000)
+            txtViviendasVigentes.text = Utils.toString(entidad!.vv)
+            txtViviendasRegistradas.text = Utils.toString(entidad!.vr)
+        }
     }
 }
