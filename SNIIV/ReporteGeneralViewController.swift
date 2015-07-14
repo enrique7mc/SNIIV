@@ -7,7 +7,7 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     var opt=["Nacional","Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Coahuila", "Colima", "Chiapas" , "Chihuahua", "Distrito Federal", "Durango", "Guanajuato", "Guerrero","Hidalgo", "Jalisco",
         "México", "Michoacán", "Morelos", "Nayarit", "Nuevo León" , "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"]
     
-    @IBOutlet weak var txtIndicador: UITextField!
+
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var txtFinanMto: UILabel!
     @IBOutlet weak var txtFinanAcc: UILabel!
@@ -18,14 +18,15 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     var rowSelected = 0;
     var entidad: DatoEntidad?
     var datos: DatosReporteGeneral?
+  
+  
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        txtIndicador.text = opt[rowSelected]
-        txtIndicador.enabled = false
-        
+             
         if Reachability.isConnectedToNetwork() {
             var parseSoap = ParseSoap()
             parseSoap.getDatosReporte(handler)
@@ -82,7 +83,6 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     
    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var itemSelected = opt[row]
-        txtIndicador.text = itemSelected
     
         if row == 0 {
             entidad = datos!.consultaNacional()
@@ -108,6 +108,14 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
         }
         
         return "-"
+    }
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView
+    {
+        var pickerLabel = UILabel()
+        pickerLabel.font = UIFont(name: "Arial-BoldMT", size: 12) // In this use your custom font
+        pickerLabel.textAlignment = NSTextAlignment.Center
+        pickerLabel.text=opt[row]
+        return pickerLabel
     }
     
 }
