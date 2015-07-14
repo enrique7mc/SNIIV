@@ -2,11 +2,10 @@
 
 import UIKit
 
-class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
+class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var opt=["Nacional","Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Coahuila", "Colima", "Chiapas" , "Chihuahua", "Distrito Federal", "Durango", "Guanajuato", "Guerrero","Hidalgo", "Jalisco",
+    var opt = ["Nacional","Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Coahuila", "Colima", "Chiapas" , "Chihuahua", "Distrito Federal", "Durango", "Guanajuato", "Guerrero","Hidalgo", "Jalisco",
         "México", "Michoacán", "Morelos", "Nayarit", "Nuevo León" , "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"]
-    
 
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var txtFinanMto: UILabel!
@@ -61,7 +60,7 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
         let datosStorage = CRUDReporteGeneral.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosReporteGeneral(datos: datosStorage)
-            entidad = datos!.consultaNacional()
+            entidad = datos?.consultaNacional()
             picker.userInteractionEnabled = true
         } else {
             println("no hay datos en local storage")
@@ -93,9 +92,9 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
         var itemSelected = opt[row]
     
         if row == 0 {
-            entidad = datos!.consultaNacional()
+            entidad = datos?.consultaNacional()
         } else {
-            entidad = datos!.consultaEntidad(Entidad(rawValue: row)!)
+            entidad = datos?.consultaEntidad(Entidad(rawValue: row)!)
         }
     
         mostrarDatos()
