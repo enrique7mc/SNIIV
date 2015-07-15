@@ -231,6 +231,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
+				TargetAttributes = {
+					89F0C91ECE2D372C27DAEAB4 = {
+						DevelopmentTeam = T4CS9VS3ET;
+					};
+				};
 			};
 			buildConfigurationList = 70B849F563095653DE05F83F /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -318,6 +323,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A5F779EC1278D26892F9B483 /* Pods-SWXMLHash-Private.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -333,6 +339,7 @@
 				MODULEMAP_FILE = "Target Support Files/Pods-SWXMLHash/Pods-SWXMLHash.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = SWXMLHash;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -384,6 +391,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A5F779EC1278D26892F9B483 /* Pods-SWXMLHash-Private.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -399,6 +407,7 @@
 				MODULEMAP_FILE = "Target Support Files/Pods-SWXMLHash/Pods-SWXMLHash.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = SWXMLHash;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
