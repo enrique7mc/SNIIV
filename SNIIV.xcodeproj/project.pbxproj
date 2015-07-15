@@ -25,6 +25,10 @@
 		A33B8C291B4EE1B400B200E5 /* CRUDReporteGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B8C281B4EE1B400B200E5 /* CRUDReporteGeneral.swift */; };
 		A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38708041B4DB868009EAC52 /* ReporteGeneralViewController.swift */; };
 		A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */; };
+		A39E1B131B570A7E000DEBA3 /* AvanceObraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E1B121B570A7E000DEBA3 /* AvanceObraViewController.swift */; };
+		A39E1B151B570A95000DEBA3 /* PCUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E1B141B570A95000DEBA3 /* PCUViewController.swift */; };
+		A39E1B171B570ACF000DEBA3 /* ValorViviendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E1B161B570ACF000DEBA3 /* ValorViviendaViewController.swift */; };
+		A39E1B191B570AE2000DEBA3 /* TipoViviendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E1B181B570AE2000DEBA3 /* TipoViviendaViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,10 @@
 		A35B0EEF1B4D7FD900CD25D9 /* SNIIV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SNIIV-Bridging-Header.h"; sourceTree = "<group>"; };
 		A38708041B4DB868009EAC52 /* ReporteGeneralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneralViewController.swift; sourceTree = "<group>"; };
 		A38B36B41B4CA0D700606D3A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		A39E1B121B570A7E000DEBA3 /* AvanceObraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvanceObraViewController.swift; sourceTree = "<group>"; };
+		A39E1B141B570A95000DEBA3 /* PCUViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCUViewController.swift; sourceTree = "<group>"; };
+		A39E1B161B570ACF000DEBA3 /* ValorViviendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValorViviendaViewController.swift; sourceTree = "<group>"; };
+		A39E1B181B570AE2000DEBA3 /* TipoViviendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipoViviendaViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +158,10 @@
 				A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */,
 				A38708041B4DB868009EAC52 /* ReporteGeneralViewController.swift */,
 				A33B8C251B4EE0AC00B200E5 /* ReporteGeneral.swift */,
+				A39E1B121B570A7E000DEBA3 /* AvanceObraViewController.swift */,
+				A39E1B141B570A95000DEBA3 /* PCUViewController.swift */,
+				A39E1B161B570ACF000DEBA3 /* ValorViviendaViewController.swift */,
+				A39E1B181B570AE2000DEBA3 /* TipoViviendaViewController.swift */,
 			);
 			path = SNIIV;
 			sourceTree = "<group>";
@@ -346,13 +358,17 @@
 				84E16C1E1B4EFC6100C56F08 /* Entidad.swift in Sources */,
 				84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */,
 				A33B8C291B4EE1B400B200E5 /* CRUDReporteGeneral.swift in Sources */,
+				A39E1B131B570A7E000DEBA3 /* AvanceObraViewController.swift in Sources */,
 				A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */,
 				8413012E1B56D52F004946C7 /* CRUDFechas.swift in Sources */,
 				840F82AA1B54630900A3B9E7 /* Utils.swift in Sources */,
 				A33B8C261B4EE0AC00B200E5 /* ReporteGeneral.swift in Sources */,
 				8413012B1B56CBBE004946C7 /* Fechas.swift in Sources */,
 				840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */,
+				A39E1B191B570AE2000DEBA3 /* TipoViviendaViewController.swift in Sources */,
 				A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */,
+				A39E1B151B570A95000DEBA3 /* PCUViewController.swift in Sources */,
+				A39E1B171B570ACF000DEBA3 /* ValorViviendaViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

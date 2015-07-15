@@ -33,7 +33,7 @@
                                             <segue destination="1ZM-55-Yb1" kind="push" id="LBG-bG-06I"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="3jd-md-yQh" style="IBUITableViewCellStyleDefault" id="ZyH-tL-aQa">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="3jd-md-yQh" style="IBUITableViewCellStyleDefault" id="ZyH-tL-aQa">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZyH-tL-aQa" id="A7c-2d-Xs6">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -46,6 +46,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="4yr-JV-sbo" kind="push" id="EQc-BC-FHh"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="oJR-ou-CdC" style="IBUITableViewCellStyleDefault" id="ZEG-p5-avo">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -274,6 +277,150 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVL-xq-SjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="685" y="618"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="eFD-SU-Jdo">
+            <objects>
+                <viewController id="2Zn-k2-Dar" customClass="PCUViewController" customModule="SNIIV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AbD-uM-Dbt"/>
+                        <viewControllerLayoutGuide type="bottom" id="f1c-2v-Rxe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LWI-oE-HB7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PCU" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIi-oE-cxp">
+                                <rect key="frame" x="133" y="91" width="36" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IqS-Zs-sZ0">
+                                <rect key="frame" x="9" y="357" width="320" height="162"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="ZSV-4i-u6p"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="orq-ki-tYM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="171" y="1977"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Pn9-66-Hiw">
+            <objects>
+                <viewController id="iHP-f4-Wrf" customClass="ValorViviendaViewController" customModule="SNIIV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mPr-6c-tTV"/>
+                        <viewControllerLayoutGuide type="bottom" id="PZO-Iz-B13"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tmO-lZ-QfS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Valor Vivienda" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIe-Z7-FWR">
+                                <rect key="frame" x="115" y="84" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BiJ-E1-uhy">
+                                <rect key="frame" x="0.0" y="349" width="320" height="162"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="8Bi-kk-uzb"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i1b-Xe-MpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="526" y="1982"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="HJW-rn-zzN">
+            <objects>
+                <viewController id="ktn-OY-8pY" customClass="TipoViviendaViewController" customModule="SNIIV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="30L-Kl-sxZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="qJE-uB-NwW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ch1-vL-Euu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rZQ-g4-Qz8">
+                                <rect key="frame" x="6" y="377" width="320" height="162"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tipo Vivienda" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuV-i5-AK9">
+                                <rect key="frame" x="120" y="83" width="103" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="nbl-ga-gVx"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYb-mz-tQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="880" y="1977"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="x6V-25-mbj">
+            <objects>
+                <viewController id="OX1-Ud-jHi" customClass="AvanceObraViewController" customModule="SNIIV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wtd-3D-Kos"/>
+                        <viewControllerLayoutGuide type="bottom" id="gqP-pz-t5D"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ypF-2T-ptN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avance de Obra" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y65-ne-vLP">
+                                <rect key="frame" x="98" y="80" width="124" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="64t-t5-aET">
+                                <rect key="frame" x="-7" y="406" width="320" height="162"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="Nar-aB-wgK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6CD-U2-iD9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-174" y="1982"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="VFc-bf-YQq">
+            <objects>
+                <tabBarController id="4yr-JV-sbo" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="qIg-40-rTh"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="xvD-eH-yjA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="OX1-Ud-jHi" kind="relationship" relationship="viewControllers" id="bJd-df-eQY"/>
+                        <segue destination="2Zn-k2-Dar" kind="relationship" relationship="viewControllers" id="cvY-tY-xHi"/>
+                        <segue destination="iHP-f4-Wrf" kind="relationship" relationship="viewControllers" id="yWt-iF-Lpe"/>
+                        <segue destination="ktn-OY-8pY" kind="relationship" relationship="viewControllers" id="YsI-Bp-14f"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ehL-z7-s1o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="214" y="1305"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ifc-GT-kA0">
