@@ -50,28 +50,18 @@ class CRUDReporteGeneral: NSObject {
     
     static func loadFromStorage() -> [ReporteGeneralPrueba] {
         var all = CRUDReporteGeneral.selectAllReporteGeneral()
-        println(all.count)
+
         var result = all.map() { r in
-            ReporteGeneralPrueba(cveeNT: self.getText(r.valueForKey("cve_ent")),
-                accFinan: self.getText(r.valueForKey("acc_finan")),
-                mtoFinan: self.getText(r.valueForKey("mto_finan")),
-                accSubs: self.getText(r.valueForKey("acc_subs")),
-                mtoSubs: self.getText(r.valueForKey("mto_subs")),
-                vv: self.getText(r.valueForKey("vv")),
-                vr: self.getText(r.valueForKey("vr")))
+            ReporteGeneralPrueba(cveeNT: Utils.getText(r.valueForKey("cve_ent")),
+                accFinan: Utils.getText(r.valueForKey("acc_finan")),
+                mtoFinan: Utils.getText(r.valueForKey("mto_finan")),
+                accSubs: Utils.getText(r.valueForKey("acc_subs")),
+                mtoSubs: Utils.getText(r.valueForKey("mto_subs")),
+                vv: Utils.getText(r.valueForKey("vv")),
+                vr: Utils.getText(r.valueForKey("vr")))
         }
 
         return result
         
     }
-    
-    static func getText(value: AnyObject!) -> String {
-        if let object: AnyObject = value {
-            return object as! String
-        } else {
-            return ""
-        }
-    }
-    
-   
 }

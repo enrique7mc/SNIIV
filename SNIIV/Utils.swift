@@ -28,4 +28,12 @@ class Utils {
     static func toString(numero: Double) -> String {
         return Utils().decimalFormat(numero)
     }
+    
+    static func getText(value: AnyObject!) -> String {
+        if let object: AnyObject = value {
+            return object as! String
+        } else {
+            return ""
+        }
+    }
 }

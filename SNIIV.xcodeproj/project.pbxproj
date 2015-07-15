@@ -11,6 +11,7 @@
 		840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F82A61B54375E00A3B9E7 /* Reachability.swift */; };
 		840F82AA1B54630900A3B9E7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F82A91B54630900A3B9E7 /* Utils.swift */; };
 		8413012B1B56CBBE004946C7 /* Fechas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413012A1B56CBBE004946C7 /* Fechas.swift */; };
+		8413012E1B56D52F004946C7 /* CRUDFechas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413012D1B56D52F004946C7 /* CRUDFechas.swift */; };
 		843FD49F1B4DDAF100930AEB /* ParseSoap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD49E1B4DDAF000930AEB /* ParseSoap.swift */; };
 		84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA162F1B4C657400ECC81A /* AppDelegate.swift */; };
 		84BA16351B4C657400ECC81A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16331B4C657400ECC81A /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		840F82A91B54630900A3B9E7 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		8413012A1B56CBBE004946C7 /* Fechas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fechas.swift; sourceTree = "<group>"; };
 		8413012C1B56D392004946C7 /* Model 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 1.1.xcdatamodel"; sourceTree = "<group>"; };
+		8413012D1B56D52F004946C7 /* CRUDFechas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDFechas.swift; sourceTree = "<group>"; };
 		843FD49E1B4DDAF000930AEB /* ParseSoap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseSoap.swift; sourceTree = "<group>"; };
 		84BA162A1B4C657400ECC81A /* SNIIV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNIIV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA162E1B4C657400ECC81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				A33B8C281B4EE1B400B200E5 /* CRUDReporteGeneral.swift */,
+				8413012D1B56D52F004946C7 /* CRUDFechas.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */,
 				A33B8C291B4EE1B400B200E5 /* CRUDReporteGeneral.swift in Sources */,
 				A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */,
+				8413012E1B56D52F004946C7 /* CRUDFechas.swift in Sources */,
 				840F82AA1B54630900A3B9E7 /* Utils.swift in Sources */,
 				A33B8C261B4EE0AC00B200E5 /* ReporteGeneral.swift in Sources */,
 				8413012B1B56CBBE004946C7 /* Fechas.swift in Sources */,

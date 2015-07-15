@@ -68,8 +68,10 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
             println("Error obteniendo fechas")
             return
         }
+        CRUDFechas.deleteFechas()
         
         fechas = responseObject
+        CRUDFechas.saveReporteGeneral(fechas)
     }
     
     func loadFromStorage() {
@@ -80,6 +82,13 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
             picker.userInteractionEnabled = true
         } else {
             println("no hay datos en local storage")
+        }
+        
+        let fechasStorage = CRUDFechas.selectFechas()
+        if fechasStorage != nil {
+            fechas = fechasStorage!
+        } else {
+            println("no hay fechas en local storage")
         }
     }
 
