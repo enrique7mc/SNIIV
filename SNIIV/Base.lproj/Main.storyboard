@@ -259,6 +259,9 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="labelFinanciamiento" destination="k1M-7i-zAb" id="grw-4v-hAU"/>
+                        <outlet property="labelSubsidios" destination="ZtD-GT-tmb" id="j50-Ft-b13"/>
+                        <outlet property="labelVivienda" destination="68U-sg-rNU" id="a80-qN-v3t"/>
                         <outlet property="picker" destination="Kdk-aw-XO6" id="Z6O-p5-3UU"/>
                         <outlet property="txtFinanAcc" destination="Spk-od-aHn" id="mAN-QJ-spI"/>
                         <outlet property="txtFinanMto" destination="hoG-nW-Lfw" id="Ao0-4G-Z8R"/>

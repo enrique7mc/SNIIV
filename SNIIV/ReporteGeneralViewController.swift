@@ -14,9 +14,15 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     @IBOutlet weak var txtSubMto: UILabel!
     @IBOutlet weak var txtViviendasVigentes: UILabel!
     @IBOutlet weak var txtViviendasRegistradas: UILabel!
+    @IBOutlet weak var labelFinanciamiento: UITextField!
+    @IBOutlet weak var labelSubsidios: UITextField!
+    @IBOutlet weak var labelVivienda: UITextField!
+    
+    
     var rowSelected = 0
     var entidad: DatoEntidad?
     var datos: DatosReporteGeneral?
+    var fechas: [String]?
     
     var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
   
@@ -34,6 +40,7 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
         if Reachability.isConnectedToNetwork() {
             var parseSoap = ParseSoap()
             parseSoap.getDatosReporte(handler)
+            parseSoap.getDatosFecha(handlerFechas)
             picker.userInteractionEnabled = true
             return
         }
@@ -42,7 +49,7 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     }
     
     func handler (responseObject: [ReporteGeneralPrueba]?, error: NSError?) {
-        if (error) != nil {
+        if error != nil {
             println("Error obteniendo datos")
             return
         }
@@ -54,6 +61,15 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
         for d in datos!.datos {
             CRUDReporteGeneral.saveReporteGeneral(d)
         }
+    }
+    
+    func handlerFechas (responseObject: [String]?, error: NSError?) {
+        if error != nil {
+            println("Error obteniendo fechas")
+            return
+        }
+        
+        fechas = responseObject
     }
     
     func loadFromStorage() {
@@ -108,6 +124,12 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
             txtSubMto.text = Utils.toString(entidad!.mtoSubs, divide: 1000000)
             txtViviendasVigentes.text = Utils.toString(entidad!.vv)
             txtViviendasRegistradas.text = Utils.toString(entidad!.vr)
+        }
+        
+        if fechas != nil && fechas!.count == 3 {
+            labelFinanciamiento.text = "Financiamientos (\(fechas![0]))"
+            labelSubsidios.text = "Subsidios (\(fechas![1]))"
+            labelVivienda.text = "Oferta de Vivienda (\(fechas![2]))"
         }
     }
 }

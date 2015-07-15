@@ -10,16 +10,21 @@ import Foundation
 import SWXMLHash
 
 typealias ServiceResponse = ([ReporteGeneralPrueba]?, NSError?) -> Void
+typealias ServiceResponseFecha = ([String]?, NSError?) -> Void
 
 class ParseSoap {
     var xmlResponse: String?
     var serviceResponse: ServiceResponse?
+    var serviceResponseFecha: ServiceResponseFecha?
     
-    func getXml() {
+    static let actionReporteGeneral = "http://www.conavi.gob.mx:8080/WS_App_SNIIV/get_tot_ini"
+    static let actionReporteFecha = "http://www.conavi.gob.mx:8080/WS_App_SNIIV/get_tot_fech"
+    
+    func getXml(action: String, completionHandler handler: (NSURLResponse!, NSData!, NSError!) -> Void) {
         var soapMessage = "<?xml version='1.0' encoding='utf-8'?><soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'> <soap:Body> <get_tot_ini xmlns='http://www.conavi.gob.mx:8080/WS_App_SNIIV' /></soap:Body></soap:Envelope>"
     
         var urlString = "http://www.conavi.gob.mx:8080/WS_App_SNIIV.asmx"
-        var soapAction = "http://www.conavi.gob.mx:8080/WS_App_SNIIV/get_tot_ini"
+        var soapAction = action
         
         var soapToXml = SoapToXml(message: soapMessage, url: urlString, soapAction: soapAction, method: "POST", completionHandler: handler)
         
@@ -50,6 +55,22 @@ class ParseSoap {
         }
     }
     
+    func handlerFecha(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void {
+        if let err = error {
+            println("async error: " + err.description)
+            self.serviceResponse!(nil, NSError())
+        } else {
+            if let dataString = NSString(data: data, encoding:NSUTF8StringEncoding) {
+                self.xmlResponse = dataString as String
+                var xml = SWXMLHash.parse(self.xmlResponse!)
+                var elemFechas = xml["soap:Envelope"]["soap:Body"]["get_tot_fechResponse"]["get_tot_fechResult"]["app_sniiv_tot_date"]
+                var fechas = [getText(elemFechas["fecha_finan"]), getText(elemFechas["fecha_subs"]), getText(elemFechas["fecha_vv"])]
+                self.serviceResponseFecha!(fechas, nil)
+            }
+        }
+    }
+
+    
     func getText(indexer: XMLIndexer) -> String {
         if let element = indexer.element, text = element.text {
             return text;
@@ -59,7 +80,12 @@ class ParseSoap {
     }
     
     func getDatosReporte(onCompletion: ServiceResponse) {
-        getXml()
+        getXml(ParseSoap.actionReporteGeneral, completionHandler: handler)
         serviceResponse = onCompletion
+    }
+    
+    func getDatosFecha(onCompletion: ServiceResponseFecha) {
+        getXml(ParseSoap.actionReporteFecha, completionHandler: handlerFecha)
+        serviceResponseFecha = onCompletion
     }
 }
