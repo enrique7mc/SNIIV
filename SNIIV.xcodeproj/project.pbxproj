@@ -43,6 +43,7 @@
 		840F82A61B54375E00A3B9E7 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		840F82A91B54630900A3B9E7 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		8413012A1B56CBBE004946C7 /* Fechas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fechas.swift; sourceTree = "<group>"; };
+		8413012C1B56D392004946C7 /* Model 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		843FD49E1B4DDAF000930AEB /* ParseSoap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseSoap.swift; sourceTree = "<group>"; };
 		84BA162A1B4C657400ECC81A /* SNIIV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNIIV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA162E1B4C657400ECC81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -568,9 +569,10 @@
 		A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				8413012C1B56D392004946C7 /* Model 1.1.xcdatamodel */,
 				A38B36B41B4CA0D700606D3A /* Model.xcdatamodel */,
 			);
-			currentVersion = A38B36B41B4CA0D700606D3A /* Model.xcdatamodel */;
+			currentVersion = 8413012C1B56D392004946C7 /* Model 1.1.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

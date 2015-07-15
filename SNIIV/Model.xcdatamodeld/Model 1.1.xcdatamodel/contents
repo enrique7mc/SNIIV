@@ -15,7 +15,7 @@
         <attribute name="vv" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ReporteGeneral" positionX="-63" positionY="-18" width="128" height="150"/>
         <element name="Fechas" positionX="-36" positionY="63" width="128" height="90"/>
+        <element name="ReporteGeneral" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>
