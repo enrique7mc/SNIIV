@@ -68,6 +68,7 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
             println("Error obteniendo fechas")
             return
         }
+
         CRUDFechas.deleteFechas()
         
         fechas = responseObject
@@ -136,9 +137,9 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
         }
         
         
-        labelFinanciamiento.text = "Financiamientos (\(fechas.fecha_finan))"
-        labelSubsidios.text = "Subsidios (\(fechas.fecha_subs))"
-        labelVivienda.text = "Oferta de Vivienda (\(fechas.fecha_vv))"
+        labelFinanciamiento.text = "Financiamientos \(fechas.fecha_finan)"
+        labelSubsidios.text = "Subsidios \(fechas.fecha_subs)"
+        labelVivienda.text = "Oferta de Vivienda \(fechas.fecha_vv)"
         
     }
 }

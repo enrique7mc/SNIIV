@@ -65,7 +65,9 @@ class ParseSoap {
                 var xml = SWXMLHash.parse(self.xmlResponse!)
                 var elemFechas = xml["soap:Envelope"]["soap:Body"]["get_tot_fechResponse"]["get_tot_fechResult"]["app_sniiv_tot_date"]
         
-                var fechas = Fechas(fecha_finan: getText(elemFechas["fecha_finan"]), fecha_subs: getText(elemFechas["fecha_subs"]), fecha_vv: getText(elemFechas["fecha_vv"]))
+                var fechas = Fechas(fecha_finan: "(" + getText(elemFechas["fecha_finan"]) + ")",
+                                    fecha_subs: "(" + getText(elemFechas["fecha_subs"]) + ")",
+                                    fecha_vv: "(" + getText(elemFechas["fecha_vv"]) + ")")
                 self.serviceResponseFecha!(fechas, nil)
             }
         }

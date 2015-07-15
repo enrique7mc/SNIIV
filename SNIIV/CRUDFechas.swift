@@ -21,24 +21,31 @@ class CRUDFechas {
         fechasEntity.setValue(fechas.fecha_subs, forKey: "fecha_subs")
         fechasEntity.setValue(fechas.fecha_vv, forKey: "fecha_vv")
         
-        CRUDFechas.ctx.save(nil)
+        var error: NSError?
+        if !CRUDFechas.ctx.save(nil) {
+            println("Could not save \(error), \(error?.userInfo)")
+        }
     }
     
     static func deleteFechas(){
         let request=NSFetchRequest(entityName: "Fechas")
-        var entities: Array<AnyObject> = CRUDReporteGeneral.ctx.executeFetchRequest(request, error:nil)!
+        var entities: Array<AnyObject> = CRUDFechas.ctx.executeFetchRequest(request, error:nil)!
 
         for bas: AnyObject in entities {
             CRUDFechas.ctx.deleteObject(bas as! NSManagedObject)
         }
         
-        CRUDFechas.ctx.save(nil)
+        var error: NSError?
+        if !CRUDFechas.ctx.save(nil) {
+            println("Could not delete \(error), \(error?.userInfo)")
+        }
     }
     
     static func selectFechas() -> Fechas? {
         let request = NSFetchRequest(entityName: "Fechas")
         var entities: Array<AnyObject> = CRUDFechas.ctx.executeFetchRequest(request, error:nil)!
         
+        println("fechas \(entities.count)")
         if let fechas: AnyObject = entities.first {
             return Fechas(fecha_finan: Utils.getText(fechas.valueForKey("fecha_finan")), fecha_subs: Utils.getText(fechas.valueForKey("fecha_subs")), fecha_vv: Utils.getText(fechas.valueForKey("fecha_vv")))
         }
