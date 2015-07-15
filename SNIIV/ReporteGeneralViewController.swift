@@ -22,7 +22,7 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     var rowSelected = 0
     var entidad: DatoEntidad?
     var datos: DatosReporteGeneral?
-    var fechas: [String]?
+    var fechas: Fechas = Fechas()
     
     var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
   
@@ -63,7 +63,7 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
         }
     }
     
-    func handlerFechas (responseObject: [String]?, error: NSError?) {
+    func handlerFechas (responseObject: Fechas, error: NSError?) {
         if error != nil {
             println("Error obteniendo fechas")
             return
@@ -126,10 +126,10 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
             txtViviendasRegistradas.text = Utils.toString(entidad!.vr)
         }
         
-        if fechas != nil && fechas!.count == 3 {
-            labelFinanciamiento.text = "Financiamientos (\(fechas![0]))"
-            labelSubsidios.text = "Subsidios (\(fechas![1]))"
-            labelVivienda.text = "Oferta de Vivienda (\(fechas![2]))"
-        }
+        
+        labelFinanciamiento.text = "Financiamientos (\(fechas.fecha_finan))"
+        labelSubsidios.text = "Subsidios (\(fechas.fecha_subs))"
+        labelVivienda.text = "Oferta de Vivienda (\(fechas.fecha_vv))"
+        
     }
 }

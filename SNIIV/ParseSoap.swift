@@ -10,7 +10,7 @@ import Foundation
 import SWXMLHash
 
 typealias ServiceResponse = ([ReporteGeneralPrueba]?, NSError?) -> Void
-typealias ServiceResponseFecha = ([String]?, NSError?) -> Void
+typealias ServiceResponseFecha = (Fechas, NSError?) -> Void
 
 class ParseSoap {
     var xmlResponse: String?
@@ -64,7 +64,8 @@ class ParseSoap {
                 self.xmlResponse = dataString as String
                 var xml = SWXMLHash.parse(self.xmlResponse!)
                 var elemFechas = xml["soap:Envelope"]["soap:Body"]["get_tot_fechResponse"]["get_tot_fechResult"]["app_sniiv_tot_date"]
-                var fechas = [getText(elemFechas["fecha_finan"]), getText(elemFechas["fecha_subs"]), getText(elemFechas["fecha_vv"])]
+        
+                var fechas = Fechas(fecha_finan: getText(elemFechas["fecha_finan"]), fecha_subs: getText(elemFechas["fecha_subs"]), fecha_vv: getText(elemFechas["fecha_vv"]))
                 self.serviceResponseFecha!(fechas, nil)
             }
         }
