@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SWXMLHash
 
 class Utils {
     let numberFormatter = NSNumberFormatter()
@@ -34,6 +35,28 @@ class Utils {
             return object as! String
         } else {
             return ""
+        }
+    }
+    
+    static func parseInt(string: String) -> Int{
+        var number = string.toInt()
+        if let n = number {
+            return n
+        } else {
+            return 0
+        }
+    }
+    
+    static func parseInt64(string: String) -> Int64{
+        let strAsNSString = string as NSString
+        return strAsNSString.longLongValue
+    }
+    
+    static func getText(indexer: XMLIndexer) -> String {
+        if let element = indexer.element, text = element.text {
+            return text;
+        } else {
+            return "";
         }
     }
 }

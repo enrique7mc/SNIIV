@@ -38,9 +38,11 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
         
         indicator.startAnimating()
         if Reachability.isConnectedToNetwork() {
-            var parseSoap = ParseSoap()
-            parseSoap.getDatosReporte(handler)
-            parseSoap.getDatosFecha(handlerFechas)
+            var parseFechas = ParseFechas<Fechas?>()
+            parseFechas.getDatos(handlerFechas)
+            var parseReporte = ParseReporteGeneral<[ReporteGeneralPrueba]>()
+            parseReporte.getDatos(handler)
+            
             picker.userInteractionEnabled = true
             return
         }
@@ -48,13 +50,13 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
         loadFromStorage()
     }
     
-    func handler (responseObject: [ReporteGeneralPrueba]?, error: NSError?) {
+    func handler (responseObject: [ReporteGeneralPrueba], error: NSError?) -> Void {
         if error != nil {
             println("Error obteniendo datos")
             return
         }
         
-        datos = DatosReporteGeneral(datos: responseObject!)
+        datos = DatosReporteGeneral(datos: responseObject)
         entidad = datos!.consultaNacional()
         
         CRUDReporteGeneral.deleteReporteGeneral()
