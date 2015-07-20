@@ -18,7 +18,7 @@ class Utils {
         return numberFormatter.stringFromNumber(numero)!
     }
     
-    static func toString(numero: Int64?, divide: Int = 1000) -> String {
+    static func toStringDivide(numero: Int64?, divide: Int = 1000) -> String {
         if let num = numero {
             return Utils().decimalFormat(Double(num) / Double(divide))
         }
@@ -28,6 +28,10 @@ class Utils {
     
     static func toString(numero: Double) -> String {
         return Utils().decimalFormat(numero)
+    }
+    
+    static func toString(numero: Int64) -> String {
+        return Utils().decimalFormat(NSNumber(longLong: numero))
     }
     
     static func getText(value: AnyObject!) -> String {
@@ -59,4 +63,7 @@ class Utils {
             return "";
         }
     }
+    
+    static let entidades = ["Nacional","Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Coahuila", "Colima", "Chiapas" , "Chihuahua", "Distrito Federal", "Durango", "Guanajuato", "Guerrero","Hidalgo", "Jalisco",
+        "México", "Michoacán", "Morelos", "Nayarit", "Nuevo León" , "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"]
 }
