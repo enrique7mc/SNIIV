@@ -681,7 +681,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BiJ-E1-uhy">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BiJ-E1-uhy">
                                 <rect key="frame" x="0.0" y="349" width="320" height="162"/>
                                 <connections>
                                     <outlet property="dataSource" destination="iHP-f4-Wrf" id="JqO-4Z-ak7"/>
@@ -791,6 +791,8 @@
                             <constraint firstItem="ovW-Ik-gZM" firstAttribute="leading" secondItem="tmO-lZ-QfS" secondAttribute="leadingMargin" constant="5" id="0Kr-Ua-MCo"/>
                             <constraint firstItem="Oqz-K3-wEi" firstAttribute="leading" secondItem="tmO-lZ-QfS" secondAttribute="leadingMargin" constant="5" id="5ld-71-5sH"/>
                             <constraint firstItem="mYf-n2-bm9" firstAttribute="leading" secondItem="tmO-lZ-QfS" secondAttribute="leadingMargin" constant="5" id="6AK-3Z-0FQ"/>
+                            <constraint firstItem="BiJ-E1-uhy" firstAttribute="centerY" secondItem="yeu-wf-ZgO" secondAttribute="centerY" constant="343" id="9ml-4G-F8d"/>
+                            <constraint firstAttribute="centerX" secondItem="BiJ-E1-uhy" secondAttribute="centerX" id="9p6-WR-eG0"/>
                             <constraint firstItem="yeu-wf-ZgO" firstAttribute="centerY" secondItem="c7C-hu-JDN" secondAttribute="centerY" constant="-107.5" id="9q1-0X-0zq"/>
                             <constraint firstItem="yeu-wf-ZgO" firstAttribute="centerY" secondItem="mYf-n2-bm9" secondAttribute="centerY" constant="-34.5" id="Awb-eQ-IZK"/>
                             <constraint firstItem="yeu-wf-ZgO" firstAttribute="centerY" secondItem="RWK-Mo-OUn" secondAttribute="centerY" constant="-201.5" id="C0z-aj-W0h"/>
@@ -944,7 +946,7 @@
                             <constraint firstItem="u12-cJ-JXb" firstAttribute="leading" secondItem="ch1-vL-Euu" secondAttribute="leadingMargin" constant="4" id="tgK-MV-Cgf"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Tipo Vivienda" image="TipoVivienda" selectedImage="Image" id="nbl-ga-gVx"/>
+                    <tabBarItem key="tabBarItem" title="Tipo Vivienda" image="TipoVivienda" id="nbl-ga-gVx"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="txtHorizontal" destination="WWg-WP-jcX" id="5R9-jf-d5v"/>
@@ -1000,7 +1002,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Image" width="58" height="58"/>
         <image name="LogoCasa" width="32" height="32"/>
         <image name="PCULogo" width="32" height="32"/>
         <image name="TipoVivienda" width="32" height="32"/>
