@@ -17,6 +17,7 @@
 		8413012E1B56D52F004946C7 /* CRUDFechas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413012D1B56D52F004946C7 /* CRUDFechas.swift */; };
 		841301301B571A35004946C7 /* ParseAvanceObra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413012F1B571A35004946C7 /* ParseAvanceObra.swift */; };
 		841642C61B5D5C2700D10900 /* DatosAvanceObra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642C51B5D5C2700D10900 /* DatosAvanceObra.swift */; };
+		841642C91B5D9CED00D10900 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642C81B5D9CED00D10900 /* Context.swift */; };
 		84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA162F1B4C657400ECC81A /* AppDelegate.swift */; };
 		84BA16351B4C657400ECC81A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16331B4C657400ECC81A /* Main.storyboard */; };
 		84BA16371B4C657400ECC81A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16361B4C657400ECC81A /* Images.xcassets */; };
@@ -59,6 +60,8 @@
 		8413012D1B56D52F004946C7 /* CRUDFechas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDFechas.swift; sourceTree = "<group>"; };
 		8413012F1B571A35004946C7 /* ParseAvanceObra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAvanceObra.swift; sourceTree = "<group>"; };
 		841642C51B5D5C2700D10900 /* DatosAvanceObra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosAvanceObra.swift; sourceTree = "<group>"; };
+		841642C71B5D9C4200D10900 /* Model 1. 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 1. 2.xcdatamodel"; sourceTree = "<group>"; };
+		841642C81B5D9CED00D10900 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		84BA162A1B4C657400ECC81A /* SNIIV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNIIV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA162E1B4C657400ECC81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84BA162F1B4C657400ECC81A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +211,7 @@
 			children = (
 				A33B8C281B4EE1B400B200E5 /* CRUDReporteGeneral.swift */,
 				8413012D1B56D52F004946C7 /* CRUDFechas.swift */,
+				841642C81B5D9CED00D10900 /* Context.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -379,6 +383,7 @@
 				A33B8C261B4EE0AC00B200E5 /* ReporteGeneral.swift in Sources */,
 				841301301B571A35004946C7 /* ParseAvanceObra.swift in Sources */,
 				8413012B1B56CBBE004946C7 /* Fechas.swift in Sources */,
+				841642C91B5D9CED00D10900 /* Context.swift in Sources */,
 				840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */,
 				A39E1B191B570AE2000DEBA3 /* TipoViviendaViewController.swift in Sources */,
 				A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */,
@@ -612,10 +617,11 @@
 		A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				841642C71B5D9C4200D10900 /* Model 1. 2.xcdatamodel */,
 				8413012C1B56D392004946C7 /* Model 1.1.xcdatamodel */,
 				A38B36B41B4CA0D700606D3A /* Model.xcdatamodel */,
 			);
-			currentVersion = 8413012C1B56D392004946C7 /* Model 1.1.xcdatamodel */;
+			currentVersion = 841642C71B5D9C4200D10900 /* Model 1. 2.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

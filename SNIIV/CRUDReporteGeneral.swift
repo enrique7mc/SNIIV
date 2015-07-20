@@ -11,13 +11,10 @@ import CoreData
 
 class CRUDReporteGeneral: NSObject {
     
-    static let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    static let ctx: NSManagedObjectContext = CRUDReporteGeneral.appDel.managedObjectContext!
-    
     static func saveReporteGeneral(reporteGeneral: ReporteGeneralPrueba) {
-        let en = NSEntityDescription.entityForName("ReporteGeneral", inManagedObjectContext: CRUDReporteGeneral.ctx)
+        let en = NSEntityDescription.entityForName("ReporteGeneral", inManagedObjectContext: Context.ctx)
         
-        var newItem = ReporteGeneral(entity: en!, insertIntoManagedObjectContext: CRUDReporteGeneral.ctx)
+        var newItem = ReporteGeneral(entity: en!, insertIntoManagedObjectContext: Context.ctx)
     
         newItem.cve_ent = reporteGeneral.cveeNT
         newItem.acc_finan = reporteGeneral.accFinan
@@ -27,23 +24,23 @@ class CRUDReporteGeneral: NSObject {
         newItem.vv = reporteGeneral.vv
         newItem.vr = reporteGeneral.vr
         
-        CRUDReporteGeneral.ctx.save(nil)
+        Context.ctx.save(nil)
     }
     
     static func deleteReporteGeneral(){
         let request=NSFetchRequest(entityName: "ReporteGeneral")
-        var entities: Array<AnyObject> = CRUDReporteGeneral.ctx.executeFetchRequest(request, error:nil)!
+        var entities: Array<AnyObject> = Context.ctx.executeFetchRequest(request, error:nil)!
         
         for bas: AnyObject in entities {
-            CRUDReporteGeneral.ctx.deleteObject(bas as! NSManagedObject)
+            Context.ctx.deleteObject(bas as! NSManagedObject)
         }
         
-        CRUDReporteGeneral.ctx.save(nil)
+        Context.ctx.save(nil)
     }
     
     static func selectAllReporteGeneral()->Array<AnyObject>{
         let request=NSFetchRequest(entityName: "ReporteGeneral")
-        var entities: Array<AnyObject> = CRUDReporteGeneral.ctx.executeFetchRequest(request, error:nil)!
+        var entities: Array<AnyObject> = Context.ctx.executeFetchRequest(request, error:nil)!
         
         return entities
     }
