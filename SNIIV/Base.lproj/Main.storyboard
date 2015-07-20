@@ -455,6 +455,7 @@
                     <tabBarItem key="tabBarItem" title="Avance Obra" id="qB0-Sg-xiX"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="picker" destination="nDv-fi-x2f" id="01l-vg-qbi"/>
                         <outlet property="txtAntiguas" destination="oIv-Oq-ngK" id="5bF-FA-xe4"/>
                         <outlet property="txtCincuentaPorciento" destination="5W7-IM-brS" id="DaY-sG-a4r"/>
                         <outlet property="txtNoventaPorciento" destination="vcO-u9-aBm" id="KUQ-eT-OAy"/>

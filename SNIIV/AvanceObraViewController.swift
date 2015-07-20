@@ -9,22 +9,67 @@
 import UIKit
 
 class AvanceObraViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-
-    var opt = ["Nacional","Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Coahuila", "Colima", "Chiapas" , "Chihuahua", "Distrito Federal", "Durango", "Guanajuato", "Guerrero","Hidalgo", "Jalisco",
-        "México", "Michoacán", "Morelos", "Nayarit", "Nuevo León" , "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"]
     
+    @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var txtTitleObra: UITextField!
-    
     @IBOutlet weak var txtCincuentaPorciento: UILabel!
     @IBOutlet weak var txtNoventaPorciento: UILabel!
     @IBOutlet weak var txtRecientes: UILabel!
     @IBOutlet weak var txtAntiguas: UILabel!
     @IBOutlet weak var txtTotal: UILabel!
     
+    var entidad: AvanceObra?
+    var datos: DatosAvanceObra?
+    var fechas: Fechas = Fechas()
+    
+    var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         txtTitleObra.enabled=false
-        // Do any additional setup after loading the view.
+        indicator.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
+        indicator.center = view.center
+        view.addSubview(indicator)
+        indicator.bringSubviewToFront(view)
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        picker.userInteractionEnabled = false
+        
+        if Reachability.isConnectedToNetwork() {
+            var parseFechas = ParseFechas<Fechas?>()
+            parseFechas.getDatos(handlerFechas)
+            var parseAvance = ParseAvanceObra<[AvanceObra]>()
+            parseAvance.getDatos(handler)
+            
+            picker.userInteractionEnabled = true
+            return
+        }
+        
+    }
+    
+    func handler (responseObject: [AvanceObra], error: NSError?) -> Void {
+        if error != nil {
+            println("Error obteniendo datos")
+            return
+        }
+        
+        datos = DatosAvanceObra(datos: responseObject)
+        entidad = datos!.consultaNacional()
+    }
+    
+    func handlerFechas (responseObject: Fechas, error: NSError?) {
+        if error != nil {
+            println("Error obteniendo fechas")
+            return
+        }
+        
+        CRUDFechas.deleteFechas()
+        
+        fechas = responseObject
+        CRUDFechas.saveReporteGeneral(fechas)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        mostrarDatos()
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,17 +82,35 @@ class AvanceObraViewController: UIViewController, UIPickerViewDataSource, UIPick
         return 1
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return opt.count
+        return Utils.entidades.count
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return opt[row]
+        return Utils.entidades[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        var itemSelected = opt[row]
-        println(itemSelected)
+        var itemSelected = Utils.entidades[row]
         
+        if row == 0 {
+            entidad = datos?.consultaNacional()
+        } else {
+            entidad = datos?.consultaEntidad(Entidad(rawValue: row)!)
+        }
+        
+        mostrarDatos()
+    }
+    
+    func mostrarDatos() {
+        if entidad != nil {
+            txtCincuentaPorciento.text = Utils.toString(entidad!.viv_proc_m50)
+            txtNoventaPorciento.text = Utils.toString(entidad!.viv_proc_50_99)
+            txtRecientes.text = Utils.toString(entidad!.viv_term_rec)
+            txtAntiguas.text = Utils.toString(entidad!.viv_term_ant)
+            txtTotal.text = Utils.toString(entidad!.total)
+        }
+        
+        txtTitleObra.text = "Avance Obra \(fechas.fecha_finan)"
     }
 
 }
