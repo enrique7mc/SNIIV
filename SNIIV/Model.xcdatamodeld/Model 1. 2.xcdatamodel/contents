@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AvanceObra" syncable="YES">
+        <attribute name="cve_ent" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="total" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="viv_proc_50_99" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="viv_proc_m50" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="viv_term_ant" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="viv_term_rec" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Fechas" syncable="YES">
+        <attribute name="fecha_finan" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fecha_subs" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fecha_vv" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ReporteGeneral" representedClassName="ReporteGeneral" syncable="YES">
+        <attribute name="acc_finan" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="acc_subs" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cve_ent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mto_finan" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mto_subs" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vv" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Fechas" positionX="-36" positionY="63" width="128" height="90"/>
+        <element name="ReporteGeneral" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="AvanceObra" positionX="-45" positionY="45" width="128" height="135"/>
+    </elements>
+</model>
