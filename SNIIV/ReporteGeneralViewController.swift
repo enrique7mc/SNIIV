@@ -18,9 +18,8 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     @IBOutlet weak var labelSubsidios: UITextField!
     @IBOutlet weak var labelVivienda: UITextField!
     
-    
     var rowSelected = 0
-    var entidad: DatoEntidad?
+    var entidad: ReporteGeneralPrueba?
     var datos: DatosReporteGeneral?
     var fechas: Fechas = Fechas()
     
@@ -130,12 +129,12 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     
     func mostrarDatos() {
         if entidad != nil {
-            txtFinanAcc.text = Utils.toString(entidad!.accFinan)
-            txtFinanMto.text = Utils.toString(entidad!.mtoFinan, divide: 1000000)
-            txtSubAcc.text = Utils.toString(entidad!.accSubs)
-            txtSubMto.text = Utils.toString(entidad!.mtoSubs, divide: 1000000)
-            txtViviendasVigentes.text = Utils.toString(entidad!.vv)
-            txtViviendasRegistradas.text = Utils.toString(entidad!.vr)
+            txtFinanAcc.text = entidad!.accFinan
+            txtFinanMto.text = entidad!.mtoFinan
+            txtSubAcc.text = entidad!.accSubs
+            txtSubMto.text = entidad!.mtoSubs
+            txtViviendasVigentes.text = entidad!.vv
+            txtViviendasRegistradas.text = entidad!.vr
         }
         
         

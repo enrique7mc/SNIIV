@@ -41,11 +41,11 @@ class ParseReporteGeneral<T>: ParseBase<[ReporteGeneralPrueba]> {
 }
 
 struct ReporteGeneralPrueba {
-    let cveeNT: String
-    let accFinan: String
-    let mtoFinan: String
-    let accSubs: String
-    let mtoSubs: String
-    let vv: String
-    let vr: String
+    var cveeNT: String = ""
+    var accFinan: String = ""
+    var mtoFinan: String = ""
+    var accSubs: String = ""
+    var mtoSubs: String = ""
+    var vv: String = ""
+    var vr: String = ""
 }
