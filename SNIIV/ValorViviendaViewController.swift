@@ -12,9 +12,10 @@ class ValorViviendaViewController: UIViewController , UIPickerViewDataSource, UI
     var opt = ["Nacional","Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Coahuila", "Colima", "Chiapas" , "Chihuahua", "Distrito Federal", "Durango", "Guanajuato", "Guerrero","Hidalgo", "Jalisco",
         "México", "Michoacán", "Morelos", "Nayarit", "Nuevo León" , "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"]
     
+    @IBOutlet weak var txtTitleValorVivienda: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        txtTitleValorVivienda.enabled=false
         // Do any additional setup after loading the view.
     }
     

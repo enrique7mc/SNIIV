@@ -15,6 +15,12 @@ class AvanceObraViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     @IBOutlet weak var txtTitleObra: UITextField!
     
+    @IBOutlet weak var txtCincuentaPorciento: UILabel!
+    @IBOutlet weak var txtNoventaPorciento: UILabel!
+    @IBOutlet weak var txtRecientes: UILabel!
+    @IBOutlet weak var txtAntiguas: UILabel!
+    @IBOutlet weak var txtTotal: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         txtTitleObra.enabled=false
