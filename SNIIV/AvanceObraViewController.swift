@@ -8,11 +8,22 @@
 
 import UIKit
 
-class AvanceObraViewController: UIViewController {
+class AvanceObraViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
+    var opt = ["Nacional","Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Coahuila", "Colima", "Chiapas" , "Chihuahua", "Distrito Federal", "Durango", "Guanajuato", "Guerrero","Hidalgo", "Jalisco",
+        "México", "Michoacán", "Morelos", "Nayarit", "Nuevo León" , "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"]
+    
+    @IBOutlet weak var txtTitleObra: UITextField!
+    
+    @IBOutlet weak var txtCincuentaPorciento: UILabel!
+    @IBOutlet weak var txtNoventaPorciento: UILabel!
+    @IBOutlet weak var txtRecientes: UILabel!
+    @IBOutlet weak var txtAntiguas: UILabel!
+    @IBOutlet weak var txtTotal: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        txtTitleObra.enabled=false
         // Do any additional setup after loading the view.
     }
 
@@ -22,14 +33,21 @@ class AvanceObraViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
     }
-    */
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return opt.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return opt[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        var itemSelected = opt[row]
+        println(itemSelected)
+        
+    }
 
 }
