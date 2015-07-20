@@ -16,6 +16,7 @@
 		8413012B1B56CBBE004946C7 /* Fechas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413012A1B56CBBE004946C7 /* Fechas.swift */; };
 		8413012E1B56D52F004946C7 /* CRUDFechas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413012D1B56D52F004946C7 /* CRUDFechas.swift */; };
 		841301301B571A35004946C7 /* ParseAvanceObra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413012F1B571A35004946C7 /* ParseAvanceObra.swift */; };
+		841642C61B5D5C2700D10900 /* DatosAvanceObra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642C51B5D5C2700D10900 /* DatosAvanceObra.swift */; };
 		84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA162F1B4C657400ECC81A /* AppDelegate.swift */; };
 		84BA16351B4C657400ECC81A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16331B4C657400ECC81A /* Main.storyboard */; };
 		84BA16371B4C657400ECC81A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16361B4C657400ECC81A /* Images.xcassets */; };
@@ -57,6 +58,7 @@
 		8413012C1B56D392004946C7 /* Model 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		8413012D1B56D52F004946C7 /* CRUDFechas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDFechas.swift; sourceTree = "<group>"; };
 		8413012F1B571A35004946C7 /* ParseAvanceObra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAvanceObra.swift; sourceTree = "<group>"; };
+		841642C51B5D5C2700D10900 /* DatosAvanceObra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosAvanceObra.swift; sourceTree = "<group>"; };
 		84BA162A1B4C657400ECC81A /* SNIIV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNIIV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA162E1B4C657400ECC81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84BA162F1B4C657400ECC81A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				84E16C191B4EC72C00C56F08 /* DatosReporteGeneral.swift */,
 				8402548B1B5988E1000DBBF5 /* ParseFechas.swift */,
 				8413012F1B571A35004946C7 /* ParseAvanceObra.swift */,
+				841642C51B5D5C2700D10900 /* DatosAvanceObra.swift */,
 				84E16C1B1B4EE03A00C56F08 /* SoapToXml.swift */,
 				84E16C1D1B4EFC6100C56F08 /* Entidad.swift */,
 				840F82A61B54375E00A3B9E7 /* Reachability.swift */,
@@ -368,6 +371,7 @@
 				84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */,
 				A33B8C291B4EE1B400B200E5 /* CRUDReporteGeneral.swift in Sources */,
 				A39E1B131B570A7E000DEBA3 /* AvanceObraViewController.swift in Sources */,
+				841642C61B5D5C2700D10900 /* DatosAvanceObra.swift in Sources */,
 				A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */,
 				8413012E1B56D52F004946C7 /* CRUDFechas.swift in Sources */,
 				840F82AA1B54630900A3B9E7 /* Utils.swift in Sources */,
