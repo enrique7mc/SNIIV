@@ -13,6 +13,11 @@ class ValorViviendaViewController: UIViewController , UIPickerViewDataSource, UI
         "México", "Michoacán", "Morelos", "Nayarit", "Nuevo León" , "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"]
     
     @IBOutlet weak var txtTitleValorVivienda: UITextField!
+    @IBOutlet weak var txtEconomica: UILabel!
+    @IBOutlet weak var txtPopular: UILabel!
+    @IBOutlet weak var txtTradicional: UILabel!
+    @IBOutlet weak var txtMediaResidencial: UILabel!
+    @IBOutlet weak var txtTotal: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         txtTitleValorVivienda.enabled=false
