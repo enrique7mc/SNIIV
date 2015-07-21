@@ -830,6 +830,7 @@
                     <tabBarItem key="tabBarItem" title="Valor Vivienda" image="valorViviendalogo" id="8Bi-kk-uzb"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="picker" destination="BiJ-E1-uhy" id="21P-Ln-Wle"/>
                         <outlet property="txtEconomica" destination="l6w-qD-iW0" id="C0N-ra-wLf"/>
                         <outlet property="txtMediaResidencial" destination="o3C-9m-fvz" id="mUK-a8-qJ9"/>
                         <outlet property="txtPopular" destination="a8O-fP-fXQ" id="qRM-d7-eWN"/>

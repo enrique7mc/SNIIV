@@ -36,8 +36,8 @@ class TipoViviendaViewController: UIViewController,  UIPickerViewDataSource, UIP
         if Reachability.isConnectedToNetwork() {
             var parseFechas = ParseFechas<Fechas>()
             parseFechas.getDatos(handlerFechas)
-            var parsePCU = ParseTipoVivienda<[TipoVivienda]>()
-            parsePCU.getDatos(handler)
+            var parseTipo = ParseTipoVivienda<[TipoVivienda]>()
+            parseTipo.getDatos(handler)
             
             return
         }
