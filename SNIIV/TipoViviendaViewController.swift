@@ -100,12 +100,6 @@ class TipoViviendaViewController: UIViewController,  UIPickerViewDataSource, UIP
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }

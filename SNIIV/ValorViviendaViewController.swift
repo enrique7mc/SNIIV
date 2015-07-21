@@ -101,13 +101,7 @@ class ValorViviendaViewController: UIViewController , UIPickerViewDataSource, UI
         mostrarDatos()
         indicator.stopAnimating()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    }    
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1

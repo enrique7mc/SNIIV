@@ -106,13 +106,10 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return Utils.entidades.count
     }

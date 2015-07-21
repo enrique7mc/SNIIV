@@ -19,7 +19,7 @@ class CRUDFechas {
         fechasEntity.setValue(fechas.fecha_vv, forKey: "fecha_vv")
         
         var error: NSError?
-        if !Context.ctx.save(nil) {
+        if !Context.ctx.save(&error) {
             println("Could not save \(error), \(error?.userInfo)")
         }
     }
@@ -33,7 +33,7 @@ class CRUDFechas {
         }
         
         var error: NSError?
-        if !Context.ctx.save(nil) {
+        if !Context.ctx.save(&error) {
             println("Could not delete \(error), \(error?.userInfo)")
         }
     }
