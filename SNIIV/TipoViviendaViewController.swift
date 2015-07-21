@@ -10,8 +10,7 @@ import UIKit
 
 class TipoViviendaViewController: UIViewController,  UIPickerViewDataSource, UIPickerViewDelegate {
 
-    var opt = ["Nacional","Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Coahuila", "Colima", "Chiapas" , "Chihuahua", "Distrito Federal", "Durango", "Guanajuato", "Guerrero","Hidalgo", "Jalisco",
-        "México", "Michoacán", "Morelos", "Nayarit", "Nuevo León" , "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"]
+
     
     @IBOutlet weak var txtTitleTipoVivienda: UITextField!
     @IBOutlet weak var txtHorizontal: UILabel!
@@ -33,15 +32,15 @@ class TipoViviendaViewController: UIViewController,  UIPickerViewDataSource, UIP
         return 1
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return opt.count
+        return Utils.entidades.count
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return opt[row]
+        return Utils.entidades[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        var itemSelected = opt[row]
+        var itemSelected = Utils.entidades[row]
         println(itemSelected)
     }
 
