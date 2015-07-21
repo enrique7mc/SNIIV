@@ -34,12 +34,16 @@ class Utils {
         return Utils().decimalFormat(NSNumber(longLong: numero))
     }
     
-    static func getText(value: AnyObject!) -> String {
+    static func getText(value: AnyObject?) -> String {
         if let object: AnyObject = value {
             return object as! String
         } else {
             return ""
         }
+    }
+    
+    static func getNSNumber(value: AnyObject?) -> NSNumber {
+        return value as! NSNumber
     }
     
     static func parseInt(string: String) -> Int{
