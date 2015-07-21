@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class CRUDFechas {
-    static func saveReporteGeneral(fechas: Fechas) {
+    static func saveFechas(fechas: Fechas) {
         let en = NSEntityDescription.entityForName("Fechas", inManagedObjectContext: Context.ctx)
         
         let fechasEntity = NSManagedObject(entity: en!, insertIntoManagedObjectContext: Context.ctx)

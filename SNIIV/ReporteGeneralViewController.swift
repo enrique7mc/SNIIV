@@ -76,7 +76,7 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
         CRUDFechas.deleteFechas()
         
         fechas = responseObject
-        CRUDFechas.saveReporteGeneral(fechas)
+        CRUDFechas.saveFechas(fechas)
     }
     
     func loadFromStorage() {
