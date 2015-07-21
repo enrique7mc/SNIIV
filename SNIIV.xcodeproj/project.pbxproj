@@ -20,6 +20,8 @@
 		841642CB1B5DA16E00D10900 /* CRUDAvanceObra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642CA1B5DA16E00D10900 /* CRUDAvanceObra.swift */; };
 		841642D21B5EAE7E00D10900 /* ParsePCU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642D11B5EAE7E00D10900 /* ParsePCU.swift */; };
 		841642D41B5EAF7F00D10900 /* DatosPCU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642D31B5EAF7F00D10900 /* DatosPCU.swift */; };
+		841642D61B5EC52400D10900 /* ParseTipoVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642D51B5EC52400D10900 /* ParseTipoVivienda.swift */; };
+		841642D81B5EC5DC00D10900 /* DatosTipoVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642D71B5EC5DC00D10900 /* DatosTipoVivienda.swift */; };
 		84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA162F1B4C657400ECC81A /* AppDelegate.swift */; };
 		84BA16351B4C657400ECC81A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16331B4C657400ECC81A /* Main.storyboard */; };
 		84BA163A1B4C657400ECC81A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16381B4C657400ECC81A /* LaunchScreen.xib */; };
@@ -66,6 +68,8 @@
 		841642CA1B5DA16E00D10900 /* CRUDAvanceObra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDAvanceObra.swift; sourceTree = "<group>"; };
 		841642D11B5EAE7E00D10900 /* ParsePCU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsePCU.swift; sourceTree = "<group>"; };
 		841642D31B5EAF7F00D10900 /* DatosPCU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosPCU.swift; sourceTree = "<group>"; };
+		841642D51B5EC52400D10900 /* ParseTipoVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseTipoVivienda.swift; sourceTree = "<group>"; };
+		841642D71B5EC5DC00D10900 /* DatosTipoVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosTipoVivienda.swift; sourceTree = "<group>"; };
 		84BA162A1B4C657400ECC81A /* SNIIV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNIIV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA162E1B4C657400ECC81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84BA162F1B4C657400ECC81A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 				841642C51B5D5C2700D10900 /* DatosAvanceObra.swift */,
 				841642D11B5EAE7E00D10900 /* ParsePCU.swift */,
 				841642D31B5EAF7F00D10900 /* DatosPCU.swift */,
+				841642D51B5EC52400D10900 /* ParseTipoVivienda.swift */,
+				841642D71B5EC5DC00D10900 /* DatosTipoVivienda.swift */,
 			);
 			name = Parsing;
 			sourceTree = "<group>";
@@ -404,6 +410,8 @@
 				A39E1B191B570AE2000DEBA3 /* TipoViviendaViewController.swift in Sources */,
 				A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */,
 				A39E1B151B570A95000DEBA3 /* PCUViewController.swift in Sources */,
+				841642D61B5EC52400D10900 /* ParseTipoVivienda.swift in Sources */,
+				841642D81B5EC5DC00D10900 /* DatosTipoVivienda.swift in Sources */,
 				A39E1B171B570ACF000DEBA3 /* ValorViviendaViewController.swift in Sources */,
 				840C6BAE1B58006F0044A83C /* ParseBase.swift in Sources */,
 			);

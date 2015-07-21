@@ -951,6 +951,7 @@
                     <tabBarItem key="tabBarItem" title="Tipo Vivienda" image="TipoVivienda" id="nbl-ga-gVx"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="picker" destination="rZQ-g4-Qz8" id="IIO-qo-imL"/>
                         <outlet property="txtHorizontal" destination="WWg-WP-jcX" id="5R9-jf-d5v"/>
                         <outlet property="txtTitleTipoVivienda" destination="u12-cJ-JXb" id="vud-xK-OXY"/>
                         <outlet property="txtTotal" destination="Qf8-74-15m" id="lOo-Ow-pDf"/>
