@@ -45,7 +45,7 @@ class ValorViviendaViewController: UIViewController , UIPickerViewDataSource, UI
             return
         }
         
-        //loadFromStorage()
+        loadFromStorage()
     }
     
     func handler (responseObject: [ValorVivienda], error: NSError?) -> Void {
@@ -57,10 +57,10 @@ class ValorViviendaViewController: UIViewController , UIPickerViewDataSource, UI
         datos = DatosValorVivienda(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        /*CRUDAvanceObra.delete()
+        CRUDValorVivienda.delete()
         for d in datos!.datos {
-        CRUDAvanceObra.save(d)
-        }*/
+            CRUDValorVivienda.save(d)
+        }
         
         picker.userInteractionEnabled = true
     }
@@ -79,14 +79,14 @@ class ValorViviendaViewController: UIViewController , UIPickerViewDataSource, UI
     
     func loadFromStorage() {
         println("TipoVivienda loadFromStorage")
-        /*let datosStorage = CRUDAvanceObra.loadFromStorage()
+        let datosStorage = CRUDValorVivienda.loadFromStorage()
         if datosStorage.count > 0 {
-        datos = DatosAvanceObra(datos: datosStorage)
-        entidad = datos?.consultaNacional()
-        picker.userInteractionEnabled = true
+            datos = DatosValorVivienda(datos: datosStorage)
+            entidad = datos?.consultaNacional()
+            picker.userInteractionEnabled = true
         } else {
-        println("no hay datos en local storage")
-        }*/
+            println("no hay datos en local storage")
+        }
         
         let fechasStorage = CRUDFechas.selectFechas()
         if fechasStorage != nil {

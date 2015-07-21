@@ -26,6 +26,7 @@
 		841642DC1B5EF12E00D10900 /* DatosValorVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642DB1B5EF12E00D10900 /* DatosValorVivienda.swift */; };
 		841642DE1B5EFDDA00D10900 /* CRUDPCU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642DD1B5EFDDA00D10900 /* CRUDPCU.swift */; };
 		841642E11B5F01B300D10900 /* CRUDTipoVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642E01B5F01B300D10900 /* CRUDTipoVivienda.swift */; };
+		841642E31B5F038C00D10900 /* CRUDValorVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642E21B5F038C00D10900 /* CRUDValorVivienda.swift */; };
 		84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA162F1B4C657400ECC81A /* AppDelegate.swift */; };
 		84BA16351B4C657400ECC81A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16331B4C657400ECC81A /* Main.storyboard */; };
 		84BA163A1B4C657400ECC81A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16381B4C657400ECC81A /* LaunchScreen.xib */; };
@@ -79,6 +80,7 @@
 		841642DD1B5EFDDA00D10900 /* CRUDPCU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDPCU.swift; sourceTree = "<group>"; };
 		841642DF1B5F00BE00D10900 /* Model 1. 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 1. 3.xcdatamodel"; sourceTree = "<group>"; };
 		841642E01B5F01B300D10900 /* CRUDTipoVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDTipoVivienda.swift; sourceTree = "<group>"; };
+		841642E21B5F038C00D10900 /* CRUDValorVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDValorVivienda.swift; sourceTree = "<group>"; };
 		84BA162A1B4C657400ECC81A /* SNIIV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNIIV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA162E1B4C657400ECC81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84BA162F1B4C657400ECC81A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				841642CA1B5DA16E00D10900 /* CRUDAvanceObra.swift */,
 				841642DD1B5EFDDA00D10900 /* CRUDPCU.swift */,
 				841642E01B5F01B300D10900 /* CRUDTipoVivienda.swift */,
+				841642E21B5F038C00D10900 /* CRUDValorVivienda.swift */,
 				841642C81B5D9CED00D10900 /* Context.swift */,
 			);
 			name = CoreData;
@@ -425,6 +428,7 @@
 				841642C91B5D9CED00D10900 /* Context.swift in Sources */,
 				840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */,
 				A39E1B191B570AE2000DEBA3 /* TipoViviendaViewController.swift in Sources */,
+				841642E31B5F038C00D10900 /* CRUDValorVivienda.swift in Sources */,
 				A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */,
 				A39E1B151B570A95000DEBA3 /* PCUViewController.swift in Sources */,
 				841642D61B5EC52400D10900 /* ParseTipoVivienda.swift in Sources */,
@@ -665,7 +669,7 @@
 				8413012C1B56D392004946C7 /* Model 1.1.xcdatamodel */,
 				A38B36B41B4CA0D700606D3A /* Model.xcdatamodel */,
 			);
-			currentVersion = 841642C71B5D9C4200D10900 /* Model 1. 2.xcdatamodel */;
+			currentVersion = 841642DF1B5F00BE00D10900 /* Model 1. 3.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
