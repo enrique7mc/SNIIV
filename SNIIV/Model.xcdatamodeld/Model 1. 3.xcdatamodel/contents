@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AvanceObra" syncable="YES">
+        <attribute name="cve_ent" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="total" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="viv_proc_50_99" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="viv_proc_m50" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="viv_term_ant" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="viv_term_rec" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Fechas" syncable="YES">
+        <attribute name="fecha_finan" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fecha_subs" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fecha_vv" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="PCU" syncable="YES">
+        <attribute name="cve_ent" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="fc" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="nd" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="total" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="u1" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="u2" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="u3" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="ReporteGeneral" representedClassName="ReporteGeneral" syncable="YES">
+        <attribute name="acc_finan" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="acc_subs" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cve_ent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mto_finan" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mto_subs" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vv" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TipoVivienda" syncable="YES">
+        <attribute name="cve_ent" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="horizontal" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="total" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="vertical" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="ValorVivienda" syncable="YES">
+        <attribute name="cve_ent" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="economica" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="media_residencial" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="popular" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="total" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="tradicional" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AvanceObra" positionX="-45" positionY="45" width="128" height="135"/>
+        <element name="Fechas" positionX="-36" positionY="63" width="128" height="90"/>
+        <element name="PCU" positionX="-36" positionY="72" width="128" height="150"/>
+        <element name="ReporteGeneral" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="TipoVivienda" positionX="-27" positionY="90" width="128" height="105"/>
+        <element name="ValorVivienda" positionX="-18" positionY="99" width="128" height="135"/>
+    </elements>
+</model>
