@@ -40,10 +40,10 @@ class AvanceObraViewController: UIViewController, UIPickerViewDataSource, UIPick
             var parseAvance = ParseAvanceObra<[AvanceObra]>()
             parseAvance.getDatos(handler)
             
-            picker.userInteractionEnabled = true
             return
         }
         
+        loadFromStorage()
     }
     
     func handler (responseObject: [AvanceObra], error: NSError?) -> Void {
@@ -52,8 +52,20 @@ class AvanceObraViewController: UIViewController, UIPickerViewDataSource, UIPick
             return
         }
         
+        if responseObject.count == 0 {
+            println("No hay datos")
+            return
+        }
+        
         datos = DatosAvanceObra(datos: responseObject)
         entidad = datos!.consultaNacional()
+        
+        CRUDAvanceObra.delete()
+        for d in datos!.datos {
+            CRUDAvanceObra.save(d)
+        }
+        
+        picker.userInteractionEnabled = true
     }
     
     func handlerFechas (responseObject: Fechas, error: NSError?) {
@@ -65,11 +77,32 @@ class AvanceObraViewController: UIViewController, UIPickerViewDataSource, UIPick
         CRUDFechas.deleteFechas()
         
         fechas = responseObject
-        CRUDFechas.saveReporteGeneral(fechas)
+        CRUDFechas.saveFechas(fechas)
+    }
+    
+    func loadFromStorage() {
+        println("AvanceObra loadFromStorage")
+        let datosStorage = CRUDAvanceObra.loadFromStorage()
+        if datosStorage.count > 0 {
+            datos = DatosAvanceObra(datos: datosStorage)
+            entidad = datos?.consultaNacional()
+            picker.userInteractionEnabled = true
+        } else {
+            println("no hay datos en local storage")
+        }
+        
+        let fechasStorage = CRUDFechas.selectFechas()
+        if fechasStorage != nil {
+            fechas = fechasStorage!
+        } else {
+            println("no hay fechas en local storage")
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         mostrarDatos()
+        indicator.stopAnimating()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,6 +144,7 @@ class AvanceObraViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
         
         txtTitleObra.text = "Avance Obra \(fechas.fecha_finan)"
+        
     }
 
 }

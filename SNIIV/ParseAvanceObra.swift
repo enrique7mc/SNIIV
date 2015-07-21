@@ -15,8 +15,10 @@ class ParseAvanceObra<T>: ParseBase<[AvanceObra]> {
     }
     
     override func handler(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void {
-        if let err = error {
-            println("async error: " + err.description)
+        let httpResponse = response as! NSHTTPURLResponse
+        
+        if error != nil || httpResponse.statusCode != 200 {
+            println("AvanceObra status code: \(httpResponse.statusCode)")
             self.serviceResponse!([], NSError())
         } else {
             if let dataString = NSString(data: data, encoding:NSUTF8StringEncoding) {

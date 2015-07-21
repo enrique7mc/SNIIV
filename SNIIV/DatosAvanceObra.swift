@@ -31,7 +31,7 @@ class DatosAvanceObra {
         datoEntidad.viv_term_ant = viv_term_ant
         
         var total: Int64 = datos.map{ return $0.total }.reduce(0) {$0 + $1}
-        datoEntidad.viv_term_ant = total
+        datoEntidad.total = total
         
         
         return datoEntidad
