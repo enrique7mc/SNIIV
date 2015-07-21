@@ -13,7 +13,6 @@
 		840C6BB01B5809500044A83C /* ParseReporteGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C6BAF1B5809500044A83C /* ParseReporteGeneral.swift */; };
 		840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F82A61B54375E00A3B9E7 /* Reachability.swift */; };
 		840F82AA1B54630900A3B9E7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F82A91B54630900A3B9E7 /* Utils.swift */; };
-		8413012B1B56CBBE004946C7 /* Fechas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413012A1B56CBBE004946C7 /* Fechas.swift */; };
 		8413012E1B56D52F004946C7 /* CRUDFechas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413012D1B56D52F004946C7 /* CRUDFechas.swift */; };
 		841301301B571A35004946C7 /* ParseAvanceObra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413012F1B571A35004946C7 /* ParseAvanceObra.swift */; };
 		841642C61B5D5C2700D10900 /* DatosAvanceObra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642C51B5D5C2700D10900 /* DatosAvanceObra.swift */; };
@@ -56,7 +55,6 @@
 		840C6BAF1B5809500044A83C /* ParseReporteGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseReporteGeneral.swift; sourceTree = "<group>"; };
 		840F82A61B54375E00A3B9E7 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		840F82A91B54630900A3B9E7 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		8413012A1B56CBBE004946C7 /* Fechas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fechas.swift; sourceTree = "<group>"; };
 		8413012C1B56D392004946C7 /* Model 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		8413012D1B56D52F004946C7 /* CRUDFechas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDFechas.swift; sourceTree = "<group>"; };
 		8413012F1B571A35004946C7 /* ParseAvanceObra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAvanceObra.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 				840C6BAF1B5809500044A83C /* ParseReporteGeneral.swift */,
 				84E16C191B4EC72C00C56F08 /* DatosReporteGeneral.swift */,
 				8402548B1B5988E1000DBBF5 /* ParseFechas.swift */,
-				8413012A1B56CBBE004946C7 /* Fechas.swift */,
 				8413012F1B571A35004946C7 /* ParseAvanceObra.swift */,
 				841642C51B5D5C2700D10900 /* DatosAvanceObra.swift */,
 			);
@@ -394,7 +391,6 @@
 				840C6BB01B5809500044A83C /* ParseReporteGeneral.swift in Sources */,
 				A33B8C261B4EE0AC00B200E5 /* ReporteGeneral.swift in Sources */,
 				841301301B571A35004946C7 /* ParseAvanceObra.swift in Sources */,
-				8413012B1B56CBBE004946C7 /* Fechas.swift in Sources */,
 				841642C91B5D9CED00D10900 /* Context.swift in Sources */,
 				840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */,
 				A39E1B191B570AE2000DEBA3 /* TipoViviendaViewController.swift in Sources */,
