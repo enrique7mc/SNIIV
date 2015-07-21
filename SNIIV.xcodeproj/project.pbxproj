@@ -123,6 +123,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		841642D01B5EAC5900D10900 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				84E16C1B1B4EE03A00C56F08 /* SoapToXml.swift */,
+				84E16C1D1B4EFC6100C56F08 /* Entidad.swift */,
+				840F82A61B54375E00A3B9E7 /* Reachability.swift */,
+				840F82A91B54630900A3B9E7 /* Utils.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		843FD49D1B4DDACB00930AEB /* Parsing */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,13 +141,9 @@
 				840C6BAF1B5809500044A83C /* ParseReporteGeneral.swift */,
 				84E16C191B4EC72C00C56F08 /* DatosReporteGeneral.swift */,
 				8402548B1B5988E1000DBBF5 /* ParseFechas.swift */,
+				8413012A1B56CBBE004946C7 /* Fechas.swift */,
 				8413012F1B571A35004946C7 /* ParseAvanceObra.swift */,
 				841642C51B5D5C2700D10900 /* DatosAvanceObra.swift */,
-				84E16C1B1B4EE03A00C56F08 /* SoapToXml.swift */,
-				84E16C1D1B4EFC6100C56F08 /* Entidad.swift */,
-				840F82A61B54375E00A3B9E7 /* Reachability.swift */,
-				840F82A91B54630900A3B9E7 /* Utils.swift */,
-				8413012A1B56CBBE004946C7 /* Fechas.swift */,
 			);
 			name = Parsing;
 			sourceTree = "<group>";
@@ -166,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				A37D9B201B5D97BF00433D80 /* Images.xcassets */,
+				841642D01B5EAC5900D10900 /* Utils */,
 				A33B8C271B4EE17B00B200E5 /* CoreData */,
 				843FD49D1B4DDACB00930AEB /* Parsing */,
 				84BA162F1B4C657400ECC81A /* AppDelegate.swift */,

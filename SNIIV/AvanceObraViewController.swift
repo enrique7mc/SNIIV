@@ -52,11 +52,6 @@ class AvanceObraViewController: UIViewController, UIPickerViewDataSource, UIPick
             return
         }
         
-        if responseObject.count == 0 {
-            println("No hay datos")
-            return
-        }
-        
         datos = DatosAvanceObra(datos: responseObject)
         entidad = datos!.consultaNacional()
         

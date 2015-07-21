@@ -45,7 +45,6 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
             var parseReporte = ParseReporteGeneral<[ReporteGeneralPrueba]>()
             parseReporte.getDatos(handler)
             
-            picker.userInteractionEnabled = true
             return
         }
         
@@ -65,6 +64,9 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
         for d in datos!.datos {
             CRUDReporteGeneral.saveReporteGeneral(d)
         }
+        
+        picker.userInteractionEnabled = true
+
     }
     
     func handlerFechas (responseObject: Fechas, error: NSError?) {
