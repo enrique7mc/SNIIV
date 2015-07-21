@@ -11,7 +11,7 @@ import SWXMLHash
 
 class ParseAvanceObra<T>: ParseBase<[AvanceObra]> {
     init() {
-        super.init(action: "http://www.conavi.gob.mx:8080/WS_App_SNIIV/viv_vig_x_avnc")
+        super.init(action: "http://www.conavi.gob.mx:8080/WS_App_SNIIV/Avance_Vivienda_Vigente")
     }
     
     override func handler(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void {
@@ -24,7 +24,7 @@ class ParseAvanceObra<T>: ParseBase<[AvanceObra]> {
             if let dataString = NSString(data: data, encoding:NSUTF8StringEncoding) {
                 self.xmlResponse = dataString as String
                 var xml = SWXMLHash.parse(self.xmlResponse)
-                var sniiv = xml["soap:Envelope"]["soap:Body"]["viv_vig_x_avncResponse"]["viv_vig_x_avncResult"]["app_sniiv_vv_x_avanc"]
+                var sniiv = xml["soap:Envelope"]["soap:Body"]["Avance_Vivienda_VigenteResponse"]["Avance_Vivienda_VigenteResult"]["app_sniiv_vv_x_avanc"]
                 var datos = sniiv.all.map{ elem in
                     AvanceObra(cve_ent: Utils.parseInt(Utils.getText(elem["cve_ent"])),
                         viv_proc_m50: Utils.parseInt64(Utils.getText(elem["viv_proc_m50"])),

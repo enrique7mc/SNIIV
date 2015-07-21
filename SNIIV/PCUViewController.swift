@@ -97,6 +97,7 @@ class PCUViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     }
     
     override func viewDidAppear(animated: Bool) {
+        println("viewDidAppear")
         mostrarDatos()
         indicator.stopAnimating()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false

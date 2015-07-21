@@ -12,7 +12,7 @@ import SWXMLHash
 class ParseReporteGeneral<T>: ParseBase<[ReporteGeneralPrueba]> {
     
     init() {
-        super.init(action: "http://www.conavi.gob.mx:8080/WS_App_SNIIV/get_tot_ini")
+        super.init(action: "http://www.conavi.gob.mx:8080/WS_App_SNIIV/Totales")
     }
     
     override func handler(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void {
@@ -25,7 +25,7 @@ class ParseReporteGeneral<T>: ParseBase<[ReporteGeneralPrueba]> {
             if let dataString = NSString(data: data, encoding:NSUTF8StringEncoding) {
                 self.xmlResponse = dataString as String
                 var xml = SWXMLHash.parse(self.xmlResponse)
-                var sniiv = xml["soap:Envelope"]["soap:Body"]["get_tot_iniResponse"]["get_tot_iniResult"]["app_sniiv_tot"]
+                var sniiv = xml["soap:Envelope"]["soap:Body"]["TotalesResponse"]["TotalesResult"]["app_sniiv_tot"]
                 var datos = sniiv.all.map{ elem in
                     ReporteGeneralPrueba(cveeNT: Utils.getText(elem["cve_ent"]),
                         accFinan: Utils.getText(elem["acc_finan"]),
