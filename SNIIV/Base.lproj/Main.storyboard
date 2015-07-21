@@ -658,6 +658,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="TXTu2" destination="9FW-CX-0st" id="OSW-gg-RG7"/>
+                        <outlet property="picker" destination="tdf-ac-1fQ" id="SCl-8Y-ZAe"/>
                         <outlet property="txtFC" destination="Gjn-8q-jTx" id="0uK-Az-UNf"/>
                         <outlet property="txtND" destination="lwp-ob-IRG" id="dGW-cr-GPa"/>
                         <outlet property="txtTitlePCU" destination="Myt-3h-nu3" id="nWz-f9-2LB"/>

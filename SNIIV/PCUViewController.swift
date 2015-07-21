@@ -10,7 +10,7 @@ import UIKit
 
 class PCUViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    
+    @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var txtTitlePCU: UITextField!
     @IBOutlet weak var txtU1: UILabel!
     @IBOutlet weak var TXTu2: UILabel!
@@ -18,17 +18,94 @@ class PCUViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     @IBOutlet weak var txtFC: UILabel!
     @IBOutlet weak var txtND: UILabel!
     @IBOutlet weak var txtTotal: UILabel!
+    
+    var entidad: PCU?
+    var datos: DatosPCU?
+    var fechas: Fechas = Fechas()
+    
+    var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         txtTitlePCU.enabled=false
-        // Do any additional setup after loading the view.
+        indicator.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
+        indicator.center = view.center
+        view.addSubview(indicator)
+        indicator.bringSubviewToFront(view)
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        picker.userInteractionEnabled = false
+        indicator.startAnimating()
+        
+        if Reachability.isConnectedToNetwork() {
+            var parseFechas = ParseFechas<Fechas>()
+            parseFechas.getDatos(handlerFechas)
+            var parsePCU = ParsePCU<[PCU]>()
+            parsePCU.getDatos(handler)
+            
+            return
+        }
+        
+        loadFromStorage()
+    }
+    
+    func handler (responseObject: [PCU], error: NSError?) -> Void {
+        if error != nil {
+            println("Error obteniendo datos")
+            return
+        }
+        
+        datos = DatosPCU(datos: responseObject)
+        entidad = datos!.consultaNacional()
+        
+        /*CRUDAvanceObra.delete()
+        for d in datos!.datos {
+            CRUDAvanceObra.save(d)
+        }*/
+        
+        picker.userInteractionEnabled = true
+    }
+    
+    func handlerFechas (responseObject: Fechas, error: NSError?) {
+        if error != nil {
+            println("Error obteniendo fechas")
+            return
+        }
+        
+        CRUDFechas.deleteFechas()
+        
+        fechas = responseObject
+        CRUDFechas.saveFechas(fechas)
+    }
+    
+    func loadFromStorage() {
+        println("PCU loadFromStorage")
+        /*let datosStorage = CRUDAvanceObra.loadFromStorage()
+        if datosStorage.count > 0 {
+            datos = DatosAvanceObra(datos: datosStorage)
+            entidad = datos?.consultaNacional()
+            picker.userInteractionEnabled = true
+        } else {
+            println("no hay datos en local storage")
+        }*/
+        
+        let fechasStorage = CRUDFechas.selectFechas()
+        if fechasStorage != nil {
+            fechas = fechasStorage!
+        } else {
+            println("no hay fechas en local storage")
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        mostrarDatos()
+        indicator.stopAnimating()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -43,8 +120,26 @@ class PCUViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var itemSelected = Utils.entidades[row]
-        println(itemSelected)
         
+        if row == 0 {
+            entidad = datos?.consultaNacional()
+        } else {
+            entidad = datos?.consultaEntidad(Entidad(rawValue: row)!)
+        }
+        
+        mostrarDatos()
     }
-
+    
+    func mostrarDatos() {
+        if entidad != nil {
+            txtU1.text = Utils.toString(entidad!.u1)
+            TXTu2.text = Utils.toString(entidad!.u2)
+            txtU3.text = Utils.toString(entidad!.u3)
+            txtFC.text = Utils.toString(entidad!.fc)
+            txtND.text = Utils.toString(entidad!.nd)
+            txtTotal.text = Utils.toString(entidad!.total)
+        }
+        
+        txtTitlePCU.text = "Perímetros de Contención Urbana \(fechas.fecha_subs)"
+    }
 }

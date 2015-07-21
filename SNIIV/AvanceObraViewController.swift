@@ -33,9 +33,10 @@ class AvanceObraViewController: UIViewController, UIPickerViewDataSource, UIPick
         indicator.bringSubviewToFront(view)
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         picker.userInteractionEnabled = false
+        indicator.startAnimating()
         
         if Reachability.isConnectedToNetwork() {
-            var parseFechas = ParseFechas<Fechas?>()
+            var parseFechas = ParseFechas<Fechas>()
             parseFechas.getDatos(handlerFechas)
             var parseAvance = ParseAvanceObra<[AvanceObra]>()
             parseAvance.getDatos(handler)
