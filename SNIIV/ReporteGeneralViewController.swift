@@ -100,6 +100,7 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     }
 
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         mostrarDatos()
         indicator.stopAnimating()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false

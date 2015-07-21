@@ -96,6 +96,7 @@ class AvanceObraViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         mostrarDatos()
         indicator.stopAnimating()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
