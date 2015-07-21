@@ -57,10 +57,10 @@ class PCUViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         datos = DatosPCU(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        /*CRUDAvanceObra.delete()
+        CRUDPCU.delete()
         for d in datos!.datos {
-            CRUDAvanceObra.save(d)
-        }*/
+            CRUDPCU.save(d)
+        }
         
         picker.userInteractionEnabled = true
     }
@@ -79,14 +79,14 @@ class PCUViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     func loadFromStorage() {
         println("PCU loadFromStorage")
-        /*let datosStorage = CRUDAvanceObra.loadFromStorage()
+        let datosStorage = CRUDPCU.loadFromStorage()
         if datosStorage.count > 0 {
-            datos = DatosAvanceObra(datos: datosStorage)
+            datos = DatosPCU(datos: datosStorage)
             entidad = datos?.consultaNacional()
             picker.userInteractionEnabled = true
         } else {
             println("no hay datos en local storage")
-        }*/
+        }
         
         let fechasStorage = CRUDFechas.selectFechas()
         if fechasStorage != nil {
@@ -101,11 +101,6 @@ class PCUViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         mostrarDatos()
         indicator.stopAnimating()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
