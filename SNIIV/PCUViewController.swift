@@ -14,6 +14,12 @@ class PCUViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         "México", "Michoacán", "Morelos", "Nayarit", "Nuevo León" , "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"]
     
     @IBOutlet weak var txtTitlePCU: UITextField!
+    @IBOutlet weak var txtU1: UILabel!
+    @IBOutlet weak var TXTu2: UILabel!
+    @IBOutlet weak var txtU3: UILabel!
+    @IBOutlet weak var txtFC: UILabel!
+    @IBOutlet weak var txtND: UILabel!
+    @IBOutlet weak var txtTotal: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         txtTitlePCU.enabled=false

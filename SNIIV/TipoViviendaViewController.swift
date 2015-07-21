@@ -14,6 +14,9 @@ class TipoViviendaViewController: UIViewController,  UIPickerViewDataSource, UIP
         "México", "Michoacán", "Morelos", "Nayarit", "Nuevo León" , "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"]
     
     @IBOutlet weak var txtTitleTipoVivienda: UITextField!
+    @IBOutlet weak var txtHorizontal: UILabel!
+    @IBOutlet weak var txtTotal: UILabel!
+    @IBOutlet weak var txtVetical: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         txtTitleTipoVivienda.enabled=false
