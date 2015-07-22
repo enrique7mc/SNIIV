@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AvanceObraViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class AvanceObraViewController: BaseUIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var txtTitleObra: UITextField!
@@ -22,18 +22,12 @@ class AvanceObraViewController: UIViewController, UIPickerViewDataSource, UIPick
     var datos: DatosAvanceObra?
     var fechas: Fechas = Fechas()
     
-    var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         txtTitleObra.enabled=false
-        indicator.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
-        indicator.center = view.center
-        view.addSubview(indicator)
-        indicator.bringSubviewToFront(view)
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         picker.userInteractionEnabled = false
-        indicator.startAnimating()
+
+        activarIndicador()
         
         if Reachability.isConnectedToNetwork() {
             var parseFechas = ParseFechas<Fechas>()
@@ -98,13 +92,13 @@ class AvanceObraViewController: UIViewController, UIPickerViewDataSource, UIPick
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         mostrarDatos()
-        indicator.stopAnimating()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        desactivarIndicador()
     }
 
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return Utils.entidades.count
     }
@@ -135,7 +129,5 @@ class AvanceObraViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
         
         txtTitleObra.text = "Avance Obra \(fechas.fecha_finan)"
-        
     }
-
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TipoViviendaViewController: UIViewController,  UIPickerViewDataSource, UIPickerViewDelegate {
+class TipoViviendaViewController: BaseUIViewController,  UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var txtTitleTipoVivienda: UITextField!
@@ -20,18 +20,12 @@ class TipoViviendaViewController: UIViewController,  UIPickerViewDataSource, UIP
     var datos: DatosTipoVivienda?
     var fechas: Fechas = Fechas()
     
-    var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         txtTitleTipoVivienda.enabled=false
-        indicator.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
-        indicator.center = view.center
-        view.addSubview(indicator)
-        indicator.bringSubviewToFront(view)
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         picker.userInteractionEnabled = false
-        indicator.startAnimating()
+
+        activarIndicador()
         
         if Reachability.isConnectedToNetwork() {
             var parseFechas = ParseFechas<Fechas>()
@@ -96,13 +90,13 @@ class TipoViviendaViewController: UIViewController,  UIPickerViewDataSource, UIP
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         mostrarDatos()
-        indicator.stopAnimating()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        desactivarIndicador()
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return Utils.entidades.count
     }
