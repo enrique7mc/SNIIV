@@ -18,19 +18,19 @@ class DatosValorVivienda {
     func consultaNacional() -> ValorVivienda {
         var datoEntidad = ValorVivienda()
         
-        var economica: Int64 = datos.map{ return $0.economica }.reduce(0) {$0 + $1}
+        var economica: Int64 = datos.map{ return $0.economica }.reduce(0, combine: Utils.Sumar)
         datoEntidad.economica = economica
         
-        var popular: Int64 = datos.map{ return $0.popular }.reduce(0) {$0 + $1}
+        var popular: Int64 = datos.map{ return $0.popular }.reduce(0, combine: Utils.Sumar)
         datoEntidad.popular = popular
         
-        var tradicional: Int64 = datos.map{ return $0.tradicional }.reduce(0) {$0 + $1}
+        var tradicional: Int64 = datos.map{ return $0.tradicional }.reduce(0, combine: Utils.Sumar)
         datoEntidad.tradicional = tradicional
         
-        var media_residencial: Int64 = datos.map{ return $0.media_residencial }.reduce(0) {$0 + $1}
+        var media_residencial: Int64 = datos.map{ return $0.media_residencial }.reduce(0, combine: Utils.Sumar)
         datoEntidad.media_residencial = media_residencial
         
-        var total: Int64 = datos.map{ return $0.total }.reduce(0) {$0 + $1}
+        var total: Int64 = datos.map{ return $0.total }.reduce(0, combine: Utils.Sumar)
         datoEntidad.total = total
         
         

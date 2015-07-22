@@ -18,19 +18,19 @@ class DatosAvanceObra {
     func consultaNacional() -> AvanceObra {
         var datoEntidad = AvanceObra()
         
-        var viv_proc_m50: Int64 = datos.map{ return $0.viv_proc_m50 }.reduce(0) {$0 + $1}
+        var viv_proc_m50: Int64 = datos.map{ return $0.viv_proc_m50 }.reduce(0, combine: Utils.Sumar)
         datoEntidad.viv_proc_m50 = viv_proc_m50
         
-        var viv_proc_50_99: Int64 = datos.map{ return $0.viv_proc_50_99 }.reduce(0) {$0 + $1}
+        var viv_proc_50_99: Int64 = datos.map{ return $0.viv_proc_50_99 }.reduce(0, combine: Utils.Sumar)
         datoEntidad.viv_proc_50_99 = viv_proc_50_99
         
-        var viv_term_rec: Int64 = datos.map{ return $0.viv_term_rec }.reduce(0) {$0 + $1}
+        var viv_term_rec: Int64 = datos.map{ return $0.viv_term_rec }.reduce(0, combine: Utils.Sumar)
         datoEntidad.viv_term_rec = viv_term_rec
         
-        var viv_term_ant: Int64 = datos.map{ return $0.viv_term_ant }.reduce(0) {$0 + $1}
+        var viv_term_ant: Int64 = datos.map{ return $0.viv_term_ant }.reduce(0, combine: Utils.Sumar)
         datoEntidad.viv_term_ant = viv_term_ant
         
-        var total: Int64 = datos.map{ return $0.total }.reduce(0) {$0 + $1}
+        var total: Int64 = datos.map{ return $0.total }.reduce(0, combine: Utils.Sumar)
         datoEntidad.total = total
         
         

@@ -19,22 +19,22 @@ class DatosReporteGeneral {
     func consultaNacional() -> ReporteGeneralPrueba {
         var datoEntidad = ReporteGeneralPrueba()
         
-        var accFinanTotal: Int64 = datos.map{return Utils.parseInt64($0.accFinan)}.reduce(0) {$0 + $1}
+        var accFinanTotal: Int64 = datos.map{return Utils.parseInt64($0.accFinan)}.reduce(0, combine: Utils.Sumar)
         datoEntidad.accFinan = Utils.toStringDivide(accFinanTotal)
         
-        var mtoFinanTotal: Int64 = datos.map{return Utils.parseInt64($0.mtoFinan)}.reduce(0) {$0 + $1}
+        var mtoFinanTotal: Int64 = datos.map{return Utils.parseInt64($0.mtoFinan)}.reduce(0, combine: Utils.Sumar)
         datoEntidad.mtoFinan = Utils.toStringDivide(mtoFinanTotal, divide: 1000000)
         
-        var accSubsTotal: Int64 = datos.map{return Utils.parseInt64($0.accSubs)}.reduce(0) {$0 + $1}
+        var accSubsTotal: Int64 = datos.map{return Utils.parseInt64($0.accSubs)}.reduce(0, combine: Utils.Sumar)
         datoEntidad.accSubs = Utils.toStringDivide(accSubsTotal)
         
-        var mtoSubsTotal: Int64 = datos.map{return Utils.parseInt64($0.mtoSubs)}.reduce(0) {$0 + $1}
+        var mtoSubsTotal: Int64 = datos.map{return Utils.parseInt64($0.mtoSubs)}.reduce(0, combine: Utils.Sumar)
         datoEntidad.mtoSubs = Utils.toStringDivide(mtoSubsTotal, divide: 1000000)
         
-        var vvTotal: Int64 = datos.map{return Utils.parseInt64($0.vv)}.reduce(0) {$0 + $1}
+        var vvTotal: Int64 = datos.map{return Utils.parseInt64($0.vv)}.reduce(0, combine: Utils.Sumar)
         datoEntidad.vv = Utils.toStringDivide(vvTotal)
         
-        var vrTotal: Int64 = datos.map{return Utils.parseInt64($0.vr)}.reduce(0) {$0 + $1}
+        var vrTotal: Int64 = datos.map{return Utils.parseInt64($0.vr)}.reduce(0, combine: Utils.Sumar)
         datoEntidad.vr = Utils.toStringDivide(vrTotal)
         
         return datoEntidad

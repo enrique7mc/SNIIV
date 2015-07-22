@@ -18,13 +18,13 @@ class DatosTipoVivienda {
     func consultaNacional() -> TipoVivienda {
         var datoEntidad = TipoVivienda()
         
-        var horizontal: Int64 = datos.map{ return $0.horizontal }.reduce(0) {$0 + $1}
+        var horizontal: Int64 = datos.map{ return $0.horizontal }.reduce(0, combine: Utils.Sumar)
         datoEntidad.horizontal = horizontal
         
-        var vertical: Int64 = datos.map{ return $0.vertical }.reduce(0) {$0 + $1}
+        var vertical: Int64 = datos.map{ return $0.vertical }.reduce(0, combine: Utils.Sumar)
         datoEntidad.vertical = vertical
         
-        var total: Int64 = datos.map{ return $0.total }.reduce(0) {$0 + $1}
+        var total: Int64 = datos.map{ return $0.total }.reduce(0, combine: Utils.Sumar)
         datoEntidad.total = total
         
         
