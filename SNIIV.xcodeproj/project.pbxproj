@@ -27,6 +27,7 @@
 		841642DE1B5EFDDA00D10900 /* CRUDPCU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642DD1B5EFDDA00D10900 /* CRUDPCU.swift */; };
 		841642E11B5F01B300D10900 /* CRUDTipoVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642E01B5F01B300D10900 /* CRUDTipoVivienda.swift */; };
 		841642E31B5F038C00D10900 /* CRUDValorVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642E21B5F038C00D10900 /* CRUDValorVivienda.swift */; };
+		847711D71B60056A007BC146 /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847711D61B60056A007BC146 /* BaseUIViewController.swift */; };
 		84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA162F1B4C657400ECC81A /* AppDelegate.swift */; };
 		84BA16351B4C657400ECC81A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16331B4C657400ECC81A /* Main.storyboard */; };
 		84BA163A1B4C657400ECC81A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16381B4C657400ECC81A /* LaunchScreen.xib */; };
@@ -81,6 +82,7 @@
 		841642DF1B5F00BE00D10900 /* Model 1. 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 1. 3.xcdatamodel"; sourceTree = "<group>"; };
 		841642E01B5F01B300D10900 /* CRUDTipoVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDTipoVivienda.swift; sourceTree = "<group>"; };
 		841642E21B5F038C00D10900 /* CRUDValorVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDValorVivienda.swift; sourceTree = "<group>"; };
+		847711D61B60056A007BC146 /* BaseUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUIViewController.swift; sourceTree = "<group>"; };
 		84BA162A1B4C657400ECC81A /* SNIIV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNIIV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA162E1B4C657400ECC81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84BA162F1B4C657400ECC81A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,7 +210,7 @@
 				A39E1B141B570A95000DEBA3 /* PCUViewController.swift */,
 				A39E1B181B570AE2000DEBA3 /* TipoViviendaViewController.swift */,
 				A39E1B161B570ACF000DEBA3 /* ValorViviendaViewController.swift */,
-				A33B8C251B4EE0AC00B200E5 /* ReporteGeneral.swift */,
+				847711D61B60056A007BC146 /* BaseUIViewController.swift */,
 			);
 			path = SNIIV;
 			sourceTree = "<group>";
@@ -247,6 +249,7 @@
 				841642DD1B5EFDDA00D10900 /* CRUDPCU.swift */,
 				841642E01B5F01B300D10900 /* CRUDTipoVivienda.swift */,
 				841642E21B5F038C00D10900 /* CRUDValorVivienda.swift */,
+				A33B8C251B4EE0AC00B200E5 /* ReporteGeneral.swift */,
 				841642C81B5D9CED00D10900 /* Context.swift */,
 			);
 			name = CoreData;
@@ -408,6 +411,7 @@
 				8402548C1B5988E1000DBBF5 /* ParseFechas.swift in Sources */,
 				84E16C1C1B4EE03A00C56F08 /* SoapToXml.swift in Sources */,
 				84E16C1A1B4EC72C00C56F08 /* DatosReporteGeneral.swift in Sources */,
+				847711D71B60056A007BC146 /* BaseUIViewController.swift in Sources */,
 				841642D41B5EAF7F00D10900 /* DatosPCU.swift in Sources */,
 				841642E11B5F01B300D10900 /* CRUDTipoVivienda.swift in Sources */,
 				84E16C1E1B4EFC6100C56F08 /* Entidad.swift in Sources */,

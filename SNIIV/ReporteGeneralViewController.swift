@@ -2,7 +2,7 @@
 
 import UIKit
 
-class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class ReporteGeneralViewController: BaseUIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var txtFinanMto: UILabel!
@@ -23,22 +23,16 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     var entidad: ReporteGeneralPrueba?
     var datos: DatosReporteGeneral?
     var fechas: Fechas = Fechas()
-    
-    var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
   
     override func viewDidLoad() {
         super.viewDidLoad()
         txtTitleOferta.enabled = false
         txtTitleFinan.enabled = false
         txtTitleSub.enabled = false
-        indicator.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
-        indicator.center = view.center
-        view.addSubview(indicator)
-        indicator.bringSubviewToFront(view)
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         picker.userInteractionEnabled = false
         
-        indicator.startAnimating()
+        activarIndicador()
+        
         if Reachability.isConnectedToNetwork() {
             var parseFechas = ParseFechas<Fechas?>()
             parseFechas.getDatos(handlerFechas)
@@ -102,8 +96,7 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         mostrarDatos()
-        indicator.stopAnimating()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        desactivarIndicador()
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -144,6 +137,5 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
         labelFinanciamiento.text = "Financiamientos \(fechas.fecha_finan)"
         labelSubsidios.text = "Subsidios \(fechas.fecha_subs)"
         labelVivienda.text = "Oferta de Vivienda \(fechas.fecha_vv)"
-        
     }
 }
