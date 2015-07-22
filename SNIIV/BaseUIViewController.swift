@@ -10,7 +10,14 @@ import Foundation
 import UIKit
 
 class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    var fechas: Fechas = Fechas()
     var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        mostrarDatos()
+        desactivarIndicador()
+    }
     
     func activarIndicador() {
         indicator.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
@@ -40,5 +47,21 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         println("pickerView not implemented")
+    }
+    
+    func handlerFechas (responseObject: Fechas, error: NSError?) {
+        if error != nil {
+            println("Error obteniendo fechas")
+            return
+        }
+        
+        CRUDFechas.deleteFechas()
+        
+        fechas = responseObject
+        CRUDFechas.saveFechas(fechas)
+    }
+    
+    func mostrarDatos() {
+        println("mostrarDatos not implemented")
     }
 }

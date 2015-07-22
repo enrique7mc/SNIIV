@@ -20,7 +20,6 @@ class ValorViviendaViewController: BaseUIViewController {
     
     var entidad: ValorVivienda?
     var datos: DatosValorVivienda?
-    var fechas: Fechas = Fechas()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,20 +57,8 @@ class ValorViviendaViewController: BaseUIViewController {
         picker.userInteractionEnabled = true
     }
     
-    func handlerFechas (responseObject: Fechas, error: NSError?) {
-        if error != nil {
-            println("Error obteniendo fechas")
-            return
-        }
-        
-        CRUDFechas.deleteFechas()
-        
-        fechas = responseObject
-        CRUDFechas.saveFechas(fechas)
-    }
-    
     func loadFromStorage() {
-        println("TipoVivienda loadFromStorage")
+        println("Valorivienda loadFromStorage")
         let datosStorage = CRUDValorVivienda.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosValorVivienda(datos: datosStorage)
@@ -89,12 +76,6 @@ class ValorViviendaViewController: BaseUIViewController {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        mostrarDatos()
-        desactivarIndicador()
-    }
-    
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var itemSelected = Utils.entidades[row]
         if row == 0 {
@@ -106,7 +87,7 @@ class ValorViviendaViewController: BaseUIViewController {
         mostrarDatos()
     }
     
-    func mostrarDatos() {
+    override func mostrarDatos() {
         if entidad != nil {
             txtEconomica.text = Utils.toString(entidad!.economica)
             txtPopular.text = Utils.toString(entidad!.popular)

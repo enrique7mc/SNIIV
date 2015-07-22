@@ -22,7 +22,6 @@ class ReporteGeneralViewController: BaseUIViewController {
     var rowSelected = 0
     var entidad: ReporteGeneralPrueba?
     var datos: DatosReporteGeneral?
-    var fechas: Fechas = Fechas()
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,18 +62,6 @@ class ReporteGeneralViewController: BaseUIViewController {
 
     }
     
-    func handlerFechas (responseObject: Fechas, error: NSError?) {
-        if error != nil {
-            println("Error obteniendo fechas")
-            return
-        }
-
-        CRUDFechas.deleteFechas()
-        
-        fechas = responseObject
-        CRUDFechas.saveFechas(fechas)
-    }
-    
     func loadFromStorage() {
         let datosStorage = CRUDReporteGeneral.loadFromStorage()
         if datosStorage.count > 0 {
@@ -92,12 +79,6 @@ class ReporteGeneralViewController: BaseUIViewController {
             println("no hay fechas en local storage")
         }
     }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        mostrarDatos()
-        desactivarIndicador()
-    }
     
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var itemSelected = Utils.entidades[row]
@@ -111,7 +92,7 @@ class ReporteGeneralViewController: BaseUIViewController {
         mostrarDatos()
     }
     
-    func mostrarDatos() {
+    override func mostrarDatos() {
         if entidad != nil {
             txtFinanAcc.text = entidad!.accFinan
             txtFinanMto.text = entidad!.mtoFinan
@@ -120,7 +101,6 @@ class ReporteGeneralViewController: BaseUIViewController {
             txtViviendasVigentes.text = entidad!.vv
             txtViviendasRegistradas.text = entidad!.vr
         }
-        
         
         labelFinanciamiento.text = "Financiamientos \(fechas.fecha_finan)"
         labelSubsidios.text = "Subsidios \(fechas.fecha_subs)"

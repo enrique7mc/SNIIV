@@ -18,7 +18,6 @@ class TipoViviendaViewController: BaseUIViewController {
     
     var entidad: TipoVivienda?
     var datos: DatosTipoVivienda?
-    var fechas: Fechas = Fechas()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,18 +55,6 @@ class TipoViviendaViewController: BaseUIViewController {
         picker.userInteractionEnabled = true
     }
     
-    func handlerFechas (responseObject: Fechas, error: NSError?) {
-        if error != nil {
-            println("Error obteniendo fechas")
-            return
-        }
-        
-        CRUDFechas.deleteFechas()
-        
-        fechas = responseObject
-        CRUDFechas.saveFechas(fechas)
-    }
-    
     func loadFromStorage() {
         println("TipoVivienda loadFromStorage")
         let datosStorage = CRUDTipoVivienda.loadFromStorage()
@@ -87,12 +74,6 @@ class TipoViviendaViewController: BaseUIViewController {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        mostrarDatos()
-        desactivarIndicador()
-    }
-    
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var itemSelected = Utils.entidades[row]
         
@@ -105,7 +86,7 @@ class TipoViviendaViewController: BaseUIViewController {
         mostrarDatos()
     }
     
-    func mostrarDatos() {
+    override func mostrarDatos() {
         if entidad != nil {
             txtHorizontal.text = Utils.toString(entidad!.horizontal)
             txtVetical.text = Utils.toString(entidad!.vertical)

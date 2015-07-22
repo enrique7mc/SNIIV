@@ -21,7 +21,6 @@ class PCUViewController: BaseUIViewController {
     
     var entidad: PCU?
     var datos: DatosPCU?
-    var fechas: Fechas = Fechas()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,18 +58,6 @@ class PCUViewController: BaseUIViewController {
         picker.userInteractionEnabled = true
     }
     
-    func handlerFechas (responseObject: Fechas, error: NSError?) {
-        if error != nil {
-            println("Error obteniendo fechas")
-            return
-        }
-        
-        CRUDFechas.deleteFechas()
-        
-        fechas = responseObject
-        CRUDFechas.saveFechas(fechas)
-    }
-    
     func loadFromStorage() {
         println("PCU loadFromStorage")
         let datosStorage = CRUDPCU.loadFromStorage()
@@ -90,12 +77,6 @@ class PCUViewController: BaseUIViewController {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        mostrarDatos()
-        desactivarIndicador()
-    }
-    
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var itemSelected = Utils.entidades[row]
         
@@ -108,7 +89,7 @@ class PCUViewController: BaseUIViewController {
         mostrarDatos()
     }
     
-    func mostrarDatos() {
+    override func mostrarDatos() {
         if entidad != nil {
             txtU1.text = Utils.toString(entidad!.u1)
             TXTu2.text = Utils.toString(entidad!.u2)

@@ -20,7 +20,6 @@ class AvanceObraViewController: BaseUIViewController {
     
     var entidad: AvanceObra?
     var datos: DatosAvanceObra?
-    var fechas: Fechas = Fechas()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,18 +57,6 @@ class AvanceObraViewController: BaseUIViewController {
         picker.userInteractionEnabled = true
     }
     
-    func handlerFechas (responseObject: Fechas, error: NSError?) {
-        if error != nil {
-            println("Error obteniendo fechas")
-            return
-        }
-        
-        CRUDFechas.deleteFechas()
-        
-        fechas = responseObject
-        CRUDFechas.saveFechas(fechas)
-    }
-    
     func loadFromStorage() {
         println("AvanceObra loadFromStorage")
         let datosStorage = CRUDAvanceObra.loadFromStorage()
@@ -88,12 +75,6 @@ class AvanceObraViewController: BaseUIViewController {
             println("no hay fechas en local storage")
         }
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        mostrarDatos()
-        desactivarIndicador()
-    }
 
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var itemSelected = Utils.entidades[row]
@@ -107,7 +88,7 @@ class AvanceObraViewController: BaseUIViewController {
         mostrarDatos()
     }
     
-    func mostrarDatos() {
+    override func mostrarDatos() {
         if entidad != nil {
             txtCincuentaPorciento.text = Utils.toString(entidad!.viv_proc_m50)
             txtNoventaPorciento.text = Utils.toString(entidad!.viv_proc_50_99)
