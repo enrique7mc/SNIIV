@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AvanceObraViewController: BaseUIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class AvanceObraViewController: BaseUIViewController {
     
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var txtTitleObra: UITextField!
@@ -95,19 +95,7 @@ class AvanceObraViewController: BaseUIViewController, UIPickerViewDataSource, UI
         desactivarIndicador()
     }
 
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Utils.entidades.count
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return Utils.entidades[row]
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var itemSelected = Utils.entidades[row]
         
         if row == 0 {

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BaseUIViewController: UIViewController {
+class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     
     func activarIndicador() {
@@ -24,5 +24,21 @@ class BaseUIViewController: UIViewController {
     func desactivarIndicador() {
         indicator.stopAnimating()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Utils.entidades.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return Utils.entidades[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        println("pickerView not implemented")
     }
 }
