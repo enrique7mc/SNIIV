@@ -136,6 +136,6 @@ class PCUViewController: UIViewController, UIPickerViewDataSource, UIPickerViewD
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-        txtTitlePCU.text = "Perímetros de Contención Urbana \(fechas.fecha_subs)"
+        txtTitlePCU.text = "PCU \(fechas.fecha_subs)"
     }
 }
