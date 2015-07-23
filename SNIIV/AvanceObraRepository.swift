@@ -19,8 +19,8 @@ class AvanceObraRepository {
     static let total = Expression<Int64>("total")
     
     static func save(avanceObra: AvanceObra) {
-        let table = db["AvanceObra"]
-        table.insert(or: .Replace,
+        let tabla = db["AvanceObra"]
+        tabla.insert(or: .Replace,
             cve_ent <- avanceObra.cve_ent,
             viv_proc_m50 <- avanceObra.viv_proc_m50,
             viv_proc_50_99 <- avanceObra.viv_proc_50_99,
@@ -30,8 +30,8 @@ class AvanceObraRepository {
     }
     
     static func deleteAll() {
-        let reporte = db["ReporteGeneral"]
-        reporte.delete()
+        let tabla = db["AvanceObra"]
+        tabla.delete()
     }
     
     static func loadFromStorage() -> [AvanceObra] {
