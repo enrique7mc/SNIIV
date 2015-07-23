@@ -29,6 +29,7 @@ class DBConfig {
         initializeReporteGeneral()
         initializeFechas()
         initializeAvanceObra()
+        initializePCU()
     }
     
     private func initializeReporteGeneral() {
@@ -83,6 +84,28 @@ class DBConfig {
             t.column(viv_proc_50_99)
             t.column(viv_term_rec)
             t.column(viv_term_ant)
+            t.column(total)
+        }
+    }
+    
+    private func initializePCU() {
+        let pcu = db["PCU"]
+        let cve_ent = Expression<Int>("cve_ent")
+        let u1 = Expression<Int64>("u1")
+        let u2 = Expression<Int64>("u2")
+        let u3 = Expression<Int64>("u3")
+        let fc = Expression<Int64>("fc")
+        let nd = Expression<Int64>("nd")
+        let total = Expression<Int64>("total")
+        
+        db.create(table: pcu, ifNotExists: true) {
+            t in
+            t.column(cve_ent)
+            t.column(u1)
+            t.column(u2)
+            t.column(u3)
+            t.column(fc)
+            t.column(nd)
             t.column(total)
         }
     }
