@@ -69,7 +69,7 @@ class PCUViewController: BaseUIViewController {
             println("no hay datos en local storage")
         }
         
-        let fechasStorage = CRUDFechas.selectFechas()
+        let fechasStorage = FechasRepository.selectFechas()
         if fechasStorage != nil {
             fechas = fechasStorage!
         } else {
