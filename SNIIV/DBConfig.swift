@@ -28,6 +28,7 @@ class DBConfig {
     func initialize() {
         initializeReporteGeneral()
         initializeFechas()
+        initializeAvanceObra()
     }
     
     private func initializeReporteGeneral() {
@@ -63,6 +64,26 @@ class DBConfig {
             t.column(fecha_finan)
             t.column(fecha_subs)
             t.column(fecha_vv)
+        }
+    }
+    
+    private func initializeAvanceObra() {
+        let avanceObra = db["AvanceObra"]
+        let cve_ent = Expression<Int>("cve_ent")
+        let viv_proc_m50 = Expression<Int64>("viv_proc_m50")
+        let viv_proc_50_99 = Expression<Int64>("viv_proc_50_99")
+        let viv_term_rec = Expression<Int64>("viv_term_rec")
+        let viv_term_ant = Expression<Int64>("viv_term_ant")
+        let total = Expression<Int64>("total")
+        
+        db.create(table: avanceObra, ifNotExists: true) {
+            t in
+            t.column(cve_ent)
+            t.column(viv_proc_m50)
+            t.column(viv_proc_50_99)
+            t.column(viv_term_rec)
+            t.column(viv_term_ant)
+            t.column(total)
         }
     }
 }
