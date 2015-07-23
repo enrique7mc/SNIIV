@@ -18,7 +18,6 @@ class ReporteGeneralRepository {
     static let mtoSubs = Expression<String>("mtoSubs")
     static let vv = Expression<String>("vv")
     static let vr = Expression<String>("vr")
-
     
     static func save(reporteGeneral: ReporteGeneralPrueba) {
         let reporte = db["ReporteGeneral"]
@@ -40,7 +39,6 @@ class ReporteGeneralRepository {
     static func loadFromStorage() -> [ReporteGeneralPrueba] {
         let reporte = db["ReporteGeneral"]
         let all = Array(reporte)
-        println(all.count)
         var result: [ReporteGeneralPrueba] = []
         
         for r in all {
