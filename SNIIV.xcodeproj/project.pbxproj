@@ -27,6 +27,9 @@
 		841642DE1B5EFDDA00D10900 /* CRUDPCU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642DD1B5EFDDA00D10900 /* CRUDPCU.swift */; };
 		841642E11B5F01B300D10900 /* CRUDTipoVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642E01B5F01B300D10900 /* CRUDTipoVivienda.swift */; };
 		841642E31B5F038C00D10900 /* CRUDValorVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642E21B5F038C00D10900 /* CRUDValorVivienda.swift */; };
+		8443F5DB1B614359000CF78E /* DBConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5DA1B614359000CF78E /* DBConfig.swift */; };
+		8443F5DD1B6151A6000CF78E /* ReporteGeneralRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5DC1B6151A6000CF78E /* ReporteGeneralRepository.swift */; };
+		8443F5DF1B6162AD000CF78E /* FechasRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5DE1B6162AD000CF78E /* FechasRepository.swift */; };
 		847711D71B60056A007BC146 /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847711D61B60056A007BC146 /* BaseUIViewController.swift */; };
 		847711D91B605465007BC146 /* ParseSubsidios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847711D81B605465007BC146 /* ParseSubsidios.swift */; };
 		847711DB1B60557F007BC146 /* DatosSubsidios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847711DA1B60557F007BC146 /* DatosSubsidios.swift */; };
@@ -84,6 +87,9 @@
 		841642DF1B5F00BE00D10900 /* Model 1. 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 1. 3.xcdatamodel"; sourceTree = "<group>"; };
 		841642E01B5F01B300D10900 /* CRUDTipoVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDTipoVivienda.swift; sourceTree = "<group>"; };
 		841642E21B5F038C00D10900 /* CRUDValorVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDValorVivienda.swift; sourceTree = "<group>"; };
+		8443F5DA1B614359000CF78E /* DBConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBConfig.swift; sourceTree = "<group>"; };
+		8443F5DC1B6151A6000CF78E /* ReporteGeneralRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneralRepository.swift; sourceTree = "<group>"; };
+		8443F5DE1B6162AD000CF78E /* FechasRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FechasRepository.swift; sourceTree = "<group>"; };
 		847711D61B60056A007BC146 /* BaseUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUIViewController.swift; sourceTree = "<group>"; };
 		847711D81B605465007BC146 /* ParseSubsidios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseSubsidios.swift; sourceTree = "<group>"; };
 		847711DA1B60557F007BC146 /* DatosSubsidios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosSubsidios.swift; sourceTree = "<group>"; };
@@ -178,6 +184,16 @@
 			name = Parsing;
 			sourceTree = "<group>";
 		};
+		8443F5D91B61433D000CF78E /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				8443F5DA1B614359000CF78E /* DBConfig.swift */,
+				8443F5DC1B6151A6000CF78E /* ReporteGeneralRepository.swift */,
+				8443F5DE1B6162AD000CF78E /* FechasRepository.swift */,
+			);
+			name = SQLite;
+			sourceTree = "<group>";
+		};
 		84BA16211B4C657400ECC81A = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +218,7 @@
 		84BA162C1B4C657400ECC81A /* SNIIV */ = {
 			isa = PBXGroup;
 			children = (
+				8443F5D91B61433D000CF78E /* SQLite */,
 				A37D9B201B5D97BF00433D80 /* Images.xcassets */,
 				841642D01B5EAC5900D10900 /* Utils */,
 				A33B8C271B4EE17B00B200E5 /* CoreData */,
@@ -433,7 +450,9 @@
 				841642DE1B5EFDDA00D10900 /* CRUDPCU.swift in Sources */,
 				840F82AA1B54630900A3B9E7 /* Utils.swift in Sources */,
 				840C6BB01B5809500044A83C /* ParseReporteGeneral.swift in Sources */,
+				8443F5DB1B614359000CF78E /* DBConfig.swift in Sources */,
 				841642DA1B5EEF4600D10900 /* ParseValorVivienda.swift in Sources */,
+				8443F5DF1B6162AD000CF78E /* FechasRepository.swift in Sources */,
 				A33B8C261B4EE0AC00B200E5 /* ReporteGeneral.swift in Sources */,
 				841301301B571A35004946C7 /* ParseAvanceObra.swift in Sources */,
 				841642C91B5D9CED00D10900 /* Context.swift in Sources */,
@@ -444,6 +463,7 @@
 				A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */,
 				A39E1B151B570A95000DEBA3 /* PCUViewController.swift in Sources */,
 				841642D61B5EC52400D10900 /* ParseTipoVivienda.swift in Sources */,
+				8443F5DD1B6151A6000CF78E /* ReporteGeneralRepository.swift in Sources */,
 				841642D81B5EC5DC00D10900 /* DatosTipoVivienda.swift in Sources */,
 				A39E1B171B570ACF000DEBA3 /* ValorViviendaViewController.swift in Sources */,
 				840C6BAE1B58006F0044A83C /* ParseBase.swift in Sources */,
