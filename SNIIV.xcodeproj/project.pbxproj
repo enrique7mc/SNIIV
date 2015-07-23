@@ -30,6 +30,7 @@
 		8443F5DB1B614359000CF78E /* DBConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5DA1B614359000CF78E /* DBConfig.swift */; };
 		8443F5DD1B6151A6000CF78E /* ReporteGeneralRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5DC1B6151A6000CF78E /* ReporteGeneralRepository.swift */; };
 		8443F5DF1B6162AD000CF78E /* FechasRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5DE1B6162AD000CF78E /* FechasRepository.swift */; };
+		8443F5E11B616B1D000CF78E /* AvanceObraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5E01B616B1D000CF78E /* AvanceObraRepository.swift */; };
 		847711D71B60056A007BC146 /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847711D61B60056A007BC146 /* BaseUIViewController.swift */; };
 		847711D91B605465007BC146 /* ParseSubsidios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847711D81B605465007BC146 /* ParseSubsidios.swift */; };
 		847711DB1B60557F007BC146 /* DatosSubsidios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847711DA1B60557F007BC146 /* DatosSubsidios.swift */; };
@@ -90,6 +91,7 @@
 		8443F5DA1B614359000CF78E /* DBConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBConfig.swift; sourceTree = "<group>"; };
 		8443F5DC1B6151A6000CF78E /* ReporteGeneralRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneralRepository.swift; sourceTree = "<group>"; };
 		8443F5DE1B6162AD000CF78E /* FechasRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FechasRepository.swift; sourceTree = "<group>"; };
+		8443F5E01B616B1D000CF78E /* AvanceObraRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvanceObraRepository.swift; sourceTree = "<group>"; };
 		847711D61B60056A007BC146 /* BaseUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUIViewController.swift; sourceTree = "<group>"; };
 		847711D81B605465007BC146 /* ParseSubsidios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseSubsidios.swift; sourceTree = "<group>"; };
 		847711DA1B60557F007BC146 /* DatosSubsidios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosSubsidios.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				8443F5DA1B614359000CF78E /* DBConfig.swift */,
 				8443F5DC1B6151A6000CF78E /* ReporteGeneralRepository.swift */,
 				8443F5DE1B6162AD000CF78E /* FechasRepository.swift */,
+				8443F5E01B616B1D000CF78E /* AvanceObraRepository.swift */,
 			);
 			name = SQLite;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				8443F5DB1B614359000CF78E /* DBConfig.swift in Sources */,
 				841642DA1B5EEF4600D10900 /* ParseValorVivienda.swift in Sources */,
 				8443F5DF1B6162AD000CF78E /* FechasRepository.swift in Sources */,
+				8443F5E11B616B1D000CF78E /* AvanceObraRepository.swift in Sources */,
 				A33B8C261B4EE0AC00B200E5 /* ReporteGeneral.swift in Sources */,
 				841301301B571A35004946C7 /* ParseAvanceObra.swift in Sources */,
 				841642C91B5D9CED00D10900 /* Context.swift in Sources */,
