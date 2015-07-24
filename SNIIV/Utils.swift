@@ -55,9 +55,14 @@ class Utils {
         }
     }
     
-    static func parseInt64(string: String) -> Int64{
+    static func parseInt64(string: String) -> Int64 {
         let strAsNSString = string as NSString
         return strAsNSString.longLongValue
+    }
+    
+    static func parseDouble(string: String) -> Double {
+        let strAsNSString = string as NSString
+        return strAsNSString.doubleValue
     }
     
     static func getText(indexer: XMLIndexer) -> String {
@@ -72,6 +77,10 @@ class Utils {
         "México", "Michoacán", "Morelos", "Nayarit", "Nuevo León" , "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"]
     
     static func Sumar(a: Int64, b: Int64) -> Int64 {
+        return a + b
+    }
+    
+    static func Sumar(a: Double, b: Double) -> Double {
         return a + b
     }
 }
