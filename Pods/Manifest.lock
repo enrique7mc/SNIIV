@@ -1,10 +1,26 @@
 PODS:
+  - SQLite.swift (0.1.0.pre):
+    - SQLite.swift/Library (= 0.1.0.pre)
+  - SQLite.swift/Core (0.1.0.pre)
+  - SQLite.swift/Library (0.1.0.pre):
+    - SQLite.swift/Core
   - SWXMLHash (1.1.0)
 
 DEPENDENCIES:
+  - SQLite.swift (from `https://github.com/stephencelis/SQLite.swift.git`)
   - SWXMLHash (~> 1.1.0)
 
+EXTERNAL SOURCES:
+  SQLite.swift:
+    :git: https://github.com/stephencelis/SQLite.swift.git
+
+CHECKOUT OPTIONS:
+  SQLite.swift:
+    :commit: 89d16192bb73bf179c08c30227fbd9e52be6bf32
+    :git: https://github.com/stephencelis/SQLite.swift.git
+
 SPEC CHECKSUMS:
+  SQLite.swift: 6e05cc2b8efb0e91911e9cfb93551dd682b25843
   SWXMLHash: 3937b867dfe3091a84304176d80399fc2e709c37
 
 COCOAPODS: 0.37.2

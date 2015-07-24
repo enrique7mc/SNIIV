@@ -53,17 +53,16 @@ class ReporteGeneralViewController: BaseUIViewController {
         datos = DatosReporteGeneral(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        CRUDReporteGeneral.deleteReporteGeneral()
+        ReporteGeneralRepository.deleteAll()
         for d in datos!.datos {
-            CRUDReporteGeneral.saveReporteGeneral(d)
+            ReporteGeneralRepository.save(d)
         }
         
         picker.userInteractionEnabled = true
-
     }
     
     func loadFromStorage() {
-        let datosStorage = CRUDReporteGeneral.loadFromStorage()
+        let datosStorage = ReporteGeneralRepository.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosReporteGeneral(datos: datosStorage)
             entidad = datos?.consultaNacional()
@@ -72,7 +71,7 @@ class ReporteGeneralViewController: BaseUIViewController {
             println("no hay datos en local storage")
         }
         
-        let fechasStorage = CRUDFechas.selectFechas()
+        let fechasStorage = FechasRepository.selectFechas()
         if fechasStorage != nil {
             fechas = fechasStorage!
         } else {

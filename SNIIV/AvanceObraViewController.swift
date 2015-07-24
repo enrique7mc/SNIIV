@@ -49,9 +49,9 @@ class AvanceObraViewController: BaseUIViewController {
         datos = DatosAvanceObra(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        CRUDAvanceObra.delete()
+        AvanceObraRepository.deleteAll()
         for d in datos!.datos {
-            CRUDAvanceObra.save(d)
+            AvanceObraRepository.save(d)
         }
         
         picker.userInteractionEnabled = true
@@ -59,7 +59,7 @@ class AvanceObraViewController: BaseUIViewController {
     
     func loadFromStorage() {
         println("AvanceObra loadFromStorage")
-        let datosStorage = CRUDAvanceObra.loadFromStorage()
+        let datosStorage = AvanceObraRepository.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosAvanceObra(datos: datosStorage)
             entidad = datos?.consultaNacional()
@@ -68,7 +68,7 @@ class AvanceObraViewController: BaseUIViewController {
             println("no hay datos en local storage")
         }
         
-        let fechasStorage = CRUDFechas.selectFechas()
+        let fechasStorage = FechasRepository.selectFechas()
         if fechasStorage != nil {
             fechas = fechasStorage!
         } else {

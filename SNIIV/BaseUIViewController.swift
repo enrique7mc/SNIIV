@@ -55,10 +55,10 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             return
         }
         
-        CRUDFechas.deleteFechas()
+        FechasRepository.deleteAll()
         
         fechas = responseObject
-        CRUDFechas.saveFechas(fechas)
+        FechasRepository.save(fechas)
     }
     
     func mostrarDatos() {

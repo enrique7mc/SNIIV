@@ -50,9 +50,9 @@ class PCUViewController: BaseUIViewController {
         datos = DatosPCU(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        CRUDPCU.delete()
+        PCURepository.deleteAll()
         for d in datos!.datos {
-            CRUDPCU.save(d)
+            PCURepository.save(d)
         }
         
         picker.userInteractionEnabled = true
@@ -60,7 +60,7 @@ class PCUViewController: BaseUIViewController {
     
     func loadFromStorage() {
         println("PCU loadFromStorage")
-        let datosStorage = CRUDPCU.loadFromStorage()
+        let datosStorage = PCURepository.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosPCU(datos: datosStorage)
             entidad = datos?.consultaNacional()
@@ -69,7 +69,7 @@ class PCUViewController: BaseUIViewController {
             println("no hay datos en local storage")
         }
         
-        let fechasStorage = CRUDFechas.selectFechas()
+        let fechasStorage = FechasRepository.selectFechas()
         if fechasStorage != nil {
             fechas = fechasStorage!
         } else {

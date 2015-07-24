@@ -30,7 +30,7 @@ class ParseSubsidios<T>: ParseBase<[Subsidio]> {
                         tipo_ee: Utils.getText(elem["tipo_ee"]),
                         modalidad: Utils.getText(elem["modalidad"]),
                         acciones: Utils.parseInt64(Utils.getText(elem["acciones"])),
-                        monto: Utils.parseInt64(Utils.getText(elem["monto"])))
+                        monto: Utils.parseDouble(Utils.getText(elem["monto"])))
                 }
                 
                 self.serviceResponse!(datos as [Subsidio], nil)
@@ -44,5 +44,5 @@ struct Subsidio {
     var tipo_ee: String = ""
     var modalidad: String = ""
     var acciones: Int64 = 0
-    var monto: Int64 = 0
+    var monto: Double = 0
 }

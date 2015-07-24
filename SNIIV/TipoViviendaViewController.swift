@@ -47,9 +47,9 @@ class TipoViviendaViewController: BaseUIViewController {
         datos = DatosTipoVivienda(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        CRUDTipoVivienda.delete()
+        TipoViviendaRepository.deleteAll()
         for d in datos!.datos {
-            CRUDTipoVivienda.save(d)
+            TipoViviendaRepository.save(d)
         }
         
         picker.userInteractionEnabled = true
@@ -57,7 +57,7 @@ class TipoViviendaViewController: BaseUIViewController {
     
     func loadFromStorage() {
         println("TipoVivienda loadFromStorage")
-        let datosStorage = CRUDTipoVivienda.loadFromStorage()
+        let datosStorage = TipoViviendaRepository.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosTipoVivienda(datos: datosStorage)
             entidad = datos?.consultaNacional()
@@ -66,7 +66,7 @@ class TipoViviendaViewController: BaseUIViewController {
             println("no hay datos en local storage")
         }
         
-        let fechasStorage = CRUDFechas.selectFechas()
+        let fechasStorage = FechasRepository.selectFechas()
         if fechasStorage != nil {
             fechas = fechasStorage!
         } else {
