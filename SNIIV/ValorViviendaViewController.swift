@@ -28,6 +28,7 @@ class ValorViviendaViewController: BaseUIViewController {
 
         activarIndicador()
         
+        /*
         if Reachability.isConnectedToNetwork() {
             var parseFechas = ParseFechas<Fechas>()
             parseFechas.getDatos(handlerFechas)
@@ -35,7 +36,7 @@ class ValorViviendaViewController: BaseUIViewController {
             parseValor.getDatos(handler)
             
             return
-        }
+        }*/
         
         loadFromStorage()
     }
@@ -49,9 +50,9 @@ class ValorViviendaViewController: BaseUIViewController {
         datos = DatosValorVivienda(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        CRUDValorVivienda.delete()
+        ValorViviendaRepository.deleteAll()
         for d in datos!.datos {
-            CRUDValorVivienda.save(d)
+            ValorViviendaRepository.save(d)
         }
         
         picker.userInteractionEnabled = true
@@ -59,7 +60,7 @@ class ValorViviendaViewController: BaseUIViewController {
     
     func loadFromStorage() {
         println("Valorivienda loadFromStorage")
-        let datosStorage = CRUDValorVivienda.loadFromStorage()
+        let datosStorage = ValorViviendaRepository.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosValorVivienda(datos: datosStorage)
             entidad = datos?.consultaNacional()

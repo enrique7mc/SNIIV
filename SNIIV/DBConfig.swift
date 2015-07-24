@@ -30,6 +30,7 @@ class DBConfig {
         initializeFechas()
         initializeAvanceObra()
         initializePCU()
+        initializeValorVivienda()
     }
     
     private func initializeReporteGeneral() {
@@ -106,6 +107,26 @@ class DBConfig {
             t.column(u3)
             t.column(fc)
             t.column(nd)
+            t.column(total)
+        }
+    }
+    
+    private func initializeValorVivienda() {
+        let table = db["ValorVivienda"]
+        let cve_ent = Expression<Int>("cve_ent")
+        let economica = Expression<Int64>("economica")
+        let popular = Expression<Int64>("popular")
+        let tradicional = Expression<Int64>("tradicional")
+        let media_residencial = Expression<Int64>("media_residencial")
+        let total = Expression<Int64>("total")
+        
+        db.create(table: table, ifNotExists: true) {
+            t in
+            t.column(cve_ent)
+            t.column(economica)
+            t.column(popular)
+            t.column(tradicional)
+            t.column(media_residencial)
             t.column(total)
         }
     }
