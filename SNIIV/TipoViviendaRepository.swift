@@ -17,7 +17,7 @@ class TipoViviendaRepository {
     static let total = Expression<Int64>("total")
     
     static func save(tipo: TipoVivienda) {
-        let tabla = db["ValorVivienda"]
+        let tabla = db["TipoVivienda"]
         tabla.insert(or: .Replace,
             cve_ent <- tipo.cve_ent,
             horizontal <- tipo.horizontal,
