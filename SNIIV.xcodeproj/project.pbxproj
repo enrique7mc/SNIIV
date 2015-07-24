@@ -43,6 +43,7 @@
 		84E16C1A1B4EC72C00C56F08 /* DatosReporteGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16C191B4EC72C00C56F08 /* DatosReporteGeneral.swift */; };
 		84E16C1C1B4EE03A00C56F08 /* SoapToXml.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16C1B1B4EE03A00C56F08 /* SoapToXml.swift */; };
 		84E16C1E1B4EFC6100C56F08 /* Entidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16C1D1B4EFC6100C56F08 /* Entidad.swift */; };
+		84E1D1B11B62A1C9007C63B6 /* TipoViviendaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1D1B01B62A1C9007C63B6 /* TipoViviendaRepository.swift */; };
 		A33B8C261B4EE0AC00B200E5 /* ReporteGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B8C251B4EE0AC00B200E5 /* ReporteGeneral.swift */; };
 		A33B8C291B4EE1B400B200E5 /* CRUDReporteGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B8C281B4EE1B400B200E5 /* CRUDReporteGeneral.swift */; };
 		A37D9B211B5D97BF00433D80 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A37D9B201B5D97BF00433D80 /* Images.xcassets */; };
@@ -110,6 +111,7 @@
 		84E16C191B4EC72C00C56F08 /* DatosReporteGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosReporteGeneral.swift; sourceTree = "<group>"; };
 		84E16C1B1B4EE03A00C56F08 /* SoapToXml.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapToXml.swift; sourceTree = "<group>"; };
 		84E16C1D1B4EFC6100C56F08 /* Entidad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entidad.swift; sourceTree = "<group>"; };
+		84E1D1B01B62A1C9007C63B6 /* TipoViviendaRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipoViviendaRepository.swift; sourceTree = "<group>"; };
 		A33B8C251B4EE0AC00B200E5 /* ReporteGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneral.swift; sourceTree = "<group>"; };
 		A33B8C281B4EE1B400B200E5 /* CRUDReporteGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDReporteGeneral.swift; sourceTree = "<group>"; };
 		A35B0EEF1B4D7FD900CD25D9 /* SNIIV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SNIIV-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				8443F5DE1B6162AD000CF78E /* FechasRepository.swift */,
 				8443F5E01B616B1D000CF78E /* AvanceObraRepository.swift */,
 				8443F5E21B619236000CF78E /* PCURepository.swift */,
+				84E1D1B01B62A1C9007C63B6 /* TipoViviendaRepository.swift */,
 				8443F5E41B61979D000CF78E /* ValorViviendaRepository.swift */,
 			);
 			name = SQLite;
@@ -454,6 +457,7 @@
 				A33B8C291B4EE1B400B200E5 /* CRUDReporteGeneral.swift in Sources */,
 				A39E1B131B570A7E000DEBA3 /* AvanceObraViewController.swift in Sources */,
 				847711DB1B60557F007BC146 /* DatosSubsidios.swift in Sources */,
+				84E1D1B11B62A1C9007C63B6 /* TipoViviendaRepository.swift in Sources */,
 				841642C61B5D5C2700D10900 /* DatosAvanceObra.swift in Sources */,
 				A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */,
 				8413012E1B56D52F004946C7 /* CRUDFechas.swift in Sources */,

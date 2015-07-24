@@ -30,6 +30,7 @@ class DBConfig {
         initializeFechas()
         initializeAvanceObra()
         initializePCU()
+        initializeTipoVivienda()
         initializeValorVivienda()
     }
     
@@ -107,6 +108,22 @@ class DBConfig {
             t.column(u3)
             t.column(fc)
             t.column(nd)
+            t.column(total)
+        }
+    }
+    
+    private func initializeTipoVivienda() {
+        let table = db["TipoVivienda"]
+        let cve_ent = Expression<Int>("cve_ent")
+        let horizontal = Expression<Int64>("horizontal")
+        let vertical = Expression<Int64>("vertical")
+        let total = Expression<Int64>("total")
+        
+        db.create(table: table, ifNotExists: true) {
+            t in
+            t.column(cve_ent)
+            t.column(horizontal)
+            t.column(vertical)
             t.column(total)
         }
     }

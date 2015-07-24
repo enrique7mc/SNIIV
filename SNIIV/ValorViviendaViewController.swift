@@ -28,7 +28,6 @@ class ValorViviendaViewController: BaseUIViewController {
 
         activarIndicador()
         
-        /*
         if Reachability.isConnectedToNetwork() {
             var parseFechas = ParseFechas<Fechas>()
             parseFechas.getDatos(handlerFechas)
@@ -36,7 +35,7 @@ class ValorViviendaViewController: BaseUIViewController {
             parseValor.getDatos(handler)
             
             return
-        }*/
+        }
         
         loadFromStorage()
     }
