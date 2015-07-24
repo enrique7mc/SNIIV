@@ -40,40 +40,26 @@ struct ConsultaSubsidio {
     let total: Consulta
     
     init(subsidios: [Subsidio]) {
-        nueva = ConsultaSubsidio.obtieneConsulta(subsidios, modalidad: "Nueva")
-        usada = ConsultaSubsidio.obtieneConsulta(subsidios, modalidad: "Usada")
-        autoproduccion = ConsultaSubsidio.obtieneConsulta(subsidios, modalidad: "Autoproducción")
-        mejoramiento = ConsultaSubsidio.obtieneConsulta(subsidios, modalidad: "Mejoramiento")
-        lotes = ConsultaSubsidio.obtieneConsulta(subsidios, modalidad: "Lotes con servicio")
-        otros = ConsultaSubsidio.obtieneConsulta(subsidios, modalidad: "Otros")
-        total = ConsultaSubsidio.obtieneTotalConsulta(subsidios)
+        nueva = ConsultaSubsidio.obtieneConsulta(subsidios, filtro: { $0.modalidad == "Nueva" })
+        usada = ConsultaSubsidio.obtieneConsulta(subsidios, filtro: { $0.modalidad == "Usada" })
+        autoproduccion = ConsultaSubsidio.obtieneConsulta(subsidios, filtro: { $0.modalidad == "Autoproducción" })
+        mejoramiento = ConsultaSubsidio.obtieneConsulta(subsidios, filtro: { $0.modalidad == "Mejoramiento" })
+        lotes = ConsultaSubsidio.obtieneConsulta(subsidios, filtro: { $0.modalidad == "Lotes con servicio" })
+        otros = ConsultaSubsidio.obtieneConsulta(subsidios, filtro: { $0.modalidad == "Otros" })
+        total = ConsultaSubsidio.obtieneConsulta(subsidios, filtro: { s in return true })
     }
     
-    static func obtieneConsulta(subsidios: [Subsidio], modalidad: String) -> Consulta {
-        var acciones: Int64 = ConsultaSubsidio.calculaAcciones(subsidios, modalidad: modalidad)
-        var monto: Double = ConsultaSubsidio.calculaMontos(subsidios, modalidad: modalidad)
+    static func obtieneConsulta(subsidios: [Subsidio], filtro: (Subsidio -> Bool)) -> Consulta {
+        var acciones: Int64 = ConsultaSubsidio.calculaAcciones(subsidios, filtro: filtro)
+        var monto: Double = ConsultaSubsidio.calculaMontos(subsidios, filtro: filtro)
         return (acciones, monto)
     }
     
-    static func obtieneTotalConsulta(subsidios: [Subsidio]) -> Consulta {
-        var acciones: Int64 = ConsultaSubsidio.calculaTotalAcciones(subsidios)
-        var monto: Double = ConsultaSubsidio.calculaTotalMontos(subsidios)
-        return (acciones, monto)
+    static func calculaAcciones(subsidios: [Subsidio], filtro: (Subsidio -> Bool)) -> Int64 {
+        return subsidios.filter(filtro).map{ $0.acciones }.reduce(0, combine: Utils.Sumar)
     }
     
-    static func calculaAcciones(subsidios: [Subsidio], modalidad: String) -> Int64 {
-        return subsidios.filter{ $0.modalidad == modalidad }.map{ $0.acciones }.reduce(0, combine: Utils.Sumar)
-    }
-    
-    static func calculaMontos(subsidios: [Subsidio], modalidad: String) -> Double {
-        return subsidios.filter{ $0.modalidad == modalidad }.map{ $0.monto }.reduce(0, combine: Utils.Sumar)
-    }
-    
-    static func calculaTotalAcciones(subsidios: [Subsidio]) -> Int64 {
-        return subsidios.map{ $0.acciones }.reduce(0, combine: Utils.Sumar)
-    }
-    
-    static func calculaTotalMontos(subsidios: [Subsidio]) -> Double {
-        return subsidios.map{ $0.monto }.reduce(0, combine: Utils.Sumar)
+    static func calculaMontos(subsidios: [Subsidio], filtro: (Subsidio -> Bool)) -> Double {
+        return subsidios.filter(filtro).map{ $0.monto }.reduce(0, combine: Utils.Sumar)
     }
 }
