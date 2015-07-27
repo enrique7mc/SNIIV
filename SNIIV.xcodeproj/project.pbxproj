@@ -21,6 +21,8 @@
 		841642D81B5EC5DC00D10900 /* DatosTipoVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642D71B5EC5DC00D10900 /* DatosTipoVivienda.swift */; };
 		841642DA1B5EEF4600D10900 /* ParseValorVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642D91B5EEF4600D10900 /* ParseValorVivienda.swift */; };
 		841642DC1B5EF12E00D10900 /* DatosValorVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642DB1B5EF12E00D10900 /* DatosValorVivienda.swift */; };
+		842188771B669401000D3BE6 /* ParseFinanciamientos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842188761B669401000D3BE6 /* ParseFinanciamientos.swift */; };
+		842188791B6697A6000D3BE6 /* DatosFinanciamiento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842188781B6697A6000D3BE6 /* DatosFinanciamiento.swift */; };
 		8443F5DB1B614359000CF78E /* DBConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5DA1B614359000CF78E /* DBConfig.swift */; };
 		8443F5DD1B6151A6000CF78E /* ReporteGeneralRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5DC1B6151A6000CF78E /* ReporteGeneralRepository.swift */; };
 		8443F5DF1B6162AD000CF78E /* FechasRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5DE1B6162AD000CF78E /* FechasRepository.swift */; };
@@ -73,6 +75,8 @@
 		841642D71B5EC5DC00D10900 /* DatosTipoVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosTipoVivienda.swift; sourceTree = "<group>"; };
 		841642D91B5EEF4600D10900 /* ParseValorVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseValorVivienda.swift; sourceTree = "<group>"; };
 		841642DB1B5EF12E00D10900 /* DatosValorVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosValorVivienda.swift; sourceTree = "<group>"; };
+		842188761B669401000D3BE6 /* ParseFinanciamientos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseFinanciamientos.swift; sourceTree = "<group>"; };
+		842188781B6697A6000D3BE6 /* DatosFinanciamiento.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosFinanciamiento.swift; sourceTree = "<group>"; };
 		8443F5DA1B614359000CF78E /* DBConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBConfig.swift; sourceTree = "<group>"; };
 		8443F5DC1B6151A6000CF78E /* ReporteGeneralRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneralRepository.swift; sourceTree = "<group>"; };
 		8443F5DE1B6162AD000CF78E /* FechasRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FechasRepository.swift; sourceTree = "<group>"; };
@@ -167,6 +171,8 @@
 				841642DB1B5EF12E00D10900 /* DatosValorVivienda.swift */,
 				847711D81B605465007BC146 /* ParseSubsidios.swift */,
 				847711DA1B60557F007BC146 /* DatosSubsidios.swift */,
+				842188761B669401000D3BE6 /* ParseFinanciamientos.swift */,
+				842188781B6697A6000D3BE6 /* DatosFinanciamiento.swift */,
 			);
 			name = Parsing;
 			sourceTree = "<group>";
@@ -410,6 +416,7 @@
 				84E16C1A1B4EC72C00C56F08 /* DatosReporteGeneral.swift in Sources */,
 				847711D71B60056A007BC146 /* BaseUIViewController.swift in Sources */,
 				841642D41B5EAF7F00D10900 /* DatosPCU.swift in Sources */,
+				842188791B6697A6000D3BE6 /* DatosFinanciamiento.swift in Sources */,
 				8443F5E31B619236000CF78E /* PCURepository.swift in Sources */,
 				84E16C1E1B4EFC6100C56F08 /* Entidad.swift in Sources */,
 				84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */,
@@ -417,6 +424,7 @@
 				A39E1B131B570A7E000DEBA3 /* AvanceObraViewController.swift in Sources */,
 				847711DB1B60557F007BC146 /* DatosSubsidios.swift in Sources */,
 				84E1D1B11B62A1C9007C63B6 /* TipoViviendaRepository.swift in Sources */,
+				842188771B669401000D3BE6 /* ParseFinanciamientos.swift in Sources */,
 				841642C61B5D5C2700D10900 /* DatosAvanceObra.swift in Sources */,
 				840F82AA1B54630900A3B9E7 /* Utils.swift in Sources */,
 				840C6BB01B5809500044A83C /* ParseReporteGeneral.swift in Sources */,
