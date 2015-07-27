@@ -28,7 +28,10 @@ class DatosSubsidios {
     }
 }
 
-typealias Consulta = (Int64, Double)
+struct Consulta {
+    let acciones: Int64
+    let monto: Double
+}
 
 struct ConsultaSubsidio {
     let nueva: Consulta
@@ -49,17 +52,17 @@ struct ConsultaSubsidio {
         total = ConsultaSubsidio.obtieneConsulta(subsidios, filtro: { s in return true })
     }
     
-    static func obtieneConsulta(subsidios: [Subsidio], filtro: (Subsidio -> Bool)) -> Consulta {
+    private static func obtieneConsulta(subsidios: [Subsidio], filtro: (Subsidio -> Bool)) -> Consulta {
         var acciones: Int64 = ConsultaSubsidio.calculaAcciones(subsidios, filtro: filtro)
         var monto: Double = ConsultaSubsidio.calculaMontos(subsidios, filtro: filtro)
-        return (acciones, monto)
+        return Consulta(acciones: acciones, monto: monto)
     }
     
-    static func calculaAcciones(subsidios: [Subsidio], filtro: (Subsidio -> Bool)) -> Int64 {
+    private static func calculaAcciones(subsidios: [Subsidio], filtro: (Subsidio -> Bool)) -> Int64 {
         return subsidios.filter(filtro).map{ $0.acciones }.reduce(0, combine: Utils.Sumar)
     }
     
-    static func calculaMontos(subsidios: [Subsidio], filtro: (Subsidio -> Bool)) -> Double {
+    private static func calculaMontos(subsidios: [Subsidio], filtro: (Subsidio -> Bool)) -> Double {
         return subsidios.filter(filtro).map{ $0.monto }.reduce(0, combine: Utils.Sumar)
     }
 }
