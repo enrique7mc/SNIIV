@@ -64,4 +64,9 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     func mostrarDatos() {
         println("mostrarDatos not implemented")
     }
+    
+    func habilitarPantalla() {
+        self.mostrarDatos()
+        self.desactivarIndicador()
+    }
 }
