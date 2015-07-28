@@ -9,7 +9,7 @@
 import UIKit
 
 class DemandaFinanciamientosViewController: BaseUIViewController {
-
+    @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var txtTitleFinanciamientos: UITextField!
 
     @IBOutlet weak var txtNuevasSubsidiosMto: UILabel!
@@ -30,7 +30,8 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
     @IBOutlet weak var txtOtrosCreditoAcc: UILabel!
     @IBOutlet weak var txtOtrosCreditoMto: UILabel!
     
-    @IBOutlet weak var picker: UIPickerView!
+ 
+    
     
     @IBOutlet weak var txtTotalAcc: UILabel!
     @IBOutlet weak var txtTotalMto: UILabel!
@@ -41,7 +42,6 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         txtTitleFinanciamientos.enabled=false;
-        
         picker.userInteractionEnabled = false
         
         activarIndicador()
@@ -82,7 +82,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
         if datosStorage.count > 0 {
             datos = DatosFinanciamiento()
             consulta = datos?.consultaNacional()
-            habilitarPantalla()
+           
             picker.userInteractionEnabled = true
         } else {
             println("no hay datos en local storage")
@@ -94,6 +94,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
         } else {
             println("no hay fechas en local storage")
         }
+         habilitarPantalla()
     }
 
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

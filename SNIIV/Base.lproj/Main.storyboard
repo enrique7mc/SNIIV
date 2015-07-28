@@ -267,6 +267,10 @@
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g09-Ay-MMI">
                                 <rect key="frame" x="0.0" y="338" width="320" height="162"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="1fO-Ph-mxJ" id="dbp-ht-ceD"/>
+                                    <outlet property="delegate" destination="1fO-Ph-mxJ" id="YpS-UA-JYT"/>
+                                </connections>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -729,6 +733,10 @@
                             </label>
                             <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BiL-KT-omf">
                                 <rect key="frame" x="2" y="338" width="320" height="162"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5g0-tk-r2J" id="QMh-tm-D0j"/>
+                                    <outlet property="delegate" destination="5g0-tk-r2J" id="XsJ-EB-uJE"/>
+                                </connections>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -747,7 +755,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Financiamientos" id="fvk-Qf-Cae"/>
                     <connections>
-                        <outlet property="picker" destination="BiL-KT-omf" id="hmJ-ef-ewl"/>
+                        <outlet property="picker" destination="BiL-KT-omf" id="dvv-Gl-ocz"/>
                         <outlet property="txtMejoramientoCreditoAcc" destination="zuY-K2-Rzw" id="ldn-ad-bfB"/>
                         <outlet property="txtMejoramientoCreditoMto" destination="ed8-u8-nae" id="tTH-Gg-B1C"/>
                         <outlet property="txtMejoramientoSubsidiosAcc" destination="Kdv-3m-7Uu" id="uqv-oD-JQn"/>
