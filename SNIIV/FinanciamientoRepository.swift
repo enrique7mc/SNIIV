@@ -79,29 +79,30 @@ class FinanciamientoRepository {
         var consulta = ConsultaFinanciamiento()
         
         let viviendasNuevas = financiamiento.filter(destino == "Viviendas Nuevas")
-        consulta.viviendasNuevas.cofinanciamiento.monto = viviendasNuevas.filter(agrupacion == COFINANCIAMIENTOS).sum(monto)!
-        consulta.viviendasNuevas.cofinanciamiento.acciones = viviendasNuevas.filter(agrupacion == COFINANCIAMIENTOS).sum(acciones)!
-        consulta.viviendasNuevas.creditoIndividual.monto = viviendasNuevas.filter(agrupacion == CREDITO_INDIVIDUAL).sum(monto)!
-        consulta.viviendasNuevas.creditoIndividual.acciones = viviendasNuevas.filter(agrupacion == CREDITO_INDIVIDUAL).sum(acciones)!
+        consulta.viviendasNuevas.cofinanciamiento = generaConsulta(viviendasNuevas.filter(agrupacion == COFINANCIAMIENTOS))
+        consulta.viviendasNuevas.creditoIndividual = generaConsulta(viviendasNuevas.filter(agrupacion == CREDITO_INDIVIDUAL))
         
         let viviendasUsadas = financiamiento.filter(destino == "Viviendas Usadas")
-        consulta.viviendasUsadas.cofinanciamiento.monto = viviendasUsadas.filter(agrupacion == COFINANCIAMIENTOS).sum(monto)!
-        consulta.viviendasUsadas.cofinanciamiento.acciones = viviendasUsadas.filter(agrupacion == COFINANCIAMIENTOS).sum(acciones)!
-        consulta.viviendasUsadas.creditoIndividual.monto = viviendasUsadas.filter(agrupacion == CREDITO_INDIVIDUAL).sum(monto)!
-        consulta.viviendasUsadas.creditoIndividual.acciones = viviendasUsadas.filter(agrupacion == CREDITO_INDIVIDUAL).sum(acciones)!
+        consulta.viviendasUsadas.cofinanciamiento = generaConsulta(viviendasUsadas.filter(agrupacion == COFINANCIAMIENTOS))
+        consulta.viviendasUsadas.creditoIndividual = generaConsulta(viviendasUsadas.filter(agrupacion == CREDITO_INDIVIDUAL))
         
         let mejoramientos = financiamiento.filter(destino == "Mejoramientos")
-        consulta.mejoramientos.cofinanciamiento.monto = mejoramientos.filter(agrupacion == COFINANCIAMIENTOS).sum(monto)!
-        consulta.mejoramientos.cofinanciamiento.acciones = mejoramientos.filter(agrupacion == COFINANCIAMIENTOS).sum(acciones)!
-        consulta.mejoramientos.creditoIndividual.monto = mejoramientos.filter(agrupacion == CREDITO_INDIVIDUAL).sum(monto)!
-        consulta.mejoramientos.creditoIndividual.acciones = mejoramientos.filter(agrupacion == CREDITO_INDIVIDUAL).sum(acciones)!
+        consulta.mejoramientos.cofinanciamiento = generaConsulta(mejoramientos.filter(agrupacion == COFINANCIAMIENTOS))
+        consulta.mejoramientos.creditoIndividual = generaConsulta(mejoramientos.filter(agrupacion == CREDITO_INDIVIDUAL))
         
         let otrosProgramas = financiamiento.filter(destino == "Otros programas")
-        consulta.otrosProgramas.creditoIndividual.monto = otrosProgramas.filter(agrupacion == CREDITO_INDIVIDUAL).sum(monto)!
-        consulta.otrosProgramas.creditoIndividual.acciones = otrosProgramas.filter(agrupacion == CREDITO_INDIVIDUAL).sum(acciones)!
+        consulta.otrosProgramas.creditoIndividual = generaConsulta(otrosProgramas.filter(agrupacion == CREDITO_INDIVIDUAL))
         
         consulta.total.monto = financiamiento.sum(monto)!
         consulta.total.acciones = financiamiento.sum(acciones)!
+        
+        return consulta
+    }
+    
+    private static func generaConsulta(query: Query) -> Consulta {
+        var consulta = Consulta()
+        consulta.monto = query.sum(monto) ?? 0
+        consulta.acciones = query.sum(acciones) ?? 0
         
         return consulta
     }
