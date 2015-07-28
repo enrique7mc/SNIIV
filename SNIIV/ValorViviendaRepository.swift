@@ -18,8 +18,10 @@ class ValorViviendaRepository {
     static let media_residencial = Expression<Int64>("media_residencial")
     static let total = Expression<Int64>("total")
     
+    private static let TABLA = "ValorVivienda"
+    
     static func save(valor: ValorVivienda) {
-        let tabla = db["ValorVivienda"]
+        let tabla = db[TABLA]
         tabla.insert(or: .Replace,
             cve_ent <- valor.cve_ent,
             economica <- valor.economica,
@@ -29,13 +31,19 @@ class ValorViviendaRepository {
             total <- valor.total)
     }
     
+    static func saveAll(elementos: [ValorVivienda]) {
+        for e in elementos {
+            ValorViviendaRepository.save(e)
+        }
+    }
+    
     static func deleteAll() {
-        let tabla = db["ValorVivienda"]
+        let tabla = db[TABLA]
         tabla.delete()
     }
     
     static func loadFromStorage() -> [ValorVivienda] {
-        let tabla = db["ValorVivienda"]
+        let tabla = db[TABLA]
         let all = Array(tabla)
         var result: [ValorVivienda] = []
         

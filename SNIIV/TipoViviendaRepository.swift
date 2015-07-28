@@ -16,8 +16,10 @@ class TipoViviendaRepository {
     static let vertical = Expression<Int64>("vertical")
     static let total = Expression<Int64>("total")
     
+    private static let TABLA = "TipoVivienda"
+    
     static func save(tipo: TipoVivienda) {
-        let tabla = db["TipoVivienda"]
+        let tabla = db[TABLA]
         tabla.insert(or: .Replace,
             cve_ent <- tipo.cve_ent,
             horizontal <- tipo.horizontal,
@@ -25,13 +27,19 @@ class TipoViviendaRepository {
             total <- tipo.total)
     }
     
+    static func saveAll(elementos: [TipoVivienda]) {
+        for e in elementos {
+            TipoViviendaRepository.save(e)
+        }
+    }
+    
     static func deleteAll() {
-        let tabla = db["TipoVivienda"]
+        let tabla = db[TABLA]
         tabla.delete()
     }
     
     static func loadFromStorage() -> [TipoVivienda] {
-        let tabla = db["TipoVivienda"]
+        let tabla = db[TABLA]
         let all = Array(tabla)
         var result: [TipoVivienda] = []
         

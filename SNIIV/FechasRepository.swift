@@ -15,8 +15,10 @@ class FechasRepository {
     static let fecha_subs = Expression<String>("fecha_subs")
     static let fecha_vv = Expression<String>("fecha_vv")
     
+    private static let TABLA = "Fechas"
+    
     static func save(fecha: Fechas) {
-        let fechas = db["Fechas"]
+        let fechas = db[TABLA]
         fechas.insert(or: .Replace,
             fecha_finan <- fecha.fecha_finan,
             fecha_subs <- fecha.fecha_subs,
@@ -24,12 +26,12 @@ class FechasRepository {
     }
     
     static func deleteAll() {
-        let reporte = db["Fechas"]
+        let reporte = db[TABLA]
         reporte.delete()
     }
     
     static func selectFechas() -> Fechas? {
-        let reporte = db["Fechas"]
+        let reporte = db[TABLA]
         
         if let fechas = reporte.first {
             return Fechas(fecha_finan: fechas[fecha_finan], fecha_subs: fechas[fecha_subs], fecha_vv: fechas[fecha_vv])

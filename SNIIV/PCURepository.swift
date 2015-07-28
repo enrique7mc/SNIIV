@@ -19,8 +19,10 @@ class PCURepository {
     static let nd = Expression<Int64>("nd")
     static let total = Expression<Int64>("total")
     
+    private static let TABLA = "PCU"
+    
     static func save(pcu: PCU) {
-        let tabla = db["PCU"]
+        let tabla = db[TABLA]
         tabla.insert(or: .Replace,
             cve_ent <- pcu.cve_ent,
             u1 <- pcu.u1,
@@ -31,13 +33,19 @@ class PCURepository {
             total <- pcu.total)
     }
     
+    static func saveAll(elementos: [PCU]) {
+        for e in elementos {
+            PCURepository.save(e)
+        }
+    }
+    
     static func deleteAll() {
-        let tabla = db["PCU"]
+        let tabla = db[TABLA]
         tabla.delete()
     }
     
     static func loadFromStorage() -> [PCU] {
-        let tabla = db["PCU"]
+        let tabla = db[TABLA]
         let all = Array(tabla)
         var result: [PCU] = []
         
