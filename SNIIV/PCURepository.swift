@@ -61,6 +61,20 @@ class PCURepository {
         
         return result
     }
+    
+    static func consultaNacional() -> PCU {
+        let reporte = db[TABLA]
+        var datoEntidad = PCU()
+        
+        datoEntidad.u1 = reporte.sum(u1)!
+        datoEntidad.u2 = reporte.sum(u2)!
+        datoEntidad.u3 = reporte.sum(u3)!
+        datoEntidad.fc = reporte.sum(fc)!
+        datoEntidad.nd = reporte.sum(nd)!
+        datoEntidad.total = reporte.sum(total)!
+        
+        return datoEntidad
+    }
 }
 
 
