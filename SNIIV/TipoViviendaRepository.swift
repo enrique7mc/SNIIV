@@ -52,5 +52,16 @@ class TipoViviendaRepository {
         
         return result
     }
+    
+    static func consultaNacional() -> TipoVivienda {
+        let reporte = db[TABLA]
+        var datoEntidad = TipoVivienda()
+        
+        datoEntidad.horizontal = reporte.sum(horizontal)!
+        datoEntidad.vertical = reporte.sum(vertical)!
+        datoEntidad.total = reporte.sum(total)!
+        
+        return datoEntidad
+    }
 }
 

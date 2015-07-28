@@ -44,15 +44,16 @@ class TipoViviendaViewController: BaseUIViewController {
             return
         }
         
+        TipoViviendaRepository.deleteAll()
+        TipoViviendaRepository.saveAll(responseObject)
+        
         datos = DatosTipoVivienda(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        TipoViviendaRepository.deleteAll()
-        for d in datos!.datos {
-            TipoViviendaRepository.save(d)
+        dispatch_async(dispatch_get_main_queue()){
+            self.habilitarPantalla()
+            self.picker.userInteractionEnabled = true
         }
-        
-        picker.userInteractionEnabled = true
     }
     
     func loadFromStorage() {
@@ -72,6 +73,8 @@ class TipoViviendaViewController: BaseUIViewController {
         } else {
             println("no hay fechas en local storage")
         }
+        
+        habilitarPantalla()
     }
     
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
