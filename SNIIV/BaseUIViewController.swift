@@ -13,11 +13,11 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     var fechas: Fechas = Fechas()
     var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     
-    override func viewDidAppear(animated: Bool) {
+    /*override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         mostrarDatos()
         desactivarIndicador()
-    }
+    }*/
     
     func activarIndicador() {
         indicator.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
