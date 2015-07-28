@@ -27,13 +27,13 @@ class ParseReporteGeneral<T>: ParseBase<[ReporteGeneralPrueba]> {
                 var xml = SWXMLHash.parse(self.xmlResponse)
                 var sniiv = xml["soap:Envelope"]["soap:Body"]["TotalesResponse"]["TotalesResult"]["app_sniiv_tot"]
                 var datos = sniiv.all.map{ elem in
-                    ReporteGeneralPrueba(cveeNT: Utils.getText(elem["cve_ent"]),
-                        accFinan: Utils.getText(elem["acc_finan"]),
-                        mtoFinan: Utils.getText(elem["mto_finan"]),
-                        accSubs: Utils.getText(elem["acc_subs"]),
-                        mtoSubs: Utils.getText(elem["mto_subs"]),
-                        vv: Utils.getText(elem["vv"]),
-                        vr: Utils.getText(elem["vr"]))
+                    ReporteGeneralPrueba(cveeNT: Utils.parseInt(Utils.getText(elem["cve_ent"])),
+                        accFinan: Utils.parseInt64(Utils.getText(elem["acc_finan"])),
+                        mtoFinan: Utils.parseInt64(Utils.getText(elem["mto_finan"])),
+                        accSubs: Utils.parseInt64(Utils.getText(elem["acc_subs"])),
+                        mtoSubs: Utils.parseInt64(Utils.getText(elem["mto_subs"])),
+                        vv: Utils.parseInt64(Utils.getText(elem["vv"])),
+                        vr: Utils.parseInt64(Utils.getText(elem["vr"])))
                 }
 
                 self.serviceResponse!(datos as [ReporteGeneralPrueba], nil)
@@ -43,11 +43,11 @@ class ParseReporteGeneral<T>: ParseBase<[ReporteGeneralPrueba]> {
 }
 
 struct ReporteGeneralPrueba {
-    var cveeNT: String = ""
-    var accFinan: String = ""
-    var mtoFinan: String = ""
-    var accSubs: String = ""
-    var mtoSubs: String = ""
-    var vv: String = ""
-    var vr: String = ""
+    var cveeNT: Int = 0
+    var accFinan: Int64 = 0
+    var mtoFinan: Int64 = 0
+    var accSubs: Int64 = 0
+    var mtoSubs: Int64 = 0
+    var vv: Int64 = 0
+    var vr: Int64 = 0
 }
