@@ -29,8 +29,8 @@ class DatosSubsidios {
 }
 
 struct Consulta {
-    let acciones: Int64
-    let monto: Double
+    var acciones: Int64 = 0
+    var monto: Double = 0
 }
 
 struct ConsultaSubsidio {
