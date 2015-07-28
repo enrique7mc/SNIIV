@@ -19,8 +19,10 @@ class ReporteGeneralRepository {
     static let vv = Expression<Int64>("vv")
     static let vr = Expression<Int64>("vr")
     
+    private static let TABLA = "ReporteGeneral"
+    
     static func save(reporteGeneral: ReporteGeneralPrueba) {
-        let reporte = db["ReporteGeneral"]
+        let reporte = db[TABLA]
         reporte.insert(or: .Replace,
             cve_ent <- reporteGeneral.cveeNT,
             accFinan <- reporteGeneral.accFinan,
@@ -31,19 +33,19 @@ class ReporteGeneralRepository {
             vr <- reporteGeneral.vr)
     }
     
-    static func saveAll(reportes: [ReporteGeneralPrueba]) {
-        for r in reportes {
-            ReporteGeneralRepository.save(r)
+    static func saveAll(elementos: [ReporteGeneralPrueba]) {
+        for e in elementos {
+            ReporteGeneralRepository.save(e)
         }
     }
     
     static func deleteAll() {
-        let reporte = db["ReporteGeneral"]
+        let reporte = db[TABLA]
         reporte.delete()
     }
     
     static func loadFromStorage() -> [ReporteGeneralPrueba] {
-        let reporte = db["ReporteGeneral"]
+        let reporte = db[TABLA]
         let all = Array(reporte)
         var result: [ReporteGeneralPrueba] = []
         
@@ -61,7 +63,7 @@ class ReporteGeneralRepository {
     }
     
     static func consultaNacional() -> ReporteGeneralPrueba {
-        let reporte = db["ReporteGeneral"]
+        let reporte = db[TABLA]
         var datoEntidad = ReporteGeneralPrueba()
         
         datoEntidad.accFinan = reporte.sum(accFinan)!
