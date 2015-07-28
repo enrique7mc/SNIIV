@@ -18,8 +18,10 @@ class AvanceObraRepository {
     static let viv_term_ant = Expression<Int64>("viv_term_ant")
     static let total = Expression<Int64>("total")
     
+    private static let TABLA = "AvanceObra"
+    
     static func save(avanceObra: AvanceObra) {
-        let tabla = db["AvanceObra"]
+        let tabla = db[TABLA]
         tabla.insert(or: .Replace,
             cve_ent <- avanceObra.cve_ent,
             viv_proc_m50 <- avanceObra.viv_proc_m50,
@@ -29,13 +31,19 @@ class AvanceObraRepository {
             total <- avanceObra.total)
     }
     
+    static func saveAll(elementos: [AvanceObra]) {
+        for e in elementos {
+            AvanceObraRepository.save(e)
+        }
+    }
+    
     static func deleteAll() {
-        let tabla = db["AvanceObra"]
+        let tabla = db[TABLA]
         tabla.delete()
     }
     
     static func loadFromStorage() -> [AvanceObra] {
-        let tabla = db["AvanceObra"]
+        let tabla = db[TABLA]
         let all = Array(tabla)
         var result: [AvanceObra] = []
         
@@ -49,5 +57,18 @@ class AvanceObraRepository {
         }
         
         return result
+    }
+    
+    static func consultaNacional() -> AvanceObra {
+        let reporte = db[TABLA]
+        var datoEntidad = AvanceObra()
+        
+        datoEntidad.viv_proc_m50 = reporte.sum(viv_proc_m50)!
+        datoEntidad.viv_proc_50_99 = reporte.sum(viv_proc_50_99)!
+        datoEntidad.viv_term_rec = reporte.sum(viv_term_rec)!
+        datoEntidad.viv_term_ant = reporte.sum(viv_term_ant)!
+        datoEntidad.total = reporte.sum(total)!
+        
+        return datoEntidad
     }
 }

@@ -46,15 +46,16 @@ class AvanceObraViewController: BaseUIViewController {
             return
         }
         
+        AvanceObraRepository.deleteAll()
+        AvanceObraRepository.saveAll(responseObject)
+        
         datos = DatosAvanceObra(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        AvanceObraRepository.deleteAll()
-        for d in datos!.datos {
-            AvanceObraRepository.save(d)
+        dispatch_async(dispatch_get_main_queue()){
+            self.habilitarPantalla()
+            self.picker.userInteractionEnabled = true
         }
-        
-        picker.userInteractionEnabled = true
     }
     
     func loadFromStorage() {
@@ -74,6 +75,8 @@ class AvanceObraViewController: BaseUIViewController {
         } else {
             println("no hay fechas en local storage")
         }
+        
+        habilitarPantalla()
     }
 
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
