@@ -35,6 +35,9 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
     
     @IBOutlet weak var picker: UIPickerView!
     
+    @IBOutlet weak var txtTotalAcc: UILabel!
+    @IBOutlet weak var txtTotalMto: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         txtTitleFinanciamientos.enabled=false;

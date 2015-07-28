@@ -47,6 +47,7 @@
 		A39E1B171B570ACF000DEBA3 /* ValorViviendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E1B161B570ACF000DEBA3 /* ValorViviendaViewController.swift */; };
 		A39E1B191B570AE2000DEBA3 /* TipoViviendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E1B181B570AE2000DEBA3 /* TipoViviendaViewController.swift */; };
 		A3B39D121B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B39D111B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift */; };
+		A3B39D141B66D66400C65F41 /* DemandaSubsidiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B39D131B66D66400C65F41 /* DemandaSubsidiosViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		A39E1B161B570ACF000DEBA3 /* ValorViviendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValorViviendaViewController.swift; sourceTree = "<group>"; };
 		A39E1B181B570AE2000DEBA3 /* TipoViviendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipoViviendaViewController.swift; sourceTree = "<group>"; };
 		A3B39D111B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandaFinanciamientosViewController.swift; sourceTree = "<group>"; };
+		A3B39D131B66D66400C65F41 /* DemandaSubsidiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandaSubsidiosViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 				A39E1B161B570ACF000DEBA3 /* ValorViviendaViewController.swift */,
 				847711D61B60056A007BC146 /* BaseUIViewController.swift */,
 				A3B39D111B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift */,
+				A3B39D131B66D66400C65F41 /* DemandaSubsidiosViewController.swift */,
 			);
 			path = SNIIV;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				84E16C1C1B4EE03A00C56F08 /* SoapToXml.swift in Sources */,
 				84E16C1A1B4EC72C00C56F08 /* DatosReporteGeneral.swift in Sources */,
 				847711D71B60056A007BC146 /* BaseUIViewController.swift in Sources */,
+				A3B39D141B66D66400C65F41 /* DemandaSubsidiosViewController.swift in Sources */,
 				841642D41B5EAF7F00D10900 /* DatosPCU.swift in Sources */,
 				842188791B6697A6000D3BE6 /* DatosFinanciamiento.swift in Sources */,
 				8443F5E31B619236000CF78E /* PCURepository.swift in Sources */,
