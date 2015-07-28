@@ -30,9 +30,6 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
     @IBOutlet weak var txtOtrosCreditoAcc: UILabel!
     @IBOutlet weak var txtOtrosCreditoMto: UILabel!
     
- 
-    
-    
     @IBOutlet weak var txtTotalAcc: UILabel!
     @IBOutlet weak var txtTotalMto: UILabel!
     
@@ -94,7 +91,8 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
         } else {
             println("no hay fechas en local storage")
         }
-         habilitarPantalla()
+        
+        habilitarPantalla()
     }
 
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

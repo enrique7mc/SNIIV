@@ -26,26 +26,105 @@ class DemandaSubsidiosViewController: BaseUIViewController {
     @IBOutlet weak var txtTotalAcc: UILabel!
     @IBOutlet weak var txtTotalMto: UILabel!
     @IBOutlet weak var picker: UIPickerView!
+    
+    var consulta: ConsultaSubsidio?
+    var datos: DatosSubsidios?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtTitleSubsidios.enabled=false
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        txtTitleSubsidios.enabled=false;
+        picker.userInteractionEnabled = false
+        
+        activarIndicador()
+        
+        if Reachability.isConnectedToNetwork() {
+            var parseFechas = ParseFechas<Fechas>()
+            parseFechas.getDatos(handlerFechas)
+            var parseSubsidios = ParseSubsidios<[Subsidio]>()
+            parseSubsidios.getDatos(handler)
+            
+            return
+        }
+        
+        loadFromStorage()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func handler (responseObject: [Subsidio], error: NSError?) -> Void {
+        if error != nil {
+            println("Subsidio error obteniendo datos")
+            return
+        }
+        
+        SubsidioRepository.deleteAll()
+        SubsidioRepository.saveAll(responseObject)
+        
+        datos = DatosSubsidios()
+        consulta = datos!.consultaNacional()
+        
+        dispatch_async(dispatch_get_main_queue()){
+            self.habilitarPantalla()
+            self.picker.userInteractionEnabled = true
+        }
     }
-    */
-
+    
+    func loadFromStorage() {
+        println("Subsidio loadFromStorage")
+        let datosStorage = SubsidioRepository.loadFromStorage()
+        if datosStorage.count > 0 {
+            datos = DatosSubsidios()
+            consulta = datos?.consultaNacional()
+            
+            picker.userInteractionEnabled = true
+        } else {
+            println("no hay datos en local storage")
+        }
+        
+        let fechasStorage = FechasRepository.selectFechas()
+        if fechasStorage != nil {
+            fechas = fechasStorage!
+        } else {
+            println("no hay fechas en local storage")
+        }
+        
+        habilitarPantalla()
+    }
+    
+    override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        var itemSelected = Utils.entidades[row]
+        if row == 0 {
+            consulta = datos!.consultaNacional()
+        } else {
+            consulta = datos!.consultaEntidad(Entidad(rawValue: row)!)
+        }
+        
+        mostrarDatos()
+    }
+    
+    override func mostrarDatos() {
+        if consulta != nil {
+            txtNuevaMto.text = Utils.toStringDivide(consulta!.nueva.monto, divide: 1000000)
+            txtNuevaAcc.text = Utils.toString(consulta!.nueva.acciones)
+            
+            txtUsadaMto.text = Utils.toStringDivide(consulta!.usada.monto, divide: 1000000)
+            txtUsadaAcc.text = Utils.toString(consulta!.usada.acciones)
+            
+            txtAutoproduccionMto.text = Utils.toStringDivide(consulta!.autoproduccion.monto, divide: 1000000)
+            txtAutoproduccionAcc.text = Utils.toString(consulta!.autoproduccion.acciones)
+            
+            txtMejoramientoMto.text = Utils.toStringDivide(consulta!.mejoramiento.monto, divide: 1000000)
+            txtMejoramientoAcc.text = Utils.toString(consulta!.mejoramiento.acciones)
+            
+            txtLoteMto.text = Utils.toStringDivide(consulta!.lotes.monto, divide: 1000000)
+            txtLoteAcc.text = Utils.toString(consulta!.lotes.acciones)
+            
+            txtOtroMto.text = Utils.toStringDivide(consulta!.otros.monto, divide: 1000000)
+            txtOtroAcc.text = Utils.toString(consulta!.otros.acciones)
+            
+            
+            txtTotalMto.text = Utils.toStringDivide(consulta!.total.monto, divide: 1000000)
+            txtTotalAcc.text = Utils.toString(consulta!.total.acciones)
+        }
+        
+        txtTitleSubsidios.text = "Subsidios \(fechas.fecha_finan)"
+    }
 }

@@ -33,6 +33,7 @@ class DBConfig {
         initializeTipoVivienda()
         initializeValorVivienda()
         initializeFinanciamiento()
+        initializeSubsidio()
     }
     
     private func initializeReporteGeneral() {
@@ -164,6 +165,24 @@ class DBConfig {
             t.column(organismo)
             t.column(destino)
             t.column(agrupacion)
+            t.column(acciones)
+            t.column(monto)
+        }
+    }
+    
+    private func initializeSubsidio() {
+        let table = db["Subsidio"]
+        let cve_ent = Expression<Int>("cve_ent")
+        let tipo_ee = Expression<String>("tipo_ee")
+        let modalidad = Expression<String>("modalidad")
+        let acciones = Expression<Int64>("acciones")
+        let monto = Expression<Double>("monto")
+        
+        db.create(table: table, ifNotExists: true) {
+            t in
+            t.column(cve_ent)
+            t.column(tipo_ee)
+            t.column(modalidad)
             t.column(acciones)
             t.column(monto)
         }
