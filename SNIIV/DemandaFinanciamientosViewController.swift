@@ -17,18 +17,15 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
     @IBOutlet weak var txtNuevasCreditoAcc: UILabel!
     @IBOutlet weak var txtNuevasCreditoMto: UILabel!
     
-    
     @IBOutlet weak var txtUsadasSubsidiosAcc: UILabel!
     @IBOutlet weak var txtUsadasSubsidiosMto: UILabel!
     @IBOutlet weak var txtUsadasCreditoMto: UILabel!
     @IBOutlet weak var txtUsadasCreditoAcc: UILabel!
     
-    
     @IBOutlet weak var txtMejoramientoSubsidiosMto: UILabel!
     @IBOutlet weak var txtMejoramientoCreditoAcc: UILabel!
     @IBOutlet weak var txtMejoramientoCreditoMto: UILabel!
     @IBOutlet weak var txtMejoramientoSubsidiosAcc: UILabel!
-    
     
     @IBOutlet weak var txtOtrosCreditoAcc: UILabel!
     @IBOutlet weak var txtOtrosCreditoMto: UILabel!
@@ -74,8 +71,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
         consulta = datos!.consultaNacional()
         
         dispatch_async(dispatch_get_main_queue()){
-            self.mostrarDatos()
-            self.desactivarIndicador()
+            self.habilitarPantalla()
             self.picker.userInteractionEnabled = true
         }
     }
@@ -86,6 +82,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
         if datosStorage.count > 0 {
             datos = DatosFinanciamiento()
             consulta = datos?.consultaNacional()
+            habilitarPantalla()
             picker.userInteractionEnabled = true
         } else {
             println("no hay datos en local storage")
@@ -97,10 +94,6 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
         } else {
             println("no hay fechas en local storage")
         }
-        
-        self.mostrarDatos()
-        self.desactivarIndicador()
-        self.picker.userInteractionEnabled = true
     }
 
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -133,6 +126,9 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
             
             txtOtrosCreditoMto.text = Utils.toStringDivide(consulta!.otrosProgramas.creditoIndividual.monto, divide: 1000000)
             txtOtrosCreditoAcc.text = Utils.toString(consulta!.otrosProgramas.creditoIndividual.acciones)
+            
+            txtTotalMto.text = Utils.toStringDivide(consulta!.total.monto, divide: 1000000)
+            txtTotalAcc.text = Utils.toString(consulta!.total.acciones)
         }
         
         txtTitleFinanciamientos.text = "Financiamientos \(fechas.fecha_finan)"
