@@ -50,15 +50,17 @@ class ReporteGeneralViewController: BaseUIViewController {
             return
         }
         
+        ReporteGeneralRepository.deleteAll()
+        ReporteGeneralRepository.saveAll(responseObject)
+        
         datos = DatosReporteGeneral(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        ReporteGeneralRepository.deleteAll()
-        for d in datos!.datos {
-            ReporteGeneralRepository.save(d)
+        dispatch_async(dispatch_get_main_queue()){
+            self.mostrarDatos()
+            self.desactivarIndicador()
+            self.picker.userInteractionEnabled = true
         }
-        
-        picker.userInteractionEnabled = true
     }
     
     func loadFromStorage() {
@@ -77,6 +79,10 @@ class ReporteGeneralViewController: BaseUIViewController {
         } else {
             println("no hay fechas en local storage")
         }
+        
+        self.mostrarDatos()
+        self.desactivarIndicador()
+        self.picker.userInteractionEnabled = true
     }
     
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -93,12 +99,12 @@ class ReporteGeneralViewController: BaseUIViewController {
     
     override func mostrarDatos() {
         if entidad != nil {
-            txtFinanAcc.text = entidad!.accFinan
-            txtFinanMto.text = entidad!.mtoFinan
-            txtSubAcc.text = entidad!.accSubs
-            txtSubMto.text = entidad!.mtoSubs
-            txtViviendasVigentes.text = entidad!.vv
-            txtViviendasRegistradas.text = entidad!.vr
+            txtFinanAcc.text = Utils.toString(entidad!.accFinan)
+            txtFinanMto.text = Utils.toStringDivide(entidad!.mtoFinan, divide: 1000000)
+            txtSubAcc.text = Utils.toString(entidad!.accSubs)
+            txtSubMto.text = Utils.toStringDivide(entidad!.mtoSubs, divide: 1000000)
+            txtViviendasVigentes.text = Utils.toString(entidad!.vv)
+            txtViviendasRegistradas.text = Utils.toString(entidad!.vr)
         }
         
         labelFinanciamiento.text = "Financiamientos \(fechas.fecha_finan)"
