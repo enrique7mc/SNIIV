@@ -35,26 +35,104 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
     
     @IBOutlet weak var picker: UIPickerView!
     
+    var consulta: ConsultaFinanciamiento?
+    var datos: DatosFinanciamiento?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         txtTitleFinanciamientos.enabled=false;
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        picker.userInteractionEnabled = false
+        
+        activarIndicador()
+        
+        if Reachability.isConnectedToNetwork() {
+            var parseFechas = ParseFechas<Fechas>()
+            parseFechas.getDatos(handlerFechas)
+            var parseFinanciamientos = ParseFinanciamientos<[Financiamiento]>()
+            parseFinanciamientos.getDatos(handler)
+            
+            return
+        }
+        
+        loadFromStorage()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func handler (responseObject: [Financiamiento], error: NSError?) -> Void {
+        if error != nil {
+            println("Financiamiento error obteniendo datos")
+            return
+        }
+        
+        FinanciamientoRepository.deleteAll()
+        FinanciamientoRepository.saveAll(responseObject)
+        
+        datos = DatosFinanciamiento()
+        consulta = datos!.consultaNacional()
+        
+        dispatch_async(dispatch_get_main_queue()){
+            self.mostrarDatos()
+            self.desactivarIndicador()
+            self.picker.userInteractionEnabled = true
+        }
     }
-    */
+    
+    func loadFromStorage() {
+        println("Financiamiento loadFromStorage")
+        let datosStorage = FinanciamientoRepository.loadFromStorage()
+        if datosStorage.count > 0 {
+            datos = DatosFinanciamiento()
+            consulta = datos?.consultaNacional()
+            picker.userInteractionEnabled = true
+        } else {
+            println("no hay datos en local storage")
+        }
+        
+        let fechasStorage = FechasRepository.selectFechas()
+        if fechasStorage != nil {
+            fechas = fechasStorage!
+        } else {
+            println("no hay fechas en local storage")
+        }
+        
+        self.mostrarDatos()
+        self.desactivarIndicador()
+        self.picker.userInteractionEnabled = true
+    }
 
+    override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        var itemSelected = Utils.entidades[row]
+        if row == 0 {
+            consulta = datos!.consultaNacional()
+        } else {
+            consulta = datos!.consultaEntidad(Entidad(rawValue: row)!)
+        }
+        
+        mostrarDatos()
+    }
+    
+    override func mostrarDatos() {
+        if consulta != nil {
+            txtNuevasSubsidiosMto.text = Utils.toStringDivide(consulta!.viviendasNuevas.cofinanciamiento.monto, divide: 1000000)
+            txtNuevasSubsidiosAcc.text = Utils.toString(consulta!.viviendasNuevas.cofinanciamiento.acciones)
+            txtNuevasCreditoMto.text = Utils.toStringDivide(consulta!.viviendasNuevas.creditoIndividual.monto, divide: 1000000)
+            txtNuevasCreditoAcc.text = Utils.toString(consulta!.viviendasNuevas.creditoIndividual.acciones)
+            
+            txtUsadasSubsidiosMto.text = Utils.toStringDivide(consulta!.viviendasUsadas.cofinanciamiento.monto, divide: 1000000)
+            txtUsadasSubsidiosAcc.text = Utils.toString(consulta!.viviendasUsadas.cofinanciamiento.acciones)
+            txtUsadasCreditoMto.text = Utils.toStringDivide(consulta!.viviendasUsadas.creditoIndividual.monto, divide: 1000000)
+            txtUsadasCreditoAcc.text = Utils.toString(consulta!.viviendasUsadas.creditoIndividual.acciones)
+            
+            txtMejoramientoSubsidiosMto.text = Utils.toStringDivide(consulta!.mejoramientos.cofinanciamiento.monto, divide: 1000000)
+            txtMejoramientoCreditoAcc.text = Utils.toString(consulta!.mejoramientos.cofinanciamiento.acciones)
+            txtMejoramientoCreditoMto.text = Utils.toStringDivide(consulta!.mejoramientos.creditoIndividual.monto, divide: 1000000)
+            txtMejoramientoSubsidiosAcc.text = Utils.toString(consulta!.mejoramientos.creditoIndividual.acciones)
+            
+            txtOtrosCreditoMto.text = Utils.toStringDivide(consulta!.otrosProgramas.creditoIndividual.monto, divide: 1000000)
+            txtOtrosCreditoAcc.text = Utils.toString(consulta!.otrosProgramas.creditoIndividual.acciones)
+        }
+        
+        txtTitleFinanciamientos.text = "Financiamientos \(fechas.fecha_finan)"
+    }
+    
 }
