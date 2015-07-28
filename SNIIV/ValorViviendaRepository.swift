@@ -58,5 +58,18 @@ class ValorViviendaRepository {
         
         return result
     }
+    
+    static func consultaNacional() -> ValorVivienda {
+        let reporte = db[TABLA]
+        var datoEntidad = ValorVivienda()
+        
+        datoEntidad.economica = reporte.sum(economica)!
+        datoEntidad.popular = reporte.sum(popular)!
+        datoEntidad.tradicional = reporte.sum(tradicional)!
+        datoEntidad.media_residencial = reporte.sum(media_residencial)!
+        datoEntidad.total = reporte.sum(total)!
+        
+        return datoEntidad
+    }
 }
 

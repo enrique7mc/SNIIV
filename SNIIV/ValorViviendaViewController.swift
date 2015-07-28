@@ -46,15 +46,16 @@ class ValorViviendaViewController: BaseUIViewController {
             return
         }
         
+        ValorViviendaRepository.deleteAll()
+        ValorViviendaRepository.saveAll(responseObject)
+        
         datos = DatosValorVivienda(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        ValorViviendaRepository.deleteAll()
-        for d in datos!.datos {
-            ValorViviendaRepository.save(d)
+        dispatch_async(dispatch_get_main_queue()){
+            self.habilitarPantalla()
+            self.picker.userInteractionEnabled = true
         }
-        
-        picker.userInteractionEnabled = true
     }
     
     func loadFromStorage() {
@@ -74,6 +75,8 @@ class ValorViviendaViewController: BaseUIViewController {
         } else {
             println("no hay fechas en local storage")
         }
+        
+        habilitarPantalla()
     }
     
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
