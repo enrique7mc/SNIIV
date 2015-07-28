@@ -32,17 +32,18 @@ class DBConfig {
         initializePCU()
         initializeTipoVivienda()
         initializeValorVivienda()
+        initializeFinanciamiento()
     }
     
     private func initializeReporteGeneral() {
         let reporteGeneral = db["ReporteGeneral"]
-        let cve_ent = Expression<String>("cve_ent")
-        let accFinan = Expression<String>("accFinan")
-        let mtoFinan = Expression<String>("mtoFinan")
-        let accSubs = Expression<String>("accSubs")
-        let mtoSubs = Expression<String>("mtoSubs")
-        let vv = Expression<String>("vv")
-        let vr = Expression<String>("vr")
+        let cve_ent = Expression<Int>("cve_ent")
+        let accFinan = Expression<Int64>("accFinan")
+        let mtoFinan = Expression<Int64>("mtoFinan")
+        let accSubs = Expression<Int64>("accSubs")
+        let mtoSubs = Expression<Int64>("mtoSubs")
+        let vv = Expression<Int64>("vv")
+        let vr = Expression<Int64>("vr")
         
         db.create(table: reporteGeneral, ifNotExists: true) {
             t in
@@ -145,6 +146,26 @@ class DBConfig {
             t.column(tradicional)
             t.column(media_residencial)
             t.column(total)
+        }
+    }
+    
+    private func initializeFinanciamiento() {
+        let table = db["Financiamiento"]
+        let cve_ent = Expression<Int>("cve_ent")
+        let organismo = Expression<String>("organismo")
+        let destino = Expression<String>("destino")
+        let agrupacion = Expression<String>("agrupacion")
+        let acciones = Expression<Int64>("acciones")
+        let monto = Expression<Double>("monto")
+        
+        db.create(table: table, ifNotExists: true) {
+            t in
+            t.column(cve_ent)
+            t.column(organismo)
+            t.column(destino)
+            t.column(agrupacion)
+            t.column(acciones)
+            t.column(monto)
         }
     }
 }
