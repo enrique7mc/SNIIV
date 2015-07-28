@@ -26,6 +26,14 @@ class Utils {
         return "-"
     }
     
+    static func toStringDivide(numero: Double?, divide: Int = 1000) -> String {
+        if let num = numero {
+            return Utils().decimalFormat(Double(num) / Double(divide))
+        }
+        
+        return "-"
+    }
+    
     static func toString(numero: Double) -> String {
         return Utils().decimalFormat(numero)
     }
