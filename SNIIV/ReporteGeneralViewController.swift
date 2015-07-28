@@ -57,8 +57,7 @@ class ReporteGeneralViewController: BaseUIViewController {
         entidad = datos!.consultaNacional()
         
         dispatch_async(dispatch_get_main_queue()){
-            self.mostrarDatos()
-            self.desactivarIndicador()
+            self.habilitarPantalla()
             self.picker.userInteractionEnabled = true
         }
     }
@@ -80,9 +79,7 @@ class ReporteGeneralViewController: BaseUIViewController {
             println("no hay fechas en local storage")
         }
         
-        self.mostrarDatos()
-        self.desactivarIndicador()
-        self.picker.userInteractionEnabled = true
+        habilitarPantalla()
     }
     
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
