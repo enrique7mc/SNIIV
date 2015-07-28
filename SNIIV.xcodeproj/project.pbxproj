@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3D5E2F250DCC758C330F7472 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E20A6D76BD5BDE88E515E57 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8402548C1B5988E1000DBBF5 /* ParseFechas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402548B1B5988E1000DBBF5 /* ParseFechas.swift */; };
+		840A02931B67E76D000EF460 /* FinanciamientoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A02921B67E76D000EF460 /* FinanciamientoRepository.swift */; };
 		840C6BAE1B58006F0044A83C /* ParseBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C6BAD1B58006F0044A83C /* ParseBase.swift */; };
 		840C6BB01B5809500044A83C /* ParseReporteGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C6BAF1B5809500044A83C /* ParseReporteGeneral.swift */; };
 		840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F82A61B54375E00A3B9E7 /* Reachability.swift */; };
@@ -64,6 +65,7 @@
 		5E1A4F2FCD79641EB9AFCAB9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		62385B87DA1F4CCED8B80DDB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8402548B1B5988E1000DBBF5 /* ParseFechas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseFechas.swift; sourceTree = "<group>"; };
+		840A02921B67E76D000EF460 /* FinanciamientoRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinanciamientoRepository.swift; sourceTree = "<group>"; };
 		840C6BAD1B58006F0044A83C /* ParseBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseBase.swift; sourceTree = "<group>"; };
 		840C6BAF1B5809500044A83C /* ParseReporteGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseReporteGeneral.swift; sourceTree = "<group>"; };
 		840F82A61B54375E00A3B9E7 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				8443F5E21B619236000CF78E /* PCURepository.swift */,
 				84E1D1B01B62A1C9007C63B6 /* TipoViviendaRepository.swift */,
 				8443F5E41B61979D000CF78E /* ValorViviendaRepository.swift */,
+				840A02921B67E76D000EF460 /* FinanciamientoRepository.swift */,
 			);
 			name = SQLite;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				84E16C1A1B4EC72C00C56F08 /* DatosReporteGeneral.swift in Sources */,
 				847711D71B60056A007BC146 /* BaseUIViewController.swift in Sources */,
 				841642D41B5EAF7F00D10900 /* DatosPCU.swift in Sources */,
+				840A02931B67E76D000EF460 /* FinanciamientoRepository.swift in Sources */,
 				842188791B6697A6000D3BE6 /* DatosFinanciamiento.swift in Sources */,
 				8443F5E31B619236000CF78E /* PCURepository.swift in Sources */,
 				84E16C1E1B4EFC6100C56F08 /* Entidad.swift in Sources */,
