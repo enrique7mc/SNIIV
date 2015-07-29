@@ -22,20 +22,23 @@ class FinanciamientoRepository {
     private static let COFINANCIAMIENTOS = "Cofinanciamientos y Subsidios"
     private static let CREDITO_INDIVIDUAL = "Crédito Individual"
     
-    static func save(reporteGeneral: Financiamiento) {
+    static func save(dato: Financiamiento) {
         let reporte = db[TABLA]
-        reporte.insert(or: .Replace,
-            cve_ent <- reporteGeneral.cve_ent,
-            organismo <- reporteGeneral.organismo,
-            destino <- reporteGeneral.destino,
-            agrupacion <- reporteGeneral.agrupacion,
-            acciones <- reporteGeneral.acciones,
-            monto <- reporteGeneral.monto)
+        reporte.insert(
+            cve_ent <- dato.cve_ent,
+            organismo <- dato.organismo,
+            destino <- dato.destino,
+            agrupacion <- dato.agrupacion,
+            acciones <- dato.acciones,
+            monto <- dato.monto)
     }
     
     static func saveAll(datos: [Financiamiento]) {
+        var insert = String(format: "INSERT INTO %@ (%@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?)",
+            TABLA, "cve_ent", "organismo", "destino", "agrupacion", "acciones", "monto")
+        let stmt = db.prepare(insert)
         for d in datos {
-            FinanciamientoRepository.save(d)
+            stmt.run(d.cve_ent, d.organismo, d.destino, d.agrupacion, d.acciones, d.monto)
         }
     }
     
