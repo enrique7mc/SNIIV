@@ -34,11 +34,21 @@ class FinanciamientoRepository {
     }
     
     static func saveAll(datos: [Financiamiento]) {
-        var insert = String(format: "INSERT INTO %@ (%@, %@, %@, %@, %@, %@) VALUES (?, ?, ?, ?, ?, ?)",
-            TABLA, "cve_ent", "organismo", "destino", "agrupacion", "acciones", "monto")
-        let stmt = db.prepare(insert)
-        for d in datos {
-            stmt.run(d.cve_ent, d.organismo, d.destino, d.agrupacion, d.acciones, d.monto)
+        let reporte = db[TABLA]
+        db.transaction(.Deferred) { txn in
+            for dato in datos {
+                if reporte.insert(
+                    cve_ent <- dato.cve_ent,
+                    organismo <- dato.organismo,
+                    destino <- dato.destino,
+                    agrupacion <- dato.agrupacion,
+                    acciones <- dato.acciones,
+                    monto <- dato.monto).statement.failed {
+                    return .Rollback
+                }
+            }
+            
+            return .Commit
         }
     }
     
