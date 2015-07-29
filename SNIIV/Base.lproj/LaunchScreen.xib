@@ -10,8 +10,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="SNIIV 80x80" translatesAutoresizingMaskIntoConstraints="NO" id="azJ-3r-XxG">
-                    <rect key="frame" x="43" y="313" width="231" height="91"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="SNIIV 120X120" translatesAutoresizingMaskIntoConstraints="NO" id="azJ-3r-XxG">
+                    <rect key="frame" x="50" y="283" width="231" height="91"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sistema Nacional de Información" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mr2-Ee-fca">
                     <rect key="frame" x="27" y="145" width="254" height="21"/>
@@ -33,7 +33,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Comisión Nacional de Vivienda " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjq-UH-6dJ">
-                    <rect key="frame" x="33" y="526" width="243" height="21"/>
+                    <rect key="frame" x="44" y="506" width="243" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -47,10 +47,10 @@
                 <constraint firstItem="Bcl-tf-xsg" firstAttribute="top" secondItem="mdc-M1-eFz" secondAttribute="bottom" constant="122" id="NcT-1C-6hP"/>
                 <constraint firstAttribute="centerX" secondItem="mr2-Ee-fca" secondAttribute="centerX" id="SOn-Uj-EF8"/>
                 <constraint firstItem="mdc-M1-eFz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="XJh-qf-InW"/>
-                <constraint firstItem="cjq-UH-6dJ" firstAttribute="top" secondItem="azJ-3r-XxG" secondAttribute="bottom" constant="122" id="aag-M7-vOH"/>
+                <constraint firstItem="cjq-UH-6dJ" firstAttribute="centerY" secondItem="azJ-3r-XxG" secondAttribute="centerY" constant="188" id="cQd-s1-yuL"/>
                 <constraint firstAttribute="centerX" secondItem="mdc-M1-eFz" secondAttribute="centerX" id="ecY-CW-QDx"/>
-                <constraint firstItem="cjq-UH-6dJ" firstAttribute="centerX" secondItem="azJ-3r-XxG" secondAttribute="centerX" constant="-4" id="mGb-Jf-8rT"/>
                 <constraint firstItem="mr2-Ee-fca" firstAttribute="top" secondItem="mdc-M1-eFz" secondAttribute="bottom" constant="77" id="rlR-fp-cQo"/>
+                <constraint firstAttribute="centerX" secondItem="cjq-UH-6dJ" secondAttribute="centerX" id="wPz-ep-YZH"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -58,7 +58,7 @@
         </view>
     </objects>
     <resources>
-        <image name="SNIIV 80x80" width="80" height="80"/>
+        <image name="SNIIV 120X120" width="120" height="120"/>
         <image name="header_conav" width="443" height="69"/>
     </resources>
 </document>

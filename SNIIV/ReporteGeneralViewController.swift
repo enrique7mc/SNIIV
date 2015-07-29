@@ -2,10 +2,7 @@
 
 import UIKit
 
-class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    
-    var opt = ["Nacional","Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Coahuila", "Colima", "Chiapas" , "Chihuahua", "Distrito Federal", "Durango", "Guanajuato", "Guerrero","Hidalgo", "Jalisco",
-        "México", "Michoacán", "Morelos", "Nayarit", "Nuevo León" , "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"]
+class ReporteGeneralViewController: BaseUIViewController {
 
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var txtFinanMto: UILabel!
@@ -18,65 +15,55 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
     @IBOutlet weak var labelSubsidios: UITextField!
     @IBOutlet weak var labelVivienda: UITextField!
     
+    @IBOutlet weak var txtTitleOferta: UITextField!
+    @IBOutlet weak var txtTitleSub: UITextField!
+    @IBOutlet weak var txtTitleFinan: UITextField!
     
     var rowSelected = 0
-    var entidad: DatoEntidad?
+    var entidad: ReporteGeneralPrueba?
     var datos: DatosReporteGeneral?
-    var fechas: Fechas = Fechas()
-    
-    var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        indicator.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
-        indicator.center = view.center
-        view.addSubview(indicator)
-        indicator.bringSubviewToFront(view)
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        txtTitleOferta.enabled = false
+        txtTitleFinan.enabled = false
+        txtTitleSub.enabled = false
         picker.userInteractionEnabled = false
         
-        indicator.startAnimating()
+        activarIndicador()
+        
         if Reachability.isConnectedToNetwork() {
-            var parseSoap = ParseSoap()
-            parseSoap.getDatosReporte(handler)
-            parseSoap.getDatosFecha(handlerFechas)
-            picker.userInteractionEnabled = true
+            var parseFechas = ParseFechas<Fechas?>()
+            parseFechas.getDatos(handlerFechas)
+            var parseReporte = ParseReporteGeneral<[ReporteGeneralPrueba]>()
+            parseReporte.getDatos(handler)
+            
             return
         }
         
         loadFromStorage()
     }
     
-    func handler (responseObject: [ReporteGeneralPrueba]?, error: NSError?) {
+    func handler (responseObject: [ReporteGeneralPrueba], error: NSError?) -> Void {
         if error != nil {
             println("Error obteniendo datos")
             return
         }
         
-        datos = DatosReporteGeneral(datos: responseObject!)
+        ReporteGeneralRepository.deleteAll()
+        ReporteGeneralRepository.saveAll(responseObject)
+        
+        datos = DatosReporteGeneral(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        CRUDReporteGeneral.deleteReporteGeneral()
-        for d in datos!.datos {
-            CRUDReporteGeneral.saveReporteGeneral(d)
+        dispatch_async(dispatch_get_main_queue()){
+            self.habilitarPantalla()
+            self.picker.userInteractionEnabled = true
         }
-    }
-    
-    func handlerFechas (responseObject: Fechas, error: NSError?) {
-        if error != nil {
-            println("Error obteniendo fechas")
-            return
-        }
-
-        CRUDFechas.deleteFechas()
-        
-        fechas = responseObject
-        CRUDFechas.saveReporteGeneral(fechas)
     }
     
     func loadFromStorage() {
-        let datosStorage = CRUDReporteGeneral.loadFromStorage()
+        let datosStorage = ReporteGeneralRepository.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosReporteGeneral(datos: datosStorage)
             entidad = datos?.consultaNacional()
@@ -85,37 +72,18 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
             println("no hay datos en local storage")
         }
         
-        let fechasStorage = CRUDFechas.selectFechas()
+        let fechasStorage = FechasRepository.selectFechas()
         if fechasStorage != nil {
             fechas = fechasStorage!
         } else {
             println("no hay fechas en local storage")
         }
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        mostrarDatos()
-        indicator.stopAnimating()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        
+        habilitarPantalla()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return opt.count
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return opt[row]
-    }
-    
-   func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        var itemSelected = opt[row]
+    override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        var itemSelected = Utils.entidades[row]
     
         if row == 0 {
             entidad = datos?.consultaNacional()
@@ -126,20 +94,18 @@ class ReporteGeneralViewController: UIViewController, UIPickerViewDataSource, UI
         mostrarDatos()
     }
     
-    func mostrarDatos() {
+    override func mostrarDatos() {
         if entidad != nil {
             txtFinanAcc.text = Utils.toString(entidad!.accFinan)
-            txtFinanMto.text = Utils.toString(entidad!.mtoFinan, divide: 1000000)
+            txtFinanMto.text = Utils.toStringDivide(entidad!.mtoFinan, divide: 1000000)
             txtSubAcc.text = Utils.toString(entidad!.accSubs)
-            txtSubMto.text = Utils.toString(entidad!.mtoSubs, divide: 1000000)
+            txtSubMto.text = Utils.toStringDivide(entidad!.mtoSubs, divide: 1000000)
             txtViviendasVigentes.text = Utils.toString(entidad!.vv)
             txtViviendasRegistradas.text = Utils.toString(entidad!.vr)
         }
         
-        
         labelFinanciamiento.text = "Financiamientos \(fechas.fecha_finan)"
         labelSubsidios.text = "Subsidios \(fechas.fecha_subs)"
         labelVivienda.text = "Oferta de Vivienda \(fechas.fecha_vv)"
-        
     }
 }

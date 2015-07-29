@@ -8,23 +8,48 @@
 
 /* Begin PBXBuildFile section */
 		3D5E2F250DCC758C330F7472 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E20A6D76BD5BDE88E515E57 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8402548C1B5988E1000DBBF5 /* ParseFechas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402548B1B5988E1000DBBF5 /* ParseFechas.swift */; };
+		840A02931B67E76D000EF460 /* FinanciamientoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A02921B67E76D000EF460 /* FinanciamientoRepository.swift */; };
+		840A02951B6832A9000EF460 /* SubsidioRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A02941B6832A9000EF460 /* SubsidioRepository.swift */; };
+		840C6BAE1B58006F0044A83C /* ParseBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C6BAD1B58006F0044A83C /* ParseBase.swift */; };
+		840C6BB01B5809500044A83C /* ParseReporteGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C6BAF1B5809500044A83C /* ParseReporteGeneral.swift */; };
 		840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F82A61B54375E00A3B9E7 /* Reachability.swift */; };
 		840F82AA1B54630900A3B9E7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F82A91B54630900A3B9E7 /* Utils.swift */; };
-		8413012B1B56CBBE004946C7 /* Fechas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413012A1B56CBBE004946C7 /* Fechas.swift */; };
-		8413012E1B56D52F004946C7 /* CRUDFechas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413012D1B56D52F004946C7 /* CRUDFechas.swift */; };
-		843FD49F1B4DDAF100930AEB /* ParseSoap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FD49E1B4DDAF000930AEB /* ParseSoap.swift */; };
+		841301301B571A35004946C7 /* ParseAvanceObra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413012F1B571A35004946C7 /* ParseAvanceObra.swift */; };
+		841642C61B5D5C2700D10900 /* DatosAvanceObra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642C51B5D5C2700D10900 /* DatosAvanceObra.swift */; };
+		841642D21B5EAE7E00D10900 /* ParsePCU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642D11B5EAE7E00D10900 /* ParsePCU.swift */; };
+		841642D41B5EAF7F00D10900 /* DatosPCU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642D31B5EAF7F00D10900 /* DatosPCU.swift */; };
+		841642D61B5EC52400D10900 /* ParseTipoVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642D51B5EC52400D10900 /* ParseTipoVivienda.swift */; };
+		841642D81B5EC5DC00D10900 /* DatosTipoVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642D71B5EC5DC00D10900 /* DatosTipoVivienda.swift */; };
+		841642DA1B5EEF4600D10900 /* ParseValorVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642D91B5EEF4600D10900 /* ParseValorVivienda.swift */; };
+		841642DC1B5EF12E00D10900 /* DatosValorVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642DB1B5EF12E00D10900 /* DatosValorVivienda.swift */; };
+		842188771B669401000D3BE6 /* ParseFinanciamientos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842188761B669401000D3BE6 /* ParseFinanciamientos.swift */; };
+		842188791B6697A6000D3BE6 /* DatosFinanciamiento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842188781B6697A6000D3BE6 /* DatosFinanciamiento.swift */; };
+		8443F5DB1B614359000CF78E /* DBConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5DA1B614359000CF78E /* DBConfig.swift */; };
+		8443F5DD1B6151A6000CF78E /* ReporteGeneralRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5DC1B6151A6000CF78E /* ReporteGeneralRepository.swift */; };
+		8443F5DF1B6162AD000CF78E /* FechasRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5DE1B6162AD000CF78E /* FechasRepository.swift */; };
+		8443F5E11B616B1D000CF78E /* AvanceObraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5E01B616B1D000CF78E /* AvanceObraRepository.swift */; };
+		8443F5E31B619236000CF78E /* PCURepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5E21B619236000CF78E /* PCURepository.swift */; };
+		8443F5E51B61979D000CF78E /* ValorViviendaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5E41B61979D000CF78E /* ValorViviendaRepository.swift */; };
+		847711D71B60056A007BC146 /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847711D61B60056A007BC146 /* BaseUIViewController.swift */; };
+		847711D91B605465007BC146 /* ParseSubsidios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847711D81B605465007BC146 /* ParseSubsidios.swift */; };
+		847711DB1B60557F007BC146 /* DatosSubsidios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847711DA1B60557F007BC146 /* DatosSubsidios.swift */; };
 		84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA162F1B4C657400ECC81A /* AppDelegate.swift */; };
 		84BA16351B4C657400ECC81A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16331B4C657400ECC81A /* Main.storyboard */; };
-		84BA16371B4C657400ECC81A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16361B4C657400ECC81A /* Images.xcassets */; };
 		84BA163A1B4C657400ECC81A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BA16381B4C657400ECC81A /* LaunchScreen.xib */; };
 		84BA16461B4C657400ECC81A /* SNIIVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA16451B4C657400ECC81A /* SNIIVTests.swift */; };
-		84E16C1A1B4EC72C00C56F08 /* ReporteGeneralPrueba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16C191B4EC72C00C56F08 /* ReporteGeneralPrueba.swift */; };
+		84E16C1A1B4EC72C00C56F08 /* DatosReporteGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16C191B4EC72C00C56F08 /* DatosReporteGeneral.swift */; };
 		84E16C1C1B4EE03A00C56F08 /* SoapToXml.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16C1B1B4EE03A00C56F08 /* SoapToXml.swift */; };
 		84E16C1E1B4EFC6100C56F08 /* Entidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16C1D1B4EFC6100C56F08 /* Entidad.swift */; };
-		A33B8C261B4EE0AC00B200E5 /* ReporteGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B8C251B4EE0AC00B200E5 /* ReporteGeneral.swift */; };
-		A33B8C291B4EE1B400B200E5 /* CRUDReporteGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B8C281B4EE1B400B200E5 /* CRUDReporteGeneral.swift */; };
+		84E1D1B11B62A1C9007C63B6 /* TipoViviendaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1D1B01B62A1C9007C63B6 /* TipoViviendaRepository.swift */; };
+		A37D9B211B5D97BF00433D80 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A37D9B201B5D97BF00433D80 /* Images.xcassets */; };
 		A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38708041B4DB868009EAC52 /* ReporteGeneralViewController.swift */; };
-		A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */; };
+		A39E1B131B570A7E000DEBA3 /* AvanceObraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E1B121B570A7E000DEBA3 /* AvanceObraViewController.swift */; };
+		A39E1B151B570A95000DEBA3 /* PCUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E1B141B570A95000DEBA3 /* PCUViewController.swift */; };
+		A39E1B171B570ACF000DEBA3 /* ValorViviendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E1B161B570ACF000DEBA3 /* ValorViviendaViewController.swift */; };
+		A39E1B191B570AE2000DEBA3 /* TipoViviendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E1B181B570AE2000DEBA3 /* TipoViviendaViewController.swift */; };
+		A3B39D121B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B39D111B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift */; };
+		A3B39D141B66D66400C65F41 /* DemandaSubsidiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B39D131B66D66400C65F41 /* DemandaSubsidiosViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,29 +66,53 @@
 		2E20A6D76BD5BDE88E515E57 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1A4F2FCD79641EB9AFCAB9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		62385B87DA1F4CCED8B80DDB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		8402548B1B5988E1000DBBF5 /* ParseFechas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseFechas.swift; sourceTree = "<group>"; };
+		840A02921B67E76D000EF460 /* FinanciamientoRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinanciamientoRepository.swift; sourceTree = "<group>"; };
+		840A02941B6832A9000EF460 /* SubsidioRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubsidioRepository.swift; sourceTree = "<group>"; };
+		840C6BAD1B58006F0044A83C /* ParseBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseBase.swift; sourceTree = "<group>"; };
+		840C6BAF1B5809500044A83C /* ParseReporteGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseReporteGeneral.swift; sourceTree = "<group>"; };
 		840F82A61B54375E00A3B9E7 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		840F82A91B54630900A3B9E7 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		8413012A1B56CBBE004946C7 /* Fechas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fechas.swift; sourceTree = "<group>"; };
-		8413012C1B56D392004946C7 /* Model 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 1.1.xcdatamodel"; sourceTree = "<group>"; };
-		8413012D1B56D52F004946C7 /* CRUDFechas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDFechas.swift; sourceTree = "<group>"; };
-		843FD49E1B4DDAF000930AEB /* ParseSoap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseSoap.swift; sourceTree = "<group>"; };
+		8413012F1B571A35004946C7 /* ParseAvanceObra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAvanceObra.swift; sourceTree = "<group>"; };
+		841642C51B5D5C2700D10900 /* DatosAvanceObra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosAvanceObra.swift; sourceTree = "<group>"; };
+		841642D11B5EAE7E00D10900 /* ParsePCU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsePCU.swift; sourceTree = "<group>"; };
+		841642D31B5EAF7F00D10900 /* DatosPCU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosPCU.swift; sourceTree = "<group>"; };
+		841642D51B5EC52400D10900 /* ParseTipoVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseTipoVivienda.swift; sourceTree = "<group>"; };
+		841642D71B5EC5DC00D10900 /* DatosTipoVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosTipoVivienda.swift; sourceTree = "<group>"; };
+		841642D91B5EEF4600D10900 /* ParseValorVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseValorVivienda.swift; sourceTree = "<group>"; };
+		841642DB1B5EF12E00D10900 /* DatosValorVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosValorVivienda.swift; sourceTree = "<group>"; };
+		842188761B669401000D3BE6 /* ParseFinanciamientos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseFinanciamientos.swift; sourceTree = "<group>"; };
+		842188781B6697A6000D3BE6 /* DatosFinanciamiento.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosFinanciamiento.swift; sourceTree = "<group>"; };
+		8443F5DA1B614359000CF78E /* DBConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBConfig.swift; sourceTree = "<group>"; };
+		8443F5DC1B6151A6000CF78E /* ReporteGeneralRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneralRepository.swift; sourceTree = "<group>"; };
+		8443F5DE1B6162AD000CF78E /* FechasRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FechasRepository.swift; sourceTree = "<group>"; };
+		8443F5E01B616B1D000CF78E /* AvanceObraRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvanceObraRepository.swift; sourceTree = "<group>"; };
+		8443F5E21B619236000CF78E /* PCURepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCURepository.swift; sourceTree = "<group>"; };
+		8443F5E41B61979D000CF78E /* ValorViviendaRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValorViviendaRepository.swift; sourceTree = "<group>"; };
+		847711D61B60056A007BC146 /* BaseUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUIViewController.swift; sourceTree = "<group>"; };
+		847711D81B605465007BC146 /* ParseSubsidios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseSubsidios.swift; sourceTree = "<group>"; };
+		847711DA1B60557F007BC146 /* DatosSubsidios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosSubsidios.swift; sourceTree = "<group>"; };
 		84BA162A1B4C657400ECC81A /* SNIIV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNIIV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA162E1B4C657400ECC81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84BA162F1B4C657400ECC81A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84BA16341B4C657400ECC81A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		84BA16361B4C657400ECC81A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84BA16391B4C657400ECC81A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		84BA163F1B4C657400ECC81A /* SNIIVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SNIIVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BA16441B4C657400ECC81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84BA16451B4C657400ECC81A /* SNIIVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNIIVTests.swift; sourceTree = "<group>"; };
-		84E16C191B4EC72C00C56F08 /* ReporteGeneralPrueba.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneralPrueba.swift; sourceTree = "<group>"; };
+		84E16C191B4EC72C00C56F08 /* DatosReporteGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosReporteGeneral.swift; sourceTree = "<group>"; };
 		84E16C1B1B4EE03A00C56F08 /* SoapToXml.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapToXml.swift; sourceTree = "<group>"; };
 		84E16C1D1B4EFC6100C56F08 /* Entidad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entidad.swift; sourceTree = "<group>"; };
-		A33B8C251B4EE0AC00B200E5 /* ReporteGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneral.swift; sourceTree = "<group>"; };
-		A33B8C281B4EE1B400B200E5 /* CRUDReporteGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDReporteGeneral.swift; sourceTree = "<group>"; };
+		84E1D1B01B62A1C9007C63B6 /* TipoViviendaRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipoViviendaRepository.swift; sourceTree = "<group>"; };
 		A35B0EEF1B4D7FD900CD25D9 /* SNIIV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SNIIV-Bridging-Header.h"; sourceTree = "<group>"; };
+		A37D9B201B5D97BF00433D80 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A38708041B4DB868009EAC52 /* ReporteGeneralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneralViewController.swift; sourceTree = "<group>"; };
-		A38B36B41B4CA0D700606D3A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		A39E1B121B570A7E000DEBA3 /* AvanceObraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvanceObraViewController.swift; sourceTree = "<group>"; };
+		A39E1B141B570A95000DEBA3 /* PCUViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCUViewController.swift; sourceTree = "<group>"; };
+		A39E1B161B570ACF000DEBA3 /* ValorViviendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValorViviendaViewController.swift; sourceTree = "<group>"; };
+		A39E1B181B570AE2000DEBA3 /* TipoViviendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipoViviendaViewController.swift; sourceTree = "<group>"; };
+		A3B39D111B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandaFinanciamientosViewController.swift; sourceTree = "<group>"; };
+		A3B39D131B66D66400C65F41 /* DemandaSubsidiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandaSubsidiosViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,18 +151,54 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		843FD49D1B4DDACB00930AEB /* Parsing */ = {
+		841642D01B5EAC5900D10900 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				843FD49E1B4DDAF000930AEB /* ParseSoap.swift */,
-				84E16C191B4EC72C00C56F08 /* ReporteGeneralPrueba.swift */,
 				84E16C1B1B4EE03A00C56F08 /* SoapToXml.swift */,
 				84E16C1D1B4EFC6100C56F08 /* Entidad.swift */,
 				840F82A61B54375E00A3B9E7 /* Reachability.swift */,
 				840F82A91B54630900A3B9E7 /* Utils.swift */,
-				8413012A1B56CBBE004946C7 /* Fechas.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		843FD49D1B4DDACB00930AEB /* Parsing */ = {
+			isa = PBXGroup;
+			children = (
+				840C6BAD1B58006F0044A83C /* ParseBase.swift */,
+				840C6BAF1B5809500044A83C /* ParseReporteGeneral.swift */,
+				84E16C191B4EC72C00C56F08 /* DatosReporteGeneral.swift */,
+				8402548B1B5988E1000DBBF5 /* ParseFechas.swift */,
+				8413012F1B571A35004946C7 /* ParseAvanceObra.swift */,
+				841642C51B5D5C2700D10900 /* DatosAvanceObra.swift */,
+				841642D11B5EAE7E00D10900 /* ParsePCU.swift */,
+				841642D31B5EAF7F00D10900 /* DatosPCU.swift */,
+				841642D51B5EC52400D10900 /* ParseTipoVivienda.swift */,
+				841642D71B5EC5DC00D10900 /* DatosTipoVivienda.swift */,
+				841642D91B5EEF4600D10900 /* ParseValorVivienda.swift */,
+				841642DB1B5EF12E00D10900 /* DatosValorVivienda.swift */,
+				847711D81B605465007BC146 /* ParseSubsidios.swift */,
+				847711DA1B60557F007BC146 /* DatosSubsidios.swift */,
+				842188761B669401000D3BE6 /* ParseFinanciamientos.swift */,
+				842188781B6697A6000D3BE6 /* DatosFinanciamiento.swift */,
 			);
 			name = Parsing;
+			sourceTree = "<group>";
+		};
+		8443F5D91B61433D000CF78E /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				8443F5DA1B614359000CF78E /* DBConfig.swift */,
+				8443F5DC1B6151A6000CF78E /* ReporteGeneralRepository.swift */,
+				8443F5DE1B6162AD000CF78E /* FechasRepository.swift */,
+				8443F5E01B616B1D000CF78E /* AvanceObraRepository.swift */,
+				8443F5E21B619236000CF78E /* PCURepository.swift */,
+				84E1D1B01B62A1C9007C63B6 /* TipoViviendaRepository.swift */,
+				8443F5E41B61979D000CF78E /* ValorViviendaRepository.swift */,
+				840A02941B6832A9000EF460 /* SubsidioRepository.swift */,
+				840A02921B67E76D000EF460 /* FinanciamientoRepository.swift */,
+			);
+			name = SQLite;
 			sourceTree = "<group>";
 		};
 		84BA16211B4C657400ECC81A = {
@@ -140,16 +225,22 @@
 		84BA162C1B4C657400ECC81A /* SNIIV */ = {
 			isa = PBXGroup;
 			children = (
-				A33B8C271B4EE17B00B200E5 /* CoreData */,
+				8443F5D91B61433D000CF78E /* SQLite */,
+				A37D9B201B5D97BF00433D80 /* Images.xcassets */,
+				841642D01B5EAC5900D10900 /* Utils */,
 				843FD49D1B4DDACB00930AEB /* Parsing */,
 				84BA162F1B4C657400ECC81A /* AppDelegate.swift */,
 				84BA16331B4C657400ECC81A /* Main.storyboard */,
-				84BA16361B4C657400ECC81A /* Images.xcassets */,
 				84BA16381B4C657400ECC81A /* LaunchScreen.xib */,
 				84BA162D1B4C657400ECC81A /* Supporting Files */,
-				A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */,
+				847711D61B60056A007BC146 /* BaseUIViewController.swift */,
 				A38708041B4DB868009EAC52 /* ReporteGeneralViewController.swift */,
-				A33B8C251B4EE0AC00B200E5 /* ReporteGeneral.swift */,
+				A39E1B121B570A7E000DEBA3 /* AvanceObraViewController.swift */,
+				A39E1B141B570A95000DEBA3 /* PCUViewController.swift */,
+				A39E1B181B570AE2000DEBA3 /* TipoViviendaViewController.swift */,
+				A39E1B161B570ACF000DEBA3 /* ValorViviendaViewController.swift */,
+				A3B39D111B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift */,
+				A3B39D131B66D66400C65F41 /* DemandaSubsidiosViewController.swift */,
 			);
 			path = SNIIV;
 			sourceTree = "<group>";
@@ -177,15 +268,6 @@
 				84BA16441B4C657400ECC81A /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		A33B8C271B4EE17B00B200E5 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				A33B8C281B4EE1B400B200E5 /* CRUDReporteGeneral.swift */,
-				8413012D1B56D52F004946C7 /* CRUDFechas.swift */,
-			);
-			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,9 +354,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A37D9B211B5D97BF00433D80 /* Images.xcassets in Resources */,
 				84BA16351B4C657400ECC81A /* Main.storyboard in Resources */,
 				84BA163A1B4C657400ECC81A /* LaunchScreen.xib in Resources */,
-				84BA16371B4C657400ECC81A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,19 +422,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841642D21B5EAE7E00D10900 /* ParsePCU.swift in Sources */,
+				8402548C1B5988E1000DBBF5 /* ParseFechas.swift in Sources */,
 				84E16C1C1B4EE03A00C56F08 /* SoapToXml.swift in Sources */,
-				843FD49F1B4DDAF100930AEB /* ParseSoap.swift in Sources */,
-				84E16C1A1B4EC72C00C56F08 /* ReporteGeneralPrueba.swift in Sources */,
+				84E16C1A1B4EC72C00C56F08 /* DatosReporteGeneral.swift in Sources */,
+				847711D71B60056A007BC146 /* BaseUIViewController.swift in Sources */,
+				A3B39D141B66D66400C65F41 /* DemandaSubsidiosViewController.swift in Sources */,
+				841642D41B5EAF7F00D10900 /* DatosPCU.swift in Sources */,
+				840A02931B67E76D000EF460 /* FinanciamientoRepository.swift in Sources */,
+				842188791B6697A6000D3BE6 /* DatosFinanciamiento.swift in Sources */,
+				8443F5E31B619236000CF78E /* PCURepository.swift in Sources */,
 				84E16C1E1B4EFC6100C56F08 /* Entidad.swift in Sources */,
+				840A02951B6832A9000EF460 /* SubsidioRepository.swift in Sources */,
 				84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */,
-				A33B8C291B4EE1B400B200E5 /* CRUDReporteGeneral.swift in Sources */,
-				A38B36B51B4CA0D700606D3A /* Model.xcdatamodeld in Sources */,
-				8413012E1B56D52F004946C7 /* CRUDFechas.swift in Sources */,
+				841642DC1B5EF12E00D10900 /* DatosValorVivienda.swift in Sources */,
+				A39E1B131B570A7E000DEBA3 /* AvanceObraViewController.swift in Sources */,
+				847711DB1B60557F007BC146 /* DatosSubsidios.swift in Sources */,
+				84E1D1B11B62A1C9007C63B6 /* TipoViviendaRepository.swift in Sources */,
+				842188771B669401000D3BE6 /* ParseFinanciamientos.swift in Sources */,
+				841642C61B5D5C2700D10900 /* DatosAvanceObra.swift in Sources */,
 				840F82AA1B54630900A3B9E7 /* Utils.swift in Sources */,
-				A33B8C261B4EE0AC00B200E5 /* ReporteGeneral.swift in Sources */,
-				8413012B1B56CBBE004946C7 /* Fechas.swift in Sources */,
+				840C6BB01B5809500044A83C /* ParseReporteGeneral.swift in Sources */,
+				8443F5DB1B614359000CF78E /* DBConfig.swift in Sources */,
+				841642DA1B5EEF4600D10900 /* ParseValorVivienda.swift in Sources */,
+				8443F5DF1B6162AD000CF78E /* FechasRepository.swift in Sources */,
+				8443F5E11B616B1D000CF78E /* AvanceObraRepository.swift in Sources */,
+				841301301B571A35004946C7 /* ParseAvanceObra.swift in Sources */,
 				840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */,
+				847711D91B605465007BC146 /* ParseSubsidios.swift in Sources */,
+				A39E1B191B570AE2000DEBA3 /* TipoViviendaViewController.swift in Sources */,
+				A3B39D121B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift in Sources */,
 				A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */,
+				A39E1B151B570A95000DEBA3 /* PCUViewController.swift in Sources */,
+				8443F5E51B61979D000CF78E /* ValorViviendaRepository.swift in Sources */,
+				841642D61B5EC52400D10900 /* ParseTipoVivienda.swift in Sources */,
+				8443F5DD1B6151A6000CF78E /* ReporteGeneralRepository.swift in Sources */,
+				841642D81B5EC5DC00D10900 /* DatosTipoVivienda.swift in Sources */,
+				A39E1B171B570ACF000DEBA3 /* ValorViviendaViewController.swift in Sources */,
+				840C6BAE1B58006F0044A83C /* ParseBase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +542,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -471,6 +579,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -575,20 +684,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		A38B36B31B4CA0D700606D3A /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				8413012C1B56D392004946C7 /* Model 1.1.xcdatamodel */,
-				A38B36B41B4CA0D700606D3A /* Model.xcdatamodel */,
-			);
-			currentVersion = 8413012C1B56D392004946C7 /* Model 1.1.xcdatamodel */;
-			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 84BA16221B4C657400ECC81A /* Project object */;
 }
