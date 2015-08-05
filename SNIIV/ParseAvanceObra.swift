@@ -11,12 +11,12 @@ import SWXMLHash
 
 class ParseAvanceObra<T>: ParseBase<[AvanceObra]> {
     init() {
-        super.init(action: "http://www.conavi.gob.mx:8080/WS_App_SNIIV/Avance_Vivienda_Vigente")
+        super.init(action: "\(Utils.WEB_SERVICE_URL)/WS_App_SNIIV/Avance_Vivienda_Vigente")
     }
     
     override func handler(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void {
         let httpResponse = response as! NSHTTPURLResponse
-        
+
         if error != nil || httpResponse.statusCode != 200 {
             println("AvanceObra status code: \(httpResponse.statusCode)")
             self.serviceResponse!([], NSError())

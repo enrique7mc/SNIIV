@@ -11,7 +11,7 @@ import SWXMLHash
 
 class ParseTipoVivienda<T>: ParseBase<[TipoVivienda]> {
     init() {
-        super.init(action: "http://www.conavi.gob.mx:8080/WS_App_SNIIV/Tipo_Vivienda_Vigente")
+        super.init(action: "\(Utils.WEB_SERVICE_URL)/WS_App_SNIIV/Tipo_Vivienda_Vigente")
     }
     
     override func handler(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void {

@@ -11,7 +11,7 @@ import SWXMLHash
 
 class ParseSubsidios<T>: ParseBase<[Subsidio]> {
     init() {
-        super.init(action: "http://www.conavi.gob.mx:8080/WS_App_SNIIV/Subsidios")
+        super.init(action: "\(Utils.WEB_SERVICE_URL)/WS_App_SNIIV/Subsidios")
     }
     
     override func handler(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void {
