@@ -12,7 +12,7 @@ import SWXMLHash
 class ParseFechas<T>: ParseBase<Fechas> {
     
     init() {
-        super.init(action: "\(Utils.WEB_SERVICE_URL)/WS_App_SNIIV/Fechas")
+        super.init(action: "http://www.conavi.gob.mx:8080/WS_App_SNIIV/Fechas")
     }
     
     override func handler(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void {
@@ -27,7 +27,7 @@ class ParseFechas<T>: ParseBase<Fechas> {
                 var xml = SWXMLHash.parse(self.xmlResponse)
                 var elemFechas = xml["soap:Envelope"]["soap:Body"]["FechasResponse"]["FechasResult"]["app_sniiv_tot_date"]
                 
-                var fechas = Fechas(fecha_finan: "(" + Utils.getText(elemFechas["fecha_finan"]) + ")",
+                var fechas = Fechas(fecha_finan: "(" + Utils.getText(elemFechas["fecha_finan"]).stringByReplacingOccurrencesOfString("Datos al ", withString: "") + ")",
                     fecha_subs: "(" + Utils.getText(elemFechas["fecha_subs"]) + ")",
                     fecha_vv: "(" + Utils.getText(elemFechas["fecha_vv"]) + ")")
                 self.serviceResponse!(fechas, nil)
