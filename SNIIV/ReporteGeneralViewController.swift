@@ -96,12 +96,12 @@ class ReporteGeneralViewController: BaseUIViewController {
     
     override func mostrarDatos() {
         if entidad != nil {
-            txtFinanAcc.text = Utils.toString(entidad!.accFinan)
+            txtFinanAcc.text = Utils.toStringDivide(entidad!.accFinan)
             txtFinanMto.text = Utils.toStringDivide(entidad!.mtoFinan, divide: 1000000)
-            txtSubAcc.text = Utils.toString(entidad!.accSubs)
+            txtSubAcc.text = Utils.toStringDivide(entidad!.accSubs)
             txtSubMto.text = Utils.toStringDivide(entidad!.mtoSubs, divide: 1000000)
-            txtViviendasVigentes.text = Utils.toString(entidad!.vv)
-            txtViviendasRegistradas.text = Utils.toString(entidad!.vr)
+            txtViviendasVigentes.text = Utils.toStringDivide(entidad!.vv)
+            txtViviendasRegistradas.text = Utils.toStringDivide(entidad!.vr)
         }
         
         labelFinanciamiento.text = "Financiamientos \(fechas.fecha_finan)"
