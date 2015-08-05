@@ -119,9 +119,9 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
             txtUsadasCreditoAcc.text = Utils.toString(consulta!.viviendasUsadas.creditoIndividual.acciones)
             
             txtMejoramientoSubsidiosMto.text = Utils.toStringDivide(consulta!.mejoramientos.cofinanciamiento.monto, divide: 1000000)
-            txtMejoramientoCreditoAcc.text = Utils.toString(consulta!.mejoramientos.cofinanciamiento.acciones)
+            txtMejoramientoSubsidiosAcc.text = Utils.toString(consulta!.mejoramientos.cofinanciamiento.acciones)
             txtMejoramientoCreditoMto.text = Utils.toStringDivide(consulta!.mejoramientos.creditoIndividual.monto, divide: 1000000)
-            txtMejoramientoSubsidiosAcc.text = Utils.toString(consulta!.mejoramientos.creditoIndividual.acciones)
+            txtMejoramientoCreditoAcc.text = Utils.toString(consulta!.mejoramientos.creditoIndividual.acciones)
             
             txtOtrosCreditoMto.text = Utils.toStringDivide(consulta!.otrosProgramas.creditoIndividual.monto, divide: 1000000)
             txtOtrosCreditoAcc.text = Utils.toString(consulta!.otrosProgramas.creditoIndividual.acciones)
