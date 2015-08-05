@@ -100,6 +100,6 @@ class AvanceObraViewController: BaseUIViewController {
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-        txtTitleObra.text = "Avance Obra \(fechas.fecha_finan)"
+        txtTitleObra.text = "Avance Obra \(fechas.fecha_vv)"
     }
 }

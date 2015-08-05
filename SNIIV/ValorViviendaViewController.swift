@@ -99,6 +99,6 @@ class ValorViviendaViewController: BaseUIViewController {
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-        txtTitleValorVivienda.text = "Valor de la Vivienda \(fechas.fecha_subs)"
+        txtTitleValorVivienda.text = "Valor de la Vivienda \(fechas.fecha_vv)"
     }
 }

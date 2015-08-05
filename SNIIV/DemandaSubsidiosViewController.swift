@@ -125,6 +125,6 @@ class DemandaSubsidiosViewController: BaseUIViewController {
             txtTotalAcc.text = Utils.toString(consulta!.total.acciones)
         }
         
-        txtTitleSubsidios.text = "Subsidios \(fechas.fecha_finan)"
+        txtTitleSubsidios.text = "Subsidios \(fechas.fecha_subs)"
     }
 }
