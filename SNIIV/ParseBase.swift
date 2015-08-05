@@ -18,7 +18,7 @@ class ParseBase<T> {
     init(action: String) {
         self.action = action
         self.urlString = "\(Utils.WEB_SERVICE_URL)/WS_App_SNIIV.asmx"
-        self.message = "<?xml version='1.0' encoding='utf-8'?><soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'> <soap:Body> <get_tot_ini xmlns='\(Utils.WEB_SERVICE_URL)/WS_App_SNIIV' /></soap:Body></soap:Envelope>"
+        self.message = "<?xml version='1.0' encoding='utf-8'?><soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'> <soap:Body> <get_tot_ini xmlns='http://www.conavi.gob.mx:8080/WS_App_SNIIV' /></soap:Body></soap:Envelope>"
     }
     
     func getXml() {

@@ -12,7 +12,7 @@ import SWXMLHash
 class ParseReporteGeneral<T>: ParseBase<[ReporteGeneralPrueba]> {
     
     init() {
-        super.init(action: "\(Utils.WEB_SERVICE_URL)/WS_App_SNIIV/Totales")
+        super.init(action: "http://www.conavi.gob.mx:8080/WS_App_SNIIV/Totales")
     }
     
     override func handler(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void {
