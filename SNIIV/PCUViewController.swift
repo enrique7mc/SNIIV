@@ -102,6 +102,6 @@ class PCUViewController: BaseUIViewController {
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-        txtTitlePCU.text = "PCU \(fechas.fecha_subs)"
+        txtTitlePCU.text = "PCU \(fechas.fecha_vv)"
     }
 }
