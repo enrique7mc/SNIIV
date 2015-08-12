@@ -63,4 +63,14 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         self.mostrarDatos()
         self.desactivarIndicador()
     }
+    
+    func isDataLoaded() -> Bool {
+        let date = TimeLastUpdatedRepository.getLastTimeUpdated(getKey())
+        return Utils.equalDays(date, date2: Utils.CurrentDateAsString())
+    }
+    
+    func getKey() -> String {
+        print("getKey not implemented by subclass")
+        return ""
+    }
 }
