@@ -43,7 +43,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
         
         activarIndicador()
         
-        if Reachability.isConnectedToNetwork() {
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
             var parseFechas = ParseFechas<Fechas>()
             parseFechas.getDatos(handlerFechas)
             var parseFinanciamientos = ParseFinanciamientos<[Financiamiento]>()
@@ -66,6 +66,8 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
         
         datos = DatosFinanciamiento()
         consulta = datos!.consultaNacional()
+        
+        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
         
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
@@ -133,4 +135,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
         txtTitleFinanciamientos.text = "Financiamientos \(fechas.fecha_finan)"
     }
     
+    override func getKey() -> String {
+        return FinanciamientoRepository.TABLA
+    }
 }

@@ -32,7 +32,7 @@ class ReporteGeneralViewController: BaseUIViewController {
         
         activarIndicador()
         
-        if Reachability.isConnectedToNetwork() {
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
             var parseFechas = ParseFechas<Fechas?>()
             parseFechas.getDatos(handlerFechas)
             var parseReporte = ParseReporteGeneral<[ReporteGeneralPrueba]>()
@@ -55,6 +55,8 @@ class ReporteGeneralViewController: BaseUIViewController {
         
         datos = DatosReporteGeneral(datos: responseObject)
         entidad = datos!.consultaNacional()
+        
+        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
         
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
@@ -107,5 +109,9 @@ class ReporteGeneralViewController: BaseUIViewController {
         labelFinanciamiento.text = "Financiamientos \(fechas.fecha_finan)"
         labelSubsidios.text = "Subsidios \(fechas.fecha_subs)"
         labelVivienda.text = "Oferta de Vivienda \(fechas.fecha_vv)"
+    }
+    
+    override func getKey() -> String {
+        return ReporteGeneralRepository.TABLA
     }
 }
