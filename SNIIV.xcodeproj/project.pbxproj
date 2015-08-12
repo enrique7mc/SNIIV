@@ -25,6 +25,7 @@
 		841642DC1B5EF12E00D10900 /* DatosValorVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642DB1B5EF12E00D10900 /* DatosValorVivienda.swift */; };
 		842188771B669401000D3BE6 /* ParseFinanciamientos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842188761B669401000D3BE6 /* ParseFinanciamientos.swift */; };
 		842188791B6697A6000D3BE6 /* DatosFinanciamiento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842188781B6697A6000D3BE6 /* DatosFinanciamiento.swift */; };
+		842EA0C31B7BB2F7006D86F3 /* TimeLastUpdatedRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EA0C21B7BB2F7006D86F3 /* TimeLastUpdatedRepository.swift */; };
 		8443F5DB1B614359000CF78E /* DBConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5DA1B614359000CF78E /* DBConfig.swift */; };
 		8443F5DD1B6151A6000CF78E /* ReporteGeneralRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5DC1B6151A6000CF78E /* ReporteGeneralRepository.swift */; };
 		8443F5DF1B6162AD000CF78E /* FechasRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443F5DE1B6162AD000CF78E /* FechasRepository.swift */; };
@@ -83,6 +84,7 @@
 		841642DB1B5EF12E00D10900 /* DatosValorVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosValorVivienda.swift; sourceTree = "<group>"; };
 		842188761B669401000D3BE6 /* ParseFinanciamientos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseFinanciamientos.swift; sourceTree = "<group>"; };
 		842188781B6697A6000D3BE6 /* DatosFinanciamiento.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosFinanciamiento.swift; sourceTree = "<group>"; };
+		842EA0C21B7BB2F7006D86F3 /* TimeLastUpdatedRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLastUpdatedRepository.swift; sourceTree = "<group>"; };
 		8443F5DA1B614359000CF78E /* DBConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBConfig.swift; sourceTree = "<group>"; };
 		8443F5DC1B6151A6000CF78E /* ReporteGeneralRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneralRepository.swift; sourceTree = "<group>"; };
 		8443F5DE1B6162AD000CF78E /* FechasRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FechasRepository.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				8443F5E41B61979D000CF78E /* ValorViviendaRepository.swift */,
 				840A02941B6832A9000EF460 /* SubsidioRepository.swift */,
 				840A02921B67E76D000EF460 /* FinanciamientoRepository.swift */,
+				842EA0C21B7BB2F7006D86F3 /* TimeLastUpdatedRepository.swift */,
 			);
 			name = SQLite;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 		84BA16221B4C657400ECC81A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = enrique7mc;
 				TargetAttributes = {
@@ -448,6 +452,7 @@
 				8443F5DF1B6162AD000CF78E /* FechasRepository.swift in Sources */,
 				8443F5E11B616B1D000CF78E /* AvanceObraRepository.swift in Sources */,
 				841301301B571A35004946C7 /* ParseAvanceObra.swift in Sources */,
+				842EA0C31B7BB2F7006D86F3 /* TimeLastUpdatedRepository.swift in Sources */,
 				840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */,
 				847711D91B605465007BC146 /* ParseSubsidios.swift in Sources */,
 				A39E1B191B570AE2000DEBA3 /* TipoViviendaViewController.swift in Sources */,

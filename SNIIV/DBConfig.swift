@@ -34,6 +34,7 @@ class DBConfig {
         initializeValorVivienda()
         initializeFinanciamiento()
         initializeSubsidio()
+        initializeTimeLastUpdated()
     }
     
     private func initializeReporteGeneral() {
@@ -185,6 +186,18 @@ class DBConfig {
             t.column(modalidad)
             t.column(acciones)
             t.column(monto)
+        }
+    }
+    
+    private func initializeTimeLastUpdated() {
+        let table = db["TimeLastUpdated"]
+        let key = Expression<String>("key")
+        let time = Expression<String>("time")
+        
+        db.create(table: table, ifNotExists: true) {
+            t in
+            t.column(key)
+            t.column(time)
         }
     }
 }
