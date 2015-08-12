@@ -16,7 +16,7 @@ class TipoViviendaRepository {
     static let vertical = Expression<Int64>("vertical")
     static let total = Expression<Int64>("total")
     
-    private static let TABLA = "TipoVivienda"
+    static let TABLA = "TipoVivienda"
     
     static func save(tipo: TipoVivienda) {
         let tabla = db[TABLA]

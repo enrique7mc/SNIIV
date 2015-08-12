@@ -19,7 +19,7 @@ class PCURepository {
     static let nd = Expression<Int64>("nd")
     static let total = Expression<Int64>("total")
     
-    private static let TABLA = "PCU"
+    static let TABLA = "PCU"
     
     static func save(pcu: PCU) {
         let tabla = db[TABLA]

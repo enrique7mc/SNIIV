@@ -17,7 +17,7 @@ class SubsidioRepository {
     static let acciones = Expression<Int64>("acciones")
     static let monto = Expression<Double>("monto")
     
-    private static let TABLA = "Subsidio"
+    static let TABLA = "Subsidio"
     private static let COFINANCIAMIENTOS = "Cofinanciamientos y Subsidios"
     private static let CREDITO_INDIVIDUAL = "Crédito Individual"
     

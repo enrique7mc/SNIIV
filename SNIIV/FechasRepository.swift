@@ -15,7 +15,7 @@ class FechasRepository {
     static let fecha_subs = Expression<String>("fecha_subs")
     static let fecha_vv = Expression<String>("fecha_vv")
     
-    private static let TABLA = "Fechas"
+    static let TABLA = "Fechas"
     
     static func save(fecha: Fechas) {
         let fechas = db[TABLA]

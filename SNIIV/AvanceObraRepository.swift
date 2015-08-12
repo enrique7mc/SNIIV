@@ -18,7 +18,7 @@ class AvanceObraRepository {
     static let viv_term_ant = Expression<Int64>("viv_term_ant")
     static let total = Expression<Int64>("total")
     
-    private static let TABLA = "AvanceObra"
+    static let TABLA = "AvanceObra"
     
     static func save(avanceObra: AvanceObra) {
         let tabla = db[TABLA]

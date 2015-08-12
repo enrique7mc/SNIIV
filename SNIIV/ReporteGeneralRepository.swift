@@ -19,7 +19,7 @@ class ReporteGeneralRepository {
     static let vv = Expression<Int64>("vv")
     static let vr = Expression<Int64>("vr")
     
-    private static let TABLA = "ReporteGeneral"
+    static let TABLA = "ReporteGeneral"
     
     static func save(reporteGeneral: ReporteGeneralPrueba) {
         let reporte = db[TABLA]

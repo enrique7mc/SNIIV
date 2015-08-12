@@ -18,7 +18,7 @@ class ValorViviendaRepository {
     static let media_residencial = Expression<Int64>("media_residencial")
     static let total = Expression<Int64>("total")
     
-    private static let TABLA = "ValorVivienda"
+    static let TABLA = "ValorVivienda"
     
     static func save(valor: ValorVivienda) {
         let tabla = db[TABLA]
