@@ -37,7 +37,7 @@ class DemandaSubsidiosViewController: BaseUIViewController {
         
         activarIndicador()
         
-        if Reachability.isConnectedToNetwork() {
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
             var parseFechas = ParseFechas<Fechas>()
             parseFechas.getDatos(handlerFechas)
             var parseSubsidios = ParseSubsidios<[Subsidio]>()
@@ -60,6 +60,8 @@ class DemandaSubsidiosViewController: BaseUIViewController {
         
         datos = DatosSubsidios()
         consulta = datos!.consultaNacional()
+        
+        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
         
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
@@ -126,5 +128,9 @@ class DemandaSubsidiosViewController: BaseUIViewController {
         }
         
         txtTitleSubsidios.text = "Subsidios \(fechas.fecha_subs)"
+    }
+    
+    override func getKey() -> String {
+        return SubsidioRepository.TABLA
     }
 }

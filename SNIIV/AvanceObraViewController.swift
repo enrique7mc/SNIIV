@@ -28,7 +28,7 @@ class AvanceObraViewController: BaseUIViewController {
 
         activarIndicador()
         
-        if Reachability.isConnectedToNetwork() {
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
             var parseFechas = ParseFechas<Fechas>()
             parseFechas.getDatos(handlerFechas)
             var parseAvance = ParseAvanceObra<[AvanceObra]>()
@@ -51,6 +51,8 @@ class AvanceObraViewController: BaseUIViewController {
         
         datos = DatosAvanceObra(datos: responseObject)
         entidad = datos!.consultaNacional()
+        
+        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
         
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
@@ -101,5 +103,9 @@ class AvanceObraViewController: BaseUIViewController {
         }
         
         txtTitleObra.text = "Avance Obra \(fechas.fecha_vv)"
+    }
+    
+    override func getKey() -> String {
+        return AvanceObraRepository.TABLA
     }
 }

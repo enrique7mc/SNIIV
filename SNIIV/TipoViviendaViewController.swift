@@ -26,7 +26,7 @@ class TipoViviendaViewController: BaseUIViewController {
 
         activarIndicador()
         
-        if Reachability.isConnectedToNetwork() {
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
             var parseFechas = ParseFechas<Fechas>()
             parseFechas.getDatos(handlerFechas)
             var parseTipo = ParseTipoVivienda<[TipoVivienda]>()
@@ -49,6 +49,8 @@ class TipoViviendaViewController: BaseUIViewController {
         
         datos = DatosTipoVivienda(datos: responseObject)
         entidad = datos!.consultaNacional()
+        
+        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
         
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
@@ -97,5 +99,9 @@ class TipoViviendaViewController: BaseUIViewController {
         }
         
         txtTitleTipoVivienda.text = "Tipo de la Vivienda \(fechas.fecha_vv)"
+    }
+    
+    override func getKey() -> String {
+        return TipoViviendaRepository.TABLA
     }
 }

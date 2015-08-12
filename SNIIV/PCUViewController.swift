@@ -29,7 +29,7 @@ class PCUViewController: BaseUIViewController {
         
         activarIndicador()
         
-        if Reachability.isConnectedToNetwork() {
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
             var parseFechas = ParseFechas<Fechas>()
             parseFechas.getDatos(handlerFechas)
             var parsePCU = ParsePCU<[PCU]>()
@@ -52,6 +52,8 @@ class PCUViewController: BaseUIViewController {
         
         datos = DatosPCU(datos: responseObject)
         entidad = datos!.consultaNacional()
+        
+        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
         
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
@@ -103,5 +105,9 @@ class PCUViewController: BaseUIViewController {
         }
         
         txtTitlePCU.text = "PCU \(fechas.fecha_vv)"
+    }
+    
+    override func getKey() -> String {
+        return PCURepository.TABLA
     }
 }

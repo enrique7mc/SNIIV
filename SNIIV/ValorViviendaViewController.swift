@@ -28,7 +28,7 @@ class ValorViviendaViewController: BaseUIViewController {
 
         activarIndicador()
         
-        if Reachability.isConnectedToNetwork() {
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
             var parseFechas = ParseFechas<Fechas>()
             parseFechas.getDatos(handlerFechas)
             var parseValor = ParseValorVivienda<[ValorVivienda]>()
@@ -51,6 +51,8 @@ class ValorViviendaViewController: BaseUIViewController {
         
         datos = DatosValorVivienda(datos: responseObject)
         entidad = datos!.consultaNacional()
+        
+        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
         
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
@@ -100,5 +102,9 @@ class ValorViviendaViewController: BaseUIViewController {
         }
         
         txtTitleValorVivienda.text = "Valor de la Vivienda \(fechas.fecha_vv)"
+    }
+    
+    override func getKey() -> String {
+        return ValorViviendaRepository.TABLA
     }
 }
