@@ -10,11 +10,12 @@ import Foundation
 import SWXMLHash
 
 class Utils {
-    static let WEB_SERVICE_URL = "http://www.conavi.gob.mx:8080"
+    static let WEB_SERVICE_URL = "http://192.168.10.166:8005"
     
-    let numberFormatter = NSNumberFormatter()
+    static let numberFormatter = NSNumberFormatter()
+    static let dateFormatter = NSDateFormatter()
     
-    func decimalFormat(numero: NSNumber) -> String {
+    static func decimalFormat(numero: NSNumber) -> String {
         numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
         numberFormatter.maximumFractionDigits = 1
         return numberFormatter.stringFromNumber(numero)!
@@ -22,7 +23,7 @@ class Utils {
     
     static func toStringDivide(numero: Int64?, divide: Int = 1000) -> String {
         if let num = numero {
-            return Utils().decimalFormat(Double(num) / Double(divide))
+            return decimalFormat(Double(num) / Double(divide))
         }
         
         return "-"
@@ -30,18 +31,18 @@ class Utils {
     
     static func toStringDivide(numero: Double?, divide: Int = 1000) -> String {
         if let num = numero {
-            return Utils().decimalFormat(Double(num) / Double(divide))
+            return decimalFormat(Double(num) / Double(divide))
         }
         
         return "-"
     }
     
     static func toString(numero: Double) -> String {
-        return Utils().decimalFormat(numero)
+        return decimalFormat(numero)
     }
     
     static func toString(numero: Int64) -> String {
-        return Utils().decimalFormat(NSNumber(longLong: numero))
+        return decimalFormat(NSNumber(longLong: numero))
     }
     
     static func getText(value: AnyObject?) -> String {
@@ -81,6 +82,15 @@ class Utils {
         } else {
             return "";
         }
+    }
+    
+    static func equalDays(date1: String, date2: String) -> Bool {
+        return date1 == date2
+    }
+    
+    static func CurrentDateAsString() -> String {
+        dateFormatter.dateFormat = "yyyyMMdd"
+        return dateFormatter.stringFromDate(NSDate())
     }
     
     static let entidades = ["Nacional","Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Coahuila", "Colima", "Chiapas" , "Chihuahua", "Distrito Federal", "Durango", "Guanajuato", "Guerrero","Hidalgo", "Jalisco",
