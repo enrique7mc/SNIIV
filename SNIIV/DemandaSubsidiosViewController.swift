@@ -78,7 +78,7 @@ class DemandaSubsidiosViewController: BaseUIViewController {
             
             picker.userInteractionEnabled = true
         } else {
-            println("no hay datos en local storage")
+            muestraMensajeError()
         }
         
         let fechasStorage = FechasRepository.selectFechas()

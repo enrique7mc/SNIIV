@@ -71,7 +71,7 @@ class ReporteGeneralViewController: BaseUIViewController {
             entidad = datos?.consultaNacional()
             picker.userInteractionEnabled = true
         } else {
-            println("no hay datos en local storage")
+            muestraMensajeError()
         }
         
         let fechasStorage = FechasRepository.selectFechas()
