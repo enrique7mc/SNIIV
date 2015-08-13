@@ -19,10 +19,9 @@ class TimeLastUpdatedRepository {
     
     static func saveLastTimeUpdated(keyString: String) {
         let tabla = db[TABLA]
-        
         dateFormatter.dateFormat = "yyyyMMdd"
         
-        tabla.insert(key <- keyString,
+        tabla.insert(or: .Replace, key <- keyString,
             time <- dateFormatter.stringFromDate(NSDate()))
     }
     
