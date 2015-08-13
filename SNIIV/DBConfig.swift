@@ -196,7 +196,7 @@ class DBConfig {
         
         db.create(table: table, ifNotExists: true) {
             t in
-            t.column(key)
+            t.column(key, primaryKey: true)
             t.column(time)
         }
     }
