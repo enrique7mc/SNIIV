@@ -10,7 +10,7 @@ import Foundation
 import SWXMLHash
 
 class Utils {
-    static let WEB_SERVICE_URL = "http://192.168.10.166:8005"
+    static let WEB_SERVICE_URL = "http://www.conavi.gob.mx:8080"
     
     static let numberFormatter = NSNumberFormatter()
     static let dateFormatter = NSDateFormatter()
