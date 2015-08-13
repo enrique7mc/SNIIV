@@ -73,4 +73,19 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         print("getKey not implemented by subclass")
         return ""
     }
+    
+    func muestraMensajeError() {
+        var alert = UIAlertController(title: "Ha ocurrido un error",
+            message: "No hay conexión a internet",
+            preferredStyle: .Alert)
+        
+        let saveAction = UIAlertAction(title: "Aceptar",
+            style: .Default, handler: nil)
+        
+        alert.addAction(saveAction)
+        
+        presentViewController(alert,
+            animated: true,
+            completion: nil)
+    }
 }
