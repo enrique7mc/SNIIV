@@ -32,21 +32,16 @@ class ReporteGeneralViewController: BaseUIViewController {
         
         activarIndicador()
         
-        println("Is data loaded?: \(TableViewController.isDataLoaded)")
-        if !TableViewController.isDataLoaded && Reachability.isConnectedToNetwork() {
+        println("Is data loaded?: \(TableViewController.isDateLoaded)")
+        if (!TableViewController.isDateLoaded || !isDataLoaded()) && Reachability.isConnectedToNetwork() {
+            println("loading from web")
             var parseReporte = ParseReporteGeneral<[ReporteGeneralPrueba]>()
             parseReporte.getDatos(handler)
             
             return
         }
-        
+            
         loadFromStorage()
-    }
-    
-    override func loadFromWeb() {
-        println("loadFromWeb")
-        var parseReporte = ParseReporteGeneral<[ReporteGeneralPrueba]>()
-        parseReporte.getDatos(handler)
     }
     
     func handler (responseObject: [ReporteGeneralPrueba], error: NSError?) -> Void {
@@ -61,6 +56,10 @@ class ReporteGeneralViewController: BaseUIViewController {
         datos = DatosReporteGeneral(datos: responseObject)
         entidad = datos!.consultaNacional()
         
+        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
+        
+        loadFechasStorage()
+        
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
             self.picker.userInteractionEnabled = true
@@ -70,6 +69,7 @@ class ReporteGeneralViewController: BaseUIViewController {
     override func loadFromStorage() {
         println("loadFromStorage")
         let datosStorage = ReporteGeneralRepository.loadFromStorage()
+        println("count: \(datosStorage.count)")
         if datosStorage.count > 0 {
             datos = DatosReporteGeneral(datos: datosStorage)
             entidad = datos?.consultaNacional()
@@ -78,12 +78,7 @@ class ReporteGeneralViewController: BaseUIViewController {
             muestraMensajeError()
         }
         
-        let fechasStorage = FechasRepository.selectFechas()
-        if fechasStorage != nil {
-            fechas = fechasStorage!
-        } else {
-            println("no hay fechas en local storage")
-        }
+        loadFechasStorage()
         
         habilitarPantalla()
     }
@@ -113,5 +108,9 @@ class ReporteGeneralViewController: BaseUIViewController {
         labelFinanciamiento.text = "Financiamientos \(fechas.fecha_finan)"
         labelSubsidios.text = "Subsidios \(fechas.fecha_subs)"
         labelVivienda.text = "Oferta de Vivienda \(fechas.fecha_vv)"
-    }    
+    }
+    
+    override func getKey() -> String {
+        return ReporteGeneralRepository.TABLA
+    }
 }

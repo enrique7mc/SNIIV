@@ -11,7 +11,7 @@ import UIKit
 class TableViewController: UITableViewController {
 
     var fechas: Fechas = Fechas()
-    static var isDataLoaded: Bool = false
+    static var isDateLoaded: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +35,15 @@ class TableViewController: UITableViewController {
         
         if let fechasStorage = FechasRepository.selectFechas() {
             if fechas != fechasStorage {
-                TableViewController.isDataLoaded = false
+                TableViewController.isDateLoaded = false
             } else {
-                TableViewController.isDataLoaded = true
+                TableViewController.isDateLoaded = true
             }
         } else {
+            println("Saving dates")
             FechasRepository.deleteAll()
             FechasRepository.save(fechas)
+            TableViewController.isDateLoaded = true
         }
     }
 }

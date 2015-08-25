@@ -44,23 +44,7 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func handlerFechas (responseObject: Fechas, error: NSError?) {
-        if error != nil {
-            println("Error obteniendo fechas")
-            return
-        }
         
-        fechas = responseObject
-        
-        if let fechasStorage = FechasRepository.selectFechas() {
-            if fechas != fechasStorage {
-                loadFromWeb()
-            } else {
-                loadFromStorage()
-            }
-        } else {
-            FechasRepository.deleteAll()
-            FechasRepository.save(fechas)
-        }
     }
     
     func loadFromWeb() {
@@ -80,12 +64,12 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         self.desactivarIndicador()
     }
     
-    // deprecated
     func isDataLoaded() -> Bool {
-        return false
+        let date = TimeLastUpdatedRepository.getLastTimeUpdated(getKey())
+        println("last update: " + date)
+        return date != ""
     }
     
-    // deprecated
     func getKey() -> String {
         print("getKey not implemented by subclass")
         return ""
@@ -104,5 +88,14 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         presentViewController(alert,
             animated: true,
             completion: nil)
+    }
+    
+    func loadFechasStorage() {
+        let fechasStorage = FechasRepository.selectFechas()
+        if fechasStorage != nil {
+            fechas = fechasStorage!
+        } else {
+            println("no hay fechas en local storage")
+        }
     }
 }
