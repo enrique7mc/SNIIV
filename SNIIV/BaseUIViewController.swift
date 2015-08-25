@@ -49,10 +49,23 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             return
         }
         
-        FechasRepository.deleteAll()
-        
         fechas = responseObject
-        FechasRepository.save(fechas)
+        
+        if let fechasStorage = FechasRepository.selectFechas() {
+            if fechas != fechasStorage {
+                loadFromWeb()
+            } else {
+                loadFromStorage()
+            }
+        }
+    }
+    
+    func loadFromWeb() {
+        println("loadFromWeb not implemented")
+    }
+    
+    func loadFromStorage() {
+        println("loadFromWeb not implemented")
     }
     
     func mostrarDatos() {
@@ -64,11 +77,12 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         self.desactivarIndicador()
     }
     
+    // deprecated
     func isDataLoaded() -> Bool {
-        let date = TimeLastUpdatedRepository.getLastTimeUpdated(getKey())
-        return Utils.equalDays(date, date2: Utils.CurrentDateAsString())
+        return false
     }
     
+    // deprecated
     func getKey() -> String {
         print("getKey not implemented by subclass")
         return ""

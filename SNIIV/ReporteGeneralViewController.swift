@@ -32,16 +32,20 @@ class ReporteGeneralViewController: BaseUIViewController {
         
         activarIndicador()
         
-        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
-            var parseFechas = ParseFechas<Fechas?>()
+        if Reachability.isConnectedToNetwork() {
+            var parseFechas = ParseFechasWeb<Fechas?>()
             parseFechas.getDatos(handlerFechas)
-            var parseReporte = ParseReporteGeneral<[ReporteGeneralPrueba]>()
-            parseReporte.getDatos(handler)
             
             return
         }
         
         loadFromStorage()
+    }
+    
+    override func loadFromWeb() {
+        println("loadFromWeb")
+        var parseReporte = ParseReporteGeneral<[ReporteGeneralPrueba]>()
+        parseReporte.getDatos(handler)
     }
     
     func handler (responseObject: [ReporteGeneralPrueba], error: NSError?) -> Void {
@@ -56,7 +60,8 @@ class ReporteGeneralViewController: BaseUIViewController {
         datos = DatosReporteGeneral(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
+        FechasRepository.deleteAll()
+        FechasRepository.save(fechas)
         
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
@@ -65,6 +70,7 @@ class ReporteGeneralViewController: BaseUIViewController {
     }
     
     func loadFromStorage() {
+        println("loadFromStorage")
         let datosStorage = ReporteGeneralRepository.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosReporteGeneral(datos: datosStorage)
@@ -109,9 +115,5 @@ class ReporteGeneralViewController: BaseUIViewController {
         labelFinanciamiento.text = "Financiamientos \(fechas.fecha_finan)"
         labelSubsidios.text = "Subsidios \(fechas.fecha_subs)"
         labelVivienda.text = "Oferta de Vivienda \(fechas.fecha_vv)"
-    }
-    
-    override func getKey() -> String {
-        return ReporteGeneralRepository.TABLA
-    }
+    }    
 }
