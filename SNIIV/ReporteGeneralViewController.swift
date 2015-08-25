@@ -105,9 +105,9 @@ class ReporteGeneralViewController: BaseUIViewController {
             txtViviendasRegistradas.text = Utils.toStringDivide(entidad!.vr)
         }
         
-        labelFinanciamiento.text = "Financiamientos \(fechas.fecha_finan)"
-        labelSubsidios.text = "Subsidios \(fechas.fecha_subs)"
-        labelVivienda.text = "Oferta de Vivienda \(fechas.fecha_vv)"
+        labelFinanciamiento.text = "Financiamientos \(Utils.formatoDiaMes(fechas.fecha_finan))"
+        labelSubsidios.text = "Subsidios \(Utils.formatoDiaMes(fechas.fecha_subs))"
+        labelVivienda.text = "Oferta de Vivienda \(Utils.formatoMes(fechas.fecha_vv))"
     }
     
     override func getKey() -> String {
