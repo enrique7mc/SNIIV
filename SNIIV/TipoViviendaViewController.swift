@@ -26,9 +26,7 @@ class TipoViviendaViewController: BaseUIViewController {
 
         activarIndicador()
         
-        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
-            var parseFechas = ParseFechas<Fechas>()
-            parseFechas.getDatos(handlerFechas)
+        if (!TableViewController.isDateLoaded || !isDataLoaded()) && Reachability.isConnectedToNetwork() {            
             var parseTipo = ParseTipoVivienda<[TipoVivienda]>()
             parseTipo.getDatos(handler)
             
@@ -52,6 +50,8 @@ class TipoViviendaViewController: BaseUIViewController {
         
         TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
         
+        loadFechasStorage()
+        
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
             self.picker.userInteractionEnabled = true
@@ -69,12 +69,7 @@ class TipoViviendaViewController: BaseUIViewController {
             muestraMensajeError()
         }
         
-        let fechasStorage = FechasRepository.selectFechas()
-        if fechasStorage != nil {
-            fechas = fechasStorage!
-        } else {
-            println("no hay fechas en local storage")
-        }
+        loadFechasStorage()
         
         habilitarPantalla()
     }

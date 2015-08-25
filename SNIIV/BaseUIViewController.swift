@@ -47,10 +47,6 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         
     }
     
-    func loadFromWeb() {
-        println("loadFromWeb not implemented")
-    }
-    
     func loadFromStorage() {
         println("loadFromWeb not implemented")
     }
