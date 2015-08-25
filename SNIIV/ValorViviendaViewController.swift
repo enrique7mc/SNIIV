@@ -60,7 +60,7 @@ class ValorViviendaViewController: BaseUIViewController {
         }
     }
     
-    func loadFromStorage() {
+    override func loadFromStorage() {
         println("Valorivienda loadFromStorage")
         let datosStorage = ValorViviendaRepository.loadFromStorage()
         if datosStorage.count > 0 {

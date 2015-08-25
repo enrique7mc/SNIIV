@@ -75,7 +75,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
         }
     }
     
-    func loadFromStorage() {
+    override func loadFromStorage() {
         println("Financiamiento loadFromStorage")
         let datosStorage = FinanciamientoRepository.loadFromStorage()
         if datosStorage.count > 0 {

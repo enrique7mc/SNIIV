@@ -58,7 +58,7 @@ class TipoViviendaViewController: BaseUIViewController {
         }
     }
     
-    func loadFromStorage() {
+    override func loadFromStorage() {
         println("TipoVivienda loadFromStorage")
         let datosStorage = TipoViviendaRepository.loadFromStorage()
         if datosStorage.count > 0 {

@@ -69,7 +69,7 @@ class DemandaSubsidiosViewController: BaseUIViewController {
         }
     }
     
-    func loadFromStorage() {
+    override func loadFromStorage() {
         println("Subsidio loadFromStorage")
         let datosStorage = SubsidioRepository.loadFromStorage()
         if datosStorage.count > 0 {

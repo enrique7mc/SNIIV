@@ -60,7 +60,7 @@ class AvanceObraViewController: BaseUIViewController {
         }
     }
     
-    func loadFromStorage() {
+    override func loadFromStorage() {
         println("AvanceObra loadFromStorage")
         let datosStorage = AvanceObraRepository.loadFromStorage()
         if datosStorage.count > 0 {

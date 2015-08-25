@@ -61,7 +61,7 @@ class PCUViewController: BaseUIViewController {
         }
     }
     
-    func loadFromStorage() {
+    override func loadFromStorage() {
         println("PCU loadFromStorage")
         let datosStorage = PCURepository.loadFromStorage()
         if datosStorage.count > 0 {
