@@ -69,7 +69,8 @@ class ReporteGeneralViewController: BaseUIViewController {
         }
     }
     
-    func loadFromStorage() {
+    
+    override func loadFromStorage() {
         println("loadFromStorage")
         let datosStorage = ReporteGeneralRepository.loadFromStorage()
         if datosStorage.count > 0 {
