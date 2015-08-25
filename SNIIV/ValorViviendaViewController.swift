@@ -96,7 +96,7 @@ class ValorViviendaViewController: BaseUIViewController {
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-        txtTitleValorVivienda.text = "Valor de la Vivienda \(fechas.fecha_vv)"
+        txtTitleValorVivienda.text = "Valor de la Vivienda \(Utils.formatoMes(fechas.fecha_vv))"
     }
     
     override func getKey() -> String {

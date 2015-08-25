@@ -127,7 +127,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
             txtTotalAcc.text = Utils.toString(consulta!.total.acciones)
         }
         
-        txtTitleFinanciamientos.text = "Financiamientos \(fechas.fecha_finan)"
+        txtTitleFinanciamientos.text = "Financiamientos \(Utils.formatoDiaMes(fechas.fecha_finan))"
     }
     
     override func getKey() -> String {

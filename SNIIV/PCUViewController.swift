@@ -99,7 +99,7 @@ class PCUViewController: BaseUIViewController {
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-        txtTitlePCU.text = "PCU \(fechas.fecha_vv)"
+        txtTitlePCU.text = "PCU \(Utils.formatoMes(fechas.fecha_vv))"
     }
     
     override func getKey() -> String {

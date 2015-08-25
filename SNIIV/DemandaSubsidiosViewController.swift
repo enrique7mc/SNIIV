@@ -122,7 +122,7 @@ class DemandaSubsidiosViewController: BaseUIViewController {
             txtTotalAcc.text = Utils.toString(consulta!.total.acciones)
         }
         
-        txtTitleSubsidios.text = "Subsidios \(fechas.fecha_subs)"
+        txtTitleSubsidios.text = "Subsidios \(Utils.formatoDiaMes(fechas.fecha_subs))"
     }
     
     override func getKey() -> String {

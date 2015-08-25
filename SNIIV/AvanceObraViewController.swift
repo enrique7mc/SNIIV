@@ -97,7 +97,7 @@ class AvanceObraViewController: BaseUIViewController {
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-        txtTitleObra.text = "Avance Obra \(fechas.fecha_vv)"
+        txtTitleObra.text = "Avance Obra \(Utils.formatoMes(fechas.fecha_vv))"
     }
     
     override func getKey() -> String {
