@@ -106,11 +106,11 @@ class Utils {
     }
     
     static func formatoDiaMes(fecha: String) -> String {
-        return formatoFecha(fecha, formato: "d MMMM yyyy")
+        return formatoFecha(fecha, formato: "d MMMM yyyy").capitalizedString
     }
     
     static func formatoMes(fecha: String) -> String {
-        return formatoFecha(fecha, formato: "MMMM yyyy")
+        return formatoFecha(fecha, formato: "MMMM yyyy").capitalizedString
     }
     
     static func formatoFecha(fecha: String, formato: String) -> String {
