@@ -14,6 +14,7 @@ class Utils {
     
     static let numberFormatter = NSNumberFormatter()
     static let dateFormatter = NSDateFormatter()
+
     
     static func decimalFormat(numero: NSNumber) -> String {
         numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
@@ -103,4 +104,25 @@ class Utils {
     static func Sumar(a: Double, b: Double) -> Double {
         return a + b
     }
+    
+    static func formatoDiaMes(fecha: String) -> String {
+        return formatoFecha(fecha, formato: "d MMMM yyyy")
+    }
+    
+    static func formatoMes(fecha: String) -> String {
+        return formatoFecha(fecha, formato: "MMMM yyyy")
+    }
+    
+    static func formatoFecha(fecha: String, formato: String) -> String {
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let date = dateFormatter.dateFromString(fecha)
+        if date != nil {
+            dateFormatter.dateFormat = formato
+            dateFormatter.locale = NSLocale(localeIdentifier: "es-MX")
+            return dateFormatter.stringFromDate(date!)
+        }
+        
+        return fecha
+    }
+
 }
