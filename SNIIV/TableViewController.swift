@@ -9,19 +9,30 @@
 import UIKit
 
 class TableViewController: UITableViewController {
-
     var fechas: Fechas = Fechas()
     static var isDateLoaded: Bool = false
+    var refresh: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         println("menu")
         
+        self.refresh = UIRefreshControl()
+        self.refresh.attributedTitle = NSAttributedString(string: "Recargar datos")
+        self.refresh.addTarget(self, action: "reload:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refresh)
+        
+        cargarDatosFechas()
+    }
+    
+    func cargarDatosFechas() {
         if Reachability.isConnectedToNetwork() {
             var parseFechas = ParseFechasWeb<Fechas?>()
             parseFechas.getDatos(handlerFechas)
-            
-            return
+        }
+        
+        if refresh.refreshing {
+            self.refresh.endRefreshing()
         }
     }
     
@@ -45,5 +56,13 @@ class TableViewController: UITableViewController {
             FechasRepository.save(fechas)
             TableViewController.isDateLoaded = true
         }
+        
+        if refresh.refreshing {
+            self.refresh.endRefreshing()
+        }
+    }
+    
+    func reload(sender:AnyObject) {
+        cargarDatosFechas()
     }
 }
