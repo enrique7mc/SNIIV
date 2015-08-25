@@ -57,6 +57,9 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             } else {
                 loadFromStorage()
             }
+        } else {
+            FechasRepository.deleteAll()
+            FechasRepository.save(fechas)
         }
     }
     

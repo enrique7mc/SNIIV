@@ -32,9 +32,10 @@ class ReporteGeneralViewController: BaseUIViewController {
         
         activarIndicador()
         
-        if Reachability.isConnectedToNetwork() {
-            var parseFechas = ParseFechasWeb<Fechas?>()
-            parseFechas.getDatos(handlerFechas)
+        println("Is data loaded?: \(TableViewController.isDataLoaded)")
+        if !TableViewController.isDataLoaded && Reachability.isConnectedToNetwork() {
+            var parseReporte = ParseReporteGeneral<[ReporteGeneralPrueba]>()
+            parseReporte.getDatos(handler)
             
             return
         }
@@ -60,16 +61,13 @@ class ReporteGeneralViewController: BaseUIViewController {
         datos = DatosReporteGeneral(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        FechasRepository.deleteAll()
-        FechasRepository.save(fechas)
-        
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
             self.picker.userInteractionEnabled = true
         }
     }
     
-    func loadFromStorage() {
+    override func loadFromStorage() {
         println("loadFromStorage")
         let datosStorage = ReporteGeneralRepository.loadFromStorage()
         if datosStorage.count > 0 {

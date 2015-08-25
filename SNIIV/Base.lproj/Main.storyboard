@@ -8,7 +8,7 @@
         <!--Menú-->
         <scene sceneID="oJC-hD-m9G">
             <objects>
-                <tableViewController title="Menú" id="vB4-9n-1Fb" sceneMemberID="viewController">
+                <tableViewController title="Menú" id="vB4-9n-1Fb" customClass="TableViewController" customModule="SNIIV" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Rf2-1h-EG1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
