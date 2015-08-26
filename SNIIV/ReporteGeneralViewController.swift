@@ -113,4 +113,11 @@ class ReporteGeneralViewController: BaseUIViewController {
     override func getKey() -> String {
         return ReporteGeneralRepository.TABLA
     }
+    
+    override func isDataLoaded() -> Bool {
+        let date = TimeLastUpdatedRepository.getLastTimeUpdated(getKey())
+        let lastUpdated = FechasRepository.selectFechas()!.fecha_subs
+        print(date + " " + lastUpdated)
+        return date != lastUpdated
+    }
 }
