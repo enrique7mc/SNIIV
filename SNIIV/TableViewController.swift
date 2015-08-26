@@ -21,12 +21,15 @@ class TableViewController: UITableViewController {
         self.refresh.attributedTitle = NSAttributedString(string: "Recargar datos")
         self.refresh.addTarget(self, action: "reload:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refresh)
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         cargarDatosFechas()
     }
     
     func cargarDatosFechas() {
         if Reachability.isConnectedToNetwork() {
+            println("carga fechas")
             var parseFechas = ParseFechasWeb<Fechas?>()
             parseFechas.getDatos(handlerFechas)
         }
@@ -42,24 +45,18 @@ class TableViewController: UITableViewController {
             return
         }
         
-        fechas = responseObject
-        
-        if let fechasStorage = FechasRepository.selectFechas() {
-            if fechas != fechasStorage {
-                TableViewController.isDateLoaded = false
-            } else {
-                TableViewController.isDateLoaded = true
-            }
-        } else {
-            println("Saving dates")
-            FechasRepository.deleteAll()
-            FechasRepository.save(fechas)
-            TableViewController.isDateLoaded = true
-        }
+        //fechas = responseObject
+        fechas = Fechas(fecha_finan: "26/08/2015", fecha_subs: "01/09/2015", fecha_vv: "25/08/2015")
+        actualizaFechas()
         
         if refresh.refreshing {
             self.refresh.endRefreshing()
         }
+    }
+    
+    func actualizaFechas() {
+        FechasRepository.deleteAll()
+        FechasRepository.save(fechas)
     }
     
     func reload(sender:AnyObject) {
