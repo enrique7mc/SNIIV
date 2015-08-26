@@ -62,13 +62,19 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     func isDataLoaded() -> Bool {
         let date = TimeLastUpdatedRepository.getLastTimeUpdated(getKey())
-        println("last update: " + date)
-        return date != ""
+        let lastUpdated = getFechaActualizacion() ?? "00/00/0000"
+        println(date + " " + lastUpdated)
+        return date == lastUpdated
     }
     
     func getKey() -> String {
         print("getKey not implemented by subclass")
         return ""
+    }
+    
+    func getFechaActualizacion() -> String? {
+        print("getFechaActualizacion not implemented by subclass")
+        return nil
     }
     
     func muestraMensajeError() {

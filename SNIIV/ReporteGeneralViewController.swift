@@ -32,8 +32,7 @@ class ReporteGeneralViewController: BaseUIViewController {
         
         activarIndicador()
         
-        println("Is data loaded?: \(TableViewController.isDateLoaded)")
-        if (!TableViewController.isDateLoaded || !isDataLoaded()) && Reachability.isConnectedToNetwork() {
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
             println("loading from web")
             var parseReporte = ParseReporteGeneral<[ReporteGeneralPrueba]>()
             parseReporte.getDatos(handler)
@@ -56,7 +55,9 @@ class ReporteGeneralViewController: BaseUIViewController {
         datos = DatosReporteGeneral(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
+        if let ultimaFecha = getFechaActualizacion() {
+            TimeLastUpdatedRepository.saveLastTimeUpdated(getKey(), fecha: ultimaFecha)
+        }
         
         loadFechasStorage()
         
@@ -69,7 +70,6 @@ class ReporteGeneralViewController: BaseUIViewController {
     override func loadFromStorage() {
         println("loadFromStorage")
         let datosStorage = ReporteGeneralRepository.loadFromStorage()
-        println("count: \(datosStorage.count)")
         if datosStorage.count > 0 {
             datos = DatosReporteGeneral(datos: datosStorage)
             entidad = datos?.consultaNacional()
@@ -114,10 +114,8 @@ class ReporteGeneralViewController: BaseUIViewController {
         return ReporteGeneralRepository.TABLA
     }
     
-    override func isDataLoaded() -> Bool {
-        let date = TimeLastUpdatedRepository.getLastTimeUpdated(getKey())
-        let lastUpdated = FechasRepository.selectFechas()!.fecha_subs
-        print(date + " " + lastUpdated)
-        return date != lastUpdated
+    override func getFechaActualizacion() -> String? {
+        return FechasRepository.selectFechas()?.fecha_subs
     }
+
 }
