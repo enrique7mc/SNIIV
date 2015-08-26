@@ -28,7 +28,7 @@ class AvanceObraViewController: BaseUIViewController {
 
         activarIndicador()
         
-        if (!TableViewController.isDateLoaded || !isDataLoaded()) && Reachability.isConnectedToNetwork() {
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
             var parseAvance = ParseAvanceObra<[AvanceObra]>()
             parseAvance.getDatos(handler)
             
@@ -50,7 +50,9 @@ class AvanceObraViewController: BaseUIViewController {
         datos = DatosAvanceObra(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
+        if let ultimaFecha = getFechaActualizacion() {
+            TimeLastUpdatedRepository.saveLastTimeUpdated(getKey(), fecha: ultimaFecha)
+        }
         
         loadFechasStorage()
         
@@ -102,5 +104,9 @@ class AvanceObraViewController: BaseUIViewController {
     
     override func getKey() -> String {
         return AvanceObraRepository.TABLA
+    }
+    
+    override func getFechaActualizacion() -> String? {
+        return FechasRepository.selectFechas()?.fecha_vv
     }
 }

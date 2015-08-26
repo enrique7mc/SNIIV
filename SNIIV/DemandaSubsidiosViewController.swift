@@ -37,7 +37,7 @@ class DemandaSubsidiosViewController: BaseUIViewController {
         
         activarIndicador()
         
-        if (!TableViewController.isDateLoaded || !isDataLoaded()) && Reachability.isConnectedToNetwork() {            
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {            
             var parseSubsidios = ParseSubsidios<[Subsidio]>()
             parseSubsidios.getDatos(handler)
             
@@ -59,7 +59,9 @@ class DemandaSubsidiosViewController: BaseUIViewController {
         datos = DatosSubsidios()
         consulta = datos!.consultaNacional()
         
-        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
+        if let ultimaFecha = getFechaActualizacion() {
+            TimeLastUpdatedRepository.saveLastTimeUpdated(getKey(), fecha: ultimaFecha)
+        }
         
         loadFechasStorage()
         
@@ -127,5 +129,9 @@ class DemandaSubsidiosViewController: BaseUIViewController {
     
     override func getKey() -> String {
         return SubsidioRepository.TABLA
+    }
+    
+    override func getFechaActualizacion() -> String? {
+        return FechasRepository.selectFechas()?.fecha_subs
     }
 }

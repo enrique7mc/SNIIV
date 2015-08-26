@@ -45,8 +45,8 @@ class TableViewController: UITableViewController {
             return
         }
         
-        //fechas = responseObject
-        fechas = Fechas(fecha_finan: "26/08/2015", fecha_subs: "01/09/2015", fecha_vv: "25/08/2015")
+        fechas = responseObject
+        //fechas = Fechas(fecha_finan: "26/08/2015", fecha_subs: "01/09/2015", fecha_vv: "25/08/2015")
         actualizaFechas()
         
         if refresh.refreshing {

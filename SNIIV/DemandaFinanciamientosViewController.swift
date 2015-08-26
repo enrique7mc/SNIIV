@@ -43,7 +43,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
         
         activarIndicador()
         
-        if (!TableViewController.isDateLoaded || !isDataLoaded()) && Reachability.isConnectedToNetwork() {            
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {            
             var parseFinanciamientos = ParseFinanciamientos<[Financiamiento]>()
             parseFinanciamientos.getDatos(handler)
             
@@ -65,7 +65,9 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
         datos = DatosFinanciamiento()
         consulta = datos!.consultaNacional()
         
-        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
+        if let ultimaFecha = getFechaActualizacion() {
+            TimeLastUpdatedRepository.saveLastTimeUpdated(getKey(), fecha: ultimaFecha)
+        }
         
         loadFechasStorage()
         
@@ -132,5 +134,9 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
     
     override func getKey() -> String {
         return FinanciamientoRepository.TABLA
+    }
+    
+    override func getFechaActualizacion() -> String? {
+        return FechasRepository.selectFechas()?.fecha_finan
     }
 }

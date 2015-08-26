@@ -26,7 +26,7 @@ class TipoViviendaViewController: BaseUIViewController {
 
         activarIndicador()
         
-        if (!TableViewController.isDateLoaded || !isDataLoaded()) && Reachability.isConnectedToNetwork() {            
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {            
             var parseTipo = ParseTipoVivienda<[TipoVivienda]>()
             parseTipo.getDatos(handler)
             
@@ -48,7 +48,9 @@ class TipoViviendaViewController: BaseUIViewController {
         datos = DatosTipoVivienda(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
+        if let ultimaFecha = getFechaActualizacion() {
+            TimeLastUpdatedRepository.saveLastTimeUpdated(getKey(), fecha: ultimaFecha)
+        }
         
         loadFechasStorage()
         
@@ -98,5 +100,9 @@ class TipoViviendaViewController: BaseUIViewController {
     
     override func getKey() -> String {
         return TipoViviendaRepository.TABLA
+    }
+    
+    override func getFechaActualizacion() -> String? {
+        return FechasRepository.selectFechas()?.fecha_vv
     }
 }

@@ -29,7 +29,7 @@ class PCUViewController: BaseUIViewController {
         
         activarIndicador()
         
-        if (!TableViewController.isDateLoaded || !isDataLoaded()) && Reachability.isConnectedToNetwork() {
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
             var parsePCU = ParsePCU<[PCU]>()
             parsePCU.getDatos(handler)
             
@@ -51,7 +51,9 @@ class PCUViewController: BaseUIViewController {
         datos = DatosPCU(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
+        if let ultimaFecha = getFechaActualizacion() {
+            TimeLastUpdatedRepository.saveLastTimeUpdated(getKey(), fecha: ultimaFecha)
+        }
         
         loadFechasStorage()
         
@@ -104,5 +106,9 @@ class PCUViewController: BaseUIViewController {
     
     override func getKey() -> String {
         return PCURepository.TABLA
+    }
+    
+    override func getFechaActualizacion() -> String? {
+        return FechasRepository.selectFechas()?.fecha_vv
     }
 }
