@@ -15,6 +15,8 @@
 		840C6BB01B5809500044A83C /* ParseReporteGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C6BAF1B5809500044A83C /* ParseReporteGeneral.swift */; };
 		840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F82A61B54375E00A3B9E7 /* Reachability.swift */; };
 		840F82AA1B54630900A3B9E7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F82A91B54630900A3B9E7 /* Utils.swift */; };
+		8410A27F1B8BB9E4002370C9 /* ParseFechasWeb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410A27E1B8BB9E4002370C9 /* ParseFechasWeb.swift */; };
+		8410A2811B8CD960002370C9 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410A2801B8CD960002370C9 /* TableViewController.swift */; };
 		841301301B571A35004946C7 /* ParseAvanceObra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413012F1B571A35004946C7 /* ParseAvanceObra.swift */; };
 		841642C61B5D5C2700D10900 /* DatosAvanceObra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642C51B5D5C2700D10900 /* DatosAvanceObra.swift */; };
 		841642D21B5EAE7E00D10900 /* ParsePCU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841642D11B5EAE7E00D10900 /* ParsePCU.swift */; };
@@ -74,6 +76,8 @@
 		840C6BAF1B5809500044A83C /* ParseReporteGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseReporteGeneral.swift; sourceTree = "<group>"; };
 		840F82A61B54375E00A3B9E7 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		840F82A91B54630900A3B9E7 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		8410A27E1B8BB9E4002370C9 /* ParseFechasWeb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseFechasWeb.swift; sourceTree = "<group>"; };
+		8410A2801B8CD960002370C9 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		8413012F1B571A35004946C7 /* ParseAvanceObra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAvanceObra.swift; sourceTree = "<group>"; };
 		841642C51B5D5C2700D10900 /* DatosAvanceObra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosAvanceObra.swift; sourceTree = "<group>"; };
 		841642D11B5EAE7E00D10900 /* ParsePCU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsePCU.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 				840C6BAF1B5809500044A83C /* ParseReporteGeneral.swift */,
 				84E16C191B4EC72C00C56F08 /* DatosReporteGeneral.swift */,
 				8402548B1B5988E1000DBBF5 /* ParseFechas.swift */,
+				8410A27E1B8BB9E4002370C9 /* ParseFechasWeb.swift */,
 				8413012F1B571A35004946C7 /* ParseAvanceObra.swift */,
 				841642C51B5D5C2700D10900 /* DatosAvanceObra.swift */,
 				841642D11B5EAE7E00D10900 /* ParsePCU.swift */,
@@ -236,6 +241,7 @@
 				84BA16331B4C657400ECC81A /* Main.storyboard */,
 				84BA16381B4C657400ECC81A /* LaunchScreen.xib */,
 				84BA162D1B4C657400ECC81A /* Supporting Files */,
+				8410A2801B8CD960002370C9 /* TableViewController.swift */,
 				847711D61B60056A007BC146 /* BaseUIViewController.swift */,
 				A38708041B4DB868009EAC52 /* ReporteGeneralViewController.swift */,
 				A39E1B121B570A7E000DEBA3 /* AvanceObraViewController.swift */,
@@ -439,11 +445,13 @@
 				84E16C1E1B4EFC6100C56F08 /* Entidad.swift in Sources */,
 				840A02951B6832A9000EF460 /* SubsidioRepository.swift in Sources */,
 				84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */,
+				8410A2811B8CD960002370C9 /* TableViewController.swift in Sources */,
 				841642DC1B5EF12E00D10900 /* DatosValorVivienda.swift in Sources */,
 				A39E1B131B570A7E000DEBA3 /* AvanceObraViewController.swift in Sources */,
 				847711DB1B60557F007BC146 /* DatosSubsidios.swift in Sources */,
 				84E1D1B11B62A1C9007C63B6 /* TipoViviendaRepository.swift in Sources */,
 				842188771B669401000D3BE6 /* ParseFinanciamientos.swift in Sources */,
+				8410A27F1B8BB9E4002370C9 /* ParseFechasWeb.swift in Sources */,
 				841642C61B5D5C2700D10900 /* DatosAvanceObra.swift in Sources */,
 				840F82AA1B54630900A3B9E7 /* Utils.swift in Sources */,
 				840C6BB01B5809500044A83C /* ParseReporteGeneral.swift in Sources */,

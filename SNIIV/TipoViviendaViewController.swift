@@ -26,9 +26,7 @@ class TipoViviendaViewController: BaseUIViewController {
 
         activarIndicador()
         
-        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
-            var parseFechas = ParseFechas<Fechas>()
-            parseFechas.getDatos(handlerFechas)
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {            
             var parseTipo = ParseTipoVivienda<[TipoVivienda]>()
             parseTipo.getDatos(handler)
             
@@ -50,7 +48,11 @@ class TipoViviendaViewController: BaseUIViewController {
         datos = DatosTipoVivienda(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
+        if let ultimaFecha = getFechaActualizacion() {
+            TimeLastUpdatedRepository.saveLastTimeUpdated(getKey(), fecha: ultimaFecha)
+        }
+        
+        loadFechasStorage()
         
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
@@ -58,7 +60,7 @@ class TipoViviendaViewController: BaseUIViewController {
         }
     }
     
-    func loadFromStorage() {
+    override func loadFromStorage() {
         println("TipoVivienda loadFromStorage")
         let datosStorage = TipoViviendaRepository.loadFromStorage()
         if datosStorage.count > 0 {
@@ -69,12 +71,7 @@ class TipoViviendaViewController: BaseUIViewController {
             muestraMensajeError()
         }
         
-        let fechasStorage = FechasRepository.selectFechas()
-        if fechasStorage != nil {
-            fechas = fechasStorage!
-        } else {
-            println("no hay fechas en local storage")
-        }
+        loadFechasStorage()
         
         habilitarPantalla()
     }
@@ -98,10 +95,14 @@ class TipoViviendaViewController: BaseUIViewController {
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-        txtTitleTipoVivienda.text = "Tipo de la Vivienda \(fechas.fecha_vv)"
+        txtTitleTipoVivienda.text = "Tipo de la Vivienda \(Utils.formatoMes(fechas.fecha_vv))"
     }
     
     override func getKey() -> String {
         return TipoViviendaRepository.TABLA
+    }
+    
+    override func getFechaActualizacion() -> String? {
+        return FechasRepository.selectFechas()?.fecha_vv
     }
 }

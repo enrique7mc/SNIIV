@@ -30,8 +30,6 @@ class PCUViewController: BaseUIViewController {
         activarIndicador()
         
         if !isDataLoaded() && Reachability.isConnectedToNetwork() {
-            var parseFechas = ParseFechas<Fechas>()
-            parseFechas.getDatos(handlerFechas)
             var parsePCU = ParsePCU<[PCU]>()
             parsePCU.getDatos(handler)
             
@@ -53,7 +51,11 @@ class PCUViewController: BaseUIViewController {
         datos = DatosPCU(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
+        if let ultimaFecha = getFechaActualizacion() {
+            TimeLastUpdatedRepository.saveLastTimeUpdated(getKey(), fecha: ultimaFecha)
+        }
+        
+        loadFechasStorage()
         
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
@@ -61,7 +63,7 @@ class PCUViewController: BaseUIViewController {
         }
     }
     
-    func loadFromStorage() {
+    override func loadFromStorage() {
         println("PCU loadFromStorage")
         let datosStorage = PCURepository.loadFromStorage()
         if datosStorage.count > 0 {
@@ -72,12 +74,7 @@ class PCUViewController: BaseUIViewController {
             muestraMensajeError()
         }
         
-        let fechasStorage = FechasRepository.selectFechas()
-        if fechasStorage != nil {
-            fechas = fechasStorage!
-        } else {
-            println("no hay fechas en local storage")
-        }
+        loadFechasStorage()
         
         habilitarPantalla()
     }
@@ -104,10 +101,14 @@ class PCUViewController: BaseUIViewController {
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-        txtTitlePCU.text = "PCU \(fechas.fecha_vv)"
+        txtTitlePCU.text = "PCU \(Utils.formatoMes(fechas.fecha_vv))"
     }
     
     override func getKey() -> String {
         return PCURepository.TABLA
+    }
+    
+    override func getFechaActualizacion() -> String? {
+        return FechasRepository.selectFechas()?.fecha_vv
     }
 }

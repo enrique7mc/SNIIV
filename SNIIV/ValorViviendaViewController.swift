@@ -28,9 +28,7 @@ class ValorViviendaViewController: BaseUIViewController {
 
         activarIndicador()
         
-        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
-            var parseFechas = ParseFechas<Fechas>()
-            parseFechas.getDatos(handlerFechas)
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {            
             var parseValor = ParseValorVivienda<[ValorVivienda]>()
             parseValor.getDatos(handler)
             
@@ -52,7 +50,11 @@ class ValorViviendaViewController: BaseUIViewController {
         datos = DatosValorVivienda(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
+        if let ultimaFecha = getFechaActualizacion() {
+            TimeLastUpdatedRepository.saveLastTimeUpdated(getKey(), fecha: ultimaFecha)
+        }
+        
+        loadFechasStorage()
         
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
@@ -60,7 +62,7 @@ class ValorViviendaViewController: BaseUIViewController {
         }
     }
     
-    func loadFromStorage() {
+    override func loadFromStorage() {
         println("Valorivienda loadFromStorage")
         let datosStorage = ValorViviendaRepository.loadFromStorage()
         if datosStorage.count > 0 {
@@ -71,12 +73,7 @@ class ValorViviendaViewController: BaseUIViewController {
             muestraMensajeError()
         }
         
-        let fechasStorage = FechasRepository.selectFechas()
-        if fechasStorage != nil {
-            fechas = fechasStorage!
-        } else {
-            println("no hay fechas en local storage")
-        }
+        loadFechasStorage()
         
         habilitarPantalla()
     }
@@ -101,10 +98,14 @@ class ValorViviendaViewController: BaseUIViewController {
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-        txtTitleValorVivienda.text = "Valor de la Vivienda \(fechas.fecha_vv)"
+        txtTitleValorVivienda.text = "Valor de la Vivienda \(Utils.formatoMes(fechas.fecha_vv))"
     }
     
     override func getKey() -> String {
         return ValorViviendaRepository.TABLA
+    }
+    
+    override func getFechaActualizacion() -> String? {
+        return FechasRepository.selectFechas()?.fecha_vv
     }
 }

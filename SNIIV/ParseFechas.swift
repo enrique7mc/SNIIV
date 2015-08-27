@@ -36,7 +36,8 @@ class ParseFechas<T>: ParseBase<Fechas> {
     }
 }
 
-class Fechas {
+// TODO revisar igualdad de fechas
+struct Fechas {
     var fecha_finan: String
     var fecha_subs: String
     var fecha_vv: String
@@ -47,9 +48,21 @@ class Fechas {
         fecha_vv = ""
     }
     
+    init(fechasDictionary: [String: AnyObject]) {
+        self.fecha_finan = fechasDictionary["fecha_finan"] as! String
+        self.fecha_subs = fechasDictionary["fecha_subs"] as! String
+        self.fecha_vv = fechasDictionary["fecha_vv"] as! String
+    }
+    
     init(fecha_finan: String, fecha_subs: String, fecha_vv: String) {
         self.fecha_finan = fecha_finan
         self.fecha_subs = fecha_subs
         self.fecha_vv = fecha_vv
     }
+}
+
+extension Fechas: Equatable {}
+
+func ==(lhs: Fechas, rhs: Fechas) -> Bool {
+    return lhs.fecha_finan == rhs.fecha_finan && lhs.fecha_subs == rhs.fecha_subs && lhs.fecha_vv == rhs.fecha_vv
 }

@@ -29,8 +29,6 @@ class AvanceObraViewController: BaseUIViewController {
         activarIndicador()
         
         if !isDataLoaded() && Reachability.isConnectedToNetwork() {
-            var parseFechas = ParseFechas<Fechas>()
-            parseFechas.getDatos(handlerFechas)
             var parseAvance = ParseAvanceObra<[AvanceObra]>()
             parseAvance.getDatos(handler)
             
@@ -52,7 +50,11 @@ class AvanceObraViewController: BaseUIViewController {
         datos = DatosAvanceObra(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
+        if let ultimaFecha = getFechaActualizacion() {
+            TimeLastUpdatedRepository.saveLastTimeUpdated(getKey(), fecha: ultimaFecha)
+        }
+        
+        loadFechasStorage()
         
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
@@ -60,7 +62,7 @@ class AvanceObraViewController: BaseUIViewController {
         }
     }
     
-    func loadFromStorage() {
+    override func loadFromStorage() {
         println("AvanceObra loadFromStorage")
         let datosStorage = AvanceObraRepository.loadFromStorage()
         if datosStorage.count > 0 {
@@ -71,12 +73,7 @@ class AvanceObraViewController: BaseUIViewController {
             muestraMensajeError()
         }
         
-        let fechasStorage = FechasRepository.selectFechas()
-        if fechasStorage != nil {
-            fechas = fechasStorage!
-        } else {
-            println("no hay fechas en local storage")
-        }
+        loadFechasStorage()
         
         habilitarPantalla()
     }
@@ -102,10 +99,14 @@ class AvanceObraViewController: BaseUIViewController {
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-        txtTitleObra.text = "Avance Obra \(fechas.fecha_vv)"
+        txtTitleObra.text = "Avance Obra \(Utils.formatoMes(fechas.fecha_vv))"
     }
     
     override func getKey() -> String {
         return AvanceObraRepository.TABLA
+    }
+    
+    override func getFechaActualizacion() -> String? {
+        return FechasRepository.selectFechas()?.fecha_vv
     }
 }

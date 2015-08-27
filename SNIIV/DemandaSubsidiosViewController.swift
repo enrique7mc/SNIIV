@@ -37,9 +37,7 @@ class DemandaSubsidiosViewController: BaseUIViewController {
         
         activarIndicador()
         
-        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
-            var parseFechas = ParseFechas<Fechas>()
-            parseFechas.getDatos(handlerFechas)
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {            
             var parseSubsidios = ParseSubsidios<[Subsidio]>()
             parseSubsidios.getDatos(handler)
             
@@ -61,7 +59,11 @@ class DemandaSubsidiosViewController: BaseUIViewController {
         datos = DatosSubsidios()
         consulta = datos!.consultaNacional()
         
-        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
+        if let ultimaFecha = getFechaActualizacion() {
+            TimeLastUpdatedRepository.saveLastTimeUpdated(getKey(), fecha: ultimaFecha)
+        }
+        
+        loadFechasStorage()
         
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
@@ -69,7 +71,7 @@ class DemandaSubsidiosViewController: BaseUIViewController {
         }
     }
     
-    func loadFromStorage() {
+    override func loadFromStorage() {
         println("Subsidio loadFromStorage")
         let datosStorage = SubsidioRepository.loadFromStorage()
         if datosStorage.count > 0 {
@@ -81,12 +83,7 @@ class DemandaSubsidiosViewController: BaseUIViewController {
             muestraMensajeError()
         }
         
-        let fechasStorage = FechasRepository.selectFechas()
-        if fechasStorage != nil {
-            fechas = fechasStorage!
-        } else {
-            println("no hay fechas en local storage")
-        }
+        loadFechasStorage()
         
         habilitarPantalla()
     }
@@ -127,10 +124,14 @@ class DemandaSubsidiosViewController: BaseUIViewController {
             txtTotalAcc.text = Utils.toString(consulta!.total.acciones)
         }
         
-        txtTitleSubsidios.text = "Subsidios \(fechas.fecha_subs)"
+        txtTitleSubsidios.text = "Subsidios \(Utils.formatoDiaMes(fechas.fecha_subs))"
     }
     
     override func getKey() -> String {
         return SubsidioRepository.TABLA
+    }
+    
+    override func getFechaActualizacion() -> String? {
+        return FechasRepository.selectFechas()?.fecha_subs
     }
 }

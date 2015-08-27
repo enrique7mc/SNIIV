@@ -33,14 +33,13 @@ class ReporteGeneralViewController: BaseUIViewController {
         activarIndicador()
         
         if !isDataLoaded() && Reachability.isConnectedToNetwork() {
-            var parseFechas = ParseFechas<Fechas?>()
-            parseFechas.getDatos(handlerFechas)
+            println("loading from web")
             var parseReporte = ParseReporteGeneral<[ReporteGeneralPrueba]>()
             parseReporte.getDatos(handler)
             
             return
         }
-        
+            
         loadFromStorage()
     }
     
@@ -56,7 +55,11 @@ class ReporteGeneralViewController: BaseUIViewController {
         datos = DatosReporteGeneral(datos: responseObject)
         entidad = datos!.consultaNacional()
         
-        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
+        if let ultimaFecha = getFechaActualizacion() {
+            TimeLastUpdatedRepository.saveLastTimeUpdated(getKey(), fecha: ultimaFecha)
+        }
+        
+        loadFechasStorage()
         
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
@@ -64,7 +67,8 @@ class ReporteGeneralViewController: BaseUIViewController {
         }
     }
     
-    func loadFromStorage() {
+    override func loadFromStorage() {
+        println("loadFromStorage")
         let datosStorage = ReporteGeneralRepository.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosReporteGeneral(datos: datosStorage)
@@ -74,12 +78,7 @@ class ReporteGeneralViewController: BaseUIViewController {
             muestraMensajeError()
         }
         
-        let fechasStorage = FechasRepository.selectFechas()
-        if fechasStorage != nil {
-            fechas = fechasStorage!
-        } else {
-            println("no hay fechas en local storage")
-        }
+        loadFechasStorage()
         
         habilitarPantalla()
     }
@@ -106,12 +105,17 @@ class ReporteGeneralViewController: BaseUIViewController {
             txtViviendasRegistradas.text = Utils.toStringDivide(entidad!.vr)
         }
         
-        labelFinanciamiento.text = "Financiamientos \(fechas.fecha_finan)"
-        labelSubsidios.text = "Subsidios \(fechas.fecha_subs)"
-        labelVivienda.text = "Oferta de Vivienda \(fechas.fecha_vv)"
+        labelFinanciamiento.text = "Financiamientos \(Utils.formatoDiaMes(fechas.fecha_finan))"
+        labelSubsidios.text = "Subsidios \(Utils.formatoDiaMes(fechas.fecha_subs))"
+        labelVivienda.text = "Oferta de Vivienda \(Utils.formatoMes(fechas.fecha_vv))"
     }
     
     override func getKey() -> String {
         return ReporteGeneralRepository.TABLA
     }
+    
+    override func getFechaActualizacion() -> String? {
+        return FechasRepository.selectFechas()?.fecha_subs
+    }
+
 }

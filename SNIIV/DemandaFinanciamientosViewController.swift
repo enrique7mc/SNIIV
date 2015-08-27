@@ -43,9 +43,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
         
         activarIndicador()
         
-        if !isDataLoaded() && Reachability.isConnectedToNetwork() {
-            var parseFechas = ParseFechas<Fechas>()
-            parseFechas.getDatos(handlerFechas)
+        if !isDataLoaded() && Reachability.isConnectedToNetwork() {            
             var parseFinanciamientos = ParseFinanciamientos<[Financiamiento]>()
             parseFinanciamientos.getDatos(handler)
             
@@ -67,7 +65,11 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
         datos = DatosFinanciamiento()
         consulta = datos!.consultaNacional()
         
-        TimeLastUpdatedRepository.saveLastTimeUpdated(getKey())
+        if let ultimaFecha = getFechaActualizacion() {
+            TimeLastUpdatedRepository.saveLastTimeUpdated(getKey(), fecha: ultimaFecha)
+        }
+        
+        loadFechasStorage()
         
         dispatch_async(dispatch_get_main_queue()){
             self.habilitarPantalla()
@@ -75,7 +77,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
         }
     }
     
-    func loadFromStorage() {
+    override func loadFromStorage() {
         println("Financiamiento loadFromStorage")
         let datosStorage = FinanciamientoRepository.loadFromStorage()
         if datosStorage.count > 0 {
@@ -87,12 +89,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
             muestraMensajeError()
         }
         
-        let fechasStorage = FechasRepository.selectFechas()
-        if fechasStorage != nil {
-            fechas = fechasStorage!
-        } else {
-            println("no hay fechas en local storage")
-        }
+        loadFechasStorage()
         
         habilitarPantalla()
     }
@@ -132,10 +129,14 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
             txtTotalAcc.text = Utils.toString(consulta!.total.acciones)
         }
         
-        txtTitleFinanciamientos.text = "Financiamientos \(fechas.fecha_finan)"
+        txtTitleFinanciamientos.text = "Financiamientos \(Utils.formatoDiaMes(fechas.fecha_finan))"
     }
     
     override func getKey() -> String {
         return FinanciamientoRepository.TABLA
+    }
+    
+    override func getFechaActualizacion() -> String? {
+        return FechasRepository.selectFechas()?.fecha_finan
     }
 }

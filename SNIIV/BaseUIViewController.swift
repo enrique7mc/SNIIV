@@ -44,15 +44,11 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func handlerFechas (responseObject: Fechas, error: NSError?) {
-        if error != nil {
-            println("Error obteniendo fechas")
-            return
-        }
         
-        FechasRepository.deleteAll()
-        
-        fechas = responseObject
-        FechasRepository.save(fechas)
+    }
+    
+    func loadFromStorage() {
+        println("loadFromWeb not implemented")
     }
     
     func mostrarDatos() {
@@ -66,12 +62,19 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     func isDataLoaded() -> Bool {
         let date = TimeLastUpdatedRepository.getLastTimeUpdated(getKey())
-        return Utils.equalDays(date, date2: Utils.CurrentDateAsString())
+        let lastUpdated = getFechaActualizacion() ?? "00/00/0000"
+        println(date + " " + lastUpdated)
+        return date == lastUpdated
     }
     
     func getKey() -> String {
         print("getKey not implemented by subclass")
         return ""
+    }
+    
+    func getFechaActualizacion() -> String? {
+        print("getFechaActualizacion not implemented by subclass")
+        return nil
     }
     
     func muestraMensajeError() {
@@ -87,5 +90,14 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         presentViewController(alert,
             animated: true,
             completion: nil)
+    }
+    
+    func loadFechasStorage() {
+        let fechasStorage = FechasRepository.selectFechas()
+        if fechasStorage != nil {
+            fechas = fechasStorage!
+        } else {
+            println("no hay fechas en local storage")
+        }
     }
 }
