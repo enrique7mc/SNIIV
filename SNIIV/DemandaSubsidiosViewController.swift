@@ -34,7 +34,7 @@ class DemandaSubsidiosViewController: BaseUIViewController {
         super.viewDidLoad()
         txtTitleSubsidios.enabled=false;
         picker.userInteractionEnabled = false
-        
+        self.tabBarController?.navigationItem.title="Subsidios"
         activarIndicador()
         
         if !isDataLoaded() && Reachability.isConnectedToNetwork() {            

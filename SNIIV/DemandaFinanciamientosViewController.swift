@@ -10,13 +10,14 @@ import UIKit
 
 class DemandaFinanciamientosViewController: BaseUIViewController {
     @IBOutlet weak var picker: UIPickerView!
-    @IBOutlet weak var txtTitleFinanciamientos: UITextField!
+    
 
     @IBOutlet weak var txtNuevasSubsidiosMto: UILabel!
     @IBOutlet weak var txtNuevasSubsidiosAcc: UILabel!
     @IBOutlet weak var txtNuevasCreditoAcc: UILabel!
     @IBOutlet weak var txtNuevasCreditoMto: UILabel!
     
+    @IBOutlet weak var txtTitleFinanciamientos: UINavigationItem!
     @IBOutlet weak var txtUsadasSubsidiosAcc: UILabel!
     @IBOutlet weak var txtUsadasSubsidiosMto: UILabel!
     @IBOutlet weak var txtUsadasCreditoMto: UILabel!
@@ -27,6 +28,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
     @IBOutlet weak var txtMejoramientoCreditoMto: UILabel!
     @IBOutlet weak var txtMejoramientoSubsidiosAcc: UILabel!
     
+    @IBOutlet weak var txtTitle: UINavigationItem!
     @IBOutlet weak var txtOtrosCreditoAcc: UILabel!
     @IBOutlet weak var txtOtrosCreditoMto: UILabel!
     
@@ -38,9 +40,9 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtTitleFinanciamientos.enabled=false;
+ 
         picker.userInteractionEnabled = false
-        
+        self.tabBarController?.navigationItem.title="Financiamientos"
         activarIndicador()
         
         if !isDataLoaded() && Reachability.isConnectedToNetwork() {            
@@ -129,7 +131,9 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
             txtTotalAcc.text = Utils.toString(consulta!.total.acciones)
         }
         
-        txtTitleFinanciamientos.text = "Financiamientos \(Utils.formatoDiaMes(fechas.fecha_finan))"
+       /* txtTitleFinanciamientos.title = "Financiamientos \(Utils.formatoDiaMes(fechas.fecha_finan))"*/
+        
+        self.tabBarController?.navigationItem.title="Financiamientos \(Utils.formatoDiaMes(fechas.fecha_finan))"
     }
     
     override func getKey() -> String {
