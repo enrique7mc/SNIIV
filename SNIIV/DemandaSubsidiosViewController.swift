@@ -10,7 +10,7 @@ import UIKit
 
 class DemandaSubsidiosViewController: BaseUIViewController {
 
-    @IBOutlet weak var txtTitleSubsidios: UITextField!
+    
     @IBOutlet weak var txtNuevaAcc: UILabel!
     @IBOutlet weak var txtNuevaMto: UILabel!
     @IBOutlet weak var txtUsadaAcc: UILabel!
@@ -32,7 +32,7 @@ class DemandaSubsidiosViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtTitleSubsidios.enabled=false;
+      
         picker.userInteractionEnabled = false
         self.tabBarController?.navigationItem.title="Subsidios"
         activarIndicador()
@@ -124,7 +124,7 @@ class DemandaSubsidiosViewController: BaseUIViewController {
             txtTotalAcc.text = Utils.toString(consulta!.total.acciones)
         }
         
-        txtTitleSubsidios.text = "Subsidios \(Utils.formatoDiaMes(fechas.fecha_subs))"
+        self.tabBarController?.navigationItem.title = "Subsidios \(Utils.formatoDiaMes(fechas.fecha_subs))"
     }
     
     override func getKey() -> String {

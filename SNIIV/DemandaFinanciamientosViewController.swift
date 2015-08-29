@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DemandaFinanciamientosViewController: BaseUIViewController {
+class DemandaFinanciamientosViewController: BaseUIViewController, UITabBarDelegate {
     @IBOutlet weak var picker: UIPickerView!
     
 
@@ -37,6 +37,9 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
     
     var consulta: ConsultaFinanciamiento?
     var datos: DatosFinanciamiento?
+    
+   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,7 +134,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController {
             txtTotalAcc.text = Utils.toString(consulta!.total.acciones)
         }
         
-       /* txtTitleFinanciamientos.title = "Financiamientos \(Utils.formatoDiaMes(fechas.fecha_finan))"*/
+   
         
         self.tabBarController?.navigationItem.title="Financiamientos \(Utils.formatoDiaMes(fechas.fecha_finan))"
     }

@@ -11,7 +11,6 @@ import UIKit
 class TipoViviendaViewController: BaseUIViewController {
 
     @IBOutlet weak var picker: UIPickerView!
-    @IBOutlet weak var txtTitleTipoVivienda: UITextField!
     @IBOutlet weak var txtHorizontal: UILabel!
     @IBOutlet weak var txtTotal: UILabel!
     @IBOutlet weak var txtVetical: UILabel!
@@ -21,7 +20,6 @@ class TipoViviendaViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtTitleTipoVivienda.enabled=false
         picker.userInteractionEnabled = false
 
         activarIndicador()
@@ -95,7 +93,7 @@ class TipoViviendaViewController: BaseUIViewController {
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-        txtTitleTipoVivienda.text = "Tipo de la Vivienda \(Utils.formatoMes(fechas.fecha_vv))"
+     //   txtTitleTipoVivienda.text = "Tipo de la Vivienda \(Utils.formatoMes(fechas.fecha_vv))"
     }
     
     override func getKey() -> String {

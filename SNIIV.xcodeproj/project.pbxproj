@@ -46,6 +46,8 @@
 		84E16C1E1B4EFC6100C56F08 /* Entidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16C1D1B4EFC6100C56F08 /* Entidad.swift */; };
 		84E1D1B11B62A1C9007C63B6 /* TipoViviendaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1D1B01B62A1C9007C63B6 /* TipoViviendaRepository.swift */; };
 		A37D9B211B5D97BF00433D80 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A37D9B201B5D97BF00433D80 /* Images.xcassets */; };
+		A3803F9E1B9122FA00C9FF12 /* DemandaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3803F9D1B9122FA00C9FF12 /* DemandaViewController.swift */; };
+		A3803FA01B9129BB00C9FF12 /* OferaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3803F9F1B9129BB00C9FF12 /* OferaViewController.swift */; };
 		A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38708041B4DB868009EAC52 /* ReporteGeneralViewController.swift */; };
 		A39E1B131B570A7E000DEBA3 /* AvanceObraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E1B121B570A7E000DEBA3 /* AvanceObraViewController.swift */; };
 		A39E1B151B570A95000DEBA3 /* PCUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E1B141B570A95000DEBA3 /* PCUViewController.swift */; };
@@ -112,6 +114,8 @@
 		84E1D1B01B62A1C9007C63B6 /* TipoViviendaRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipoViviendaRepository.swift; sourceTree = "<group>"; };
 		A35B0EEF1B4D7FD900CD25D9 /* SNIIV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SNIIV-Bridging-Header.h"; sourceTree = "<group>"; };
 		A37D9B201B5D97BF00433D80 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A3803F9D1B9122FA00C9FF12 /* DemandaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandaViewController.swift; sourceTree = "<group>"; };
+		A3803F9F1B9129BB00C9FF12 /* OferaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OferaViewController.swift; sourceTree = "<group>"; };
 		A38708041B4DB868009EAC52 /* ReporteGeneralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReporteGeneralViewController.swift; sourceTree = "<group>"; };
 		A39E1B121B570A7E000DEBA3 /* AvanceObraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvanceObraViewController.swift; sourceTree = "<group>"; };
 		A39E1B141B570A95000DEBA3 /* PCUViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCUViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +254,8 @@
 				A39E1B161B570ACF000DEBA3 /* ValorViviendaViewController.swift */,
 				A3B39D111B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift */,
 				A3B39D131B66D66400C65F41 /* DemandaSubsidiosViewController.swift */,
+				A3803F9D1B9122FA00C9FF12 /* DemandaViewController.swift */,
+				A3803F9F1B9129BB00C9FF12 /* OferaViewController.swift */,
 			);
 			path = SNIIV;
 			sourceTree = "<group>";
@@ -457,11 +463,13 @@
 				840C6BB01B5809500044A83C /* ParseReporteGeneral.swift in Sources */,
 				8443F5DB1B614359000CF78E /* DBConfig.swift in Sources */,
 				841642DA1B5EEF4600D10900 /* ParseValorVivienda.swift in Sources */,
+				A3803F9E1B9122FA00C9FF12 /* DemandaViewController.swift in Sources */,
 				8443F5DF1B6162AD000CF78E /* FechasRepository.swift in Sources */,
 				8443F5E11B616B1D000CF78E /* AvanceObraRepository.swift in Sources */,
 				841301301B571A35004946C7 /* ParseAvanceObra.swift in Sources */,
 				842EA0C31B7BB2F7006D86F3 /* TimeLastUpdatedRepository.swift in Sources */,
 				840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */,
+				A3803FA01B9129BB00C9FF12 /* OferaViewController.swift in Sources */,
 				847711D91B605465007BC146 /* ParseSubsidios.swift in Sources */,
 				A39E1B191B570AE2000DEBA3 /* TipoViviendaViewController.swift in Sources */,
 				A3B39D121B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift in Sources */,

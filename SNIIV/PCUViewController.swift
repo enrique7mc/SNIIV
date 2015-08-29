@@ -11,7 +11,6 @@ import UIKit
 class PCUViewController: BaseUIViewController {
 
     @IBOutlet weak var picker: UIPickerView!
-    @IBOutlet weak var txtTitlePCU: UITextField!
     @IBOutlet weak var txtU1: UILabel!
     @IBOutlet weak var TXTu2: UILabel!
     @IBOutlet weak var txtU3: UILabel!
@@ -24,7 +23,7 @@ class PCUViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtTitlePCU.enabled=false
+       
         picker.userInteractionEnabled = false
         
         activarIndicador()
@@ -101,7 +100,7 @@ class PCUViewController: BaseUIViewController {
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-        txtTitlePCU.text = "PCU \(Utils.formatoMes(fechas.fecha_vv))"
+   //     txtTitlePCU.text = "PCU \(Utils.formatoMes(fechas.fecha_vv))"
     }
     
     override func getKey() -> String {

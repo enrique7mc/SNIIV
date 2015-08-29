@@ -11,7 +11,6 @@ import UIKit
 class AvanceObraViewController: BaseUIViewController {
     
     @IBOutlet weak var picker: UIPickerView!
-    @IBOutlet weak var txtTitleObra: UITextField!
     @IBOutlet weak var txtCincuentaPorciento: UILabel!
     @IBOutlet weak var txtNoventaPorciento: UILabel!
     @IBOutlet weak var txtRecientes: UILabel!
@@ -23,9 +22,9 @@ class AvanceObraViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtTitleObra.enabled=false
+        
         picker.userInteractionEnabled = false
-
+        self.tabBarController?.navigationItem.title="Avance de Obra"
         activarIndicador()
         
         if !isDataLoaded() && Reachability.isConnectedToNetwork() {
@@ -99,7 +98,8 @@ class AvanceObraViewController: BaseUIViewController {
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-        txtTitleObra.text = "Avance Obra \(Utils.formatoMes(fechas.fecha_vv))"
+         self.tabBarController?.navigationItem.title="Avance de Obra \(Utils.formatoMes(fechas.fecha_vv))"
+        
     }
     
     override func getKey() -> String {
