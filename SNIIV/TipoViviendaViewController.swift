@@ -11,27 +11,41 @@ import UIKit
 class TipoViviendaViewController: BaseUIViewController {
 
     @IBOutlet weak var picker: UIPickerView!
+    @IBOutlet weak var txtTitle: UILabel!
     @IBOutlet weak var txtHorizontal: UILabel!
     @IBOutlet weak var txtTotal: UILabel!
     @IBOutlet weak var txtVetical: UILabel!
-    
+    @IBOutlet weak var btnChart: UIButton!
+    var pParties: [String]=[]
+    var pValues: [Int64]=[]
     var entidad: TipoVivienda?
     var datos: DatosTipoVivienda?
+    var pTitulo: String?="Tipo de Vivienda"
+    var pEstado:String?=""
+    var intEstado:Int=0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.userInteractionEnabled = false
-
         activarIndicador()
         
         if !isDataLoaded() && Reachability.isConnectedToNetwork() {            
             var parseTipo = ParseTipoVivienda<[TipoVivienda]>()
             parseTipo.getDatos(handler)
-            
             return
         }
         
         loadFromStorage()
+       
+    }
+    
+    func getData(){
+        pParties=["Horizontal", "Vertical"]
+        pValues=[entidad!.horizontal,entidad!.vertical]
+        pEstado=Utils.entidades[intEstado]
+    }
+    @IBAction func showChart(sender: AnyObject) {
+        self.performSegueWithIdentifier("chartModal", sender: self)
     }
     
     func handler (responseObject: [TipoVivienda], error: NSError?) -> Void {
@@ -56,6 +70,18 @@ class TipoViviendaViewController: BaseUIViewController {
             self.habilitarPantalla()
             self.picker.userInteractionEnabled = true
         }
+        getData()
+
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier=="chartModal"){
+            let gvc=segue.destinationViewController as! ChartViewController
+            gvc.parties=pParties
+            gvc.values=pValues
+            gvc.titulo=pTitulo
+            gvc.estado=pEstado
+        }
     }
     
     override func loadFromStorage() {
@@ -72,6 +98,8 @@ class TipoViviendaViewController: BaseUIViewController {
         loadFechasStorage()
         
         habilitarPantalla()
+        getData()
+
     }
     
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -82,7 +110,8 @@ class TipoViviendaViewController: BaseUIViewController {
         } else {
             entidad = datos?.consultaEntidad(Entidad(rawValue: row)!)
         }
-        
+        intEstado=row
+        getData()
         mostrarDatos()
     }
     
@@ -93,7 +122,7 @@ class TipoViviendaViewController: BaseUIViewController {
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-     //   txtTitleTipoVivienda.text = "Tipo de la Vivienda \(Utils.formatoMes(fechas.fecha_vv))"
+        txtTitle.text = "Tipo de la Vivienda \(Utils.formatoMes(fechas.fecha_vv))"
     }
     
     override func getKey() -> String {

@@ -16,10 +16,16 @@ class PCUViewController: BaseUIViewController {
     @IBOutlet weak var txtU3: UILabel!
     @IBOutlet weak var txtFC: UILabel!
     @IBOutlet weak var txtND: UILabel!
+    @IBOutlet weak var txtTitle: UILabel!
     @IBOutlet weak var txtTotal: UILabel!
-    
+    @IBOutlet weak var btnChart: UIButton!
+    var pParties: [String]=[]
+    var pValues: [Int64]=[]
     var entidad: PCU?
     var datos: DatosPCU?
+    var pTitulo: String?="PCU"
+    var pEstado:String?=""
+    var intEstado: Int=0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +37,24 @@ class PCUViewController: BaseUIViewController {
         if !isDataLoaded() && Reachability.isConnectedToNetwork() {
             var parsePCU = ParsePCU<[PCU]>()
             parsePCU.getDatos(handler)
-            
+           
             return
         }
         
         loadFromStorage()
+      
+    }
+   
+    @IBAction func showChart(sender: AnyObject) {
+          self.performSegueWithIdentifier("chartModal", sender: self)
+    }
+    
+    
+    func getData(){
+        pParties=["U1","U2","U3","FC"]
+        pValues=[entidad!.u1, entidad!.u2, entidad!.u3, entidad!.fc]
+        pEstado=Utils.entidades[intEstado]
+    
     }
     
     func handler (responseObject: [PCU], error: NSError?) -> Void {
@@ -60,6 +79,18 @@ class PCUViewController: BaseUIViewController {
             self.habilitarPantalla()
             self.picker.userInteractionEnabled = true
         }
+        getData()
+
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "chartModal") {
+            let gvc = segue.destinationViewController as! ChartViewController
+            gvc.parties=pParties
+            gvc.values=pValues
+            gvc.titulo=pTitulo
+            gvc.estado=pEstado
+        }
     }
     
     override func loadFromStorage() {
@@ -76,6 +107,8 @@ class PCUViewController: BaseUIViewController {
         loadFechasStorage()
         
         habilitarPantalla()
+        getData()
+
     }
     
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -86,7 +119,8 @@ class PCUViewController: BaseUIViewController {
         } else {
             entidad = datos?.consultaEntidad(Entidad(rawValue: row)!)
         }
-        
+        intEstado=row
+        getData()
         mostrarDatos()
     }
     
@@ -100,7 +134,7 @@ class PCUViewController: BaseUIViewController {
             txtTotal.text = Utils.toString(entidad!.total)
         }
         
-   //     txtTitlePCU.text = "PCU \(Utils.formatoMes(fechas.fecha_vv))"
+        txtTitle.text = "PCU \(Utils.formatoMes(fechas.fecha_vv))"
     }
     
     override func getKey() -> String {

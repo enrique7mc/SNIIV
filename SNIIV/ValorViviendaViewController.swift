@@ -16,9 +16,14 @@ class ValorViviendaViewController: BaseUIViewController {
     @IBOutlet weak var txtTradicional: UILabel!
     @IBOutlet weak var txtMediaResidencial: UILabel!
     @IBOutlet weak var txtTotal: UILabel!
-    
+    @IBOutlet weak var btnChart: UIButton!
+    var pParties:[String]=[]
+    var pValues:[Int64]=[]
     var entidad: ValorVivienda?
     var datos: DatosValorVivienda?
+    var pTitulo:String="Valor Vivienda"
+    var pEstado: String=""
+    var intEstado:Int=0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +34,25 @@ class ValorViviendaViewController: BaseUIViewController {
         if !isDataLoaded() && Reachability.isConnectedToNetwork() {            
             var parseValor = ParseValorVivienda<[ValorVivienda]>()
             parseValor.getDatos(handler)
-            
             return
         }
         
         loadFromStorage()
+      
     }
+    
+    func getData(){
+        pParties=["Popular", "Tradicional","Media-Residencial"]
+        pValues=[entidad!.popular,entidad!.tradicional, entidad!.media_residencial]
+        pEstado=Utils.entidades[intEstado]
+    }
+    
+    @IBAction func showChart(sender: AnyObject) {
+         self.performSegueWithIdentifier("chartModal", sender:self)
+        println("....D")
+    }
+    
+   
     
     func handler (responseObject: [ValorVivienda], error: NSError?) -> Void {
         if error != nil {
@@ -58,8 +76,20 @@ class ValorViviendaViewController: BaseUIViewController {
             self.habilitarPantalla()
             self.picker.userInteractionEnabled = true
         }
+        getData()
+
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier=="chartModal"){
+            let gvc=segue.destinationViewController as! ChartViewController
+            gvc.parties=pParties
+            gvc.values=pValues
+            gvc.titulo=pTitulo
+            gvc.estado=pEstado
+        }
+    }
     override func loadFromStorage() {
         println("Valorivienda loadFromStorage")
         let datosStorage = ValorViviendaRepository.loadFromStorage()
@@ -74,6 +104,8 @@ class ValorViviendaViewController: BaseUIViewController {
         loadFechasStorage()
         
         habilitarPantalla()
+        getData()
+
     }
     
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -83,7 +115,8 @@ class ValorViviendaViewController: BaseUIViewController {
         } else {
             entidad = datos?.consultaEntidad(Entidad(rawValue: row)!)
         }
-        
+        intEstado=row
+        getData()
         mostrarDatos()
     }
     
