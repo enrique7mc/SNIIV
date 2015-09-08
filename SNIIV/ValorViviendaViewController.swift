@@ -17,13 +17,13 @@ class ValorViviendaViewController: BaseUIViewController {
     @IBOutlet weak var txtMediaResidencial: UILabel!
     @IBOutlet weak var txtTotal: UILabel!
     @IBOutlet weak var btnChart: UIButton!
-    var pParties:[String]=[]
-    var pValues:[Int64]=[]
+    var pParties:[String] = []
+    var pValues:[Int64] = []
     var entidad: ValorVivienda?
     var datos: DatosValorVivienda?
-    var pTitulo:String="Valor Vivienda"
-    var pEstado: String=""
-    var intEstado:Int=0
+    var pTitulo:String = "Valor Vivienda"
+    var pEstado: String = ""
+    var intEstado:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,21 +38,17 @@ class ValorViviendaViewController: BaseUIViewController {
         }
         
         loadFromStorage()
-      
     }
     
     func getData(){
-        pParties=["Popular", "Tradicional","Media-Residencial"]
-        pValues=[entidad!.popular,entidad!.tradicional, entidad!.media_residencial]
-        pEstado=Utils.entidades[intEstado]
+        pParties = ["Popular", "Tradicional","Media-Residencial"]
+        pValues = [entidad!.popular,entidad!.tradicional, entidad!.media_residencial]
+        pEstado = Utils.entidades[intEstado]
     }
     
     @IBAction func showChart(sender: AnyObject) {
          self.performSegueWithIdentifier("chartModal", sender:self)
-        println("....D")
     }
-    
-   
     
     func handler (responseObject: [ValorVivienda], error: NSError?) -> Void {
         if error != nil {
@@ -80,14 +76,13 @@ class ValorViviendaViewController: BaseUIViewController {
 
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier=="chartModal"){
-            let gvc=segue.destinationViewController as! ChartViewController
-            gvc.parties=pParties
-            gvc.values=pValues
-            gvc.titulo=pTitulo
-            gvc.estado=pEstado
+        if segue.identifier == "chartModal" {
+            let gvc = segue.destinationViewController as! ChartViewController
+            gvc.parties = pParties
+            gvc.values = pValues
+            gvc.titulo = pTitulo
+            gvc.estado = pEstado
         }
     }
     override func loadFromStorage() {

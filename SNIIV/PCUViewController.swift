@@ -19,13 +19,13 @@ class PCUViewController: BaseUIViewController {
     @IBOutlet weak var txtTitle: UILabel!
     @IBOutlet weak var txtTotal: UILabel!
     @IBOutlet weak var btnChart: UIButton!
-    var pParties: [String]=[]
-    var pValues: [Int64]=[]
+    var pParties: [String] = []
+    var pValues: [Int64] = []
     var entidad: PCU?
     var datos: DatosPCU?
-    var pTitulo: String?="PCU"
-    var pEstado:String?=""
-    var intEstado: Int=0
+    var pTitulo: String? = "PCU"
+    var pEstado:String? = ""
+    var intEstado: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,6 @@ class PCUViewController: BaseUIViewController {
         }
         
         loadFromStorage()
-      
     }
    
     @IBAction func showChart(sender: AnyObject) {
@@ -51,9 +50,9 @@ class PCUViewController: BaseUIViewController {
     
     
     func getData(){
-        pParties=["U1","U2","U3","FC"]
-        pValues=[entidad!.u1, entidad!.u2, entidad!.u3, entidad!.fc]
-        pEstado=Utils.entidades[intEstado]
+        pParties = ["U1","U2","U3","FC"]
+        pValues = [entidad!.u1, entidad!.u2, entidad!.u3, entidad!.fc]
+        pEstado = Utils.entidades[intEstado]
     
     }
     
@@ -79,17 +78,17 @@ class PCUViewController: BaseUIViewController {
             self.habilitarPantalla()
             self.picker.userInteractionEnabled = true
         }
+        
         getData()
-
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "chartModal") {
+        if segue.identifier == "chartModal" {
             let gvc = segue.destinationViewController as! ChartViewController
-            gvc.parties=pParties
-            gvc.values=pValues
-            gvc.titulo=pTitulo
-            gvc.estado=pEstado
+            gvc.parties = pParties
+            gvc.values = pValues
+            gvc.titulo = pTitulo
+            gvc.estado = pEstado
         }
     }
     
@@ -108,7 +107,6 @@ class PCUViewController: BaseUIViewController {
         
         habilitarPantalla()
         getData()
-
     }
     
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
