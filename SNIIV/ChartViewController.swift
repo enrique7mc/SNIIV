@@ -66,7 +66,7 @@ class ChartViewController: UIViewController, ChartViewDelegate {
         println("\(entry.value) in \(parties[entry.xIndex])")
         var aux: Int=0
         aux=Int(entry.value)
-        pieBarChart.centerText=titulo!+"\n"+estado!+"\n\(aux) \(parties[entry.xIndex])"
+        pieBarChart.centerText=titulo!+"\n"+estado!+"\n\(Utils.decimalFormat(aux)) \(parties[entry.xIndex])"
         
     }
     
@@ -87,16 +87,6 @@ class ChartViewController: UIViewController, ChartViewDelegate {
         let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
         pieBarChart.data = pieChartData
         
-        var colors: [UIColor] = []
-        
-        for i in 0..<dataPoints.count {
-            let red = Double(arc4random_uniform(256))
-            let green = Double(arc4random_uniform(256))
-            let blue = Double(arc4random_uniform(256))
-            
-            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-            colors.append(color)
-        }
         
         pieChartDataSet.colors = ColorTemplate.CONAVI_COLORS()
               
