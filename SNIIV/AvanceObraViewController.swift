@@ -17,13 +17,13 @@ class AvanceObraViewController: BaseUIViewController {
     @IBOutlet weak var txtAntiguas: UILabel!
     @IBOutlet weak var txtTotal: UILabel!
     @IBOutlet weak var txtTitle: UILabel!
-    var pParties: [String]=[]
-    var pValues: [Int64]=[]
+    var pParties: [String] = []
+    var pValues: [Int64] = []
     @IBOutlet weak var bnChart: UIButton!
     var entidad: AvanceObra?
     var datos: DatosAvanceObra?
-    var pTitulo: String?="Avance de Obra"
-    var pEstado:String?=""
+    var pTitulo: String? = "Avance de Obra"
+    var pEstado:String? = ""
     var intEstado:Int=0
     
     override func viewDidLoad() {
@@ -38,28 +38,19 @@ class AvanceObraViewController: BaseUIViewController {
         }
       
         loadFromStorage()
-        
-       
-       
     }
 
     func getData(){
-        println("Pasando porle puto getData")
-        pParties=["Hasta 50%", "Hasta 99%", "Recientes", "Antiguas"]
-        pValues=[entidad!.viv_proc_m50,entidad!.viv_proc_50_99,entidad!.viv_term_rec, entidad!.viv_term_ant]
-        pEstado=Utils.entidades[intEstado]
+        pParties = ["Hasta 50%", "Hasta 99%", "Recientes", "Antiguas"]
+        pValues = [entidad!.viv_proc_m50,entidad!.viv_proc_50_99,entidad!.viv_term_rec, entidad!.viv_term_ant]
+        pEstado = Utils.entidades[intEstado]
     }
-    
-    
     
     @IBAction func showChart(sender: AnyObject) {
         self.performSegueWithIdentifier("chartModal", sender: self)
     }
   
-    
     func handler (responseObject: [AvanceObra], error: NSError?) -> Void {
-        
-        println("Handler.........")
         if error != nil {
             println("Error obteniendo datos")
             return
@@ -81,25 +72,23 @@ class AvanceObraViewController: BaseUIViewController {
             self.habilitarPantalla()
             self.picker.userInteractionEnabled = true
         }
+        
         getData()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "chartModal") {
             let gvc = segue.destinationViewController as! ChartViewController
-            gvc.parties=pParties
-            gvc.values=pValues
-            gvc.titulo=pTitulo
-            gvc.estado=pEstado
-            println("parties\(gvc.parties)")
-            println("values\(gvc.values)")
-            println("titulo\(gvc.titulo)")
-            println("estado\(gvc.estado)")
+            gvc.parties = pParties
+            gvc.values = pValues
+            gvc.titulo = pTitulo
+            gvc.estado = pEstado
         }
     }
     
     override func loadFromStorage() {
         println("AvanceObra loadFromStorage")
+        
         let datosStorage = AvanceObraRepository.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosAvanceObra(datos: datosStorage)
@@ -113,7 +102,6 @@ class AvanceObraViewController: BaseUIViewController {
         
         habilitarPantalla()
         getData()
-
     }
 
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -139,7 +127,6 @@ class AvanceObraViewController: BaseUIViewController {
         }
         
        txtTitle.text="Avance de Obra \(Utils.formatoMes(fechas.fecha_vv))"
-        
     }
     
     override func getKey() -> String {
@@ -149,7 +136,4 @@ class AvanceObraViewController: BaseUIViewController {
     override func getFechaActualizacion() -> String? {
         return FechasRepository.selectFechas()?.fecha_vv
     }
-    
-    
-    
 }

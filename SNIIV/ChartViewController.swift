@@ -4,40 +4,26 @@ import Charts
 class ChartViewController: UIViewController, ChartViewDelegate {
 
     var parties: [String] = []
-    var values: [Int64]=[]
-    var dValues:[Double]=[]
-    var titulo:String?=""
-    var estado:String?=""
+    var values: [Int64] = []
+    var dValues:[Double] = []
+    var titulo:String? = ""
+    var estado:String? = ""
     @IBOutlet weak var pieBarChart: PieChartView!
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var btnGuardar: UIButton!
     
-    
-    
     override func viewDidLoad() {
- 
         super.viewDidLoad()
-        for party in parties{
-            println(party)
-        }
-        for value in values{
-            println(value)
-        }
-        
+    
         loadChart()
         
-        dValues=values.map{
-            r in Double(r)
-            
-        }
+        dValues=values.map{ r in Double(r) }
         
         pieBarChart.delegate = self
         setChart(parties, pValues: dValues)
-        
     }
     
     func loadChart(){
-        
         pieBarChart.rotationAngle=0.0
         pieBarChart.animate(xAxisDuration: 1.5, easingOption: ChartEasingOption.EaseInOutQuad)
         pieBarChart.usePercentValuesEnabled=true
@@ -57,7 +43,6 @@ class ChartViewController: UIViewController, ChartViewDelegate {
         l.xEntrySpace = 7.0
         l.yEntrySpace = 0.0
         l.yOffset = 0.0
-    
     }
     
     
@@ -65,17 +50,21 @@ class ChartViewController: UIViewController, ChartViewDelegate {
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
         println("\(entry.value) in \(parties[entry.xIndex])")
         var aux: Int=0
+<<<<<<< HEAD
         aux=Int(entry.value)
         pieBarChart.centerText=titulo!+"\n"+estado!+"\n\(Utils.decimalFormat(aux)) \(parties[entry.xIndex])"
+=======
+        aux = Int(entry.value)
+        pieBarChart.centerText = titulo! + "\n" + estado! + "\n\(aux) \(parties[entry.xIndex])"
+>>>>>>> origin/master
         
     }
     
     func chartValueNothingSelected(chartView: ChartViewBase){
-        pieBarChart.centerText=titulo!+"\n"+estado!
+        pieBarChart.centerText = titulo! + "\n" + estado!
     }
     
     func setChart(dataPoints: [String], pValues: [Double]) {
-        
         var dataEntries: [ChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
@@ -89,10 +78,6 @@ class ChartViewController: UIViewController, ChartViewDelegate {
         
         
         pieChartDataSet.colors = ColorTemplate.CONAVI_COLORS()
-              
-        
-       
-        
     }
     
     
