@@ -1,55 +1,136 @@
-//
-//  AvanceObraViewController.swift
-//  SNIIV
-//
-//  Created by SAP1 on 15/07/15.
-//  Copyright (c) 2015 enrique7mc. All rights reserved.
-//
-
 import UIKit
+import Charts
 
 class AvanceObraViewController: BaseUIViewController {
     
     @IBOutlet weak var picker: UIPickerView!
-    @IBOutlet weak var txtCincuentaPorciento: UILabel!
-    @IBOutlet weak var txtNoventaPorciento: UILabel!
-    @IBOutlet weak var txtRecientes: UILabel!
-    @IBOutlet weak var txtAntiguas: UILabel!
-    @IBOutlet weak var txtTotal: UILabel!
-    @IBOutlet weak var txtTitle: UILabel!
-    var pParties: [String] = []
-    var pValues: [Int64] = []
-    @IBOutlet weak var bnChart: UIButton!
+    @IBOutlet weak var pieChart: PieChartView!
+    
     var entidad: AvanceObra?
     var datos: DatosAvanceObra?
-    var pTitulo: String? = "Avance de Obra"
-    var pEstado:String? = ""
-    var intEstado:Int=0
+    var parties: [String] = []
+    var values: [Int64] = []
+    var dValues:[Double] = []
+    let titulo:String? = "Avance de Obra"
+    var estado:String? = ""
+    var intEstado:Int = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initChart()
         picker.userInteractionEnabled = false
         activarIndicador()
+        
+        pieChart.delegate=self
         
         if !isDataLoaded() && Reachability.isConnectedToNetwork() {
             var parseAvance = ParseAvanceObra<[AvanceObra]>()
             parseAvance.getDatos(handler)
             return
         }
-      
+        dValues=values.map{ r in Double(r) }
         loadFromStorage()
-    }
-
-    func getData(){
-        pParties = ["Hasta 50%", "Hasta 99%", "Recientes", "Antiguas"]
-        pValues = [entidad!.viv_proc_m50,entidad!.viv_proc_50_99,entidad!.viv_term_rec, entidad!.viv_term_ant]
-        pEstado = Utils.entidades[intEstado]
+        getData()
     }
     
-    @IBAction func showChart(sender: AnyObject) {
-        self.performSegueWithIdentifier("chartModal", sender: self)
+    
+    func initChart(){
+        
+        pieChart.rotationAngle=0.0
+        pieChart.animate(xAxisDuration: 1.5, easingOption: ChartEasingOption.EaseInOutQuad)
+        pieChart.usePercentValuesEnabled=true
+        pieChart.descriptionText=""
+        pieChart.holeTransparent=true
+        pieChart.transparentCircleRadiusPercent=0.50
+        pieChart.holeRadiusPercent = 0.50
+        pieChart.drawCenterTextEnabled = true
+        pieChart.drawHoleEnabled=true
+        pieChart.rotationAngle = 0.0
+        pieChart.rotationEnabled = false
+        pieChart.centerText=titulo!+"\n"+estado!
+        pieChart.dragDecelerationEnabled=true
+        
+        var l: ChartLegend = pieChart.legend
+        l.position=ChartLegend.ChartLegendPosition.BelowChartCenter
+        l.xEntrySpace = 0.0
+        l.yEntrySpace = 0.0
+        l.yOffset = 0.0
+        
     }
-  
+    
+    
+    func setChart(dataPoints: [String], pValues: [Double]) {
+        
+        pieChart.centerText=titulo!+"\n"+estado!
+        var dataEntries: [ChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = ChartDataEntry(value: pValues[i], xIndex: i)
+            dataEntries.append(dataEntry)
+        }
+
+        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "")
+        pieChartDataSet.colors = ColorTemplate.CONAVI_COLORS()
+        let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
+        
+        pieChart.data = pieChartData
+        
+        
+        
+    }
+    
+    func getData(){
+        var totalValues:Double=0
+        var dParcial:Double=0.0
+        var dSumParcial:[Double]=[]
+        var aux=0
+        var tValues:[Double]=[]
+        var tParties:[String]=[]
+        parties = ["Hasta 50%", "Hasta 99%", "Recientes", "Antiguas"]
+        values = [entidad!.viv_proc_m50,entidad!.viv_proc_50_99,entidad!.viv_term_rec, entidad!.viv_term_ant]
+        estado = Utils.entidades[intEstado]
+        dValues=values.map{ r in Double(r) }
+        for a in dValues{
+            totalValues=totalValues+a
+        }
+        
+        for a in dValues{
+            dParcial=(a/totalValues)*100
+            dSumParcial.append(dParcial)
+        }
+        
+        
+        
+        for a in dSumParcial{
+            if(a>2){
+                
+                tValues.append(dValues[aux])
+                tParties.append(parties[aux])
+                
+            }
+            aux++
+        }
+        
+        dValues=tValues
+        parties=tParties
+        setChart(parties, pValues:dValues)
+    }
+
+    
+    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
+        println("\(entry.value) in \(parties[entry.xIndex])")
+        var aux: Int=0
+        aux = Int(entry.value)
+        pieChart.centerText = titulo! + "\n" + estado! + "\n\(Utils.decimalFormat(aux)) \(parties[entry.xIndex])"
+        
+        
+    }
+    
+    func chartValueNothingSelected(chartView: ChartViewBase){
+        pieChart.centerText = titulo! + "\n" + estado!
+    }
+    
     func handler (responseObject: [AvanceObra], error: NSError?) -> Void {
         if error != nil {
             println("Error obteniendo datos")
@@ -76,16 +157,6 @@ class AvanceObraViewController: BaseUIViewController {
         getData()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "chartModal") {
-            let gvc = segue.destinationViewController as! ChartViewController
-            gvc.parties = pParties
-            gvc.values = pValues
-            gvc.titulo = pTitulo
-            gvc.estado = pEstado
-        }
-    }
-    
     override func loadFromStorage() {
         println("AvanceObra loadFromStorage")
         
@@ -101,9 +172,9 @@ class AvanceObraViewController: BaseUIViewController {
         loadFechasStorage()
         
         habilitarPantalla()
-        getData()
+        
     }
-
+    
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var itemSelected = Utils.entidades[row]
         
@@ -114,20 +185,10 @@ class AvanceObraViewController: BaseUIViewController {
         }
         intEstado=row
         getData()
-        mostrarDatos()
+ 
     }
     
-    override func mostrarDatos() {
-        if entidad != nil {
-            txtCincuentaPorciento.text = Utils.toString(entidad!.viv_proc_m50)
-            txtNoventaPorciento.text = Utils.toString(entidad!.viv_proc_50_99)
-            txtRecientes.text = Utils.toString(entidad!.viv_term_rec)
-            txtAntiguas.text = Utils.toString(entidad!.viv_term_ant)
-            txtTotal.text = Utils.toString(entidad!.total)
-        }
-        
-       txtTitle.text="Avance de Obra \(Utils.formatoMes(fechas.fecha_vv))"
-    }
+    
     
     override func getKey() -> String {
         return AvanceObraRepository.TABLA

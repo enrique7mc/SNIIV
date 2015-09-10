@@ -7,53 +7,144 @@
 //
 
 import UIKit
+import Charts
 
 class PCUViewController: BaseUIViewController {
 
     @IBOutlet weak var picker: UIPickerView!
-    @IBOutlet weak var txtU1: UILabel!
-    @IBOutlet weak var TXTu2: UILabel!
-    @IBOutlet weak var txtU3: UILabel!
-    @IBOutlet weak var txtFC: UILabel!
-    @IBOutlet weak var txtND: UILabel!
-    @IBOutlet weak var txtTitle: UILabel!
-    @IBOutlet weak var txtTotal: UILabel!
-    @IBOutlet weak var btnChart: UIButton!
-    var pParties: [String] = []
-    var pValues: [Int64] = []
+
+    @IBOutlet weak var pieChart: PieChartView!
+    
     var entidad: PCU?
     var datos: DatosPCU?
-    var pTitulo: String? = "PCU"
-    var pEstado:String? = ""
+    var parties: [String] = []
+    var values: [Int64] = []
+    var dValues:[Double]=[]
+    var titulo: String? = "PCU"
+    var estado:String? = ""
     var intEstado: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        initChart()
         picker.userInteractionEnabled = false
-        
         activarIndicador()
+        
+        pieChart.delegate=self
         
         if !isDataLoaded() && Reachability.isConnectedToNetwork() {
             var parsePCU = ParsePCU<[PCU]>()
             parsePCU.getDatos(handler)
-           
             return
         }
         
         loadFromStorage()
+        getData()
+    }
+    
+    func initChart(){
+        
+        pieChart.rotationAngle=0.0
+        pieChart.animate(xAxisDuration: 1.5, easingOption: ChartEasingOption.EaseInOutQuad)
+        pieChart.usePercentValuesEnabled=true
+        pieChart.descriptionText=""
+        pieChart.holeTransparent=true
+        pieChart.transparentCircleRadiusPercent=0.50
+        pieChart.holeRadiusPercent = 0.50
+        pieChart.drawCenterTextEnabled = true
+        pieChart.drawHoleEnabled=true
+        pieChart.rotationAngle = 0.0
+        pieChart.rotationEnabled = false
+        pieChart.centerText=titulo!+"\n"+estado!
+        pieChart.dragDecelerationEnabled=true
+        
+        var l: ChartLegend = pieChart.legend
+        l.position=ChartLegend.ChartLegendPosition.BelowChartCenter
+        l.xEntrySpace = 0.0
+        l.yEntrySpace = 0.0
+        l.yOffset = 0.0
+        
     }
    
-    @IBAction func showChart(sender: AnyObject) {
-          self.performSegueWithIdentifier("chartModal", sender: self)
+    
+    func setChart(dataPoints: [String], pValues: [Double]) {
+        
+
+        pieChart.centerText=titulo!+"\n"+estado!
+        var dataEntries: [ChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = ChartDataEntry(value: pValues[i], xIndex: i)
+            dataEntries.append(dataEntry)
+            
+        }
+        
+    
+        
+        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "")
+        pieChartDataSet.colors = ColorTemplate.CONAVI_COLORS()
+        let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
+        
+        pieChart.data = pieChartData
+        
+        
+        
     }
     
-    
     func getData(){
-        pParties = ["U1","U2","U3","FC"]
-        pValues = [entidad!.u1, entidad!.u2, entidad!.u3, entidad!.fc]
-        pEstado = Utils.entidades[intEstado]
+        var totalValues:Double=0
+        var dParcial:Double=0.0
+        var dSumParcial:[Double]=[]
+        var aux=0
+        var tValues:[Double]=[]
+        var tParties:[String]=[]
+        parties = ["U1   "," U2   ","U3   ","FC","N/D"]
+        values = [entidad!.u1, entidad!.u2, entidad!.u3, entidad!.fc, entidad!.nd]
+        estado = Utils.entidades[intEstado]
+        dValues=values.map{ r in Double(r) }
+        
+        for a in dValues{
+            totalValues=totalValues+a
+        }
+        
+        for a in dValues{
+            dParcial=(a/totalValues)*100
+            dSumParcial.append(dParcial)
+        }
+
+        
+        
+        for a in dSumParcial{
+            if(a>2){
+                
+                tValues.append(dValues[aux])
+                tParties.append(parties[aux])
+                
+            }
+                        aux++
+        }
+        
+        dValues=tValues
+        parties=tParties
+        
+      
+      
+        setChart(parties, pValues: dValues)
+        
     
+    }
+    
+    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
+        println("\(entry.value) in \(parties[entry.xIndex])")
+        var aux: Int=0
+        aux = Int(entry.value)
+        pieChart.centerText = titulo! + "\n" + estado! + "\n\(Utils.decimalFormat(aux)) \(parties[entry.xIndex])"
+        
+        
+    }
+    
+    func chartValueNothingSelected(chartView: ChartViewBase){
+        pieChart.centerText = titulo! + "\n" + estado!
     }
     
     func handler (responseObject: [PCU], error: NSError?) -> Void {
@@ -82,15 +173,7 @@ class PCUViewController: BaseUIViewController {
         getData()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "chartModal" {
-            let gvc = segue.destinationViewController as! ChartViewController
-            gvc.parties = pParties
-            gvc.values = pValues
-            gvc.titulo = pTitulo
-            gvc.estado = pEstado
-        }
-    }
+   
     
     override func loadFromStorage() {
         println("PCU loadFromStorage")
@@ -106,7 +189,7 @@ class PCUViewController: BaseUIViewController {
         loadFechasStorage()
         
         habilitarPantalla()
-        getData()
+        
     }
     
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -119,21 +202,10 @@ class PCUViewController: BaseUIViewController {
         }
         intEstado=row
         getData()
-        mostrarDatos()
+        
     }
     
-    override func mostrarDatos() {
-        if entidad != nil {
-            txtU1.text = Utils.toString(entidad!.u1)
-            TXTu2.text = Utils.toString(entidad!.u2)
-            txtU3.text = Utils.toString(entidad!.u3)
-            txtFC.text = Utils.toString(entidad!.fc)
-            txtND.text = Utils.toString(entidad!.nd)
-            txtTotal.text = Utils.toString(entidad!.total)
-        }
-        
-        txtTitle.text = "PCU \(Utils.formatoMes(fechas.fecha_vv))"
-    }
+    
     
     override func getKey() -> String {
         return PCURepository.TABLA

@@ -50,13 +50,9 @@ class ChartViewController: UIViewController, ChartViewDelegate {
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
         println("\(entry.value) in \(parties[entry.xIndex])")
         var aux: Int=0
-<<<<<<< HEAD
-        aux=Int(entry.value)
-        pieBarChart.centerText=titulo!+"\n"+estado!+"\n\(Utils.decimalFormat(aux)) \(parties[entry.xIndex])"
-=======
         aux = Int(entry.value)
         pieBarChart.centerText = titulo! + "\n" + estado! + "\n\(aux) \(parties[entry.xIndex])"
->>>>>>> origin/master
+
         
     }
     

@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import Charts
 
-class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, ChartViewDelegate {
     var fechas: Fechas = Fechas()
     var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     
