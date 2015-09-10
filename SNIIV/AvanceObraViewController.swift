@@ -103,7 +103,7 @@ class AvanceObraViewController: BaseUIViewController {
         
         
         for a in dSumParcial{
-            if(a>2){
+            if(a>1){
                 
                 tValues.append(dValues[aux])
                 tParties.append(parties[aux])

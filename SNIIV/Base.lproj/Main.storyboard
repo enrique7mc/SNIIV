@@ -948,7 +948,7 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPY-96-3O5" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="88" width="320" height="280"/>
+                                <rect key="frame" x="0.0" y="90" width="320" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -984,30 +984,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BiJ-E1-uhy">
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BiJ-E1-uhy">
                                 <rect key="frame" x="0.0" y="357" width="320" height="162"/>
                                 <connections>
                                     <outlet property="dataSource" destination="iHP-f4-Wrf" id="JqO-4Z-ak7"/>
                                     <outlet property="delegate" destination="iHP-f4-Wrf" id="ndo-8J-OGB"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CzG-lK-YeA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CzG-lK-YeA">
                                 <rect key="frame" x="250" y="64" width="54" height="30"/>
                                 <state key="normal" title="Datos &gt;">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vYB-oQ-Qce" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="90" width="320" height="280"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="CzG-lK-YeA" firstAttribute="top" secondItem="mPr-6c-tTV" secondAttribute="bottom" id="2aD-L7-YQX"/>
                             <constraint firstAttribute="centerX" secondItem="BiJ-E1-uhy" secondAttribute="centerX" id="9Ep-93-490"/>
                             <constraint firstItem="PZO-Iz-B13" firstAttribute="top" secondItem="BiJ-E1-uhy" secondAttribute="bottom" id="9S4-eM-HTa"/>
+                            <constraint firstItem="CzG-lK-YeA" firstAttribute="trailing" secondItem="tmO-lZ-QfS" secondAttribute="trailingMargin" id="E5A-YY-aeh"/>
+                            <constraint firstItem="CzG-lK-YeA" firstAttribute="top" secondItem="mPr-6c-tTV" secondAttribute="bottom" id="FMP-xW-JMq"/>
+                            <constraint firstItem="PZO-Iz-B13" firstAttribute="top" secondItem="BiJ-E1-uhy" secondAttribute="bottom" id="MzJ-YY-t6j"/>
+                            <constraint firstItem="PZO-Iz-B13" firstAttribute="top" secondItem="vYB-oQ-Qce" secondAttribute="bottom" constant="149" id="VnY-9p-6GT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vYB-oQ-Qce" secondAttribute="trailing" id="e4n-G0-V7T"/>
+                            <constraint firstItem="CzG-lK-YeA" firstAttribute="trailing" secondItem="tmO-lZ-QfS" secondAttribute="trailingMargin" id="geW-vj-aho"/>
+                            <constraint firstItem="vYB-oQ-Qce" firstAttribute="leading" secondItem="tmO-lZ-QfS" secondAttribute="leadingMargin" id="hoa-Sj-vtF"/>
+                            <constraint firstItem="BiJ-E1-uhy" firstAttribute="leading" secondItem="tmO-lZ-QfS" secondAttribute="leadingMargin" id="orN-6e-fOU"/>
+                            <constraint firstItem="vYB-oQ-Qce" firstAttribute="top" secondItem="mPr-6c-tTV" secondAttribute="bottom" constant="25" id="qLM-Ko-TGt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BiJ-E1-uhy" secondAttribute="trailing" id="zaT-Hc-uy4"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Valor Vivienda" image="valorViviendalogo" id="8Bi-kk-uzb"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="picker" destination="BiJ-E1-uhy" id="21P-Ln-Wle"/>
+                        <outlet property="pieChart" destination="vYB-oQ-Qce" id="VIT-bN-qhn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i1b-Xe-MpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1026,30 +1042,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZQ-g4-Qz8">
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rZQ-g4-Qz8">
                                 <rect key="frame" x="0.0" y="357" width="320" height="162"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ktn-OY-8pY" id="By4-5f-ifn"/>
                                     <outlet property="delegate" destination="ktn-OY-8pY" id="kfF-Q9-hjI"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJA-W6-LbW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJA-W6-LbW">
                                 <rect key="frame" x="250" y="64" width="54" height="30"/>
                                 <state key="normal" title="Datos &gt;">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vSr-FF-jcO" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="91" width="320" height="280"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qJE-uB-NwW" firstAttribute="top" secondItem="rZQ-g4-Qz8" secondAttribute="bottom" id="Ba0-PA-okd"/>
+                            <constraint firstItem="bJA-W6-LbW" firstAttribute="top" secondItem="30L-Kl-sxZ" secondAttribute="bottom" id="CAK-Qh-Uhv"/>
+                            <constraint firstItem="vSr-FF-jcO" firstAttribute="leading" secondItem="ch1-vL-Euu" secondAttribute="leadingMargin" id="J7F-EC-4WR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vSr-FF-jcO" secondAttribute="trailing" id="KSU-VB-Xp0"/>
                             <constraint firstAttribute="centerX" secondItem="rZQ-g4-Qz8" secondAttribute="centerX" id="QZG-7R-eTR"/>
                             <constraint firstItem="qJE-uB-NwW" firstAttribute="top" secondItem="rZQ-g4-Qz8" secondAttribute="bottom" id="Rph-4d-K1t"/>
+                            <constraint firstItem="qJE-uB-NwW" firstAttribute="top" secondItem="vSr-FF-jcO" secondAttribute="bottom" constant="148" id="SMw-O4-Jln"/>
+                            <constraint firstItem="rZQ-g4-Qz8" firstAttribute="leading" secondItem="ch1-vL-Euu" secondAttribute="leadingMargin" id="d7W-Un-dwm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rZQ-g4-Qz8" secondAttribute="trailing" id="ipa-bW-DFy"/>
+                            <constraint firstItem="vSr-FF-jcO" firstAttribute="top" secondItem="30L-Kl-sxZ" secondAttribute="bottom" constant="27" id="qTX-GI-KNv"/>
+                            <constraint firstItem="bJA-W6-LbW" firstAttribute="trailing" secondItem="ch1-vL-Euu" secondAttribute="trailingMargin" id="wwo-6o-Yta"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Tipo Vivienda" image="TipoVivienda" id="nbl-ga-gVx"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="picker" destination="rZQ-g4-Qz8" id="IIO-qo-imL"/>
+                        <outlet property="pieChart" destination="vSr-FF-jcO" id="SOF-55-ZHB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYb-mz-tQF" userLabel="First Responder" sceneMemberID="firstResponder"/>

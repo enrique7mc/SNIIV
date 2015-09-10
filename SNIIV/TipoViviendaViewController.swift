@@ -7,27 +7,29 @@
 //
 
 import UIKit
+import Charts
 
 class TipoViviendaViewController: BaseUIViewController {
 
     @IBOutlet weak var picker: UIPickerView!
-    @IBOutlet weak var txtTitle: UILabel!
-    @IBOutlet weak var txtHorizontal: UILabel!
-    @IBOutlet weak var txtTotal: UILabel!
-    @IBOutlet weak var txtVetical: UILabel!
-    @IBOutlet weak var btnChart: UIButton!
-    var pParties: [String] = []
-    var pValues: [Int64] = []
+
+    @IBOutlet weak var pieChart: PieChartView!
     var entidad: TipoVivienda?
     var datos: DatosTipoVivienda?
-    var pTitulo: String? = "Tipo de Vivienda"
-    var pEstado:String? = ""
+    var parties: [String] = []
+    var values: [Int64] = []
+    var dValues:[Double]=[]
+    var titulo: String? = "Tipo de Vivienda"
+    var estado:String? = ""
     var intEstado:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initChart()
         picker.userInteractionEnabled = false
         activarIndicador()
+        
+        pieChart.delegate=self
         
         if !isDataLoaded() && Reachability.isConnectedToNetwork() {            
             var parseTipo = ParseTipoVivienda<[TipoVivienda]>()
@@ -36,17 +38,113 @@ class TipoViviendaViewController: BaseUIViewController {
         }
         
         loadFromStorage()
+        getData()
+    }
+    
+    
+    func initChart(){
+        
+        pieChart.rotationAngle=0.0
+        pieChart.animate(xAxisDuration: 1.5, easingOption: ChartEasingOption.EaseInOutQuad)
+        pieChart.usePercentValuesEnabled=true
+        pieChart.descriptionText=""
+        pieChart.holeTransparent=true
+        pieChart.transparentCircleRadiusPercent=0.50
+        pieChart.holeRadiusPercent = 0.50
+        pieChart.drawCenterTextEnabled = true
+        pieChart.drawHoleEnabled=true
+        pieChart.rotationAngle = 0.0
+        pieChart.rotationEnabled = false
+        pieChart.centerText=titulo!+"\n"+estado!
+        pieChart.dragDecelerationEnabled=true
+        
+        var l: ChartLegend = pieChart.legend
+        l.position=ChartLegend.ChartLegendPosition.BelowChartCenter
+        l.xEntrySpace = 0.0
+        l.yEntrySpace = 0.0
+        l.yOffset = 0.0
+        
+    }
+    
+    func setChart(dataPoints: [String], pValues: [Double]) {
+        
+        
+        pieChart.centerText=titulo!+"\n"+estado!
+        var dataEntries: [ChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = ChartDataEntry(value: pValues[i], xIndex: i)
+            dataEntries.append(dataEntry)
+            
+        }
+        
+        
+        
+        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "")
+        pieChartDataSet.colors = ColorTemplate.CONAVI_COLORS()
+        let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
+        
+        pieChart.data = pieChartData
+        
+        
+        
     }
     
     func getData(){
-        pParties = ["Horizontal", "Vertical"]
-        pValues = [entidad!.horizontal,entidad!.vertical]
-        pEstado = Utils.entidades[intEstado]
+        println("getData")
+        var totalValues:Double=0
+        var dParcial:Double=0.0
+        var dSumParcial:[Double]=[]
+        var aux=0
+        var tValues:[Double]=[]
+        var tParties:[String]=[]
+        parties = ["Horizontal", "Vertical"]
+        values = [entidad!.horizontal,entidad!.vertical]
+        estado = Utils.entidades[intEstado]
+        dValues=values.map{ r in Double(r) }
+        
+        for a in dValues{
+            totalValues=totalValues+a
+        }
+        
+        for a in dValues{
+            dParcial=(a/totalValues)*100
+            dSumParcial.append(dParcial)
+        }
+        
+        
+        
+        for a in dSumParcial{
+            if(a>1/2){
+                
+                tValues.append(dValues[aux])
+                tParties.append(parties[aux])
+                
+            }
+            aux++
+        }
+        
+        dValues=tValues
+        parties=tParties
+        
+        
+        
+        setChart(parties, pValues: dValues)
     }
     
-    @IBAction func showChart(sender: AnyObject) {
-        self.performSegueWithIdentifier("chartModal", sender: self)
+    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
+        println("\(entry.value) in \(parties[entry.xIndex])")
+        var aux: Int=0
+        aux = Int(entry.value)
+        pieChart.centerText = titulo! + "\n" + estado! + "\n\(Utils.decimalFormat(aux)) \(parties[entry.xIndex])"
+        
+        
     }
+    
+    func chartValueNothingSelected(chartView: ChartViewBase){
+        pieChart.centerText = titulo! + "\n" + estado!
+    }
+    
     
     func handler (responseObject: [TipoVivienda], error: NSError?) -> Void {
         if error != nil {
@@ -74,15 +172,7 @@ class TipoViviendaViewController: BaseUIViewController {
         getData()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "chartModal"){
-            let gvc=segue.destinationViewController as! ChartViewController
-            gvc.parties = pParties
-            gvc.values = pValues
-            gvc.titulo = pTitulo
-            gvc.estado = pEstado
-        }
-    }
+   
     
     override func loadFromStorage() {
         println("TipoVivienda loadFromStorage")
@@ -99,7 +189,7 @@ class TipoViviendaViewController: BaseUIViewController {
         loadFechasStorage()
         
         habilitarPantalla()
-        getData()
+
     }
     
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -112,18 +202,10 @@ class TipoViviendaViewController: BaseUIViewController {
         }
         intEstado=row
         getData()
-        mostrarDatos()
+    
     }
     
-    override func mostrarDatos() {
-        if entidad != nil {
-            txtHorizontal.text = Utils.toString(entidad!.horizontal)
-            txtVetical.text = Utils.toString(entidad!.vertical)
-            txtTotal.text = Utils.toString(entidad!.total)
-        }
-        
-        txtTitle.text = "Tipo de la Vivienda \(Utils.formatoMes(fechas.fecha_vv))"
-    }
+   
     
     override func getKey() -> String {
         return TipoViviendaRepository.TABLA

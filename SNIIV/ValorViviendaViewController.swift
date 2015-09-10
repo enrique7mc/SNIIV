@@ -7,29 +7,30 @@
 //
 
 import UIKit
+import Charts
 
 class ValorViviendaViewController: BaseUIViewController {
- 
+
+
     @IBOutlet weak var picker: UIPickerView!
-    @IBOutlet weak var txtEconomica: UILabel!
-    @IBOutlet weak var txtPopular: UILabel!
-    @IBOutlet weak var txtTradicional: UILabel!
-    @IBOutlet weak var txtMediaResidencial: UILabel!
-    @IBOutlet weak var txtTotal: UILabel!
-    @IBOutlet weak var btnChart: UIButton!
-    var pParties:[String] = []
-    var pValues:[Int64] = []
+    @IBOutlet weak var pieChart: PieChartView!
     var entidad: ValorVivienda?
     var datos: DatosValorVivienda?
-    var pTitulo:String = "Valor Vivienda"
-    var pEstado: String = ""
+    var parties:[String] = []
+    var values:[Int64] = []
+    var dValues:[Double]=[]
+    var titulo:String? = "Valor Vivienda"
+    var estado: String? = ""
     var intEstado:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initChart()
         picker.userInteractionEnabled = false
 
         activarIndicador()
+        
+        pieChart.delegate=self
         
         if !isDataLoaded() && Reachability.isConnectedToNetwork() {            
             var parseValor = ParseValorVivienda<[ValorVivienda]>()
@@ -38,16 +39,114 @@ class ValorViviendaViewController: BaseUIViewController {
         }
         
         loadFromStorage()
+        getData()
+    }
+    
+    
+    func initChart(){
+        
+        pieChart.rotationAngle=0.0
+        pieChart.animate(xAxisDuration: 1.5, easingOption: ChartEasingOption.EaseInOutQuad)
+        pieChart.usePercentValuesEnabled=true
+        pieChart.descriptionText=""
+        pieChart.holeTransparent=true
+        pieChart.transparentCircleRadiusPercent=0.50
+        pieChart.holeRadiusPercent = 0.50
+        pieChart.drawCenterTextEnabled = true
+        pieChart.drawHoleEnabled=true
+        pieChart.rotationAngle = 0.0
+        pieChart.rotationEnabled = false
+        pieChart.centerText=titulo!+"\n"+estado!
+        pieChart.dragDecelerationEnabled=true
+        
+        var l: ChartLegend = pieChart.legend
+        l.position=ChartLegend.ChartLegendPosition.BelowChartCenter
+        l.xEntrySpace = 0.0
+        l.yEntrySpace = 0.0
+        l.yOffset = 0.0
+        
+    }
+    
+    
+    func setChart(dataPoints: [String], pValues: [Double]) {
+        
+        
+        pieChart.centerText=titulo!+"\n"+estado!
+        var dataEntries: [ChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = ChartDataEntry(value: pValues[i], xIndex: i)
+            dataEntries.append(dataEntry)
+            
+        }
+        
+        
+        
+        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "")
+        pieChartDataSet.colors = ColorTemplate.CONAVI_COLORS()
+        let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
+        
+        pieChart.data = pieChartData
+        
+        
+        
     }
     
     func getData(){
-        pParties = ["Popular", "Tradicional","Media-Residencial"]
-        pValues = [entidad!.popular,entidad!.tradicional, entidad!.media_residencial]
-        pEstado = Utils.entidades[intEstado]
+        var totalValues:Double=0
+        var dParcial:Double=0.0
+        var dSumParcial:[Double]=[]
+        var aux=0
+        var tValues:[Double]=[]
+        var tParties:[String]=[]
+        parties = ["Popular", "Tradicional","Media-Res."]
+        values = [entidad!.popular,entidad!.tradicional, entidad!.media_residencial]
+        estado = Utils.entidades[intEstado]
+        dValues=values.map{ r in Double(r) }
+        
+        for a in dValues{
+            totalValues=totalValues+a
+        }
+        
+        for a in dValues{
+            dParcial=(a/totalValues)*100
+            dSumParcial.append(dParcial)
+        }
+        
+        
+        
+        for a in dSumParcial{
+            if(a>1){
+                
+                tValues.append(dValues[aux])
+                tParties.append(parties[aux])
+                
+            }
+            aux++
+        }
+        
+        dValues=tValues
+        parties=tParties
+        
+        
+        
+        setChart(parties, pValues: dValues)
     }
     
-    @IBAction func showChart(sender: AnyObject) {
-         self.performSegueWithIdentifier("chartModal", sender:self)
+  
+    
+    
+    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
+        println("\(entry.value) in \(parties[entry.xIndex])")
+        var aux: Int=0
+        aux = Int(entry.value)
+        pieChart.centerText = titulo! + "\n" + estado! + "\n\(Utils.decimalFormat(aux)) \(parties[entry.xIndex])"
+        
+        
+    }
+    
+    func chartValueNothingSelected(chartView: ChartViewBase){
+        pieChart.centerText = titulo! + "\n" + estado!
     }
     
     func handler (responseObject: [ValorVivienda], error: NSError?) -> Void {
@@ -76,15 +175,6 @@ class ValorViviendaViewController: BaseUIViewController {
 
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "chartModal" {
-            let gvc = segue.destinationViewController as! ChartViewController
-            gvc.parties = pParties
-            gvc.values = pValues
-            gvc.titulo = pTitulo
-            gvc.estado = pEstado
-        }
-    }
     override func loadFromStorage() {
         println("Valorivienda loadFromStorage")
         let datosStorage = ValorViviendaRepository.loadFromStorage()
@@ -99,7 +189,7 @@ class ValorViviendaViewController: BaseUIViewController {
         loadFechasStorage()
         
         habilitarPantalla()
-        getData()
+       
 
     }
     
@@ -112,20 +202,9 @@ class ValorViviendaViewController: BaseUIViewController {
         }
         intEstado=row
         getData()
-        mostrarDatos()
+ 
     }
-    
-    override func mostrarDatos() {
-        if entidad != nil {
-            txtEconomica.text = Utils.toString(entidad!.economica)
-            txtPopular.text = Utils.toString(entidad!.popular)
-            txtTradicional.text = Utils.toString(entidad!.tradicional)
-            txtMediaResidencial.text = Utils.toString(entidad!.media_residencial)
-            txtTotal.text = Utils.toString(entidad!.total)
-        }
-        
-     //   txtTitleValorVivienda.text = "Valor de la Vivienda \(Utils.formatoMes(fechas.fecha_vv))"
-    }
+  
     
     override func getKey() -> String {
         return ValorViviendaRepository.TABLA

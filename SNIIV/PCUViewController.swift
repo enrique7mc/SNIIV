@@ -12,7 +12,6 @@ import Charts
 class PCUViewController: BaseUIViewController {
 
     @IBOutlet weak var picker: UIPickerView!
-
     @IBOutlet weak var pieChart: PieChartView!
     
     var entidad: PCU?
@@ -98,7 +97,7 @@ class PCUViewController: BaseUIViewController {
         var aux=0
         var tValues:[Double]=[]
         var tParties:[String]=[]
-        parties = ["U1   "," U2   ","U3   ","FC","N/D"]
+        parties = ["U1   "," U2   ","U3   ","FC   ","N/D   "]
         values = [entidad!.u1, entidad!.u2, entidad!.u3, entidad!.fc, entidad!.nd]
         estado = Utils.entidades[intEstado]
         dValues=values.map{ r in Double(r) }
@@ -115,7 +114,7 @@ class PCUViewController: BaseUIViewController {
         
         
         for a in dSumParcial{
-            if(a>2){
+            if(a>1){
                 
                 tValues.append(dValues[aux])
                 tParties.append(parties[aux])
