@@ -9,10 +9,11 @@
 import UIKit
 import Charts
 
-class TipoViviendaViewController: BaseUIViewController {
+class TipoViviendaViewController: BaseUIViewController, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var picker: UIPickerView!
 
+    @IBOutlet weak var btnDatos: UIButton!
     @IBOutlet weak var pieChart: PieChartView!
     var entidad: TipoVivienda?
     var datos: DatosTipoVivienda?
@@ -40,12 +41,29 @@ class TipoViviendaViewController: BaseUIViewController {
         loadFromStorage()
         getData()
     }
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+ 
+
+    @IBAction func showData(sender: AnyObject) {
+        println("ShowData")
+         performSegueWithIdentifier("datosModal", sender: nil)
+    }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "datosModal") {
+            var svc = segue.destinationViewController as! DialogViewController
+            svc.pStrings=parties
+            svc.pValues=values
+            svc.pTitle=titulo!+" ("+getFechaActualizacion()!+")"
+            svc.pEstado=intEstado
+        }
+    }
     
     func initChart(){
         
         pieChart.rotationAngle=0.0
-        pieChart.animate(xAxisDuration: 1.5, easingOption: ChartEasingOption.EaseInOutQuad)
         pieChart.usePercentValuesEnabled=true
         pieChart.descriptionText=""
         pieChart.holeTransparent=true
@@ -68,7 +86,7 @@ class TipoViviendaViewController: BaseUIViewController {
     
     func setChart(dataPoints: [String], pValues: [Double]) {
         
-        
+        pieChart.animate(xAxisDuration: 1.5, easingOption: ChartEasingOption.EaseInOutQuad)
         pieChart.centerText=titulo!+"\n"+estado!
         var dataEntries: [ChartDataEntry] = []
         

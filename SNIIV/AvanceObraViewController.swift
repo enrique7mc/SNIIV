@@ -1,10 +1,11 @@
 import UIKit
 import Charts
 
-class AvanceObraViewController: BaseUIViewController {
+class AvanceObraViewController: BaseUIViewController, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var pieChart: PieChartView!
+    @IBOutlet weak var btnDatos: UIButton!
     
     var entidad: AvanceObra?
     var datos: DatosAvanceObra?
@@ -14,9 +15,12 @@ class AvanceObraViewController: BaseUIViewController {
     let titulo:String? = "Avance de Obra"
     var estado:String? = ""
     var intEstado:Int = 0
+   
     
+ 
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         initChart()
         picker.userInteractionEnabled = false
@@ -29,16 +33,35 @@ class AvanceObraViewController: BaseUIViewController {
             parseAvance.getDatos(handler)
             return
         }
-        dValues=values.map{ r in Double(r) }
+        
         loadFromStorage()
         getData()
+        
+      }
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+    @IBAction func showData(sender: AnyObject) {
+        performSegueWithIdentifier("datosModal", sender: nil)
+
+    }
+ 
+ 
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "datosModal") {
+            var svc = segue.destinationViewController as! DialogViewController
+            svc.pStrings=parties
+            svc.pValues=values
+            svc.pTitle=titulo!+" ("+getFechaActualizacion()!+")"
+            svc.pEstado=intEstado
+        }
     }
     
-    
+
     func initChart(){
         
         pieChart.rotationAngle=0.0
-        pieChart.animate(xAxisDuration: 1.5, easingOption: ChartEasingOption.EaseInOutQuad)
         pieChart.usePercentValuesEnabled=true
         pieChart.descriptionText=""
         pieChart.holeTransparent=true
@@ -61,7 +84,7 @@ class AvanceObraViewController: BaseUIViewController {
     
     
     func setChart(dataPoints: [String], pValues: [Double]) {
-        
+        pieChart.animate(xAxisDuration: 1.5, easingOption: ChartEasingOption.EaseInOutQuad)
         pieChart.centerText=titulo!+"\n"+estado!
         var dataEntries: [ChartDataEntry] = []
         

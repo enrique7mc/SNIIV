@@ -1,53 +1,28 @@
-//
-//  DemandaFinanciamientosViewController.swift
-//  SNIIV
-//
-//  Created by SAP1 on 27/07/15.
-//  Copyright (c) 2015 enrique7mc. All rights reserved.
-//
-
 import UIKit
+import Charts
 
-class DemandaFinanciamientosViewController: BaseUIViewController, UITabBarDelegate {
+class DemandaFinanciamientosViewController: BaseUIViewController, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var picker: UIPickerView!
-    
 
-    @IBOutlet weak var txtNuevasSubsidiosMto: UILabel!
-    @IBOutlet weak var txtNuevasSubsidiosAcc: UILabel!
-    @IBOutlet weak var txtNuevasCreditoAcc: UILabel!
-    @IBOutlet weak var txtNuevasCreditoMto: UILabel!
-    
-    @IBOutlet weak var txtTitleFinanciamientos: UINavigationItem!
-    @IBOutlet weak var txtUsadasSubsidiosAcc: UILabel!
-    @IBOutlet weak var txtUsadasSubsidiosMto: UILabel!
-    @IBOutlet weak var txtUsadasCreditoMto: UILabel!
-    @IBOutlet weak var txtUsadasCreditoAcc: UILabel!
-    
-    @IBOutlet weak var txtMejoramientoSubsidiosMto: UILabel!
-    @IBOutlet weak var txtMejoramientoCreditoAcc: UILabel!
-    @IBOutlet weak var txtMejoramientoCreditoMto: UILabel!
-    @IBOutlet weak var txtMejoramientoSubsidiosAcc: UILabel!
-    
-    @IBOutlet weak var txtTitle: UINavigationItem!
-    @IBOutlet weak var txtOtrosCreditoAcc: UILabel!
-    @IBOutlet weak var txtOtrosCreditoMto: UILabel!
-    
-    @IBOutlet weak var txtTotalAcc: UILabel!
-    @IBOutlet weak var txtTotalMto: UILabel!
-    
-    var consulta: ConsultaFinanciamiento?
+    @IBOutlet weak var pieChart: PieChartView!
+    var entidad: ConsultaFinanciamiento?
     var datos: DatosFinanciamiento?
-    
-   
-    
+    var parties: [String]=[]
+    var values: [Double]=[]
+    var totalParties: [String]=[]
+    var totalValues: [Int64]=[]
+
+    var dValues: [Double]=[]
+    var titulo: String? = "Financiamientos"
+    var estado: String? = ""
+    var intEstado:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        initChart()
         picker.userInteractionEnabled = false
-        self.tabBarController?.navigationItem.title="Financiamientos"
         activarIndicador()
-        
+        pieChart.delegate=self
         if !isDataLoaded() && Reachability.isConnectedToNetwork() {            
             var parseFinanciamientos = ParseFinanciamientos<[Financiamiento]>()
             parseFinanciamientos.getDatos(handler)
@@ -56,7 +31,130 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UITabBarDelega
         }
         
         loadFromStorage()
+        getData()
     }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+    
+    @IBAction func showData(sender: AnyObject) {
+        println("ShowData")
+        performSegueWithIdentifier("datosModal", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "datosModal") {
+            var svc = segue.destinationViewController as! DialogViewController
+            svc.pStrings=parties
+//             svc.pValues=values
+            svc.pTitle=titulo!+" ("+getFechaActualizacion()!+")"
+            svc.pEstado=intEstado
+        }
+    }
+    
+    func initChart(){
+        
+        pieChart.rotationAngle=0.0
+        pieChart.usePercentValuesEnabled=true
+        pieChart.descriptionText=""
+        pieChart.holeTransparent=true
+        pieChart.transparentCircleRadiusPercent=0.50
+        pieChart.holeRadiusPercent = 0.50
+        pieChart.drawCenterTextEnabled = true
+        pieChart.drawHoleEnabled=true
+        pieChart.rotationAngle = 0.0
+        pieChart.rotationEnabled = false
+        pieChart.centerText=titulo!+"\n"+estado!
+        pieChart.dragDecelerationEnabled=true
+        
+        var l: ChartLegend = pieChart.legend
+        l.position=ChartLegend.ChartLegendPosition.BelowChartCenter
+        l.xEntrySpace = 0.0
+        l.yEntrySpace = 0.0
+        l.yOffset = 0.0
+        
+    }
+
+    func setChart(dataPoints: [String], pValues: [Double]) {
+        
+        pieChart.animate(xAxisDuration: 1.5, easingOption: ChartEasingOption.EaseInOutQuad)
+        pieChart.centerText=titulo!+"\n"+estado!
+        var dataEntries: [ChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = ChartDataEntry(value: pValues[i], xIndex: i)
+            dataEntries.append(dataEntry)
+            
+        }
+        
+        
+        
+        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "")
+        pieChartDataSet.colors = ColorTemplate.CONAVI_COLORS()
+        let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
+        
+        pieChart.data = pieChartData
+        
+        
+        
+    }
+    
+    func getData(){
+        println("getData")
+        var totalValues:Double=0
+        var dParcial:Double=0.0
+        var dSumParcial:[Double]=[]
+        var aux=0
+        var tValues:[Double]=[]
+        var tParties:[String]=[]
+        parties = ["Nueva", "Otros", "Usada", "Mejoramiento"]
+        values = [  entidad!.viviendasNuevas.cofinanciamiento.monto + entidad!.viviendasNuevas.creditoIndividual.monto,
+                    entidad!.otrosProgramas.creditoIndividual.monto + entidad!.otrosProgramas.cofinanciamiento.monto,
+                    entidad!.viviendasUsadas.cofinanciamiento.monto + entidad!.viviendasUsadas.creditoIndividual.monto,
+                    entidad!.mejoramientos.cofinanciamiento.monto + entidad!.mejoramientos.creditoIndividual.monto]
+        estado = Utils.entidades[intEstado]
+        dValues=values.map{ r in Double(r) }
+        
+        for a in dValues{
+            totalValues=totalValues+a
+        }
+        
+        for a in dValues{
+            dParcial=(a/totalValues)*100
+            dSumParcial.append(dParcial)
+        }
+        
+        
+        
+        for a in dSumParcial{
+            if(a>1){
+                
+                tValues.append(dValues[aux])
+                tParties.append(parties[aux])
+                
+            }
+            aux++
+        }
+        
+        dValues=tValues
+        parties=tParties
+        
+        
+        
+        setChart(parties, pValues: dValues)
+    }
+    
+    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
+        println("\(entry.value) in \(parties[entry.xIndex])")
+        pieChart.centerText = titulo! + "\n" + estado! + "\n\(Utils.toStringDivide(entry.value, divide: 1000000)) MDP"
+
+    }
+    
+    func chartValueNothingSelected(chartView: ChartViewBase){
+        pieChart.centerText = titulo! + "\n" + estado!
+    }
+
     
     func handler (responseObject: [Financiamiento], error: NSError?) -> Void {
         if error != nil {
@@ -68,7 +166,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UITabBarDelega
         FinanciamientoRepository.saveAll(responseObject)
         
         datos = DatosFinanciamiento()
-        consulta = datos!.consultaNacional()
+        entidad = datos!.consultaNacional()
         
         if let ultimaFecha = getFechaActualizacion() {
             TimeLastUpdatedRepository.saveLastTimeUpdated(getKey(), fecha: ultimaFecha)
@@ -80,6 +178,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UITabBarDelega
             self.habilitarPantalla()
             self.picker.userInteractionEnabled = true
         }
+        getData()
     }
     
     override func loadFromStorage() {
@@ -87,7 +186,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UITabBarDelega
         let datosStorage = FinanciamientoRepository.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosFinanciamiento()
-            consulta = datos?.consultaNacional()
+            entidad = datos?.consultaNacional()
            
             picker.userInteractionEnabled = true
         } else {
@@ -102,44 +201,16 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UITabBarDelega
     override func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var itemSelected = Utils.entidades[row]
         if row == 0 {
-            consulta = datos!.consultaNacional()
+            entidad = datos!.consultaNacional()
         } else {
-            consulta = datos!.consultaEntidad(Entidad(rawValue: row)!)
+            entidad = datos!.consultaEntidad(Entidad(rawValue: row)!)
         }
-        
-        mostrarDatos()
+        intEstado=row
+        getData()
+       
     }
     
-    override func mostrarDatos() {
-        if consulta != nil {
-            txtNuevasSubsidiosMto.text = Utils.toStringDivide(consulta!.viviendasNuevas.cofinanciamiento.monto, divide: 1000000)
-            txtNuevasSubsidiosAcc.text = Utils.toString(consulta!.viviendasNuevas.cofinanciamiento.acciones)
-            txtNuevasCreditoMto.text = Utils.toStringDivide(consulta!.viviendasNuevas.creditoIndividual.monto, divide: 1000000)
-            txtNuevasCreditoAcc.text = Utils.toString(consulta!.viviendasNuevas.creditoIndividual.acciones)
-            
-            txtUsadasSubsidiosMto.text = Utils.toStringDivide(consulta!.viviendasUsadas.cofinanciamiento.monto, divide: 1000000)
-            txtUsadasSubsidiosAcc.text = Utils.toString(consulta!.viviendasUsadas.cofinanciamiento.acciones)
-            txtUsadasCreditoMto.text = Utils.toStringDivide(consulta!.viviendasUsadas.creditoIndividual.monto, divide: 1000000)
-            txtUsadasCreditoAcc.text = Utils.toString(consulta!.viviendasUsadas.creditoIndividual.acciones)
-            
-            txtMejoramientoSubsidiosMto.text = Utils.toStringDivide(consulta!.mejoramientos.cofinanciamiento.monto, divide: 1000000)
-            txtMejoramientoSubsidiosAcc.text = Utils.toString(consulta!.mejoramientos.cofinanciamiento.acciones)
-            txtMejoramientoCreditoMto.text = Utils.toStringDivide(consulta!.mejoramientos.creditoIndividual.monto, divide: 1000000)
-            txtMejoramientoCreditoAcc.text = Utils.toString(consulta!.mejoramientos.creditoIndividual.acciones)
-            
-            txtOtrosCreditoMto.text = Utils.toStringDivide(consulta!.otrosProgramas.creditoIndividual.monto, divide: 1000000)
-            txtOtrosCreditoAcc.text = Utils.toString(consulta!.otrosProgramas.creditoIndividual.acciones)
-            
-            txtTotalMto.text = Utils.toStringDivide(consulta!.total.monto, divide: 1000000)
-            txtTotalAcc.text = Utils.toString(consulta!.total.acciones)
-        }
-        
-   
-        
-        self.tabBarController?.navigationItem.title="Financiamientos \(Utils.formatoDiaMes(fechas.fecha_finan))"
-    }
-    
-    override func getKey() -> String {
+       override func getKey() -> String {
         return FinanciamientoRepository.TABLA
     }
     
