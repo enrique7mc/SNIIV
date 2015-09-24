@@ -57,6 +57,8 @@
 		A39E1B191B570AE2000DEBA3 /* TipoViviendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E1B181B570AE2000DEBA3 /* TipoViviendaViewController.swift */; };
 		A3B39D121B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B39D111B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift */; };
 		A3B39D141B66D66400C65F41 /* DemandaSubsidiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B39D131B66D66400C65F41 /* DemandaSubsidiosViewController.swift */; };
+		A3BCCC6D1BB0BC0200D1C1D0 /* FinanciamientosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BCCC6C1BB0BC0200D1C1D0 /* FinanciamientosViewController.swift */; };
+		A3BCCC6F1BB1EC0F00D1C1D0 /* SubsidiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BCCC6E1BB1EC0F00D1C1D0 /* SubsidiosViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +156,8 @@
 		A39E1B181B570AE2000DEBA3 /* TipoViviendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipoViviendaViewController.swift; sourceTree = "<group>"; };
 		A3B39D111B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandaFinanciamientosViewController.swift; sourceTree = "<group>"; };
 		A3B39D131B66D66400C65F41 /* DemandaSubsidiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandaSubsidiosViewController.swift; sourceTree = "<group>"; };
+		A3BCCC6C1BB0BC0200D1C1D0 /* FinanciamientosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinanciamientosViewController.swift; sourceTree = "<group>"; };
+		A3BCCC6E1BB1EC0F00D1C1D0 /* SubsidiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubsidiosViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +293,8 @@
 				A3B39D111B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift */,
 				A3B39D131B66D66400C65F41 /* DemandaSubsidiosViewController.swift */,
 				A39C46271BA24F4B003CEA3B /* DialogViewController.swift */,
+				A3BCCC6C1BB0BC0200D1C1D0 /* FinanciamientosViewController.swift */,
+				A3BCCC6E1BB1EC0F00D1C1D0 /* SubsidiosViewController.swift */,
 			);
 			path = SNIIV;
 			sourceTree = "<group>";
@@ -527,6 +533,7 @@
 				8443F5DF1B6162AD000CF78E /* FechasRepository.swift in Sources */,
 				8443F5E11B616B1D000CF78E /* AvanceObraRepository.swift in Sources */,
 				A39C46281BA24F4B003CEA3B /* DialogViewController.swift in Sources */,
+				A3BCCC6D1BB0BC0200D1C1D0 /* FinanciamientosViewController.swift in Sources */,
 				841301301B571A35004946C7 /* ParseAvanceObra.swift in Sources */,
 				842EA0C31B7BB2F7006D86F3 /* TimeLastUpdatedRepository.swift in Sources */,
 				840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */,
@@ -534,6 +541,7 @@
 				A39E1B191B570AE2000DEBA3 /* TipoViviendaViewController.swift in Sources */,
 				A3B39D121B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift in Sources */,
 				A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */,
+				A3BCCC6F1BB1EC0F00D1C1D0 /* SubsidiosViewController.swift in Sources */,
 				A39E1B151B570A95000DEBA3 /* PCUViewController.swift in Sources */,
 				8443F5E51B61979D000CF78E /* ValorViviendaRepository.swift in Sources */,
 				841642D61B5EC52400D10900 /* ParseTipoVivienda.swift in Sources */,

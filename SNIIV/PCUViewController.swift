@@ -74,6 +74,7 @@ class PCUViewController: BaseUIViewController, UIPopoverPresentationControllerDe
         pieChart.rotationEnabled = false
         pieChart.centerText=titulo!+"\n"+estado!
         pieChart.dragDecelerationEnabled=true
+        pieChart.autoresizesSubviews=true
         
         var l: ChartLegend = pieChart.legend
         l.position=ChartLegend.ChartLegendPosition.BelowChartCenter
@@ -115,7 +116,7 @@ class PCUViewController: BaseUIViewController, UIPopoverPresentationControllerDe
         var aux=0
         var tValues:[Double]=[]
         var tParties:[String]=[]
-        parties = ["U1   "," U2   ","U3   ","FC   ","N/D   "]
+        parties = ["U1","U2","U3","FC","N/D"]
         values = [entidad!.u1, entidad!.u2, entidad!.u3, entidad!.fc, entidad!.nd]
         estado = Utils.entidades[intEstado]
         dValues=values.map{ r in Double(r) }
@@ -229,6 +230,6 @@ class PCUViewController: BaseUIViewController, UIPopoverPresentationControllerDe
     }
     
     override func getFechaActualizacion() -> String? {
-        return FechasRepository.selectFechas()?.fecha_vv
+         return Utils.formatoMes(FechasRepository.selectFechas()!.fecha_vv)
     }
 }

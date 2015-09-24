@@ -17,6 +17,10 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UIPopoverPrese
     var estado: String? = ""
     var intEstado:Int = 0
     
+    var valuesDataAcc: [Int64]=[]
+    var valuesDataMto: [Double]=[]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initChart()
@@ -45,9 +49,9 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UIPopoverPrese
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "datosModal") {
-            var svc = segue.destinationViewController as! DialogViewController
-            svc.pStrings=parties
-//             svc.pValues=values
+            var svc = segue.destinationViewController as! FinanciamientosViewController
+            svc.pValuesMto=valuesDataMto
+            svc.pValuesAcc=valuesDataAcc
             svc.pTitle=titulo!+" ("+getFechaActualizacion()!+")"
             svc.pEstado=intEstado
         }
@@ -67,6 +71,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UIPopoverPrese
         pieChart.rotationEnabled = false
         pieChart.centerText=titulo!+"\n"+estado!
         pieChart.dragDecelerationEnabled=true
+        pieChart.noDataText="No hay datos disponibles"
         
         var l: ChartLegend = pieChart.legend
         l.position=ChartLegend.ChartLegendPosition.BelowChartCenter
@@ -101,18 +106,30 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UIPopoverPrese
     }
     
     func getData(){
-        println("getData")
         var totalValues:Double=0
         var dParcial:Double=0.0
         var dSumParcial:[Double]=[]
         var aux=0
         var tValues:[Double]=[]
         var tParties:[String]=[]
+        
         parties = ["Nueva", "Otros", "Usada", "Mejoramiento"]
         values = [  entidad!.viviendasNuevas.cofinanciamiento.monto + entidad!.viviendasNuevas.creditoIndividual.monto,
                     entidad!.otrosProgramas.creditoIndividual.monto + entidad!.otrosProgramas.cofinanciamiento.monto,
                     entidad!.viviendasUsadas.cofinanciamiento.monto + entidad!.viviendasUsadas.creditoIndividual.monto,
                     entidad!.mejoramientos.cofinanciamiento.monto + entidad!.mejoramientos.creditoIndividual.monto]
+        
+        valuesDataAcc=[ entidad!.viviendasNuevas.cofinanciamiento.acciones, entidad!.viviendasNuevas.creditoIndividual.acciones,
+                        entidad!.viviendasUsadas.cofinanciamiento.acciones, entidad!.viviendasUsadas.creditoIndividual.acciones,
+                        entidad!.mejoramientos.cofinanciamiento.acciones, entidad!.mejoramientos.creditoIndividual.acciones,
+                        entidad!.otrosProgramas.creditoIndividual.acciones]
+        
+        
+        valuesDataMto=[ entidad!.viviendasNuevas.cofinanciamiento.monto, entidad!.viviendasNuevas.creditoIndividual.monto,
+                        entidad!.viviendasUsadas.cofinanciamiento.monto, entidad!.viviendasUsadas.creditoIndividual.monto,
+                        entidad!.mejoramientos.cofinanciamiento.monto, entidad!.mejoramientos.creditoIndividual.monto,
+                        entidad!.otrosProgramas.creditoIndividual.monto]
+
         estado = Utils.entidades[intEstado]
         dValues=values.map{ r in Double(r) }
         
@@ -215,6 +232,6 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UIPopoverPrese
     }
     
     override func getFechaActualizacion() -> String? {
-        return FechasRepository.selectFechas()?.fecha_finan
+        return Utils.formatoDiaMes(FechasRepository.selectFechas()!.fecha_finan)
     }
 }

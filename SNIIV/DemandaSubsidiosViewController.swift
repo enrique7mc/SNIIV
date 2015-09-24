@@ -19,6 +19,9 @@ class DemandaSubsidiosViewController: BaseUIViewController, UIPopoverPresentatio
     var estado: String? = ""
     var intEstado:Int = 0
     
+    var valuesDataAcc: [Int64]=[]
+    var valuesDataMto: [Double]=[]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initChart()
@@ -41,15 +44,14 @@ class DemandaSubsidiosViewController: BaseUIViewController, UIPopoverPresentatio
     }
     
     @IBAction func showData(sender: AnyObject) {
-        println("ShowData")
         performSegueWithIdentifier("datosModal", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "datosModal") {
-            var svc = segue.destinationViewController as! DialogViewController
-            svc.pStrings=parties
-            //             svc.pValues=values
+            var svc = segue.destinationViewController as! SubsidiosViewController
+            svc.pValuesMto=valuesDataMto
+            svc.pValuesAcc=valuesDataAcc
             svc.pTitle=titulo!+" ("+getFechaActualizacion()!+")"
             svc.pEstado=intEstado
         }
@@ -69,6 +71,7 @@ class DemandaSubsidiosViewController: BaseUIViewController, UIPopoverPresentatio
         pieChart.rotationEnabled = false
         pieChart.centerText=titulo!+"\n"+estado!
         pieChart.dragDecelerationEnabled=true
+        pieChart.noDataText="No hay datos disponibles"
         
         var l: ChartLegend = pieChart.legend
         l.position=ChartLegend.ChartLegendPosition.BelowChartCenter
@@ -110,7 +113,7 @@ class DemandaSubsidiosViewController: BaseUIViewController, UIPopoverPresentatio
         var aux=0
         var tValues:[Double]=[]
         var tParties:[String]=[]
-        parties = ["Nueva", "Mejoramiento", "Usada", "Autoproducción", "Lotes c/ Serv", "Otros"]
+        parties = ["Nueva", "Mejoramiento", "Usada", "Autoprod.", "Lotes c/ Serv", "Otros"]
         values = [  entidad!.nueva.monto,
                     entidad!.mejoramiento.monto,
                     entidad!.usada.monto,
@@ -118,6 +121,23 @@ class DemandaSubsidiosViewController: BaseUIViewController, UIPopoverPresentatio
                     entidad!.lotes.monto,
                     entidad!.otros.monto]
         estado = Utils.entidades[intEstado]
+        
+        valuesDataAcc = [  entidad!.nueva.acciones,
+            entidad!.usada.acciones,
+            entidad!.autoproduccion.acciones,
+            entidad!.mejoramiento.acciones,
+            entidad!.lotes.acciones,
+            entidad!.otros.acciones]
+        
+        valuesDataMto = [  entidad!.nueva.monto,
+            entidad!.usada.monto,
+            entidad!.autoproduccion.monto,
+            entidad!.mejoramiento.monto,
+            entidad!.lotes.monto,
+            entidad!.otros.monto]
+        
+        println("acciones \(valuesDataAcc.count)")
+        
         dValues=values.map{ r in Double(r) }
         
         for a in dValues{
@@ -221,6 +241,7 @@ class DemandaSubsidiosViewController: BaseUIViewController, UIPopoverPresentatio
     }
     
     override func getFechaActualizacion() -> String? {
-        return FechasRepository.selectFechas()?.fecha_subs
+
+        return Utils.formatoDiaMes(FechasRepository.selectFechas()!.fecha_subs)
     }
 }

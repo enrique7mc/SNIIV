@@ -75,6 +75,7 @@ class TipoViviendaViewController: BaseUIViewController, UIPopoverPresentationCon
         pieChart.rotationEnabled = false
         pieChart.centerText=titulo!+"\n"+estado!
         pieChart.dragDecelerationEnabled=true
+        pieChart.noDataText="No hay datos disponibles"
         
         var l: ChartLegend = pieChart.legend
         l.position=ChartLegend.ChartLegendPosition.BelowChartCenter
@@ -230,6 +231,6 @@ class TipoViviendaViewController: BaseUIViewController, UIPopoverPresentationCon
     }
     
     override func getFechaActualizacion() -> String? {
-        return FechasRepository.selectFechas()?.fecha_vv
+         return Utils.formatoMes(FechasRepository.selectFechas()!.fecha_vv)
     }
 }

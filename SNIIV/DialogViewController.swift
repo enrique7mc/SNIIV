@@ -28,8 +28,7 @@ class DialogViewController: UIViewController {
     @IBOutlet weak var v5: UILabel!
     @IBOutlet weak var v6: UILabel!
     @IBOutlet weak var txtTitle: UILabel!
-    
-    @IBOutlet weak var imgEstado: UIImageView!
+
     var aux:Int=0;
 
     var arrayLabel:[UILabel]=[]
@@ -40,9 +39,6 @@ class DialogViewController: UIViewController {
         super.viewDidLoad()
         populateArrays()
         populateLabels()
-        populateImage()
-        
-        
         
     }
 
@@ -60,81 +56,7 @@ class DialogViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func populateImage(){
-        println("estado \(pEstado)")
-        switch pEstado {
-            case 0:
-                imgEstado.image=UIImage(named: "nacional")
-            case 1:
-                imgEstado.image=UIImage(named: "AGS")
-            case 2:
-                imgEstado.image=UIImage(named: "BCN")
-            case 3:
-                imgEstado.image=UIImage(named: "BCS")
-            case 4:
-                imgEstado.image=UIImage(named: "CAM")
-            case 5:
-                imgEstado.image=UIImage(named: "COA")
-            case 6:
-                imgEstado.image=UIImage(named: "COL")
-            case 7:
-                imgEstado.image=UIImage(named: "CHIS")
-            case 8:
-                imgEstado.image=UIImage(named: "CHI")
-            case 9:
-                imgEstado.image=UIImage(named: "DF")
-            case 10:
-                imgEstado.image=UIImage(named: "DUR")
-            case 11:
-                imgEstado.image=UIImage(named: "GUA")
-            case 12:
-                imgEstado.image=UIImage(named: "GUE")
-            case 13:
-                imgEstado.image=UIImage(named: "HID")
-            case 14:
-                imgEstado.image=UIImage(named: "JAL")
-            case 15:
-                imgEstado.image=UIImage(named: "MEX")
-            case 16:
-                imgEstado.image=UIImage(named: "MICH")
-            case 17:
-                imgEstado.image=UIImage(named: "MOR")
-            case 18:
-                imgEstado.image=UIImage(named: "NAY")
-            case 19:
-                imgEstado.image=UIImage(named: "NL")
-            case 20:
-                imgEstado.image=UIImage(named: "OAX")
-            case 21:
-                imgEstado.image=UIImage(named: "PUE")
-            case 22:
-                imgEstado.image=UIImage(named: "QUE")
-            case 23:
-                imgEstado.image=UIImage(named: "QROO")
-            case 24:
-                imgEstado.image=UIImage(named: "SLP")
-            case 25:
-                imgEstado.image=UIImage(named: "SIN")
-            case 26:
-                imgEstado.image=UIImage(named: "SON")
-            case 27:
-                imgEstado.image=UIImage(named: "TAB")
-            case 28:
-                imgEstado.image=UIImage(named: "TAM")
-            case 29:
-                imgEstado.image=UIImage(named: "TLAX")
-            case 30:
-                imgEstado.image=UIImage(named: "VER")
-            case 31:
-                imgEstado.image=UIImage(named: "YUC")
-            case 32:
-                imgEstado.image=UIImage(named: "ZAC")
-            default:
-                imgEstado.image=UIImage(named: "nacional")
-           
-        }
-        
-    }
+   
    
     
     func populateArrays(){
