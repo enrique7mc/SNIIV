@@ -86,9 +86,10 @@ class FinanciamientoRepository {
         var financiamiento = db[TABLA]
         
         if let filtro = filtroOpcional {
+            print("filtroooo")
             financiamiento = financiamiento.filter(filtro)
         }
-        
+                        print("nooooo filtroooo", terminator: "")
         var consulta = ConsultaFinanciamiento()
         
         let viviendasNuevas = financiamiento.filter(destino == "Viviendas Nuevas")

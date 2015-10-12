@@ -51,7 +51,7 @@ class PCUViewController: BaseUIViewController, UIPopoverPresentationControllerDe
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "datosModal") {
-            var svc = segue.destinationViewController as! DialogViewController
+            let svc = segue.destinationViewController as! DialogViewController
             svc.pStrings=parties
             svc.pValues=values
             svc.pTitle=titulo!+" ("+getFechaActualizacion()!+")"
@@ -153,7 +153,7 @@ class PCUViewController: BaseUIViewController, UIPopoverPresentationControllerDe
     }
     
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
-        println("\(entry.value) in \(parties[entry.xIndex])")
+        print("\(entry.value) in \(parties[entry.xIndex])", terminator: "")
         var aux: Int=0
         aux = Int(entry.value)
         pieChart.centerText = titulo! + "\n" + estado! + "\n\(Utils.decimalFormat(aux)) \(parties[entry.xIndex])"
@@ -167,7 +167,7 @@ class PCUViewController: BaseUIViewController, UIPopoverPresentationControllerDe
     
     func handler (responseObject: [PCU], error: NSError?) -> Void {
         if error != nil {
-            println("Error obteniendo datos")
+            print("Error obteniendo datos", terminator: "")
             return
         }
         
@@ -194,7 +194,7 @@ class PCUViewController: BaseUIViewController, UIPopoverPresentationControllerDe
    
     
     override func loadFromStorage() {
-        println("PCU loadFromStorage")
+        print("PCU loadFromStorage", terminator: "")
         let datosStorage = PCURepository.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosPCU(datos: datosStorage)

@@ -45,6 +45,19 @@
 		84E16C1C1B4EE03A00C56F08 /* SoapToXml.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16C1B1B4EE03A00C56F08 /* SoapToXml.swift */; };
 		84E16C1E1B4EFC6100C56F08 /* Entidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16C1D1B4EFC6100C56F08 /* Entidad.swift */; };
 		84E1D1B11B62A1C9007C63B6 /* TipoViviendaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1D1B01B62A1C9007C63B6 /* TipoViviendaRepository.swift */; };
+		A32BBA2E1BC486A700908C24 /* EvolucionSubsidiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32BBA2D1BC486A700908C24 /* EvolucionSubsidiosViewController.swift */; };
+		A32BBA301BC4896C00908C24 /* DatosEvolucionSubsidios.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32BBA2F1BC4896C00908C24 /* DatosEvolucionSubsidios.swift */; };
+		A32BBA321BC489E900908C24 /* ParseEvolucionSubsidios.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32BBA311BC489E900908C24 /* ParseEvolucionSubsidios.swift */; };
+		A32BBA341BC48E5000908C24 /* EvolucionSubsidiosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32BBA331BC48E5000908C24 /* EvolucionSubsidiosRepository.swift */; };
+		A32BBA361BC58A8700908C24 /* EvolucionRegistroViviendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32BBA351BC58A8700908C24 /* EvolucionRegistroViviendaViewController.swift */; };
+		A32BBA381BC58B0200908C24 /* ParseEvolucionRegistroVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32BBA371BC58B0200908C24 /* ParseEvolucionRegistroVivienda.swift */; };
+		A32BBA3A1BC58B5C00908C24 /* DatosEvolucionRegistroVivienda.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32BBA391BC58B5C00908C24 /* DatosEvolucionRegistroVivienda.swift */; };
+		A32BBA3C1BC58C0F00908C24 /* EvolucionRegistroViviendaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32BBA3B1BC58C0F00908C24 /* EvolucionRegistroViviendaRepository.swift */; };
+		A33794201BB4AA1F00EA9A09 /* EvolucionFinanciamientoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A337941F1BB4AA1F00EA9A09 /* EvolucionFinanciamientoRepository.swift */; };
+		A33794221BB4ABDB00EA9A09 /* ParseEvolucionFinanciamiento.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33794211BB4ABDB00EA9A09 /* ParseEvolucionFinanciamiento.swift */; };
+		A33794241BB4B6E500EA9A09 /* DatosEvolucionFinanciamientos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33794231BB4B6E500EA9A09 /* DatosEvolucionFinanciamientos.swift */; };
+		A33794261BB4C23300EA9A09 /* EvolucionFinanciamientosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33794251BB4C23300EA9A09 /* EvolucionFinanciamientosViewController.swift */; };
+		A34B5A3E1BC877B400257448 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B5A3D1BC877B400257448 /* MenuViewController.swift */; };
 		A357B4351B965EEC00D79AA7 /* ColorTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357B4341B965EEC00D79AA7 /* ColorTemplate.swift */; };
 		A37D9B211B5D97BF00433D80 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A37D9B201B5D97BF00433D80 /* Images.xcassets */; };
 		A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38708041B4DB868009EAC52 /* ReporteGeneralViewController.swift */; };
@@ -144,6 +157,19 @@
 		84E16C1B1B4EE03A00C56F08 /* SoapToXml.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapToXml.swift; sourceTree = "<group>"; };
 		84E16C1D1B4EFC6100C56F08 /* Entidad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entidad.swift; sourceTree = "<group>"; };
 		84E1D1B01B62A1C9007C63B6 /* TipoViviendaRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipoViviendaRepository.swift; sourceTree = "<group>"; };
+		A32BBA2D1BC486A700908C24 /* EvolucionSubsidiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvolucionSubsidiosViewController.swift; sourceTree = "<group>"; };
+		A32BBA2F1BC4896C00908C24 /* DatosEvolucionSubsidios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosEvolucionSubsidios.swift; sourceTree = "<group>"; };
+		A32BBA311BC489E900908C24 /* ParseEvolucionSubsidios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseEvolucionSubsidios.swift; sourceTree = "<group>"; };
+		A32BBA331BC48E5000908C24 /* EvolucionSubsidiosRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvolucionSubsidiosRepository.swift; sourceTree = "<group>"; };
+		A32BBA351BC58A8700908C24 /* EvolucionRegistroViviendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvolucionRegistroViviendaViewController.swift; sourceTree = "<group>"; };
+		A32BBA371BC58B0200908C24 /* ParseEvolucionRegistroVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseEvolucionRegistroVivienda.swift; sourceTree = "<group>"; };
+		A32BBA391BC58B5C00908C24 /* DatosEvolucionRegistroVivienda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosEvolucionRegistroVivienda.swift; sourceTree = "<group>"; };
+		A32BBA3B1BC58C0F00908C24 /* EvolucionRegistroViviendaRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvolucionRegistroViviendaRepository.swift; sourceTree = "<group>"; };
+		A337941F1BB4AA1F00EA9A09 /* EvolucionFinanciamientoRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvolucionFinanciamientoRepository.swift; sourceTree = "<group>"; };
+		A33794211BB4ABDB00EA9A09 /* ParseEvolucionFinanciamiento.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseEvolucionFinanciamiento.swift; sourceTree = "<group>"; };
+		A33794231BB4B6E500EA9A09 /* DatosEvolucionFinanciamientos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatosEvolucionFinanciamientos.swift; sourceTree = "<group>"; };
+		A33794251BB4C23300EA9A09 /* EvolucionFinanciamientosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvolucionFinanciamientosViewController.swift; sourceTree = "<group>"; };
+		A34B5A3D1BC877B400257448 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		A357B4341B965EEC00D79AA7 /* ColorTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTemplate.swift; sourceTree = "<group>"; };
 		A35B0EEF1B4D7FD900CD25D9 /* SNIIV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SNIIV-Bridging-Header.h"; sourceTree = "<group>"; };
 		A37D9B201B5D97BF00433D80 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -229,6 +255,12 @@
 				847711DA1B60557F007BC146 /* DatosSubsidios.swift */,
 				842188761B669401000D3BE6 /* ParseFinanciamientos.swift */,
 				842188781B6697A6000D3BE6 /* DatosFinanciamiento.swift */,
+				A33794211BB4ABDB00EA9A09 /* ParseEvolucionFinanciamiento.swift */,
+				A33794231BB4B6E500EA9A09 /* DatosEvolucionFinanciamientos.swift */,
+				A32BBA2F1BC4896C00908C24 /* DatosEvolucionSubsidios.swift */,
+				A32BBA311BC489E900908C24 /* ParseEvolucionSubsidios.swift */,
+				A32BBA371BC58B0200908C24 /* ParseEvolucionRegistroVivienda.swift */,
+				A32BBA391BC58B5C00908C24 /* DatosEvolucionRegistroVivienda.swift */,
 			);
 			name = Parsing;
 			sourceTree = "<group>";
@@ -246,6 +278,9 @@
 				840A02941B6832A9000EF460 /* SubsidioRepository.swift */,
 				840A02921B67E76D000EF460 /* FinanciamientoRepository.swift */,
 				842EA0C21B7BB2F7006D86F3 /* TimeLastUpdatedRepository.swift */,
+				A337941F1BB4AA1F00EA9A09 /* EvolucionFinanciamientoRepository.swift */,
+				A32BBA331BC48E5000908C24 /* EvolucionSubsidiosRepository.swift */,
+				A32BBA3B1BC58C0F00908C24 /* EvolucionRegistroViviendaRepository.swift */,
 			);
 			name = SQLite;
 			sourceTree = "<group>";
@@ -295,6 +330,10 @@
 				A39C46271BA24F4B003CEA3B /* DialogViewController.swift */,
 				A3BCCC6C1BB0BC0200D1C1D0 /* FinanciamientosViewController.swift */,
 				A3BCCC6E1BB1EC0F00D1C1D0 /* SubsidiosViewController.swift */,
+				A33794251BB4C23300EA9A09 /* EvolucionFinanciamientosViewController.swift */,
+				A32BBA2D1BC486A700908C24 /* EvolucionSubsidiosViewController.swift */,
+				A32BBA351BC58A8700908C24 /* EvolucionRegistroViviendaViewController.swift */,
+				A34B5A3D1BC877B400257448 /* MenuViewController.swift */,
 			);
 			path = SNIIV;
 			sourceTree = "<group>";
@@ -381,8 +420,9 @@
 		84BA16221B4C657400ECC81A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = enrique7mc;
 				TargetAttributes = {
 					84BA16291B4C657400ECC81A = {
@@ -505,18 +545,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				841642D21B5EAE7E00D10900 /* ParsePCU.swift in Sources */,
+				A32BBA2E1BC486A700908C24 /* EvolucionSubsidiosViewController.swift in Sources */,
 				A357B4351B965EEC00D79AA7 /* ColorTemplate.swift in Sources */,
 				8402548C1B5988E1000DBBF5 /* ParseFechas.swift in Sources */,
 				84E16C1C1B4EE03A00C56F08 /* SoapToXml.swift in Sources */,
+				A33794221BB4ABDB00EA9A09 /* ParseEvolucionFinanciamiento.swift in Sources */,
+				A32BBA361BC58A8700908C24 /* EvolucionRegistroViviendaViewController.swift in Sources */,
 				84E16C1A1B4EC72C00C56F08 /* DatosReporteGeneral.swift in Sources */,
 				847711D71B60056A007BC146 /* BaseUIViewController.swift in Sources */,
+				A34B5A3E1BC877B400257448 /* MenuViewController.swift in Sources */,
+				A33794201BB4AA1F00EA9A09 /* EvolucionFinanciamientoRepository.swift in Sources */,
 				A3B39D141B66D66400C65F41 /* DemandaSubsidiosViewController.swift in Sources */,
 				841642D41B5EAF7F00D10900 /* DatosPCU.swift in Sources */,
+				A32BBA341BC48E5000908C24 /* EvolucionSubsidiosRepository.swift in Sources */,
 				840A02931B67E76D000EF460 /* FinanciamientoRepository.swift in Sources */,
 				842188791B6697A6000D3BE6 /* DatosFinanciamiento.swift in Sources */,
+				A32BBA3C1BC58C0F00908C24 /* EvolucionRegistroViviendaRepository.swift in Sources */,
 				8443F5E31B619236000CF78E /* PCURepository.swift in Sources */,
 				84E16C1E1B4EFC6100C56F08 /* Entidad.swift in Sources */,
 				840A02951B6832A9000EF460 /* SubsidioRepository.swift in Sources */,
+				A32BBA381BC58B0200908C24 /* ParseEvolucionRegistroVivienda.swift in Sources */,
 				84BA16301B4C657400ECC81A /* AppDelegate.swift in Sources */,
 				8410A2811B8CD960002370C9 /* TableViewController.swift in Sources */,
 				841642DC1B5EF12E00D10900 /* DatosValorVivienda.swift in Sources */,
@@ -525,6 +573,7 @@
 				84E1D1B11B62A1C9007C63B6 /* TipoViviendaRepository.swift in Sources */,
 				842188771B669401000D3BE6 /* ParseFinanciamientos.swift in Sources */,
 				8410A27F1B8BB9E4002370C9 /* ParseFechasWeb.swift in Sources */,
+				A32BBA3A1BC58B5C00908C24 /* DatosEvolucionRegistroVivienda.swift in Sources */,
 				841642C61B5D5C2700D10900 /* DatosAvanceObra.swift in Sources */,
 				840F82AA1B54630900A3B9E7 /* Utils.swift in Sources */,
 				840C6BB01B5809500044A83C /* ParseReporteGeneral.swift in Sources */,
@@ -534,11 +583,14 @@
 				8443F5E11B616B1D000CF78E /* AvanceObraRepository.swift in Sources */,
 				A39C46281BA24F4B003CEA3B /* DialogViewController.swift in Sources */,
 				A3BCCC6D1BB0BC0200D1C1D0 /* FinanciamientosViewController.swift in Sources */,
+				A32BBA301BC4896C00908C24 /* DatosEvolucionSubsidios.swift in Sources */,
 				841301301B571A35004946C7 /* ParseAvanceObra.swift in Sources */,
 				842EA0C31B7BB2F7006D86F3 /* TimeLastUpdatedRepository.swift in Sources */,
 				840F82A71B54375E00A3B9E7 /* Reachability.swift in Sources */,
 				847711D91B605465007BC146 /* ParseSubsidios.swift in Sources */,
+				A33794261BB4C23300EA9A09 /* EvolucionFinanciamientosViewController.swift in Sources */,
 				A39E1B191B570AE2000DEBA3 /* TipoViviendaViewController.swift in Sources */,
+				A32BBA321BC489E900908C24 /* ParseEvolucionSubsidios.swift in Sources */,
 				A3B39D121B66A40E00C65F41 /* DemandaFinanciamientosViewController.swift in Sources */,
 				A38708051B4DB868009EAC52 /* ReporteGeneralViewController.swift in Sources */,
 				A3BCCC6F1BB1EC0F00D1C1D0 /* SubsidiosViewController.swift in Sources */,
@@ -547,6 +599,7 @@
 				841642D61B5EC52400D10900 /* ParseTipoVivienda.swift in Sources */,
 				8443F5DD1B6151A6000CF78E /* ReporteGeneralRepository.swift in Sources */,
 				841642D81B5EC5DC00D10900 /* DatosTipoVivienda.swift in Sources */,
+				A33794241BB4B6E500EA9A09 /* DatosEvolucionFinanciamientos.swift in Sources */,
 				A39E1B171B570ACF000DEBA3 /* ValorViviendaViewController.swift in Sources */,
 				840C6BAE1B58006F0044A83C /* ParseBase.swift in Sources */,
 			);
@@ -616,6 +669,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -690,6 +744,7 @@
 				INFOPLIST_FILE = SNIIV/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mx.gob.conavi.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SNIIV-Bridging-Header.h";
@@ -708,6 +763,7 @@
 				INFOPLIST_FILE = SNIIV/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mx.gob.conavi.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SNIIV-Bridging-Header.h";
@@ -730,6 +786,7 @@
 				);
 				INFOPLIST_FILE = SNIIVTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.conavi.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SNIIV.app/SNIIV";
@@ -748,6 +805,7 @@
 				);
 				INFOPLIST_FILE = SNIIVTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.conavi.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SNIIV.app/SNIIV";

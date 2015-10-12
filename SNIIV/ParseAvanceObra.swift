@@ -18,7 +18,7 @@ class ParseAvanceObra<T>: ParseBase<[AvanceObra]> {
         let httpResponse = response as! NSHTTPURLResponse
 
         if error != nil || httpResponse.statusCode != 200 {
-            println("AvanceObra status code: \(httpResponse.statusCode)")
+            print("AvanceObra status code: \(httpResponse.statusCode)", terminator: "")
             self.serviceResponse!([], NSError())
         } else {
             if let dataString = NSString(data: data, encoding:NSUTF8StringEncoding) {

@@ -20,7 +20,7 @@ class DatosPCU {
     }
     
     func consultaEntidad(entidad: Entidad) -> PCU {
-        var datoEntidad = datos.filter() {
+        let datoEntidad = datos.filter() {
             return $0.cve_ent == entidad.rawValue
         }
         

@@ -52,7 +52,7 @@ class ValorViviendaViewController: BaseUIViewController, UIPopoverPresentationCo
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "datosModal") {
-            var svc = segue.destinationViewController as! DialogViewController
+            let svc = segue.destinationViewController as! DialogViewController
             svc.pStrings=parties
             svc.pValues=values
             svc.pTitle=titulo!+" ("+getFechaActualizacion()!+")"
@@ -153,7 +153,7 @@ class ValorViviendaViewController: BaseUIViewController, UIPopoverPresentationCo
     
     
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
-        println("\(entry.value) in \(parties[entry.xIndex])")
+        print("\(entry.value) in \(parties[entry.xIndex])", terminator: "")
         var aux: Int=0
         aux = Int(entry.value)
         pieChart.centerText = titulo! + "\n" + estado! + "\n\(Utils.decimalFormat(aux)) \(parties[entry.xIndex])"
@@ -167,7 +167,7 @@ class ValorViviendaViewController: BaseUIViewController, UIPopoverPresentationCo
     
     func handler (responseObject: [ValorVivienda], error: NSError?) -> Void {
         if error != nil {
-            println("ValorVivienda error obteniendo datos")
+            print("ValorVivienda error obteniendo datos", terminator: "")
             return
         }
         
@@ -192,7 +192,7 @@ class ValorViviendaViewController: BaseUIViewController, UIPopoverPresentationCo
     }
     
     override func loadFromStorage() {
-        println("Valorivienda loadFromStorage")
+        print("Valorivienda loadFromStorage", terminator: "")
         let datosStorage = ValorViviendaRepository.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosValorVivienda(datos: datosStorage)

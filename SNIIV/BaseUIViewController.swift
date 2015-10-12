@@ -33,7 +33,7 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Utils.entidades.count
+            return Utils.entidades.count
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
@@ -41,7 +41,7 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        println("pickerView not implemented")
+        print("pickerView not implemented")
     }
     
     func handlerFechas (responseObject: Fechas, error: NSError?) {
@@ -49,11 +49,11 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func loadFromStorage() {
-        println("loadFromWeb not implemented")
+        print("loadFromWeb not implemented")
     }
     
     func mostrarDatos() {
-        println("mostrarDatos not implemented")
+        print("mostrarDatos not implemented")
     }
     
     func habilitarPantalla() {
@@ -64,22 +64,22 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     func isDataLoaded() -> Bool {
         let date = TimeLastUpdatedRepository.getLastTimeUpdated(getKey())
         let lastUpdated = getFechaActualizacion() ?? "00/00/0000"
-        println(date + " " + lastUpdated)
+        print(date + " " + lastUpdated)
         return date == lastUpdated
     }
     
     func getKey() -> String {
-        print("getKey not implemented by subclass")
+        print("getKey not implemented by subclass", terminator: "")
         return ""
     }
     
     func getFechaActualizacion() -> String? {
-        print("getFechaActualizacion not implemented by subclass")
+        print("getFechaActualizacion not implemented by subclass", terminator: "")
         return nil
     }
     
     func muestraMensajeError() {
-        var alert = UIAlertController(title: "Ha ocurrido un error",
+        let alert = UIAlertController(title: "Ha ocurrido un error",
             message: "No hay conexión a internet",
             preferredStyle: .Alert)
         
@@ -98,7 +98,7 @@ class BaseUIViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         if fechasStorage != nil {
             fechas = fechasStorage!
         } else {
-            println("no hay fechas en local storage")
+            print("no hay fechas en local storage")
         }
     }
 }

@@ -33,8 +33,8 @@ class ReporteGeneralViewController: BaseUIViewController {
         activarIndicador()
         
         if !isDataLoaded() && Reachability.isConnectedToNetwork() {
-            println("loading from web")
-            var parseReporte = ParseReporteGeneral<[ReporteGeneralPrueba]>()
+            print("loading from web", terminator: "")
+            let parseReporte = ParseReporteGeneral<[ReporteGeneralPrueba]>()
             parseReporte.getDatos(handler)
             
             return
@@ -45,7 +45,7 @@ class ReporteGeneralViewController: BaseUIViewController {
     
     func handler (responseObject: [ReporteGeneralPrueba], error: NSError?) -> Void {
         if error != nil {
-            println("Error obteniendo datos")
+            print("Error obteniendo datos", terminator: "")
             return
         }
         
@@ -68,7 +68,7 @@ class ReporteGeneralViewController: BaseUIViewController {
     }
     
     override func loadFromStorage() {
-        println("loadFromStorage")
+        print("loadFromStorage", terminator: "")
         let datosStorage = ReporteGeneralRepository.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosReporteGeneral(datos: datosStorage)
@@ -95,7 +95,7 @@ class ReporteGeneralViewController: BaseUIViewController {
         mostrarDatos()
     }
     
-    override func mostrarDatos() {
+     override func mostrarDatos() {
         if entidad != nil {
             txtFinanAcc.text = Utils.toStringDivide(entidad!.accFinan)
             txtFinanMto.text = Utils.toStringDivide(entidad!.mtoFinan, divide: 1000000)

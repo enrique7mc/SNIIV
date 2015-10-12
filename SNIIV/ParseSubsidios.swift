@@ -18,7 +18,7 @@ class ParseSubsidios<T>: ParseBase<[Subsidio]> {
         let httpResponse = response as! NSHTTPURLResponse
         
         if error != nil || httpResponse.statusCode != 200 {
-            println("ParseSubsidios status code: \(httpResponse.statusCode)")
+            print("ParseSubsidios status code: \(httpResponse.statusCode)", terminator: "")
             self.serviceResponse!([], NSError())
         } else {
             if let dataString = NSString(data: data, encoding:NSUTF8StringEncoding) {

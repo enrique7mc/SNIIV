@@ -47,13 +47,13 @@ class TipoViviendaViewController: BaseUIViewController, UIPopoverPresentationCon
  
 
     @IBAction func showData(sender: AnyObject) {
-        println("ShowData")
+        print("ShowData", terminator: "")
          performSegueWithIdentifier("datosModal", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "datosModal") {
-            var svc = segue.destinationViewController as! DialogViewController
+            let svc = segue.destinationViewController as! DialogViewController
             svc.pStrings=parties
             svc.pValues=values
             svc.pTitle=titulo!+" ("+getFechaActualizacion()!+")"
@@ -110,7 +110,7 @@ class TipoViviendaViewController: BaseUIViewController, UIPopoverPresentationCon
     }
     
     func getData(){
-        println("getData")
+        print("getData", terminator: "")
         var totalValues:Double=0
         var dParcial:Double=0.0
         var dSumParcial:[Double]=[]
@@ -152,7 +152,7 @@ class TipoViviendaViewController: BaseUIViewController, UIPopoverPresentationCon
     }
     
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
-        println("\(entry.value) in \(parties[entry.xIndex])")
+        print("\(entry.value) in \(parties[entry.xIndex])", terminator: "")
         var aux: Int=0
         aux = Int(entry.value)
         pieChart.centerText = titulo! + "\n" + estado! + "\n\(Utils.decimalFormat(aux)) \(parties[entry.xIndex])"
@@ -167,7 +167,7 @@ class TipoViviendaViewController: BaseUIViewController, UIPopoverPresentationCon
     
     func handler (responseObject: [TipoVivienda], error: NSError?) -> Void {
         if error != nil {
-            println("TipoVivienda error obteniendo datos")
+            print("TipoVivienda error obteniendo datos", terminator: "")
             return
         }
         
@@ -194,7 +194,7 @@ class TipoViviendaViewController: BaseUIViewController, UIPopoverPresentationCon
    
     
     override func loadFromStorage() {
-        println("TipoVivienda loadFromStorage")
+        print("TipoVivienda loadFromStorage", terminator: "")
         
         let datosStorage = TipoViviendaRepository.loadFromStorage()
         if datosStorage.count > 0 {

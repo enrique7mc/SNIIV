@@ -90,7 +90,7 @@ class DialogViewController: UIViewController {
         
         for a in arrayLabel{
             
-            println("aux\(aux)")
+            print("aux\(aux)", terminator: "")
             if pStrings.count > aux{
                 a.text=pStrings[aux]
                 
@@ -111,7 +111,7 @@ class DialogViewController: UIViewController {
         
         for a in arrayValues{
             
-            println("aux\(aux)")
+            print("aux\(aux)", terminator: "")
             if pValues.count > aux{
                 
                 a.text="\(Utils.decimalFormat(Int(pValues[aux])))"

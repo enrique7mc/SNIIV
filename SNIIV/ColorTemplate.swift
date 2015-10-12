@@ -66,7 +66,14 @@ public class ColorTemplate: NSObject {
     }
     
     
- 
+    public class func EVOLUCION_COLORS() -> [UIColor]{
+        return[
+
+            UIColor(red: 142/255.0, green: 144/255.0, blue: 144/255.0, alpha: 1.0),
+            UIColor(red: 155/255.0, green: 27/255.0, blue: 47/255.0, alpha: 1.0),
+            UIColor(red: 0/255.0, green: 128/255.0, blue: 59/255.0, alpha: 1.0)
+        ]
+    }
  
 
     public class func CONAVI_COLORS () -> [UIColor]

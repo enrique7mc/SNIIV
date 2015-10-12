@@ -43,13 +43,13 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UIPopoverPrese
     }
     
     @IBAction func showData(sender: AnyObject) {
-        println("ShowData")
+        print("ShowData", terminator: "")
         performSegueWithIdentifier("datosModal", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "datosModal") {
-            var svc = segue.destinationViewController as! FinanciamientosViewController
+            let svc = segue.destinationViewController as! FinanciamientosViewController
             svc.pValuesMto=valuesDataMto
             svc.pValuesAcc=valuesDataAcc
             svc.pTitle=titulo!+" ("+getFechaActualizacion()!+")"
@@ -163,7 +163,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UIPopoverPrese
     }
     
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
-        println("\(entry.value) in \(parties[entry.xIndex])")
+        print("\(entry.value) in \(parties[entry.xIndex])", terminator: "")
         pieChart.centerText = titulo! + "\n" + estado! + "\n\(Utils.toStringDivide(entry.value, divide: 1000000)) MDP"
 
     }
@@ -175,7 +175,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UIPopoverPrese
     
     func handler (responseObject: [Financiamiento], error: NSError?) -> Void {
         if error != nil {
-            println("Financiamiento error obteniendo datos")
+            print("Financiamiento error obteniendo datos", terminator: "")
             return
         }
         
@@ -199,7 +199,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UIPopoverPrese
     }
     
     override func loadFromStorage() {
-        println("Financiamiento loadFromStorage")
+        print("Financiamiento loadFromStorage", terminator: "")
         let datosStorage = FinanciamientoRepository.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosFinanciamiento()
@@ -222,12 +222,12 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UIPopoverPrese
         } else {
             entidad = datos!.consultaEntidad(Entidad(rawValue: row)!)
         }
-        intEstado=row
+        intEstado = row
         getData()
        
     }
     
-       override func getKey() -> String {
+    override func getKey() -> String {
         return FinanciamientoRepository.TABLA
     }
     

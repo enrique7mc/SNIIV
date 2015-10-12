@@ -18,7 +18,7 @@ class ParsePCU<T>: ParseBase<[PCU]> {
         let httpResponse = response as! NSHTTPURLResponse
         
         if error != nil || httpResponse.statusCode != 200 {
-            println("ParsePCU status code: \(httpResponse.statusCode)")
+            print("ParsePCU status code: \(httpResponse.statusCode)", terminator: "")
             self.serviceResponse!([], NSError())
         } else {
             if let dataString = NSString(data: data, encoding:NSUTF8StringEncoding) {

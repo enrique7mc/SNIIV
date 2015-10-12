@@ -35,6 +35,7 @@ class DBConfig {
         initializeFinanciamiento()
         initializeSubsidio()
         initializeTimeLastUpdated()
+        initializeEvolucionFinanciamientol()
     }
     
     private func initializeReporteGeneral() {
@@ -198,6 +199,26 @@ class DBConfig {
             t in
             t.column(key, primaryKey: true)
             t.column(time)
+        }
+    }
+    
+    private func initializeEvolucionFinanciamientol() {
+        let table = db["EvolucionFinanciamiento"]
+        
+        let cve_ent = Expression<String>("cve_ent")
+        let anio = Expression<String>("anio")
+        let mes = Expression<String>("mes")
+        let acciones = Expression<String>("acciones")
+        let monto = Expression<String>("monto")
+
+        
+        db.create(table: table, ifNotExists: true) {
+            t in
+            t.column(cve_ent)
+            t.column(anio)
+            t.column(mes)
+            t.column(acciones)
+            t.column(monto)
         }
     }
     

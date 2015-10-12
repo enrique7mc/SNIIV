@@ -19,7 +19,7 @@ class ParseFechasWeb<T>: ParseBase<Fechas> {
         let httpResponse = response as! NSHTTPURLResponse
         
         if error != nil || httpResponse.statusCode != 200 {
-            println("Fechas status code: \(httpResponse.statusCode)")
+            print("Fechas status code: \(httpResponse.statusCode)", terminator: "")
             self.serviceResponse!(Fechas(), NSError())
         } else {
             if let dataString = NSString(data: data, encoding:NSUTF8StringEncoding) {
@@ -31,6 +31,7 @@ class ParseFechasWeb<T>: ParseBase<Fechas> {
                 let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding)!
                 let jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil)
                     as? [String: AnyObject]
+                println("FECHAAAS \(jsonResult)")
                 
                 if let fechas = jsonResult {
                     var fechas = Fechas(fechasDictionary: fechas)

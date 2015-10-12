@@ -49,7 +49,7 @@ class DemandaSubsidiosViewController: BaseUIViewController, UIPopoverPresentatio
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "datosModal") {
-            var svc = segue.destinationViewController as! SubsidiosViewController
+            let svc = segue.destinationViewController as! SubsidiosViewController
             svc.pValuesMto=valuesDataMto
             svc.pValuesAcc=valuesDataAcc
             svc.pTitle=titulo!+" ("+getFechaActualizacion()!+")"
@@ -106,7 +106,7 @@ class DemandaSubsidiosViewController: BaseUIViewController, UIPopoverPresentatio
     }
     
     func getData(){
-        println("getData")
+        print("getData", terminator: "")
         var totalValues:Double=0
         var dParcial:Double=0.0
         var dSumParcial:[Double]=[]
@@ -136,7 +136,7 @@ class DemandaSubsidiosViewController: BaseUIViewController, UIPopoverPresentatio
             entidad!.lotes.monto,
             entidad!.otros.monto]
         
-        println("acciones \(valuesDataAcc.count)")
+        print("acciones \(valuesDataAcc.count)", terminator: "")
         
         dValues=values.map{ r in Double(r) }
         
@@ -172,7 +172,7 @@ class DemandaSubsidiosViewController: BaseUIViewController, UIPopoverPresentatio
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
        
 
-        println("\(entry.value) in \(parties[entry.xIndex])")
+        print("\(entry.value) in \(parties[entry.xIndex])", terminator: "")
         pieChart.centerText = titulo! + "\n" + estado! + "\n\(Utils.toStringDivide(entry.value, divide: 1000000)) MDP"
         
     }
@@ -184,7 +184,7 @@ class DemandaSubsidiosViewController: BaseUIViewController, UIPopoverPresentatio
     
     func handler (responseObject: [Subsidio], error: NSError?) -> Void {
         if error != nil {
-            println("Subsidio error obteniendo datos")
+            print("Subsidio error obteniendo datos", terminator: "")
             return
         }
         
@@ -208,7 +208,7 @@ class DemandaSubsidiosViewController: BaseUIViewController, UIPopoverPresentatio
     }
     
     override func loadFromStorage() {
-        println("Subsidio loadFromStorage")
+        print("Subsidio loadFromStorage", terminator: "")
         let datosStorage = SubsidioRepository.loadFromStorage()
         if datosStorage.count > 0 {
             datos = DatosSubsidios()

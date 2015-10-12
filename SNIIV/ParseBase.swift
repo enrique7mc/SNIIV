@@ -22,12 +22,12 @@ class ParseBase<T> {
     }
     
     func getXml() {
-        var soapToXml = SoapToXml(message: message, url: urlString, soapAction: action, method: "POST", completionHandler: handler)
+        let soapToXml = SoapToXml(message: message, url: urlString, soapAction: action, method: "POST", completionHandler: handler)
         soapToXml.responseXlm()
     }
     
     func handler(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void {
-        println("Handler not implemented")
+        print("Handler not implemented", terminator: "")
     }
     
     func getDatos(onCompletion: (T, NSError?) -> Void) {

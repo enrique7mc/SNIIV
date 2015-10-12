@@ -19,7 +19,7 @@ class ParseFechas<T>: ParseBase<Fechas> {
         let httpResponse = response as! NSHTTPURLResponse
         
         if error != nil || httpResponse.statusCode != 200 {
-            println("Fechas status code: \(httpResponse.statusCode)")
+            print("Fechas status code: \(httpResponse.statusCode)", terminator: "")
             self.serviceResponse!(Fechas(), NSError())
         } else {
             if let dataString = NSString(data: data, encoding:NSUTF8StringEncoding) {

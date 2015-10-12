@@ -20,7 +20,7 @@ class DatosValorVivienda {
     }
     
     func consultaEntidad(entidad: Entidad) -> ValorVivienda {
-        var datoEntidad = datos.filter() {
+        let datoEntidad = datos.filter() {
             return $0.cve_ent == entidad.rawValue
         }
         

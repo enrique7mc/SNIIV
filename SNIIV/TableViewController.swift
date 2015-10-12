@@ -15,13 +15,15 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("menu")
-        
+        var view = self.navigationController?.topViewController.view as! UITableView
+        view.separatorStyle = .None
         self.refresh = UIRefreshControl()
         self.refresh.attributedTitle = NSAttributedString(string: "Recargar datos")
         self.refresh.addTarget(self, action: "reload:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refresh)
     }
+    
+   
     
     override func viewDidAppear(animated: Bool) {
         cargarDatosFechas()
@@ -29,8 +31,8 @@ class TableViewController: UITableViewController {
     
     func cargarDatosFechas() {
         if Reachability.isConnectedToNetwork() {
-            println("carga fechas")
-            var parseFechas = ParseFechasWeb<Fechas?>()
+            print("carga fechas", terminator: "")
+            let parseFechas = ParseFechasWeb<Fechas?>()
             parseFechas.getDatos(handlerFechas)
         }
         
@@ -41,7 +43,7 @@ class TableViewController: UITableViewController {
     
     func handlerFechas (responseObject: Fechas, error: NSError?) {
         if error != nil {
-            println("Error obteniendo fechas")
+            print("Error obteniendo fechas", terminator: "")
             return
         }
         

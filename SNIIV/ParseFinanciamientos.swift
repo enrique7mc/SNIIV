@@ -1,11 +1,3 @@
-//
-//  ParseFinanciamientos.swift
-//  SNIIV
-//
-//  Created by admin on 27/07/15.
-//  Copyright (c) 2015 enrique7mc. All rights reserved.
-//
-
 import Foundation
 import SWXMLHash
 
@@ -18,7 +10,7 @@ class ParseFinanciamientos<T>: ParseBase<[Financiamiento]> {
         let httpResponse = response as! NSHTTPURLResponse
         
         if error != nil || httpResponse.statusCode != 200 {
-            println("ParseFinanciamientos status code: \(httpResponse.statusCode)")
+            print("ParseFinanciamientos status code: \(httpResponse.statusCode)", terminator: "")
             self.serviceResponse!([], NSError())
         } else {
             if let dataString = NSString(data: data, encoding:NSUTF8StringEncoding) {

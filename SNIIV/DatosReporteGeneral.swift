@@ -21,7 +21,7 @@ class DatosReporteGeneral {
     }
     
     func consultaEntidad(entidad: Entidad) -> ReporteGeneralPrueba {
-        var datoEntidad = datos.filter() {
+        let datoEntidad = datos.filter() {
             return $0.cveeNT == entidad.rawValue
         }
         

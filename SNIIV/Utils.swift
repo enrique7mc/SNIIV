@@ -14,7 +14,8 @@ class Utils {
     
     static let numberFormatter = NSNumberFormatter()
     static let dateFormatter = NSDateFormatter()
-
+    static let MILLION: Double = 1000000
+    static let THOUSAND: Double = 1000
     
     static func decimalFormat(numero: NSNumber) -> String {
         numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
@@ -48,6 +49,7 @@ class Utils {
     
     static func getText(value: AnyObject?) -> String {
         if let object: AnyObject = value {
+
             return object as! String
         } else {
             return ""
@@ -59,7 +61,7 @@ class Utils {
     }
     
     static func parseInt(string: String) -> Int{
-        var number = string.toInt()
+        let number = Int(string)
         if let n = number {
             return n
         } else {
@@ -96,6 +98,8 @@ class Utils {
     
     static let entidades = ["Nacional","Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Coahuila", "Colima", "Chiapas" , "Chihuahua", "Distrito Federal", "Durango", "Guanajuato", "Guerrero","Hidalgo", "Jalisco",
         "México", "Michoacán", "Morelos", "Nayarit", "Nuevo León" , "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"]
+    
+    static let meses = ["Ene","Feb","Mar","Abr","May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
     
     static func Sumar(a: Int64, b: Int64) -> Int64 {
         return a + b

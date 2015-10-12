@@ -18,7 +18,7 @@ class ParseValorVivienda<T>: ParseBase<[ValorVivienda]> {
         let httpResponse = response as! NSHTTPURLResponse
         
         if error != nil || httpResponse.statusCode != 200 {
-            println("ParseValorVivienda status code: \(httpResponse.statusCode)")
+            print("ParseValorVivienda status code: \(httpResponse.statusCode)", terminator: "")
             self.serviceResponse!([], NSError())
         } else {
             if let dataString = NSString(data: data, encoding:NSUTF8StringEncoding) {
