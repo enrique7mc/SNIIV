@@ -17,12 +17,8 @@ class ParseEvolucionSubsidios<T>: ParseBase<Evolucion> {
             let dir = dirs[0] //documents directory
             let path = dir.stringByAppendingPathComponent(file);
             let text = datastring
-            
-            
-            do {
-                try text.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding)
-            } catch _ {
-            };
+            text.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding, error: nil)
+
              print("SAVED File")
         }
         

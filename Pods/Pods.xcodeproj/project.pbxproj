@@ -32,14 +32,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0FE5BEC2E5A4FAA43C73930E233ED57E /* PBXContainerItemProxy */ = {
+		B1A774FFB505C49E8B92D0527938DC4A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3159EAD4A7A069DE965FEC5AF280E459;
 			remoteInfo = SQLite.swift;
 		};
-		CC797C7B176CF7F246306AE41B674246 /* PBXContainerItemProxy */ = {
+		D19C04A0C2674753B9C9DBC87C9D5DF6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -337,8 +337,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				E94F1F446B110540EA642E34BEA9ED69 /* PBXTargetDependency */,
-				FF38DD28793B4C60FDC2043D06E4CB93 /* PBXTargetDependency */,
+				A1F60B82BC6350BBDCC550E95C34E9FC /* PBXTargetDependency */,
+				0CAAE1E21CBC0DA9EBF1E138D94F1634 /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
@@ -412,17 +412,17 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E94F1F446B110540EA642E34BEA9ED69 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SQLite.swift;
-			target = 3159EAD4A7A069DE965FEC5AF280E459 /* SQLite.swift */;
-			targetProxy = 0FE5BEC2E5A4FAA43C73930E233ED57E /* PBXContainerItemProxy */;
-		};
-		FF38DD28793B4C60FDC2043D06E4CB93 /* PBXTargetDependency */ = {
+		0CAAE1E21CBC0DA9EBF1E138D94F1634 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SWXMLHash;
 			target = 341CD13A901B71F7D8F36C9E7AA4732C /* SWXMLHash */;
-			targetProxy = CC797C7B176CF7F246306AE41B674246 /* PBXContainerItemProxy */;
+			targetProxy = D19C04A0C2674753B9C9DBC87C9D5DF6 /* PBXContainerItemProxy */;
+		};
+		A1F60B82BC6350BBDCC550E95C34E9FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SQLite.swift;
+			target = 3159EAD4A7A069DE965FEC5AF280E459 /* SQLite.swift */;
+			targetProxy = B1A774FFB505C49E8B92D0527938DC4A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

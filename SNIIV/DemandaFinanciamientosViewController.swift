@@ -113,7 +113,7 @@ class DemandaFinanciamientosViewController: BaseUIViewController, UIPopoverPrese
         var tValues:[Double]=[]
         var tParties:[String]=[]
         
-        parties = ["Nueva", "Otros", "Usada", "Mejoramiento"]
+        parties = ["Nueva", "Otros", "Usada", "Mejoramientos"]
         values = [  entidad!.viviendasNuevas.cofinanciamiento.monto + entidad!.viviendasNuevas.creditoIndividual.monto,
                     entidad!.otrosProgramas.creditoIndividual.monto + entidad!.otrosProgramas.cofinanciamiento.monto,
                     entidad!.viviendasUsadas.cofinanciamiento.monto + entidad!.viviendasUsadas.creditoIndividual.monto,

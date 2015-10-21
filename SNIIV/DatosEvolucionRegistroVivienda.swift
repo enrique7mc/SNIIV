@@ -11,7 +11,7 @@ class DatosEvolucionRegistroVivienda {
         if let dirs : [String] = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String] {
             let dir = dirs[0] //documents directory
             let path = dir.stringByAppendingPathComponent(file);
-            text2 = try! String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+            text2 = String(contentsOfFile: path, encoding: NSUTF8StringEncoding)!
             
         }
         return text2
@@ -23,10 +23,10 @@ class DatosEvolucionRegistroVivienda {
         var estados = [String, EvolucionFinanciamiento2]()
         var evo = Evolucion2()
         let data = readFile().dataUsingEncoding(NSUTF8StringEncoding)!
-        let jsonResult = (try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)) as? NSDictionary
+        let jsonResult = (NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil)) as? NSDictionary
         if let item = jsonResult{
             
-            let keys = (jsonResult!.allKeys as! [String]).sort(<)
+            let keys = (jsonResult!.allKeys as! [String]).sorted(<)
             
             for key in keys{
                 estados.append(key, EvolucionFinanciamiento2(evolAnyObject: item[key]!))

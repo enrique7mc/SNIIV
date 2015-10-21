@@ -18,12 +18,8 @@ class ParseEvolucionRegistroVivienda<T>: ParseBase<Evolucion2> {
             let dir = dirs[0] //documents directory
             let path = dir.stringByAppendingPathComponent(file);
             let text = datastring
-            
-            
-            do {
-                try text.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding)
-            } catch _ {
-            };
+            text.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding, error: nil)
+
            
         }
         
@@ -101,7 +97,7 @@ struct EvolucionFinanciamiento2 {
         let jsonArray: NSArray = (evolAnyObject as? NSArray)!
         for j in jsonArray{
             if let jsonResult = j as? NSDictionary {
-                let keys = (j.allKeys as! [String]).sort(<)
+                let keys = (j.allKeys as! [String]).sorted(<)
                 
                 for key in keys{
                     
@@ -111,11 +107,7 @@ struct EvolucionFinanciamiento2 {
         }
         
     }
-    
-    init(){
-        
-    }
-    
+
 }
 
 
@@ -131,15 +123,15 @@ struct EvolucionFinanciamientoResultado2 {
         let jsonArray: NSArray = (evolAnyObject as? NSArray)!
         for j in jsonArray{
             if let jsonResult = j as? NSDictionary {
-                let keys = (j.allKeys as! [String]).sort(<)
+                let keys = (j.allKeys as! [String]).sorted(<)
                 
                 for key in keys{
                     if key == "mes_int"{
                         var strReg: String = (j["num_viv_reg"] as? String)!
                         var intReg: Int64 = 0
-                        strReg = strReg.stringByReplacingOccurrencesOfString("Optional(", withString: "", options: [], range: nil)
-                        strReg = strReg.stringByReplacingOccurrencesOfString(")", withString: "", options: [], range: nil)
-                        intReg = Int64(Int(strReg)!)
+                        strReg = strReg.stringByReplacingOccurrencesOfString("Optional(", withString: "")
+                        strReg = strReg.stringByReplacingOccurrencesOfString(")", withString: "")
+                        intReg = Int64(strReg.toInt()!)
                         var consultas: Consulta = Consulta()
                         consultas.acciones=intReg
                         meses.append(consultas)

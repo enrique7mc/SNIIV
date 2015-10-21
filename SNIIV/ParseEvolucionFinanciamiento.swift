@@ -17,12 +17,8 @@ class ParseEvolucionFinanciamiento<T>: ParseBase<Evolucion> {
             let dir = dirs[0] //documents directory
             let path = dir.stringByAppendingPathComponent(file);
             let text = datastring
-            
-  
-            do {
-                try text.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding)
-            } catch _ {
-            };
+            text.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding, error: nil)
+           
             print("saved")
         }
         
@@ -95,7 +91,7 @@ struct EvolucionFinanciamiento {
             let jsonArray: NSArray = (evolAnyObject as? NSArray)!
             for j in jsonArray{
                 if let jsonResult = j as? NSDictionary {
-                    let keys = (j.allKeys as! [String]).sort(<)
+                    let keys = (j.allKeys as! [String]).sorted(<)
                    
                     for key in keys{
                        
@@ -105,10 +101,7 @@ struct EvolucionFinanciamiento {
             }
            
         }
-    
-    init(){
-        
-    }
+
 
 }
 
@@ -125,7 +118,7 @@ struct EvolucionFinanciamientoResultado {
         let jsonArray: NSArray = (evolAnyObject as? NSArray)!
         for j in jsonArray{
             if let jsonResult = j as? NSDictionary {
-                let keys = (j.allKeys as! [String]).sort(<)
+                let keys = (j.allKeys as! [String]).sorted(<)
                 
                 for key in keys{
                     if key == "mes_int"{
@@ -134,9 +127,9 @@ struct EvolucionFinanciamientoResultado {
                         var intAcciones: Int64
                         var doubleMonto: Double
                         let nsStringMonto = NSString(string: strMonto)
-                        strAcc = strAcc.stringByReplacingOccurrencesOfString("Optional(", withString: "", options: [], range: nil)
-                        strAcc = strAcc.stringByReplacingOccurrencesOfString(")", withString: "", options: [], range: nil)
-                        intAcciones = Int64(Int(strAcc)!)
+                        strAcc = strAcc.stringByReplacingOccurrencesOfString("Optional(", withString: "")
+                        strAcc = strAcc.stringByReplacingOccurrencesOfString(")", withString: "")
+                        intAcciones = Int64(strAcc.toInt()!)
                         doubleMonto = Double(nsStringMonto.doubleValue)
                         var consultas: Consulta = Consulta()
                         consultas.acciones=intAcciones

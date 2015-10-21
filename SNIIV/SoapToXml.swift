@@ -27,7 +27,7 @@ class SoapToXml {
     func responseXlm() {
         var url = NSURL(string: urlString)
         var theRequest = NSMutableURLRequest(URL: url!)
-        var msgLength = String(message.characters.count)
+        var msgLength = String(count(message))
         
         theRequest.addValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         theRequest.addValue(msgLength, forHTTPHeaderField: "Content-Length")

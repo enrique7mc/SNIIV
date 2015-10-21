@@ -17,6 +17,7 @@ class ParseFinanciamientos<T>: ParseBase<[Financiamiento]> {
                 self.xmlResponse = dataString as String
                 var xml = SWXMLHash.parse(self.xmlResponse)
                 var sniiv = xml["soap:Envelope"]["soap:Body"]["FinanciamientosResponse"]["FinanciamientosResult"]["app_sniiv_rep_finan"]
+                println(sniiv)
                 var datos = sniiv.all.map{ elem in
                     Financiamiento(cve_ent: Utils.parseInt(Utils.getText(elem["cve_ent"])),
                         organismo: Utils.getText(elem["organismo"]),
@@ -25,6 +26,8 @@ class ParseFinanciamientos<T>: ParseBase<[Financiamiento]> {
                         acciones: Utils.parseInt64(Utils.getText(elem["acciones"])),
                         monto: Utils.parseDouble(Utils.getText(elem["monto"])))
                 }
+                
+                
                 
                 self.serviceResponse!(datos as [Financiamiento], nil)
             }

@@ -61,7 +61,7 @@ class Utils {
     }
     
     static func parseInt(string: String) -> Int{
-        let number = Int(string)
+        var number = string.toInt()
         if let n = number {
             return n
         } else {
